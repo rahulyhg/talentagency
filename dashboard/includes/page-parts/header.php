@@ -9,10 +9,11 @@ if(isset($_SESSION['role_id']))
 <html>
   <head>
     <meta charset="UTF-8">
-    <title> TAMS | <?php echo	$_SESSION[full_name]; ?> Dashboard </title>
+    <title> TAMS | <?php echo $_SESSION['full_name']; ?> Dashboard </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-<?php include_once('header-scripts.php'); ?>
+<?php  
+include_once('header-scripts.php'); ?>
  <script src="http://maps.google.com/maps/api/js?sensor=false" 
           type="text/javascript"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

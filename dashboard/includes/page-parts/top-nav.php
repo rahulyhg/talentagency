@@ -28,7 +28,7 @@
   <nav class="navbar navbar-static-top">
     <div class="container-fluid">
     <div class="navbar-header">
-      <a href="<?php echo SITE_ROOT.'mycompany/index.php'; ?>" class="navbar-brand"><img style="margin-top: -11px; padding-top: 0px;" height="45px" src="../assets/images/logo_blue.png" /></a>
+      <a href="<?php echo SITE_ROOT.'dashboard/index.php'; ?>" class="navbar-brand"><img style="margin-top: -11px; padding-top: 0px;" height="45px" src="../assets/images/logo.jpg" /></a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
         <i class="fa fa-bars"></i>
       </button>
@@ -38,85 +38,42 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Payroll <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?route=payroll/start_new_payroll">Start New Payroll</a></li>
-
+            <li><a href="#">Add New Talent</a></li>
 
             <li class="divider"></li>
-			<li><a href="index.php?route=payroll/view_payslips">Print Bulletin de salaire </a></li>            
+			<li><a href="#">View Talent List</a></li>            
             <li class="divider"></li>
-			<li><a href="index.php?route=payroll/view_payroll_yearly">Archived Payrolls </a></li>   			
+			<li><a href="#">Saved Talent Lists</a></li>   			
           </ul>
         </li>      
       <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Reports <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?route=reports/tax_report">Rapport De Taxes</a></li>
+            <li><a href="#">List All Clients</a></li>
             <li class="divider"></li>
-			<li><a href="index.php?route=reports/salary_report">H.R summary</a></li>
+			<li><a href="#">Add New Client</a></li>
             
           </ul>
         </li>
       
               <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Employees <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?route=employees/list_employees"> List Employees</a></li>
+           	<li><a href="#">System Settings</a></li>
             <li class="divider"></li>
-			<li><a href="index.php?route=employees/add_new_employee"> Add New Employee</a></li>
+            <li><a href="">List Roles</a></li>
+            <li class="divider"></li>
+			<li><a href="#"> List Users</a></li>
 			<li class="divider"></li>
-			<li><a href="index.php?route=employees/upload_employee_data">Upload Employee Data</a></li>
+			<li><a href="#">Add New Users</a></li>
+ 			
  			<li class="divider"></li>
-			<li><a href="download_employee_data.php">Download Employee Data</a></li>
+			<li><a href="#">View Activity Logs</a></li>
           </ul>
         </li>
 <li class="divider"></li>
-            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Deduction & Benefits <span   class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-        
-			<li><a href="index.php?route=deduction_types\view_deduction_types"> Deduction Types </a></li>
-			<li class="divider"></li>
-            <li><a href="index.php?route=benefit_types\view_benefit_types"> Benefit Types </a></li> 
-          
-          </ul>
-        </li>
- <li class="divider"></li>
-			    <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Tax Rates <span  class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-        
-			<li><a href="index.php?route=taxes\view_flat_taxes"> Flat Taxes </a></li>
-			<li class="divider"></li>
-            <li><a href="index.php?route=taxes\view_iri_slabs"> IRI Setup </a></li> 
-          
-          </ul>
-        </li>
-
-               <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Company Setup <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-        
-			<li><a href="index.php?route=periods\view_periods"> Payment Periods </a></li>
-			<li class="divider"></li>
-			<li><a href="index.php?route=forex\view_rates"> Exchange Rates </a></li>
-        <li class="divider"></li>
-            <li><a href="index.php?route=locations\view_locations"> Locations </a></li>
-            <li class="divider"></li>
-			<li><a href="index.php?route=bases\view_bases"> Bases </a></li>
-            <li class="divider"></li>
-			<li><a href="index.php?route=departments\view_departments">Departments</a></li>
-			<li class="divider"></li>
-			<li><a href="index.php?route=jobs\view_jobs"> Job Titles </a></li>
-            <li class="divider"></li>
-			<li><a href="index.php?route=contracts\view_contract_types"> Contract Types </a></li>
- 			 <li class="divider"></li>
-			<li><a href="index.php?route=status_types\view_status_types"> Employment Types </a></li>
-
-
-          </ul>
-        </li>
         
       </ul>
       

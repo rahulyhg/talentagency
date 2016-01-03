@@ -18,10 +18,10 @@ if (isset($_POST['login'])) {
                 
             $_SESSION['role_id'] = $res['role_id'];
             $_SESSION['user_id'] = $res['user_id'];
-             $_SESSION['email'] = $res['email'];
+             $_SESSION['user_email'] = $res['user_email'];
             $_SESSION['user_name'] = $user;
-            $_SESSION['first_name'] = $res['firstname'];
-            $_SESSION['last_name'] = $res['lastname'];
+            $_SESSION['first_name'] = $res['first_name'];
+            $_SESSION['last_name'] = $res['last_name'];
             $_SESSION['full_name'] = $_SESSION['first_name']." ".$_SESSION['last_name'];
              
             $_SESSION['email'] = $res['email'];
