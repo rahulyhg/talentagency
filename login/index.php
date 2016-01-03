@@ -21,10 +21,10 @@
 		
     <![endif]-->
  <style>
-/* 	
+ 
  	.login-page, .register-page {
-    background: #A4ECAB none repeat scroll 0% 0%;
-}|*/
+    background: #00B5CA none repeat scroll 0% 0%;
+} 
  </style>   </head>
 
   <body class="login-page">
@@ -71,7 +71,7 @@
                             ?>
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
-<footer><center>  <h3>TAMS <em> Cloud Powered </em></h3> <h5>Talent Agency Solution</h5>
+<footer><center>  <h3>TAMS <em>a Cloud Powered </em></h3> <h5>Talent Agency Management Solution</h5>
         <p><em>For more infomration & support , please contact 
         <i class="fa fa-email fa-fw"></i> info@sutlej.net</em></p>
 </center>        
