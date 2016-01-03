@@ -12,43 +12,41 @@ if (isset($_POST['login'])) {
 
         $pass = sha1($pass);
     
-        $query = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND status = '1' ";
+        $query = "SELECT * FROM tams_users WHERE user_name = '$user' AND password = '$pass' AND user_status = 'active' ";
         $res = DB::queryFirstRow($query);
         if ($res) {
                 
-            $_SESSION['user_group_id'] = $res['user_group_id'];
+            $_SESSION['role_id'] = $res['role_id'];
             $_SESSION['user_id'] = $res['user_id'];
              $_SESSION['email'] = $res['email'];
-            $_SESSION['username'] = $user;
-            $_SESSION['client_id'] = $res['client_id'];
-            $_SESSION['company_id'] = $res['company_id'];
-            $_SESSION['firstname'] = $res['firstname'];
-            $_SESSION['lastname'] = $res['lastname'];
-            $_SESSION['fullname'] = $_SESSION['firstname']." ".$_SESSION['lastname'];
+            $_SESSION['user_name'] = $user;
+            $_SESSION['first_name'] = $res['firstname'];
+            $_SESSION['last_name'] = $res['lastname'];
+            $_SESSION['full_name'] = $_SESSION['first_name']." ".$_SESSION['last_name'];
              
             $_SESSION['email'] = $res['email'];
 
 // Redirect to appropriate home page after successfull login
-			switch($_SESSION['user_group_id']){
+			switch($_SESSION['role_id']){
 				case 1 :
 						// this is admin user redirect to app-admin	
-						header('Location: ../mycompany/index.php');
+						header('Location: ../dashboard/index.php');
 			            exit;
 					break;
 				case 2 :
 					// this is Client user Managing companies redirect to Client Portal	
-						header('Location: ../mycompany/index.php');
+						header('Location: ../dashboard/index.php');
 			            exit;
 					break;
 				case 3 :
 				// this is Company Manager User redirect to hrm module in Client Portal	
-						header('Location: ../mycompany/index.php');
+						header('Location: ../dashboard/index.php');
 			            exit;
 
 					break;
 				default :
 				// All other Users Go to Subscription page
-						header('Location: ../public/subscribe/index.php');
+						header('Location: ../index.php');
 			            exit;
 					break;
 			}  	
@@ -62,8 +60,8 @@ if (isset($_POST['login'])) {
            exit;
         }
     }
-//print_r($_POST);
-//print_r($_SESSION);
+ print_r($_POST);
+ print_r($_SESSION);
 
 
 
