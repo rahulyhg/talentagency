@@ -8,7 +8,7 @@ $user_id 	=  $_SESSION['user_id'];
 <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-          	<?php echo $_SESSION['fullname']; ?> 
+          	<?php echo $_SESSION['full_name']; ?> 
             <small>My Profile</small>
           </h1>
           <ol class="breadcrumb">
@@ -65,7 +65,7 @@ $user_id 	=  $_SESSION['user_id'];
 						<strong>Username</strong>	
 						</td>	
 						<td>
-						<span><?php echo $_SESSION['username']; ?></span>	
+						<span><?php echo $_SESSION['user_name']; ?></span>	
 						</td>	
 					</tr>
 					<!-- /UserName -->
@@ -75,7 +75,7 @@ $user_id 	=  $_SESSION['user_id'];
 						<strong>Full Name</strong>	
 						</td>	
 						<td>
-						<span><?php echo $_SESSION['fullname']; ?></span>	
+						<span><?php echo $_SESSION['full_name']; ?></span>	
 						</td>	
 					</tr>
 					<!-- /Full Name -->
@@ -85,30 +85,30 @@ $user_id 	=  $_SESSION['user_id'];
 						<strong>E-Mail</strong>	
 						</td>	
 						<td>
-						<span><?php echo $_SESSION['email'] ?></span>	
+						<span><?php echo $_SESSION['user_email'] ?></span>	
 						</td>	
 					</tr>
 					<!-- /E-Mail -->
-					<!-- Default Company -->
+					<!-- User Title -->
 					<tr>
 						<td>
-						<strong>Default Company</strong>	
+						<strong>User Title</strong>	
 						</td>	
 						<td>
-						<span><?php echo get_user_company_name($user_id); ?></span>	
+						<span><?php echo 'User Title and Departent here'; ?></span>	
 						</td>	
 					</tr>
-					<!-- /Default Company -->
-					<!-- Default Client -->
+					<!-- /User Title -->
+					<!-- User_Role -->
 					<tr>
 						<td>
-						<strong>Default Client</strong>	
+						<strong>User_role</strong>	
 						</td>	
 						<td>
-						<span><?php echo get_user_client_name($user_id); ?></span>	
+						<span><?php echo "User Role here"; ?></span>	
 						</td>	
 					</tr>
-					<!-- /Default Client -->
+					<!-- /User Role -->
 					
 					
 						
