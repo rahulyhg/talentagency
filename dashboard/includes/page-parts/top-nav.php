@@ -28,7 +28,7 @@
   <nav class="navbar navbar-static-top">
     <div class="container-fluid">
     <div class="navbar-header">
-      <a href="<?php echo SITE_ROOT.'dashboard/index.php'; ?>" class="navbar-brand"><img style="margin-top: -11px; padding-top: 0px;" height="45px" src="../assets/images/logo.jpg" /></a>
+      <a href="<?php echo SITE_ROOT.'dashboard/index.php'; ?>" class="navbar-brand"><img style="margin-top: -11px; padding-top: 0px;" height="45px" src="../assets/images/logo_blue.png" /></a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
         <i class="fa fa-bars"></i>
       </button>
