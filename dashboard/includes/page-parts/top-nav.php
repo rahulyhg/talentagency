@@ -40,20 +40,20 @@
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Add New Talent</a></li>
+            <li><a href="index.php?route=modules/talent/add_talent">Add New Talent</a></li>
 
             <li class="divider"></li>
-			<li><a href="#">View Talent List</a></li>            
+			<li><a href="index.php?route=modules/talent/view_talents">View Talent List</a></li>            
             <li class="divider"></li>
-			<li><a href="#">Saved Talent Lists</a></li>   			
+			<li><a href="index.php?route=modules/talent/saved_talent_list">Saved Talent Lists</a></li>   			
           </ul>
         </li>      
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">List All Clients</a></li>
+            <li><a href="index.php?route=modules/clients/view_clients">List All Clients</a></li>
             <li class="divider"></li>
-			<li><a href="#">Add New Client</a></li>
+			<li><a href="index.php?route=modules/clients/add_client">Add New Client</a></li>
             
           </ul>
         </li>
