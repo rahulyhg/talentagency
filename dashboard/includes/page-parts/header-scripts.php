@@ -1,4 +1,7 @@
     <!-- Load CSS Files -->
+	
+	 <!-- custom style sheet -->
+    <link href="<?php echo SITE_ROOT;  ?>assets/custom/css/style.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap 3.3.2 -->
     <link href="<?php echo SITE_ROOT;  ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
@@ -142,3 +145,7 @@
     <!-- fullCalendar 2.2.5 -->
  
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+	
+	   <!-- Custom JavaScripts -->
+ 
+    <script src="<?php echo SITE_ROOT;  ?>assets/custom/js/custom-js.js" type="text/javascript"></script>

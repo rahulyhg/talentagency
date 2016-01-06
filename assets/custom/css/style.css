@@ -1,0 +1,45 @@
+/**
+	**Custom style sheet
+	**All custom css here
+**/
+
+
+
+h2.normal {
+
+	font-size: 18px;
+padding: 5px 0px;
+/* margin: 16px 0px 34px; */
+text-align: center;
+border-bottom: 2px solid #0BB4CA;
+display: inline-block;
+}
+
+.form-control {
+    border-left: 2px solid #0BB4CA!important;
+}
+.checkbox-wrap {
+    width: 49%;
+    margin: 0;
+    padding: 8px 12px;
+    vertical-align: bottom;
+
+    -webkit-transition: all 150ms ease-out;
+    -moz-transition: all 150ms ease-out;
+    -o-transition: all 150ms ease-out;
+    transition: all 150ms ease-out;
+}
+.checkbox-wrap:hover {
+    background: #f2f2f2;
+    cursor: pointer;
+}
+.checkbox-wrap input {
+    margin-right: 10px!important;
+    vertical-align: sub;
+}
+.checkbox-label {
+    width: 100%;
+    margin: 0;
+    padding: 8px 12px;
+    vertical-align: bottom;
+}
