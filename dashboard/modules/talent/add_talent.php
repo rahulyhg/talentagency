@@ -45,7 +45,7 @@
                 <div class="box-body">
                   <div class="row">
 						<!-- Main form start-->
-						<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-12">
 
  				<form name="frmsubmission" id="frmsubmission" method="POST" class="submission-validate" enctype="multipart/form-data">
 
@@ -61,12 +61,12 @@
 					<div class="row">
 				 		<div class="col-sm-6">
 							<div class="form-group">
-									<input id="first_name" name="first_name" class="form-control" value="" placeholder="Enter your first name" required="" type="text">
+									<input id="first_name" name="first_name" class="form-control" value="" placeholder="Enter first name" required="" type="text">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input id="last_name" name="last_name" class="form-control" value="" placeholder="Enter your last name" required="" type="text">
+								<input id="last_name" name="last_name" class="form-control" value="" placeholder="Enter last name" required="" type="text">
 							</div>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 					<div class="row">
 				 		<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="rcity" name="rcity" placeholder="Enter your city" value="" required="" type="text">
+								<input class="form-control" id="rcity" name="rcity" placeholder="Enter city" value="" required="" type="text">
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -92,7 +92,7 @@
 					<div class="row">
 				 		<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="phone_no" name="phone_no" placeholder="Your home phone number" value="" required="" type="text">
+								<input class="form-control" id="phone_no" name="phone_no" placeholder="Enter home phone number" value="" required="" type="text">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -105,7 +105,7 @@
 					<div class="row">
 				 		<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="cell_no" name="cell_no" placeholder="Your cell phone number" value="" type="text">
+								<input class="form-control" id="cell_no" name="cell_no" placeholder="Enter cell phone number" value="" type="text">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -118,12 +118,12 @@
 					<div class="row">
 				 		<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="email" name="email" placeholder="Enter your email address" value="" required="" type="text">
+								<input class="form-control" id="email" name="email" placeholder="Enter email address" value="" required="" type="text">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="fax_no" name="fax_no" placeholder="Enter your fax number" value="" type="text">
+								<input class="form-control" id="fax_no" name="fax_no" placeholder="Enter fax number" value="" type="text">
 							</div>
 						</div>
 					</div>
@@ -174,7 +174,7 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="form-group">
-								<label class="checkbox-label required">Is Qatari? - <span class="small">(Is belongs to Qatar)</span></label>
+								<label class="checkbox-label required" style="width: 100%;">Is Qatari? - <span class="small">(Is belongs to Qatar)</span></label>
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -207,7 +207,7 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input class="form-control" id="weight" name="weight" placeholder="Enter your weight (pounds)" value="" required="" type="text">
+								<input class="form-control" id="weight" name="weight" placeholder="Enter Enter weight (pounds)" value="" required="" type="text">
 							</div>
 						</div>
 					</div>
@@ -217,19 +217,19 @@
 							<div class="row">
 								<div class="col-sm-4">
 									<div class="form-group">
-										<label class="checkbox-label required">Over 18?</label>
+										<label class="checkbox-label required" style="width: 100%;">Over 18?</label>
 									</div>
 								</div>
 								<div class="col-sm-8">
 									<div class="row">
 								 		<div class="col-xs-6">
 											<div class="form-group">
-												<label class="checkbox-wrap"><input id="o18yes" name="over18" value="1" required="" type="radio">Yes</label>
+												<label class="checkbox-wrap" style="width: 100%;"><input id="o18yes" name="over18" value="1" required="" type="radio">Yes</label>
 											</div>
 										</div>
 										<div class="col-xs-6">
 											<div class="form-group">
-												<label class="checkbox-wrap"><input id="o18no" name="over18" checked="checked" value="0" required="" type="radio">No</label>
+												<label class="checkbox-wrap" style="width: 100%;"><input id="o18no" name="over18" checked="checked" value="0" required="" type="radio">No</label>
 											</div>
 										</div>
 									</div>
@@ -297,12 +297,12 @@
 									<div class="row">
 								 		<div class="col-xs-6">
 											<div class="form-group">
-												<label class="checkbox-wrap"><input id="sexm" name="sex" value="0" checked="checked" required="" type="radio">Male</label>
+												<label class="checkbox-wrap" style="width: 100%;"><input id="sexm" name="sex" value="0" checked="checked" required="" type="radio">Male</label>
 											</div>
 										</div>
 										<div class="col-xs-6">
 											<div class="form-group">
-												<label class="checkbox-wrap"><input id="sexfm" name="sex" value="1" required="" type="radio">Female</label>
+												<label class="checkbox-wrap" style="width: 100%;"><input id="sexfm" name="sex" value="1" required="" type="radio">Female</label>
 											</div>
 										</div>
 									</div>
@@ -313,7 +313,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<select class="form-control" id="hair_color_sel" name="hair_color_sel" required="">
-								    <option selected="selected" value="">Select your hair color</option>
+								    <option selected="selected" value="">Select hair color</option>
 								    <option value="Auburn">Auburn</option>
 								    <option value="Black">Black</option>
 								    <option value="Blonde">Blonde</option>
@@ -338,7 +338,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<select class="form-control" id="eye_color_sel" name="eye_color_sel" required="">
-								    <option selected="selected" value="">Select your eye color</option>
+								    <option selected="selected" value="">Select eye color</option>
 								    <option value="Amber">Amber</option>
 								    <option value="Black">Black</option>
 								    <option value="Blue">Blue</option>
@@ -354,7 +354,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<select class="form-control" id="ethnicity_sel" name="ethnicity_sel" onchange="show(this.value);" required="">
-								    <option selected="selected" value="">Select your ethnicity</option>
+								    <option selected="selected" value="">Select ethnicity</option>
 								    <option value="African American">African American</option>
 								    <option value="American Indian">American Indian</option>
 								    <option value="Asian">Asian</option>
@@ -371,7 +371,7 @@
 							</div>
 							<div id="other_ethen" style="display:none">
 								<div class="form-group">
-									<input id="ethnicity" value="" name="ethnicity" class="form-control" placeholder="Specify your ethnicity" type="text">
+									<input id="ethnicity" value="" name="ethnicity" class="form-control" placeholder="Specify ethnicity" type="text">
 								</div>
 							</div>
 						</div>
@@ -626,25 +626,25 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="form-group">
-								<label class="checkbox-label">Do you have any tattoos? </label>
+								<label class="checkbox-label" style="width: 100%;">Have any tattoos? </label>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="row">
 						 		<div class="col-xs-6">
 									<div class="form-group">
-										<label class="checkbox-wrap"><input id="tatooyes" name="tattoo" value="yes" onclick="show_hide(this.value);" type="radio">Yes</label>
+										<label class="checkbox-wrap" style="width: 100%;"><input id="tatooyes" name="tattoo" value="yes" onclick="show_hide(this.value);" type="radio">Yes</label>
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label class="checkbox-wrap"><input id="tatoono" name="tattoo" value="no" onclick="show_hide(this.value);" type="radio">No</label>
+										<label class="checkbox-wrap" style="width: 100%;"><input id="tatoono" name="tattoo" value="no" onclick="show_hide(this.value);" type="radio">No</label>
 									</div>
 								</div>
 							</div>
 							<div class="row" id="text_box1" style="display:none">
 								<div class="col-md-12">
-									<input id="tattos" value="" name="tattos" class="form-control" placeholder="Where are your tatoos located?" type="text">
+									<input id="tattos" value="" name="tattos" class="form-control" placeholder="Where are tatoos located?" type="text">
 								</div>
 							</div>
 						</div>
@@ -653,25 +653,25 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="form-group">
-								<label class="checkbox-label">Do you have any piercings? </label>
+								<label class="checkbox-label" style="width: 100%;">Have any piercings? </label>
 							</div>
 						</div>
 						<div class="col-sm-3">
 							<div class="row">
 						 		<div class="col-xs-6">
 									<div class="form-group">
-										<label class="checkbox-wrap"><input id="pieryes" name="piercing" value="yes" onclick="show_hide1(this.value);" type="radio">Yes</label>
+										<label class="checkbox-wrap" style="width: 100%;"><input id="pieryes" name="piercing" value="yes" onclick="show_hide1(this.value);" type="radio">Yes</label>
 									</div>
 								</div>
 								<div class="col-xs-6">
 									<div class="form-group">
-										<label class="checkbox-wrap"><input id="pierno" name="piercing" value="no" onclick="show_hide1(this.value);" type="radio">No </label>
+										<label class="checkbox-wrap" style="width: 100%;"><input id="pierno" name="piercing" value="no" onclick="show_hide1(this.value);" type="radio">No </label>
 									</div>
 								</div>
 							</div>
 							<div class="row" id="text_box2" style="display:none">
 								<div class="col-md-12">
-									<input id="piercing" value="" name="piercing" class="form-control" placeholder="Where are your piercings located?" type="text">
+									<input id="piercing" value="" name="piercing" class="form-control" placeholder="Where are piercings located?" type="text">
 								</div>
 							</div>
 						</div>
@@ -680,7 +680,7 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<input id="language" name="language" class="form-control" value="" placeholder="What languages do you speak?" type="text">
+								<input id="language" name="language" class="form-control" value="" placeholder="Which languages can speak?" type="text">
 							</div>
 						</div>
 					</div>
@@ -700,7 +700,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-								<p>Use the browse button to locate your headshot photo image file on your computer.</p>
+								<p>Use the browse button to locate headshot photo image file on your computer.</p>
 								<p>Image files ONLY (.jpg, .gif, .png) that are no larger than 5MB in size.</p>
 							</div>
 						</div>
