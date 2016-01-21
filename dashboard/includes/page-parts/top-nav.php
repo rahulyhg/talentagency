@@ -66,6 +66,14 @@
             <li><a href="index.php?route=modules/user_roles/view_user_roles">List Roles</a></li>
             <li class="divider"></li>
 			<li><a href="index.php?route=modules/users/list_users"> List Users</a></li>
+            <li class="divider"></li>
+			<li><a href="index.php?route=modules/document_types/list_document_types"> List Document Types</a></li>
+            <li class="divider"></li>
+			<li><a href="index.php?route=modules/experience_types/list_experience_types"> List Experience Types</a></li>
+            <li class="divider"></li>
+			<li><a href="index.php?route=modules/languages/list_languages"> List Languages</a></li>
+            <li class="divider"></li>
+			<li><a href="index.php?route=modules/portfolio_types/list_portfolio_types"> List Portfolio Types</a></li>
 
  
           </ul>
