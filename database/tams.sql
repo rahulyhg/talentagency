@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (32 bit)
-MySQL - 5.6.24 : Database - tams
+SQLyog Ultimate v10.00 Beta1
+MySQL - 5.6.15-log : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -129,20 +129,23 @@ DROP TABLE IF EXISTS `tams_talent`;
 
 CREATE TABLE `tams_talent` (
   `talent_id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
   `dob` date DEFAULT NULL,
+  `sex` varchar(50) DEFAULT 'Male',
+  `Address` varchar(255) DEFAULT NULL,
+  `mobile_no` varchar(50) DEFAULT NULL,
+  `email_id` varchar(100) DEFAULT NULL,
   `nationality` varchar(100) DEFAULT NULL,
   `is_qatari` tinyint(1) DEFAULT NULL COMMENT 'Is belongs to Qatar',
   `qatari_id` varchar(100) DEFAULT NULL,
+  `qatari_id_copy_attached` tinyint(1) DEFAULT NULL,
+  `noc_required` tinyint(1) DEFAULT NULL,
+  `noc_copy_attached` tinyint(1) DEFAULT '0',
   `passport_no` varchar(100) DEFAULT NULL,
   `passport_copy_attached` tinyint(1) DEFAULT NULL,
-  `qatari_id_copy_attached` tinyint(1) DEFAULT NULL,
-  `NOC_copy_attached` tinyint(1) DEFAULT NULL,
   `sponsors_id_copy_attached` tinyint(1) DEFAULT NULL,
-  `mobile_no` varchar(50) DEFAULT NULL,
   `area_of_residence` varchar(100) DEFAULT NULL,
-  `email_id` varchar(100) DEFAULT NULL,
-  `noc_required` tinyint(1) DEFAULT NULL,
   `height_cm` varchar(50) DEFAULT NULL,
   `weight_kg` varchar(50) DEFAULT NULL,
   `hair_color` varchar(50) DEFAULT NULL,
@@ -152,13 +155,13 @@ CREATE TABLE `tams_talent` (
   `waist_cm` varchar(50) DEFAULT NULL,
   `collar_cm` varchar(50) DEFAULT NULL,
   `chest_cm` varchar(50) DEFAULT NULL,
+  `photo_url` varchar(50) DEFAULT NULL,
+  `cv_url` varchar(50) DEFAULT NULL,
   `registration_date` varchar(50) DEFAULT NULL,
   `created_by_user` varchar(50) DEFAULT NULL,
   `created_on_date` varchar(50) DEFAULT NULL,
   `last_modified_by_user` varchar(50) DEFAULT NULL,
   `last_modified_on` date DEFAULT NULL,
-  `photo_url` varchar(50) DEFAULT NULL,
-  `cv_url` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`talent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -262,9 +265,11 @@ CREATE TABLE `tams_user_roles` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` date DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_user_roles` */
+
+insert  into `tams_user_roles`(`role_id`,`role_name`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Administrator','1','2016-01-21','1','2016-01-21'),(2,'Manager','1','2016-01-21','1','2016-01-21'),(3,'Operator','1','2016-01-21','1','2016-01-21');
 
 /*Table structure for table `tams_users` */
 
