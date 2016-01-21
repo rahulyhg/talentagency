@@ -11,6 +11,7 @@ $tbl->addCell('Actions', '', 'header');
 ?>
 
 <?php
+/*
 $sql = 'SELECT * FROM '.DB_PREFIX.'sys_config';
 $get = DB::query($sql);
 foreach($get as $config) { 
@@ -23,6 +24,7 @@ $tbl->addCell($config['value']);
 $tbl->addCell("<a data-toggle = 'modal' href ='#edit_system_configuration' class='pull btn btn-danger btn-xs' >Edit System Configrations &nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 			   }
+*/	
 $tbl->addRow();
 $tbl->addCell('');
 $tbl->addCell('<input type="text" name="key" value=""/>');

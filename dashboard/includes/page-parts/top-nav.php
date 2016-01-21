@@ -61,16 +61,13 @@
               <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Settings <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-           	<li><a href="#">System Settings</a></li>
+           	<li><a href="index.php?route=modules/system/sys_config">System Settings</a></li>
             <li class="divider"></li>
-            <li><a href="">List Roles</a></li>
+            <li><a href="index.php?route=modules/user_roles/view_user_roles">List Roles</a></li>
             <li class="divider"></li>
-			<li><a href="#"> List Users</a></li>
-			<li class="divider"></li>
-			<li><a href="#">Add New Users</a></li>
- 			
- 			<li class="divider"></li>
-			<li><a href="#">View Activity Logs</a></li>
+			<li><a href="index.php?route=modules/users/list_users"> List Users</a></li>
+
+ 
           </ul>
         </li>
 <li class="divider"></li>
