@@ -89,7 +89,7 @@ $tbl->addCell("<a   class='btn btn-primary'  href ='#'>Save &nbsp;&nbsp;<span cl
            
        
       </div>
-       <p align="center"> Php Ladger.com </p>
+       <p align="center">   </p>
         </div>
         </div> 
 
