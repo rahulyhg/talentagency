@@ -1,789 +1,1144 @@
 <?php
-	if(isset($_POST['save_talent'])){
-		print_r($_POST);
-	}	
-?>
-<!--style>
-	div.xAxis div.tickLabel 
-{    
-    transform: rotate(-45deg);
-    -ms-transform:rotate(-45deg); /* IE 9 */
-    -moz-transform:rotate(-45deg); /* Firefox */
-    -webkit-transform:rotate(-45deg); /* Safari and Chrome */
-    -o-transform:rotate(-45deg); /* Opera */
-    /*rotation-point:25% 25%;*/ /* CSS3 */
-    /*rotation:270deg;*/ /* CSS3 */
+
+// Process Form Submission, this code may go into a separate file that process all forms and is included in index loads
+
+//reset all the form fields
+$first_name                = "";
+$last_name                 = "";
+$dob                       = "";
+$sex                       = "";
+$address                   = "";
+$phone_no                  = "";
+$email_id                  = "";
+$nationality               = "";
+$passport_no               = "";
+$qatari_id                 = "";
+$is_qatari                 = 0;
+$passport_copy_attached    = 0;
+$noc_required              = 0;
+$noc_copy_attached         = 0;
+$sponsors_id_copy_attached = 0;
+
+
+
+if(isset($_POST['save'])){
+echo "<pre>";	
+	print_r($_POST);
+	print_r($_SESSION);
+
+echo "</pre>";
+
+
+
+
+
+// add talent data
+
+$talent_id                 = create_new_talent_record($_POST, $_SESSION['user_id']);
+echo $talent_id;
+
+
+if( (is_int($talent_id)) AND ($talent_id > 0)){
+
+
+	// add talent data
+
+	// redirect to step 2 of adding talent
+
 }
-	
-</style -->
-<!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-           Talent Agency Management System
+else
+{
+	// return the error message in a variable and display It
+	// convert post variables to variables and present them to client for review and re - submissin
 
-            <small>it all starts here</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Talent</li>
-          </ol>
-        </section>
+	$first_name = $_POST['first_name'];
+	$last_name  = $_POST['last_name'];
+	$dob        = $_POST['dob'];
+	$sex        = $_POST['sex'];
+	$address    = $_POST['address'];
+	$phone_no   = $_POST['phone_no'];
+	$email_id   = $_POST['email_id'];
+	$nationality= $_POST['nationality'];
+	$passport_no= $_POST['passport_no'];
+	$qatari_id  = $_POST['qatari_id'];
+	if(isset($_POST['is_qatari'])){
+		$is_qatari = 1;
+	}
 
-        <!-- Main content -->
-<section class="content">
-        <div class="row">
-            <div class="col-md-12">
-              <div class="box">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Add New Talent</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <div class="row">
-						<!-- Main form start-->
-						<div class="col-md-12">
+	if(isset($_POST['passport_copy_attached'])){
+		$passport_copy_attached = 1;
+	}
+	if(isset($_POST['noc_required'])){
+		$noc_required = 1;
+	}
 
- 				<form name="frmsubmission" id="frmsubmission" method="POST" class="submission-validate" enctype="multipart/form-data">
+	if(isset($_POST['noc_copy_attached'])){
+		$noc_copy_attached = 1;
+	}
 
-					<div class="row">
-						<div class="col-md-12">
-							
-						</div>
-					 </div>
+	if(isset($_POST['sponsors_id_copy_attached'])){
+		$sponsors_id_copy_attached = 1;
+	}
 
- 				 	
-					<h2 class="normal">Talent Contact Information</h2>
-					<hr></hr>
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-									<input id="first_name" name="first_name" class="form-control" value="" placeholder="Enter first name" required="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<input id="last_name" name="last_name" class="form-control" value="" placeholder="Enter last name" required="" type="text">
-							</div>
-						</div>
-					</div>
+}
+}; // End if form submitted
 
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="rcity" name="rcity" placeholder="Enter city" value="" required="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="form-group">
-								<input class="form-control" id="state" name="state" placeholder="State" value="" required="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="form-group">
-								<input class="form-control" id="zip" name="zip" placeholder="Postal code" value="" type="text">
-							</div>
-						</div>
-					</div>
+function create_new_talent_record($data,$user_id)
+{
+	$talent_id = - 1;
+	if($data){
 
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="phone_no" name="phone_no" placeholder="Enter home phone number" value="" required="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="checkbox-wrap"><input id="no_to_call1" name="no_to_call" value="phone_no" checked="checked" type="radio">Main contact number</label>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="cell_no" name="cell_no" placeholder="Enter cell phone number" value="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="checkbox-wrap"><input id="no_to_call2" name="no_to_call" value="phone_no" type="radio">Main contact number</label>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="email" name="email" placeholder="Enter email address" value="" required="" type="text">
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="fax_no" name="fax_no" placeholder="Enter fax number" value="" type="text">
-							</div>
-						</div>
-					</div>
+		// Check submitted data and save them in variables
 
-					<hr>
+		// set on checkboxes to 1
 
-					<div class="row">
+		// set missing checkboxes to off or 0
 
-						
-				 		<div class="col-md-12">
-							<div class="form-group">
-								Talent Category - <span class="small">(Check all that apply)</span>
-							</div>
-							<div class="form-group">
-								<label class="checkbox-wrap"><input id="acc" name="ac[]" value="Actor - Commercial" type="checkbox">Actor - Commercial</label>
-								<label class="checkbox-wrap"><input id="act" name="ac[]" value="Actor - Theatrical" type="checkbox">Actor - Theatrical</label>
-								<label class="checkbox-wrap"><input id="ach" name="ac[]" value="Actor - Hosting" type="checkbox">Actor - Hosting</label>
-							    <label class="checkbox-wrap"><input id="acp" name="ac[]" value="Print Model" type="checkbox">Print Model</label>
-							    <label class="checkbox-wrap"><input id="acpm" name="ac[]" value="Promotional Model" type="checkbox">Promotional Model</label>
-							    <label class="checkbox-wrap"><input id="acd" name="ac[]" value="Dancer" type="checkbox">Dancer</label>
-								<label class="checkbox-wrap"><input id="aco" name="ac[]" value="32" type="checkbox">Other - please specify</label>
-								<label class="checkbox-wrap">
-									<input id="acother" name="acother" value="" placeholder="Other - please specify" type="text">
-								</label>
-							</div>
-						</div>
+		// Add data to database and get the new talentID
 
-						<!--
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								Union Membership(s) - <span class="small">(Check all that apply)</span>
-							</div>
-							<div class="form-group">
-								<label class="checkbox-wrap"><input id="unionida" name="unionid[]" value="AFTRA" type="checkbox">AFTRA</label>
-							    <label class="checkbox-wrap"><input id="unionidae" name="unionid[]" value="AFTRA eligible" type="checkbox">AFTRA eligible</label>
-							    <label class="checkbox-wrap"><input id="unionidamj" name="unionid[]" value="AFTRA must join" type="checkbox">AFTRA must join</label>
-							    <label class="checkbox-wrap"><input id="unionidfc" name="unionid[]" value="6" type="checkbox">Financial Core</label>
-							    <label class="checkbox-wrap"><input id="unionidnu" name="unionid[]" value="Non Union" type="checkbox">Non Union</label>
-							    <label class="checkbox-wrap"><input id="unionidsag" name="unionid[]" value="SAG" type="checkbox">SAG</label>
-							    <label class="checkbox-wrap"><input id="unionidsage" name="unionid[]" value="SAG eligible" type="checkbox">SAG eligible</label>
-							    <label class="checkbox-wrap"><input id="unionidsagm" name="unionid[]" value="SAG must join" type="checkbox">SAG must join</label>
-							</div>
-						</div> -->
-					</div>
+		//set profile status to draft
 
-					<h2 class="normal">Talent Vital Information</h2>
-					<hr></hr>
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label class="checkbox-label required" style="width: 100%;">Is Qatari? - <span class="small">(Is belongs to Qatar)</span></label>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="row">
-						 		<div class="col-xs-3">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width:100%"><input id="is_qatar_yes" class="required" name="is_qatari" value="1" checked="checked" required="" type="radio">YES</label>
-									</div>
-								</div>
-								<div class="col-xs-3">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width:100%"><input id="is_qatar_no" class="required" name="is_qatari" value="0" required="" type="radio">No</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+		// get the new $talent_id
 
-					
-					<div class="row">
-				 		<div class="col-sm-6">
-							<div class="form-group">
-								<div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <input name="dob" id="dob" class="datepicker form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
-                    </div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<input class="form-control" id="weight" name="weight" placeholder="Enter Enter weight (pounds)" value="" required="" type="text">
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label class="checkbox-label required" style="width: 100%;">Over 18?</label>
-									</div>
-								</div>
-								<div class="col-sm-8">
-									<div class="row">
-								 		<div class="col-xs-6">
-											<div class="form-group">
-												<label class="checkbox-wrap" style="width: 100%;"><input id="o18yes" name="over18" value="1" required="" type="radio">Yes</label>
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="form-group">
-												<label class="checkbox-wrap" style="width: 100%;"><input id="o18no" name="over18" checked="checked" value="0" required="" type="radio">No</label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+		// return $talent_id;
+	}
+	return $talent_id;
 
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label class="checkbox-label">Height:</label>
-									</div>
-								</div>
-								<div class="col-sm-8">
-									<div class="row">
-								 		<div class="col-xs-6">
-											<div class="form-group">
-												<select id="ht_feet" class="form-control" name="ht_feet" required="">
-												    <option value="">Feet</option>
-												    <option value="1">1</option>
-												    <option value="2">2</option>
-												    <option value="3">3</option>
-												    <option value="4">4</option>
-												    <option value="5">5</option>
-												    <option value="6">6</option>
-												    <option value="7">7</option>
-											    </select>
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="form-group">
-											    <select id="ht_inches" class="form-control" name="ht_inches" required="">
-													<option value="">Inches</option>
-												    <option value="0">0</option>
-												    <option value="1">1</option>
-												    <option value="2">2</option>
-												    <option value="3">3</option>
-												    <option value="4">4</option>
-												    <option value="5">5</option>
-												    <option value="6">6</option>
-												    <option value="7">7</option>
-												    <option value="8">8</option>
-												    <option value="9">9</option>
-												    <option value="10">10</option>
-												    <option value="11">11</option>
-											    </select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label class="checkbox-label required">Gender:</label>
-									</div>
-								</div>
-								<div class="col-sm-8">
-									<div class="row">
-								 		<div class="col-xs-6">
-											<div class="form-group">
-												<label class="checkbox-wrap" style="width: 100%;"><input id="sexm" name="sex" value="0" checked="checked" required="" type="radio">Male</label>
-											</div>
-										</div>
-										<div class="col-xs-6">
-											<div class="form-group">
-												<label class="checkbox-wrap" style="width: 100%;"><input id="sexfm" name="sex" value="1" required="" type="radio">Female</label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+}
 
-						<div class="col-sm-6">
-							<div class="form-group">
-								<select class="form-control" id="hair_color_sel" name="hair_color_sel" required="">
-								    <option selected="selected" value="">Select hair color</option>
-								    <option value="Auburn">Auburn</option>
-								    <option value="Black">Black</option>
-								    <option value="Blonde">Blonde</option>
-								    <option value="Brown">Brown</option>
-								    <option value="DarkBrown">Dark Brown</option>
-								    <option value="DarkBlonde">Dark Blonde</option>
-								    <option value="Gray">Gray</option>
-								    <option value="LightBlonde">Light Blonde</option>
-								    <option value="LightBrown">Light Brown</option>
-								    <option value="None">None</option>
-								    <option value="Red">Red</option>
-								    <option value="SaltandPepper">Salt and Pepper</option>
-								    <option value="Silver">Silver</option>
-								    <option value="StrawberryBlonde">Strawberry Blonde</option>
-								    <option value="White">White</option>
-							    </select>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<select class="form-control" id="eye_color_sel" name="eye_color_sel" required="">
-								    <option selected="selected" value="">Select eye color</option>
-								    <option value="Amber">Amber</option>
-								    <option value="Black">Black</option>
-								    <option value="Blue">Blue</option>
-								    <option value="Brown">Brown</option>
-								    <option value="Dark Brown">Dark Brown</option>
-								    <option value="Green">Green</option>
-								    <option value="Grey">Grey</option>
-								    <option value="Hazel">Hazel</option>
-								    <option value="Violet">Violet</option>
-							    </select>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<select class="form-control" id="ethnicity_sel" name="ethnicity_sel" onchange="show(this.value);" required="">
-								    <option selected="selected" value="">Select ethnicity</option>
-								    <option value="African American">African American</option>
-								    <option value="American Indian">American Indian</option>
-								    <option value="Asian">Asian</option>
-								    <option value="Caucasian">Caucasian</option>
-								    <option value="East Indian">East Indian</option>
-								    <option value="Eastern European">Eastern European</option>
-								    <option value="Latin/Hispanic">Latin/Hispanic</option>
-								    <option value="Mediterranean">Mediterranean</option>
-								    <option value="Middle Eastern">Middle Eastern</option>
-								    <option value="Multi Ethnic">Multi Ethnic</option>
-								    <option value="West Indies/Caribbean">West Indies/Caribbean</option>
-								    <option value="other">Other</option>
-							    </select>
-							</div>
-							<div id="other_ethen" style="display:none">
-								<div class="form-group">
-									<input id="ethnicity" value="" name="ethnicity" class="form-control" placeholder="Specify ethnicity" type="text">
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<h2 class="normal">Age Range and Sizes</h2>
-					<hr></hr>
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Age Range:</label>
-									</div>
-								</div>
-								<div class="col-xs-3">
-									<div class="form-group">
-										<input id="age_range_from" name="age_range_from" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-2">
-									<div class="form-group">
-										<label class="checkbox-label">to</label>
-									</div>
-								</div>
-								<div class="col-xs-3">
-									<div class="form-group">
-										<input class="form-control" name="age_range_to" size="2" value="" type="text">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Neck size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input id="neck_size" name="neck_size" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">inches (M)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Waist size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input id="waist_size" name="waist_size" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">inches (M &amp; F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Inseam size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="inseam_size" name="inseam_size" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">inches (M)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Bust size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input id="bust_size" name="bust_size" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">e.g. 32C (F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Hip size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="hip_size" name="hip_size" size="3" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">inches (F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Shoe size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="shoe_size" name="shoe_size" size="3" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">US (M &amp; F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Ring size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input id="ring_size" name="ring_size" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">(M &amp; F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Glove size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input id="glove_size" name="glove_size" class="form-control" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">(M &amp; F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Sleeve length:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="sleeve_size" name="sleeve_size" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">inches (M)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Suit size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="suit_size" name="suit_size" size="3" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">e.g. 42 (M)</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-							<div class="row">
-								<div class="col-xs-4 pad-right-0">
-									<div class="form-group">
-										<label class="checkbox-label">Dress size:</label>
-									</div>
-								</div>
-								<div class="col-xs-4">
-									<div class="form-group">
-										<input class="form-control" id="dress_size" name="dress_size" size="3" value="" type="text">
-									</div>
-								</div>
-								<div class="col-xs-4 pad-left-0">
-									<div class="form-group">
-										<label class="checkbox-label small">e.g. 4 (F)</label>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						
+?>
 
-					</div>
+<!--   Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Add New Talent
 
-					<hr>
+		<small>
+			Creates a new Talent Profile
+		</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li>
+			<a href="#">
+				<i class="fa fa-dashboard">
+				</i>Home
+			</a>
+		</li>
+		<li class="active">
+			Add New Talent
+		</li>
+	</ol>
+</section>
 
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label class="checkbox-label" style="width: 100%;">Have any tattoos? </label>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="row">
-						 		<div class="col-xs-6">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width: 100%;"><input id="tatooyes" name="tattoo" value="yes" onclick="show_hide(this.value);" type="radio">Yes</label>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width: 100%;"><input id="tatoono" name="tattoo" value="no" onclick="show_hide(this.value);" type="radio">No</label>
-									</div>
-								</div>
-							</div>
-							<div class="row" id="text_box1" style="display:none">
-								<div class="col-md-12">
-									<input id="tattos" value="" name="tattos" class="form-control" placeholder="Where are tatoos located?" type="text">
-								</div>
-							</div>
-						</div>
-					</div>
+<!-- Main content -->
+<section                    class="content">
+	<div class="row">
 
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label class="checkbox-label" style="width: 100%;">Have any piercings? </label>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="row">
-						 		<div class="col-xs-6">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width: 100%;"><input id="pieryes" name="piercing" value="yes" onclick="show_hide1(this.value);" type="radio">Yes</label>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="form-group">
-										<label class="checkbox-wrap" style="width: 100%;"><input id="pierno" name="piercing" value="no" onclick="show_hide1(this.value);" type="radio">No </label>
-									</div>
-								</div>
-							</div>
-							<div class="row" id="text_box2" style="display:none">
-								<div class="col-md-12">
-									<input id="piercing" value="" name="piercing" class="form-control" placeholder="Where are piercings located?" type="text">
-								</div>
-							</div>
-						</div>
-					</div>
+		<!-- Default box -->
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					Step 1 of 2 : Add Basic Talent Details
+				</h3>
+				<div class="box-tools pull-right">
+					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box">
+						<i class="fa fa-minus">
+						</i>
+					</button>
+					<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+						<i class="fa fa-times">
+						</i>
+					</button>
+				</div>
+			</div>
+			<form id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/add_talent"; ?>" >
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="form-group">
-								<input id="language" name="language" class="form-control" value="" placeholder="Which languages can speak?" type="text">
-							</div>
-						</div>
-					</div>
+				<div class="box-body">
 
-					<h2 class="normal">Additional Information</h2>
-					<hr></hr>
+
 					<div class="row">
 						<div class="col-md-6">
+							<h2  class="normal">
+								Basic Information
+							</h2>
 							<div class="form-group">
-								<textarea id="add_info" name="add_info" rows="8" class="form-control" placeholder="Briefly explanation..."></textarea>
+								<label class="col-md-3 col-sm-3 control-label">
+									First Name:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required
+									value="<?php echo $first_name; ?>" name="first_name" id="first_name" placeholder="Enter First Name">
+								</div>
 							</div>
-						</div>
-					</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Last Name
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required placeholder="Enter Last Name"
+									value="<?php echo $last_name; ?>" name="last_name" id="last_name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Date of Birth:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
 
-					<h2 class="normal">Photographs</h2>
-					<hr></hr>
+										<input   class="date input-group form-control"     type="date" required value="<?php echo $dob; ?>" name="dob" id="dob">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar">
+											</i>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Sex:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<select id="sex" name="sex" class="form-control">
+										<option value="">
+											-Select gendar-
+										</option>
+										<option value="Male">
+											Male
+										</option>
+										<option value="Female">
+											Female
+										</option>
+									</select>
+								</div>
+							</div>
+						</div><!-- /.col-md-6 -->
+						<div class="col-md-6">
+							<h2 class="normal">
+								Contact Information
+							</h2>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Address:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<textarea class="form-control" required value="" name="address" id="address" placeholder="Enter Address"><?php echo $address; ?>
+									</textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Phone No
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+										<input class="form-control" type="tel" required placeholder="Enter Phone No" value="<?php echo $phone_no; ?>" name="phone_no" id="phone_no">
+										<div class="input-group-addon">
+											<i class="fa fa-phone">
+											</i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Email :
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+
+										<input   class="input-group email form-control"     type="email" required value="<?php echo $email_id; ?>" name="email_id" id="email_id"  placeholder="Enter email address">
+										<div class="input-group-addon">
+											<i class="fa fa-envelope">
+											</i>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div><!-- /.col-md-6 -->
+
+
+
+					</div> <!-- /.row -->
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-6">
+							<h2  class="normal">
+								Nationality
+							</h2>
 							<div class="form-group">
-								<p>Use the browse button to locate headshot photo image file on your computer.</p>
-								<p>Image files ONLY (.jpg, .gif, .png) that are no larger than 5MB in size.</p>
+								<label class="col-md-3 col-sm-3 control-label">
+									Nationality:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+										<select id="nationality" name="nationality" data-placeholder="Choose a Country..." class="form-control"   >
+											<option value="">
+											</option>
+											<option value="Qatar">
+												Qatar
+											</option>
+											<option value="Afghanistan">
+												Afghanistan
+											</option>
+											<option value="Albania">
+												Albania
+											</option>
+											<option value="Algeria">
+												Algeria
+											</option>
+											<option value="American Samoa">
+												American Samoa
+											</option>
+											<option value="Andorra">
+												Andorra
+											</option>
+											<option value="Angola">
+												Angola
+											</option>
+											<option value="Anguilla">
+												Anguilla
+											</option>
+											<option value="Antarctica">
+												Antarctica
+											</option>
+											<option value="Antigua and Barbuda">
+												Antigua and Barbuda
+											</option>
+											<option value="Argentina">
+												Argentina
+											</option>
+											<option value="Armenia">
+												Armenia
+											</option>
+											<option value="Aruba">
+												Aruba
+											</option>
+											<option value="Australia">
+												Australia
+											</option>
+											<option value="Austria">
+												Austria
+											</option>
+											<option value="Azerbaijan">
+												Azerbaijan
+											</option>
+											<option value="Bahamas">
+												Bahamas
+											</option>
+											<option value="Bahrain">
+												Bahrain
+											</option>
+											<option value="Bangladesh">
+												Bangladesh
+											</option>
+											<option value="Barbados">
+												Barbados
+											</option>
+											<option value="Belarus">
+												Belarus
+											</option>
+											<option value="Belgium">
+												Belgium
+											</option>
+											<option value="Belize">
+												Belize
+											</option>
+											<option value="Benin">
+												Benin
+											</option>
+											<option value="Bermuda">
+												Bermuda
+											</option>
+											<option value="Bhutan">
+												Bhutan
+											</option>
+											<option value="Bolivia">
+												Bolivia
+											</option>
+											<option value="Bosnia and Herzegovina">
+												Bosnia and Herzegovina
+											</option>
+											<option value="Botswana">
+												Botswana
+											</option>
+											<option value="Bouvet Island">
+												Bouvet Island
+											</option>
+											<option value="Brazil">
+												Brazil
+											</option>
+											<option value="British Indian Ocean Territory">
+												British Indian Ocean Territory
+											</option>
+											<option value="Brunei Darussalam">
+												Brunei Darussalam
+											</option>
+											<option value="Bulgaria">
+												Bulgaria
+											</option>
+											<option value="Burkina Faso">
+												Burkina Faso
+											</option>
+											<option value="Burundi">
+												Burundi
+											</option>
+											<option value="Cambodia">
+												Cambodia
+											</option>
+											<option value="Cameroon">
+												Cameroon
+											</option>
+											<option value="Canada">
+												Canada
+											</option>
+											<option value="Cape Verde">
+												Cape Verde
+											</option>
+											<option value="Cayman Islands">
+												Cayman Islands
+											</option>
+											<option value="Central African Republic">
+												Central African Republic
+											</option>
+											<option value="Chad">
+												Chad
+											</option>
+											<option value="Chile">
+												Chile
+											</option>
+											<option value="China">
+												China
+											</option>
+											<option value="Christmas Island">
+												Christmas Island
+											</option>
+											<option value="Cocos (Keeling) Islands">
+												Cocos (Keeling) Islands
+											</option>
+											<option value="Colombia">
+												Colombia
+											</option>
+											<option value="Comoros">
+												Comoros
+											</option>
+											<option value="Congo">
+												Congo
+											</option>
+											<option value="Congo, The Democratic Republic of The">
+												Congo, The Democratic Republic of The
+											</option>
+											<option value="Cook Islands">
+												Cook Islands
+											</option>
+											<option value="Costa Rica">
+												Costa Rica
+											</option>
+											<option value="Cote D'ivoire">
+												Cote D'ivoire
+											</option>
+											<option value="Croatia">
+												Croatia
+											</option>
+											<option value="Cuba">
+												Cuba
+											</option>
+											<option value="Cyprus">
+												Cyprus
+											</option>
+											<option value="Czech Republic">
+												Czech Republic
+											</option>
+											<option value="Denmark">
+												Denmark
+											</option>
+											<option value="Djibouti">
+												Djibouti
+											</option>
+											<option value="Dominica">
+												Dominica
+											</option>
+											<option value="Dominican Republic">
+												Dominican Republic
+											</option>
+											<option value="Ecuador">
+												Ecuador
+											</option>
+											<option value="Egypt">
+												Egypt
+											</option>
+											<option value="El Salvador">
+												El Salvador
+											</option>
+											<option value="Equatorial Guinea">
+												Equatorial Guinea
+											</option>
+											<option value="Eritrea">
+												Eritrea
+											</option>
+											<option value="Estonia">
+												Estonia
+											</option>
+											<option value="Ethiopia">
+												Ethiopia
+											</option>
+											<option value="Falkland Islands (Malvinas)">
+												Falkland Islands (Malvinas)
+											</option>
+											<option value="Faroe Islands">
+												Faroe Islands
+											</option>
+											<option value="Fiji">
+												Fiji
+											</option>
+											<option value="Finland">
+												Finland
+											</option>
+											<option value="France">
+												France
+											</option>
+											<option value="French Guiana">
+												French Guiana
+											</option>
+											<option value="French Polynesia">
+												French Polynesia
+											</option>
+											<option value="French Southern Territories">
+												French Southern Territories
+											</option>
+											<option value="Gabon">
+												Gabon
+											</option>
+											<option value="Gambia">
+												Gambia
+											</option>
+											<option value="Georgia">
+												Georgia
+											</option>
+											<option value="Germany">
+												Germany
+											</option>
+											<option value="Ghana">
+												Ghana
+											</option>
+											<option value="Gibraltar">
+												Gibraltar
+											</option>
+											<option value="Greece">
+												Greece
+											</option>
+											<option value="Greenland">
+												Greenland
+											</option>
+											<option value="Grenada">
+												Grenada
+											</option>
+											<option value="Guadeloupe">
+												Guadeloupe
+											</option>
+											<option value="Guam">
+												Guam
+											</option>
+											<option value="Guatemala">
+												Guatemala
+											</option>
+											<option value="Guinea">
+												Guinea
+											</option>
+											<option value="Guinea-bissau">
+												Guinea-bissau
+											</option>
+											<option value="Guyana">
+												Guyana
+											</option>
+											<option value="Haiti">
+												Haiti
+											</option>
+											<option value="Heard Island and Mcdonald Islands">
+												Heard Island and Mcdonald Islands
+											</option>
+											<option value="Holy See (Vatican City State)">
+												Holy See (Vatican City State)
+											</option>
+											<option value="Honduras">
+												Honduras
+											</option>
+											<option value="Hong Kong">
+												Hong Kong
+											</option>
+											<option value="Hungary">
+												Hungary
+											</option>
+											<option value="Iceland">
+												Iceland
+											</option>
+											<option value="India">
+												India
+											</option>
+											<option value="Indonesia">
+												Indonesia
+											</option>
+											<option value="Iran, Islamic Republic of">
+												Iran, Islamic Republic of
+											</option>
+											<option value="Iraq">
+												Iraq
+											</option>
+											<option value="Ireland">
+												Ireland
+											</option>
+											<option value="Israel">
+												Israel
+											</option>
+											<option value="Italy">
+												Italy
+											</option>
+											<option value="Jamaica">
+												Jamaica
+											</option>
+											<option value="Japan">
+												Japan
+											</option>
+											<option value="Jordan">
+												Jordan
+											</option>
+											<option value="Kazakhstan">
+												Kazakhstan
+											</option>
+											<option value="Kenya">
+												Kenya
+											</option>
+											<option value="Kiribati">
+												Kiribati
+											</option>
+											<option value="Korea, Democratic People's Republic of">
+												Korea, Democratic People's Republic of
+											</option>
+											<option value="Korea, Republic of">
+												Korea, Republic of
+											</option>
+											<option value="Kuwait">
+												Kuwait
+											</option>
+											<option value="Kyrgyzstan">
+												Kyrgyzstan
+											</option>
+											<option value="Lao People's Democratic Republic">
+												Lao People's Democratic Republic
+											</option>
+											<option value="Latvia">
+												Latvia
+											</option>
+											<option value="Lebanon">
+												Lebanon
+											</option>
+											<option value="Lesotho">
+												Lesotho
+											</option>
+											<option value="Liberia">
+												Liberia
+											</option>
+											<option value="Libyan Arab Jamahiriya">
+												Libyan Arab Jamahiriya
+											</option>
+											<option value="Liechtenstein">
+												Liechtenstein
+											</option>
+											<option value="Lithuania">
+												Lithuania
+											</option>
+											<option value="Luxembourg">
+												Luxembourg
+											</option>
+											<option value="Macao">
+												Macao
+											</option>
+											<option value="Macedonia, The Former Yugoslav Republic of">
+												Macedonia, The Former Yugoslav Republic of
+											</option>
+											<option value="Madagascar">
+												Madagascar
+											</option>
+											<option value="Malawi">
+												Malawi
+											</option>
+											<option value="Malaysia">
+												Malaysia
+											</option>
+											<option value="Maldives">
+												Maldives
+											</option>
+											<option value="Mali">
+												Mali
+											</option>
+											<option value="Malta">
+												Malta
+											</option>
+											<option value="Marshall Islands">
+												Marshall Islands
+											</option>
+											<option value="Martinique">
+												Martinique
+											</option>
+											<option value="Mauritania">
+												Mauritania
+											</option>
+											<option value="Mauritius">
+												Mauritius
+											</option>
+											<option value="Mayotte">
+												Mayotte
+											</option>
+											<option value="Mexico">
+												Mexico
+											</option>
+											<option value="Micronesia, Federated States of">
+												Micronesia, Federated States of
+											</option>
+											<option value="Moldova, Republic of">
+												Moldova, Republic of
+											</option>
+											<option value="Monaco">
+												Monaco
+											</option>
+											<option value="Mongolia">
+												Mongolia
+											</option>
+											<option value="Montenegro">
+												Montenegro
+											</option>
+											<option value="Montserrat">
+												Montserrat
+											</option>
+											<option value="Morocco">
+												Morocco
+											</option>
+											<option value="Mozambique">
+												Mozambique
+											</option>
+											<option value="Myanmar">
+												Myanmar
+											</option>
+											<option value="Namibia">
+												Namibia
+											</option>
+											<option value="Nauru">
+												Nauru
+											</option>
+											<option value="Nepal">
+												Nepal
+											</option>
+											<option value="Netherlands">
+												Netherlands
+											</option>
+											<option value="Netherlands Antilles">
+												Netherlands Antilles
+											</option>
+											<option value="New Caledonia">
+												New Caledonia
+											</option>
+											<option value="New Zealand">
+												New Zealand
+											</option>
+											<option value="Nicaragua">
+												Nicaragua
+											</option>
+											<option value="Niger">
+												Niger
+											</option>
+											<option value="Nigeria">
+												Nigeria
+											</option>
+											<option value="Niue">
+												Niue
+											</option>
+											<option value="Norfolk Island">
+												Norfolk Island
+											</option>
+											<option value="Northern Mariana Islands">
+												Northern Mariana Islands
+											</option>
+											<option value="Norway">
+												Norway
+											</option>
+											<option value="Oman">
+												Oman
+											</option>
+											<option value="Pakistan">
+												Pakistan
+											</option>
+											<option value="Palau">
+												Palau
+											</option>
+											<option value="Palestinian Territory, Occupied">
+												Palestinian Territory, Occupied
+											</option>
+											<option value="Panama">
+												Panama
+											</option>
+											<option value="Papua New Guinea">
+												Papua New Guinea
+											</option>
+											<option value="Paraguay">
+												Paraguay
+											</option>
+											<option value="Peru">
+												Peru
+											</option>
+											<option value="Philippines">
+												Philippines
+											</option>
+											<option value="Pitcairn">
+												Pitcairn
+											</option>
+											<option value="Poland">
+												Poland
+											</option>
+											<option value="Portugal">
+												Portugal
+											</option>
+											<option value="Puerto Rico">
+												Puerto Rico
+											</option>
+											<option value="Qatar">
+												Qatar
+											</option>
+											<option value="Reunion">
+												Reunion
+											</option>
+											<option value="Romania">
+												Romania
+											</option>
+											<option value="Russian Federation">
+												Russian Federation
+											</option>
+											<option value="Rwanda">
+												Rwanda
+											</option>
+											<option value="Saint Helena">
+												Saint Helena
+											</option>
+											<option value="Saint Kitts and Nevis">
+												Saint Kitts and Nevis
+											</option>
+											<option value="Saint Lucia">
+												Saint Lucia
+											</option>
+											<option value="Saint Pierre and Miquelon">
+												Saint Pierre and Miquelon
+											</option>
+											<option value="Saint Vincent and The Grenadines">
+												Saint Vincent and The Grenadines
+											</option>
+											<option value="Samoa">
+												Samoa
+											</option>
+											<option value="San Marino">
+												San Marino
+											</option>
+											<option value="Sao Tome and Principe">
+												Sao Tome and Principe
+											</option>
+											<option value="Saudi Arabia">
+												Saudi Arabia
+											</option>
+											<option value="Senegal">
+												Senegal
+											</option>
+											<option value="Serbia">
+												Serbia
+											</option>
+											<option value="Seychelles">
+												Seychelles
+											</option>
+											<option value="Sierra Leone">
+												Sierra Leone
+											</option>
+											<option value="Singapore">
+												Singapore
+											</option>
+											<option value="Slovakia">
+												Slovakia
+											</option>
+											<option value="Slovenia">
+												Slovenia
+											</option>
+											<option value="Solomon Islands">
+												Solomon Islands
+											</option>
+											<option value="Somalia">
+												Somalia
+											</option>
+											<option value="South Africa">
+												South Africa
+											</option>
+											<option value="South Georgia and The South Sandwich Islands">
+												South Georgia and The South Sandwich Islands
+											</option>
+											<option value="South Sudan">
+												South Sudan
+											</option>
+											<option value="Spain">
+												Spain
+											</option>
+											<option value="Sri Lanka">
+												Sri Lanka
+											</option>
+											<option value="Sudan">
+												Sudan
+											</option>
+											<option value="Suriname">
+												Suriname
+											</option>
+											<option value="Svalbard and Jan Mayen">
+												Svalbard and Jan Mayen
+											</option>
+											<option value="Swaziland">
+												Swaziland
+											</option>
+											<option value="Sweden">
+												Sweden
+											</option>
+											<option value="Switzerland">
+												Switzerland
+											</option>
+											<option value="Syrian Arab Republic">
+												Syrian Arab Republic
+											</option>
+											<option value="Taiwan, Republic of China">
+												Taiwan, Republic of China
+											</option>
+											<option value="Tajikistan">
+												Tajikistan
+											</option>
+											<option value="Tanzania, United Republic of">
+												Tanzania, United Republic of
+											</option>
+											<option value="Thailand">
+												Thailand
+											</option>
+											<option value="Timor-leste">
+												Timor-leste
+											</option>
+											<option value="Togo">
+												Togo
+											</option>
+											<option value="Tokelau">
+												Tokelau
+											</option>
+											<option value="Tonga">
+												Tonga
+											</option>
+											<option value="Trinidad and Tobago">
+												Trinidad and Tobago
+											</option>
+											<option value="Tunisia">
+												Tunisia
+											</option>
+											<option value="Turkey">
+												Turkey
+											</option>
+											<option value="Turkmenistan">
+												Turkmenistan
+											</option>
+											<option value="Turks and Caicos Islands">
+												Turks and Caicos Islands
+											</option>
+											<option value="Tuvalu">
+												Tuvalu
+											</option>
+											<option value="Uganda">
+												Uganda
+											</option>
+											<option value="Ukraine">
+												Ukraine
+											</option>
+											<option value="United Arab Emirates">
+												United Arab Emirates
+											</option>
+											<option value="United Kingdom">
+												United Kingdom
+											</option>
+											<option value="United States">
+												United States
+											</option>
+											<option value="United States Minor Outlying Islands">
+												United States Minor Outlying Islands
+											</option>
+											<option value="Uruguay">
+												Uruguay
+											</option>
+											<option value="Uzbekistan">
+												Uzbekistan
+											</option>
+											<option value="Vanuatu">
+												Vanuatu
+											</option>
+											<option value="Venezuela">
+												Venezuela
+											</option>
+											<option value="Viet Nam">
+												Viet Nam
+											</option>
+											<option value="Virgin Islands, British">
+												Virgin Islands, British
+											</option>
+											<option value="Virgin Islands, U.S.">
+												Virgin Islands, U.S.
+											</option>
+											<option value="Wallis and Futuna">
+												Wallis and Futuna
+											</option>
+											<option value="Western Sahara">
+												Western Sahara
+											</option>
+											<option value="Yemen">
+												Yemen
+											</option>
+											<option value="Zambia">
+												Zambia
+											</option>
+											<option value="Zimbabwe">
+												Zimbabwe
+											</option>
+										</select>
+										<div class="input-group-addon">
+											<i class="fa fa-globe">
+											</i>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<label class="checkbox-label">Headshot image:</label>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="form-group">
-								<input class="form-control" name="head_shot" id="head_shot" size="50" required="" type="file">
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-xs-6">
 							<div class="form-group">
-								<label class="checkbox-label">Attach resume:</label>
+								<label class="col-md-3 col-sm-3 control-label">
+									Passport No:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text"
+									value="<?php echo $passport_no; ?>" name="passport_no" id="passport_no" placeholder="Enter Passport No">
+								</div>
 							</div>
-						</div>
-						<div class="col-xs-6">
 							<div class="form-group">
-								<input name="txtcv" id="txtcv" class="form-control" type="file">
+								<label class="col-md-3 col-sm-3 control-label">
+									Qatari ID:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text"  placeholder="Enter Qatari ID"
+									value="<?php echo $qatari_id; ?>" name="qatari_id" id="qatari_id">
+								</div>
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-xs-6">
+
+						</div><!-- /.col-md-6 -->
+
+
+						<div class="col-md-6">
+							<h2  class="normal">
+								Employability
+							</h2>
 							<div class="form-group">
-								<label class="checkbox-label">Full body shot image:</label>
+								<label class="col-md-3 col-sm-3 control-label">
+									Is Qatari?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari" data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
 							</div>
-						</div>
-						<div class="col-xs-6">
+
 							<div class="form-group">
-								<input id="body_shot" name="body_shot" class="form-control" type="file">
+								<label class="col-md-3 col-sm-3 control-label">
+									Qatari ID Copy ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="qatari_id_copy_attached" name="qatari_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
 							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-xs-6">
 							<div class="form-group">
-								<label class="checkbox-label">Snapshot image:</label>
+								<label class="col-md-3 col-sm-3 control-label">
+									Passport Copy ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="passport_copy_attached" name="passport_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
 							</div>
-						</div>
-						<div class="col-xs-6">
+
 							<div class="form-group">
-								<input id="snap_shot" name="snap_shot" class="form-control" type="file">
+								<label class="col-md-3 col-sm-3 control-label">
+									NOC Required?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="noc_required" name="noc_required" data-on-text="Required" data-off-text="NotRequired" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
 							</div>
-						</div>
-					</div>
 
-					<hr>
 
-					<div class="row">
-						<div class="col-md-12 text-center">
 							<div class="form-group">
-								<input id="save_talent" class="btn btn-primary" name="save_talent" value="Save Talent" type="submit" />
-								
+								<label class="col-md-3 col-sm-3 control-label">
+									NOC Copy ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="noc_copy_attached" name="noc_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
 							</div>
-						</div>
-					</div>
 
-			 </form></div>
-						<!-- //Main form end -->	
-						
-                </div><!-- ./box-body -->
-                <div class="box-footer">
-                  <div class="row">
 
-                  </div><!-- /.row -->
-                </div><!-- /.box-footer -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-                      </div><!-- /.row -->
- <!-- Default box 2-->
-<div class="row">
-   
-          </div><!-- /.row -->
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Sponsors ID Copy ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="sponsors_id_copy_attached" name="sponsors_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
+							</div>
 
-</section><!-- /.content --> 
+
+
+
+						</div><!-- /.col-md-6 -->
+<!-- Hidden Fields -->
+<input type="hidden" name="form_name" id="form_name" value="talent_form_step_1" />
+<!-- /Hidden Fields -->
+
+					</div> <!-- /.row -->
+				</div><!-- /.box-body -->
+				<div class="form-group">
+					<div class="col-sm-12">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/view_talents"?>">
+							Cancel &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</a>
+						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+							Save &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</button>
+					</div>	<!-- /.col -->
+				</div>		<!-- /form-group -->
+			</form>
+			<div class="box-footer">
+				<small>
+				</small>
+			</div><!-- /.box-footer-->
+		</div><!-- /.box -->
+
+
+
+	</div><!-- /.row -->
+
+</section><!--  /.content -->
