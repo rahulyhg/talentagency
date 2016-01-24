@@ -12,21 +12,16 @@ $tbl->addCell('History', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
-function get_user_role_name($role_id) {
-	$user_role_name = DB::queryFirstField("SELECT role_name from tams_user_roles WHERE role_id = $role_id");
-	return $user_role_name;
-}
- 
  
 $sql = 'SELECT * FROM tams_experience_items WHERE experience_item_status = "active"';
 $get_experience_types = DB::query($sql);
 foreach($get_experience_types as $type) { 
 $tbl->addRow();
-$tbl->addCell($type['experience_type_id']);
-$tbl->addCell($type['experience_type_name']);
-$tbl->addCell($type['experience_type_description']);
+$tbl->addCell($type['experience_item_id']);
+$tbl->addCell($type['experience_item_name']);
+$tbl->addCell($type['experience_item_desc']);
  $tbl->addCell("<p>Created on: <strong> ".getDateTime($type['created_on'],'dtLong')." </strong> by <strong>".get_user_name($type['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($type['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($type['last_modified_by'])."</strong></p>  ");
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/edit_experience_type&experience_type_id=".$type['experience_type_id']."'>Edit Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/edit_experience_type&experience_item_id=".$type['experience_item_id']."'>Edit Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
 			  
