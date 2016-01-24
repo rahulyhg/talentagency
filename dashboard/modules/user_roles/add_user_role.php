@@ -4,7 +4,7 @@
 if (isset($_POST['save'])){
 	
 	$user_role_name	=  $_POST['user_role_name'] ;
-	$user_role_name	=  $_POST['user_role_description'] ;
+	$user_role_description	=  $_POST['user_role_description'] ;
 	$created_by = $_SESSION['user_id'];
 	$created_on = getDateTime(NULL ,"mySQL");
 	$last_modified_by = $_SESSION['user_id'];
@@ -18,7 +18,7 @@ if (isset($_POST['save'])){
 	if(($user_role_name <> -1) AND ($user_role_name <> "" ) ){
 	DB::insert('tams_user_roles', array(
 				'role_name' 		=> $user_role_name,	
-				'role_name' 		=> $user_role_description,	
+				'role_desc' 		=> $user_role_description,	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
 				'last_modified_by'	=> $last_modified_by,
