@@ -79,15 +79,17 @@ CREATE TABLE `tams_experience_items` (
   `experience_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `experience_item_name` varchar(50) DEFAULT NULL,
   `experience_item_desc` varchar(255) DEFAULT NULL,
-  `experience_item_status` varchar(50) DEFAULT NULL,
+  `experience_item_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`experience_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_experience_items` */
+
+insert  into `tams_experience_items`(`experience_item_id`,`experience_item_name`,`experience_item_desc`,`experience_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Actor','Actor','active','test','0000-00-00 00:00:00',NULL,NULL);
 
 /*Table structure for table `tams_languages` */
 

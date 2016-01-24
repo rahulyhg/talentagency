@@ -3,13 +3,11 @@
 $tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Users'));
 $tbl->addTSection('thead');
 $tbl->addRow();
-$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/users/add_user'>Add New User&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
+$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/add_experience_type'>Add New Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
-$tbl->addCell('Login Name', '', 'header');
-$tbl->addCell('Avatar', '', 'header');
-$tbl->addCell('Full Name', '', 'header');
-$tbl->addCell('Email', '', 'header');
-$tbl->addCell('User Role', '', 'header');
+$tbl->addCell('Type ID', '', 'header');
+$tbl->addCell('Type Name', '', 'header');
+$tbl->addCell('Description', '', 'header');
 $tbl->addCell('History', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
@@ -20,17 +18,15 @@ function get_user_role_name($role_id) {
 }
  
  
-$sql = 'SELECT * FROM tams_users WHERE user_status = "active"';
-$get_users = DB::query($sql);
-foreach($get_users as $user) { 
+$sql = 'SELECT * FROM tams_experience_items WHERE experience_item_status = "active"';
+$get_experience_types = DB::query($sql);
+foreach($get_experience_types as $type) { 
 $tbl->addRow();
-$tbl->addCell($user['user_name']." (".$user['user_id'].") ");
-$tbl->addCell('<img src="'.$user['user_avatar_url'].'" alt="avatar" />');
-$tbl->addCell($user['user_title']." ".$user['first_name']." ".$user['last_name']);
-$tbl->addCell($user['user_email']);
-$tbl->addCell(get_user_role_name($user['role_id']));
- $tbl->addCell("<p>Created on: <strong> ".getDateTime($user['created_on'],'dtLong')." </strong> by <strong>".get_user_name($user['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($user['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($user['last_modified_by'])."</strong></p>  ");
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/users/edit_user&user_id=".$user['user_id']."'>Edit User&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+$tbl->addCell($type['experience_type_id']);
+$tbl->addCell($type['experience_type_name']);
+$tbl->addCell($type['experience_type_description']);
+ $tbl->addCell("<p>Created on: <strong> ".getDateTime($type['created_on'],'dtLong')." </strong> by <strong>".get_user_name($type['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($type['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($type['last_modified_by'])."</strong></p>  ");
+$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/edit_experience_type&experience_type_id=".$type['experience_type_id']."'>Edit Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
 			  
