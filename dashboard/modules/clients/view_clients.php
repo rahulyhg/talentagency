@@ -4,6 +4,7 @@ $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/add_client'>Add New Client&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
+$tbl->addCell(' Client ID', '', 'header');
 $tbl->addCell(' Client Name', '', 'header');
 $tbl->addCell('Address', '', 'header');
 $tbl->addCell('Country', '', 'header');
@@ -18,6 +19,7 @@ $sql = 'SELECT * FROM tams_clients WHERE client_status = "active"';
 $get_client= DB::query($sql);
 foreach($get_client as $client) { 
 $tbl->addRow();
+$tbl->addCell($client['client_id']);
 $tbl->addCell($client['client_name']);
 $tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
