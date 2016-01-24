@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
         $user = htmlentities(strtolower(trim($_POST['user'])));
         $pass = htmlentities(strtolower(trim($_POST['pass'])));
 
-        $pass = sha1($pass);
+        $pass = md5($pass);
     
         $query = "SELECT * FROM tams_users WHERE user_name = '$user' AND password = '$pass' AND user_status = 'active' ";
         $res = DB::queryFirstRow($query);
@@ -24,8 +24,6 @@ if (isset($_POST['login'])) {
             $_SESSION['last_name'] = $res['last_name'];
             $_SESSION['full_name'] = $_SESSION['first_name']." ".$_SESSION['last_name'];
              
-            $_SESSION['email'] = $res['email'];
-
 // Redirect to appropriate home page after successfull login
 			switch($_SESSION['role_id']){
 				case 1 :
