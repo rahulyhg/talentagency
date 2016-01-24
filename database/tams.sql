@@ -136,6 +136,7 @@ CREATE TABLE `tams_talent` (
   `Address` varchar(255) DEFAULT NULL,
   `mobile_no` varchar(50) DEFAULT NULL,
   `email_id` varchar(100) DEFAULT NULL,
+  `brief` varchar(150) DEFAULT NULL,
   `nationality` varchar(100) DEFAULT NULL,
   `is_qatari` tinyint(1) DEFAULT NULL COMMENT 'Is belongs to Qatar',
   `qatari_id` varchar(100) DEFAULT NULL,
@@ -158,6 +159,7 @@ CREATE TABLE `tams_talent` (
   `photo_url` varchar(50) DEFAULT NULL,
   `cv_url` varchar(50) DEFAULT NULL,
   `registration_date` varchar(50) DEFAULT NULL,
+  `talent_status` varchar(50) NOT NULL DEFAULT 'active',
   `created_by_user` varchar(50) DEFAULT NULL,
   `created_on_date` varchar(50) DEFAULT NULL,
   `last_modified_by_user` varchar(50) DEFAULT NULL,
@@ -260,16 +262,17 @@ DROP TABLE IF EXISTS `tams_user_roles`;
 CREATE TABLE `tams_user_roles` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(50) DEFAULT NULL,
+  `role_description` varchar(150) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_user_roles` */
 
-insert  into `tams_user_roles`(`role_id`,`role_name`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Administrator','1','2016-01-21','1','2016-01-21'),(2,'Manager','1','2016-01-21','1','2016-01-21'),(3,'Operator','1','2016-01-21','1','2016-01-21');
+insert  into `tams_user_roles`(`role_id`,`role_name`,`role_description`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Administrator','User with full access to all system','1','2016-01-21 00:00:00','1','2016-01-24 15:53:06'),(2,'Manager','User with full access except System Settings','1','2016-01-21 00:00:00','1','2016-01-24 15:53:17'),(3,'Operator','User With Limited Access, only Talent and Client Modules','1','2016-01-21 00:00:00','1','2016-01-24 15:53:28');
 
 /*Table structure for table `tams_users` */
 
@@ -278,26 +281,25 @@ DROP TABLE IF EXISTS `tams_users`;
 CREATE TABLE `tams_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(24) NOT NULL,
-  `user_email` varchar(50) NOT NULL,
+  `user_title` varchar(255) DEFAULT NULL,
   `first_name` varchar(24) NOT NULL,
   `last_name` varchar(24) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `user_email` varchar(50) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `auth_code` varchar(30) DEFAULT NULL,
   `user_avatar_url` varchar(255) DEFAULT NULL,
-  `user_nic` varchar(255) DEFAULT NULL,
-  `user_title` varchar(255) DEFAULT NULL,
-  `last_modified_by` varchar(255) DEFAULT NULL,
-  `last_modified_on` datetime DEFAULT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `created_on` timestamp NULL DEFAULT NULL,
+  `auth_code` varchar(30) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `user_status` varchar(255) DEFAULT 'active',
+  `created_by` varchar(255) DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
+  `created_on` timestamp NULL DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_users` */
 
-insert  into `tams_users`(`user_id`,`user_name`,`user_email`,`first_name`,`last_name`,`password`,`role_id`,`auth_code`,`user_avatar_url`,`user_nic`,`user_title`,`last_modified_by`,`last_modified_on`,`created_by`,`created_on`,`user_status`) values (1,'test','test@test.com','test','tester','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',1,'778899',NULL,NULL,'Mr.','system','2015-03-23 19:14:45','system',NULL,'active');
+insert  into `tams_users`(`user_id`,`user_name`,`user_title`,`first_name`,`last_name`,`user_email`,`role_id`,`user_avatar_url`,`auth_code`,`password`,`user_status`,`created_by`,`last_modified_on`,`created_on`,`last_modified_by`) values (1,'test','Mr.','Mansoor ','Rana','mansoor@sutlej.net',3,'http://www.gravatar.com/avatar/28c442cff3c7bad642a680754ddf1598fs=150','778899','098f6bcd4621d373cade4e832627b4f6','active','1','2016-01-24 17:48:40','2015-03-23 19:14:45','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
