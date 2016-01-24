@@ -1,6 +1,6 @@
 <?php
 
-$tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Documents'));
+$tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Users'));
 $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/document_types/add_document_type'>Add New Document Type&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");

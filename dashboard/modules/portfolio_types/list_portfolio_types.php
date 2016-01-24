@@ -3,7 +3,7 @@
 $tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Users'));
 $tbl->addTSection('thead');
 $tbl->addRow();
-$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/add_experience_type'>Add New Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
+$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/portfolio_types/add_portfolio_type'>Add New Portfolio Type&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
 $tbl->addCell('Type ID', '', 'header');
 $tbl->addCell('Type Name', '', 'header');
@@ -13,15 +13,15 @@ $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
  
-$sql = 'SELECT * FROM tams_experience_items WHERE experience_item_status = "active"';
-$get_experience_types = DB::query($sql);
-foreach($get_experience_types as $type) { 
+$sql = 'SELECT * FROM tams_portfolio_items WHERE portfolio_item_status = "active"';
+$get_portfolio_type = DB::query($sql);
+foreach($get_portfolio_types as $type) { 
 $tbl->addRow();
-$tbl->addCell($type['experience_item_id']);
-$tbl->addCell($type['experience_item_name']);
-$tbl->addCell($type['experience_item_desc']);
+$tbl->addCell($type['portfolio_item_id']);
+$tbl->addCell($type['portfolio_item_name']);
+$tbl->addCell($type['portfolio_item_desc']);
  $tbl->addCell("<p>Created on: <strong> ".getDateTime($type['created_on'],'dtLong')." </strong> by <strong>".get_user_name($type['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($type['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($type['last_modified_by'])."</strong></p>  ");
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/experience_types/edit_experience_type&experience_item_id=".$type['experience_item_id']."'>Edit Experience Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/portfolio_types/edit_portfolio_type&portfolio_item_id=".$type['portfolio_item_id']."'>Edit Portfolio Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
 			  
