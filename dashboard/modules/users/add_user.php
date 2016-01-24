@@ -33,7 +33,7 @@ if (isset($_POST['save'])){
 				'role_id'=> $role_id,
 				'user_status'=> $user_status,
 				'auth_code'=> $auth_code,	
-				'password'=> md5($password),	
+				'password'=> sha1($password),	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
 				'last_modified_by'	=> $last_modified_by,

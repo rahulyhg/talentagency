@@ -82,7 +82,7 @@ if(isset($_POST['save']))
 		);
 		if(($password <> "") OR ($password <> "unchanged")){
 		$update_password = DB::update('tams_users', array(
-				'password'=> md5($password),
+				'password'=> sha1($password),
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),

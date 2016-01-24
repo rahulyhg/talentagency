@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
         $user = htmlentities(strtolower(trim($_POST['user'])));
         $pass = htmlentities(strtolower(trim($_POST['pass'])));
 
-        $pass = md5($pass);
+        $pass = sha1($pass);
     
         $query = "SELECT * FROM tams_users WHERE user_name = '$user' AND password = '$pass' AND user_status = 'active' ";
         $res = DB::queryFirstRow($query);

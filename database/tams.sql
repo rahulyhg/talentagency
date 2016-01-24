@@ -61,11 +61,13 @@ DROP TABLE IF EXISTS `tams_document_types`;
 CREATE TABLE `tams_document_types` (
   `document_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `document_type_name` varchar(50) DEFAULT NULL,
+  `document_type_desc` varchar(255) DEFAULT NULL,
+  `document_type_status` varchar(50) DEFAULT 'active',
   `document_type_extension` varchar(50) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`document_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -79,17 +81,15 @@ CREATE TABLE `tams_experience_items` (
   `experience_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `experience_item_name` varchar(50) DEFAULT NULL,
   `experience_item_desc` varchar(255) DEFAULT NULL,
-  `experience_item_status` varchar(50) DEFAULT 'active',
+  `experience_item_status` varchar(50) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` datetime DEFAULT NULL,
+  `created_on` date DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` datetime DEFAULT NULL,
+  `last_modified_on` date DEFAULT NULL,
   PRIMARY KEY (`experience_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_experience_items` */
-
-insert  into `tams_experience_items`(`experience_item_id`,`experience_item_name`,`experience_item_desc`,`experience_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Actor','Actor','active','test','0000-00-00 00:00:00',NULL,NULL);
 
 /*Table structure for table `tams_languages` */
 
@@ -115,7 +115,8 @@ DROP TABLE IF EXISTS `tams_portfolio_items`;
 CREATE TABLE `tams_portfolio_items` (
   `portfolio_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `portfolio_item_name` varchar(100) DEFAULT NULL,
-  `portfolio_item_status` varchar(50) DEFAULT NULL,
+  `portfolio_item_desc` varchar(255) DEFAULT NULL,
+  `portfolio_item_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` date DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
@@ -301,7 +302,7 @@ CREATE TABLE `tams_users` (
 
 /*Data for the table `tams_users` */
 
-insert  into `tams_users`(`user_id`,`user_name`,`user_title`,`first_name`,`last_name`,`user_email`,`role_id`,`user_avatar_url`,`auth_code`,`password`,`user_status`,`created_by`,`last_modified_on`,`created_on`,`last_modified_by`) values (1,'test','Mr.','Mansoor ','Rana','mansoor@sutlej.net',3,'http://www.gravatar.com/avatar/28c442cff3c7bad642a680754ddf1598fs=150','778899','098f6bcd4621d373cade4e832627b4f6','active','1','2016-01-24 17:48:40','2015-03-23 19:14:45','1');
+insert  into `tams_users`(`user_id`,`user_name`,`user_title`,`first_name`,`last_name`,`user_email`,`role_id`,`user_avatar_url`,`auth_code`,`password`,`user_status`,`created_by`,`last_modified_on`,`created_on`,`last_modified_by`) values (1,'test','Mr.','Mansoor ','Rana','mansoor@sutlej.net',3,'http://www.gravatar.com/avatar/28c442cff3c7bad642a680754ddf1598fs=150','778899','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3','active','1','2016-01-24 17:48:40','2015-03-23 19:14:45','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
