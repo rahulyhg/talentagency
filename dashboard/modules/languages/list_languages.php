@@ -3,7 +3,7 @@
 $tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Users'));
 $tbl->addTSection('thead');
 $tbl->addRow();
-$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/list_languages/add_language'>Add New Language&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
+$tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/languages/add_language'>Add New Language&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
 $tbl->addCell('Language ID', '', 'header');
 $tbl->addCell('Language Name', '', 'header');
