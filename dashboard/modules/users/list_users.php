@@ -64,7 +64,7 @@ $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF
 				<?php  echo $tbl->display(); ?>
             </div><!-- /.box-body -->
             <div class="box-footer">
-             <small> Please do not make changes to these unless you are really sure what you are doing. making changes here have system wide impact</small>
+ 
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
      	 </section><!-- /.content -->
