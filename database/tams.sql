@@ -69,9 +69,11 @@ CREATE TABLE `tams_document_types` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`document_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_document_types` */
+
+insert  into `tams_document_types`(`document_type_id`,`document_type_name`,`document_type_desc`,`document_type_extension`,`document_type_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'MS Word CV','CV file in MS Word Format','.docx','active','1','2016-01-24 21:45:37','1','2016-01-24 21:45:37');
 
 /*Table structure for table `tams_experience_items` */
 
