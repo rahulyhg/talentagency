@@ -4,10 +4,11 @@
 if (isset($_POST['save'])){
 	
 	$user_role_name	=  $_POST['user_role_name'] ;
+	$user_role_name	=  $_POST['user_role_description'] ;
 	$created_by = $_SESSION['user_id'];
-	$created_on = getDateTime(0 ,"mySQL");
+	$created_on = getDateTime(NULL ,"mySQL");
 	$last_modified_by = $_SESSION['user_id'];
-	$last_modified_on = getDateTime(0 ,"mySQL");
+	$last_modified_on = getDateTime(NULL ,"mySQL");
 	
 
 	if (user_role_name_exist($user_role_name)){
@@ -17,6 +18,7 @@ if (isset($_POST['save'])){
 	if(($user_role_name <> -1) AND ($user_role_name <> "" ) ){
 	DB::insert('tams_user_roles', array(
 				'role_name' 		=> $user_role_name,	
+				'role_name' 		=> $user_role_description,	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
 				'last_modified_by'	=> $last_modified_by,
@@ -69,7 +71,14 @@ if (isset($_POST['save'])){
 							 value="" name="user_role_name" id="user_role_name">							
 						  </div>
 					</div>
-					 
+                    <div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label"> Role Description:</label>
+						  <div class="col-md-9 col-sm-9">
+							 <input class="form-control" type="text" required 
+							 value="" name="user_role_description" id="user_role_description">							
+						  </div>
+					</div>
+					 					 
 				 
 				</div><!-- /.box-body -->
    	   

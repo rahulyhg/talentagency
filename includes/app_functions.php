@@ -24,5 +24,9 @@ function user_role_name_exist($user_role_name){
 					return false;
 				}
 	}
- 
+
+function get_user_name($user_id){
+	$user_name = DB::queryFirstField("SELECT user_name from tams_users WHERE user_id = $user_id");
+	return $user_name;
+}
  ?>

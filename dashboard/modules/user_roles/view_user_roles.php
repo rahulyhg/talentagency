@@ -7,6 +7,8 @@ $tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SEL
 $tbl->addRow();
 $tbl->addCell('RoleID', '', 'header');
 $tbl->addCell('Role Name', '', 'header');
+$tbl->addCell('Description', '', 'header');
+$tbl->addCell('Hostory', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 ?>
@@ -18,8 +20,10 @@ foreach($roles as $role) {
 $tbl->addRow();
 $tbl->addCell($role['role_id']);
 $tbl->addCell($role['role_name']);
+$tbl->addCell($role['role_description']);
+$tbl->addCell("<p>Created on: <strong> ".getDateTime($role['created_on'],'dtLong')." </strong> by <strong>".get_user_name($role['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($role['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($role['last_modified_by'])."</strong></p>  ");
  
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/user_roles/edit_user_roles&role_id=".$role['role_id']."'>Edit Role&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/user_roles/edit_user_role&role_id=".$role['role_id']."'>Edit Role&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
 			  
