@@ -3,7 +3,7 @@
         <!-- To the right -->
         <div class="pull-right hidden-xs">
          <em>For software support , please contact 
-        <i class="fa fa-email fa-fw"></i>support@sutlej.net </em>
+        <i class="fa fa-envelope "></i><a href="mailto:support@sutlej.net" >support@sutlej.net</a> </em>
         </div>
         <!-- Default to the left --> 
         <strong>Copyright &copy; 2016 <a href="#">The Talent Factory</a>.</strong> All rights reserved.
