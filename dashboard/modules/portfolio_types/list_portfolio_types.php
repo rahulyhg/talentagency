@@ -31,12 +31,12 @@ $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF
         <section class="content-header">
           <h1>
           	System Settings
-            <small>list of Experience Types. </small>
+            <small>list of Portfolio Types. </small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="<?php echo SITE_ROOT; ?>"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Dashboard</a></li>
-            <li class="active">List Experience Types</li>
+            <li class="active">List Portfolio Types</li>
           </ol>
         </section>
 
@@ -46,7 +46,7 @@ $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF
  <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">List of Experience Types</h3>
+              <h3 class="box-title">List of Portfolio Types</h3>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
