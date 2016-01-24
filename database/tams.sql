@@ -46,9 +46,9 @@ CREATE TABLE `tams_clients` (
   `client_status` varchar(50) DEFAULT NULL,
   `client_account_manager` varchar(50) DEFAULT NULL,
   `creadted_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,9 +89,11 @@ CREATE TABLE `tams_experience_items` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` date DEFAULT NULL,
   PRIMARY KEY (`experience_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_experience_items` */
+
+insert  into `tams_experience_items`(`experience_item_id`,`experience_item_name`,`experience_item_desc`,`experience_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Actor','Actor','active','1','2016-01-24','1','2016-01-24'),(2,'Dancer','Dancer','active','1','2016-01-24','1','2016-01-24');
 
 /*Table structure for table `tams_languages` */
 
@@ -126,9 +128,11 @@ CREATE TABLE `tams_portfolio_items` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`portfolio_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_portfolio_items` */
+
+insert  into `tams_portfolio_items`(`portfolio_item_id`,`portfolio_item_name`,`portfolio_item_desc`,`portfolio_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Showreel','Showreel','active','1','2016-01-24 21:53:25','1','2016-01-24 21:53:25'),(2,'Photos','Photos Gallary','active','1','2016-01-24 21:54:55','1','2016-01-24 21:54:55'),(3,'IMDB','IMDB Profile Link','active','1','2016-01-24 21:55:18','1','2016-01-24 21:55:18'),(4,'Spotlight','Spotlight Profile','active','1','2016-01-24 21:55:47','1','2016-01-24 21:55:47'),(5,'YouTube','YouTube Channel','active','1','2016-01-24 21:56:44','1','2016-01-24 21:56:44'),(6,'Vimeo','Vimeo Channel','active','1','2016-01-24 21:57:07','1','2016-01-24 21:57:07'),(7,'Other','Other URL','active','1','2016-01-24 21:57:30','1','2016-01-24 21:57:30');
 
 /*Table structure for table `tams_talent` */
 
