@@ -71,7 +71,7 @@ if (isset($_POST['save'])){
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Type Description:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required placeholder="Add Type Portfolio description Here"
+							 <input class="form-control" type="text" required placeholder="Add Portfolio Type Description Here"
 							 value="" name="portfolio_item_desc" id="portfolio_item_desc">							
 						  </div>
 					</div>
@@ -102,7 +102,7 @@ if (isset($_POST['save'])){
             <div class="box-footer">
 			 <div class="form-group"  >
 					<div class="col-sm-12">
-						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/languages/list_languages"?>">Cancel &nbsp; <i class="fa fa-chevron-circle-right"></i></a>					
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/portfolio_types/list_portfolio_types"?>">Cancel &nbsp; <i class="fa fa-chevron-circle-right"></i></a>					
 						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">Save &nbsp; <i class="fa fa-chevron-circle-right"></i></button>
 					</div>	<!-- /.col -->
 				 </div>		<!-- /form-group -->
