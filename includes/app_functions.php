@@ -11,6 +11,18 @@ function reset_password($user_id , $password){
 }
 
 
+function user_name_exist($user_name){
+			
+			$sql = 'SELECT count(*) FROM tams_users WHERE user_name = "'.$user_name.'";';
+			//echo $sql;
+			$user_name_exists = DB::queryFirstField($sql);
+			
+				if ($user_name_exists > 0){
+					return true;
+				} else {
+					return false;
+				}
+	}
  
 function user_role_name_exist($user_role_name){
 			

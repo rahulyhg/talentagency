@@ -1,13 +1,13 @@
 <?php
 if (isset($_POST['save'])){
 	
-	$user_id = $_POST['user_id'];
+	 
 	$user_name	= $_POST['user_name'];
 	$user_title = $_POST['user_title'];
 	$first_name = $_POST['first_name'];
 	$last_name  = $_POST['last_name'];
 	$user_email = $_POST['user_email'];
-	$user_role  = $_POST['user_role'];
+	$role_id = $_POST['role_id'];
 	$user_avatar_url = $_POST['user_avatar_url'];
 	$password = $_POST['password'];
 	$auth_code = $_POST['auth_code']; 
@@ -17,15 +17,23 @@ if (isset($_POST['save'])){
 	$last_modified_by = $_SESSION['user_id'];
 	$last_modified_on = getDateTime(NULL ,"mySQL");
 	
-
+	$user_name_exists = 0;
 	if (user_name_exist($user_name)){
 		$user_name_exists  = -1;
 		
 	}
-	if(($user_name <> -1) AND ($user_name <> "" ) ){
+	if(($user_name_exists <> -1) AND ($user_name <> "" )  ){
 	DB::insert('tams_users', array(
 				'user_name' 		=> $user_name,	
-				'user_role' 		=> $user_role,	
+				'user_title'=> $user_title,
+				'first_name' => $first_name,
+				'last_name' => $last_name,
+				'user_email'=> $user_email,
+				'user_avatar_url'=> $user_avatar_url,
+				'role_id'=> $role_id,
+				'user_status'=> $user_status,
+				'auth_code'=> $auth_code,	
+				'password'=> md5($password),	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
 				'last_modified_by'	=> $last_modified_by,
@@ -34,7 +42,7 @@ if (isset($_POST['save'])){
 			)
 			);
 	echo '<script>alert("Added User Successfully");</script>';
-	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/users/view_user_profile");</script>';		
+	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/users/list_users");</script>';		
 		}
 	else
 	{	
@@ -74,10 +82,43 @@ if (isset($_POST['save'])){
                     <div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> User Login Name:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required 
-							 value="" name="user_role_name" id="user_role_name">							
+							 <input class="form-control" type="text" required placeholder="Enter login Name"
+							 value="" name="user_name" id="user_name">							
 						  </div>
 					</div>
+					
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+						Password:
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group  form-control"     type="password"  value="" placeholder="Enter Password Here" name="password" id="password"  >
+								<div class="input-group-addon">
+									<i class="fa fa-lock">
+									</i>
+								</div>
+							</div>
+						  
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Email :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+
+								<input   class="input-group email form-control"     type="email" required value="" name="user_email" id="user_email" placeholder="Enter User Email Here"  >
+								<div class="input-group-addon">
+									<i class="fa fa-envelope">
+									</i>
+								</div>
+							</div>
+						</div>
+					</div>
+											
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							User Title:
@@ -110,7 +151,7 @@ if (isset($_POST['save'])){
 							First Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<input class="form-control" type="text" required  value="" name="first_name" id="first_name">
+							<input class="form-control" type="text" required  value="" name="first_name" id="first_name" placeholder="Enter First Name">
 						</div>
 					</div>
 
@@ -119,24 +160,10 @@ if (isset($_POST['save'])){
 							Last Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<input class="form-control" type="text" required  value="" name="last_name" id="last_name">
+							<input class="form-control" type="text" required  value="" name="last_name" id="last_name" placeholder="Enter Last Name">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-							Email :
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-
-								<input   class="input-group email form-control"     type="email" required value="" name="user_email" id="user_email"  >
-								<div class="input-group-addon">
-									<i class="fa fa-envelope">
-									</i>
-								</div>
-							</div>
-						</div>
-					</div>					
+				
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							User Role:
@@ -168,7 +195,7 @@ if ($roles) {
 						</label>
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">
-								<input   class="input-group email form-control"   placeholder="Enter  Avatar URL"   type="url"  value="" name="user_avatar_url" id="user_avatar_url"  >
+								<input   class="input-group form-control"   placeholder="Enter  Avatar URL"   type="url"  value="" name="user_avatar_url" id="user_avatar_url"  >
 								<div class="input-group-addon">
 									<i class="fa fa-user">
 									</i>
@@ -185,7 +212,7 @@ if ($roles) {
 						<div class="col-md-9 col-sm-9">
 							<select id="user_status" name="user_status" class="form-control">
 
-								<option value="active" selected="selected"
+								<option value="active" selected="selected">
 									Active
 								</option>
 								<option value="disabled"   >
@@ -197,7 +224,7 @@ if ($roles) {
  
 					<!-- Hidden Fields -->
 					<input type="hidden" name="form_name" id="form_name" value="add_user_form" />
-
+					<input type="hidden" name="auth_code" id="auth_code" value="7445211" />
 					<!-- /Hidden Fields -->
 
 
