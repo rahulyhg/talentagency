@@ -14,7 +14,7 @@ $tbl->addTSection('tbody');
 
  
 $sql = 'SELECT * FROM tams_portfolio_items WHERE portfolio_item_status = "active"';
-$get_portfolio_type = DB::query($sql);
+$get_portfolio_types = DB::query($sql);
 foreach($get_portfolio_types as $type) { 
 $tbl->addRow();
 $tbl->addCell($type['portfolio_item_id']);
