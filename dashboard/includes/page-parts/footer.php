@@ -2,7 +2,7 @@
       <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-         <em>For software suppor , please contact 
+         <em>For software support , please contact 
         <i class="fa fa-email fa-fw"></i>support@sutlej.net </em>
         </div>
         <!-- Default to the left --> 
