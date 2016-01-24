@@ -87,19 +87,19 @@ if (isset($_POST['save'])){
 								<option value="">
 									-Select Title-
 								</option>
-								<option value="Mr."   <?php if($user_title == "Mr."){ echo 'selected = "selected" ';} ?> >
+								<option value="Mr."  >
 									Mr.
 								</option>
-								<option value="Mrs."    <?php if($user_title == "Mrs."){ echo 'selected = "selected" ';} ?>>
+								<option value="Mrs."    >
 									Mrs.
 								</option>
-								<option value="Miss"   <?php if($user_title == "Miss"){ echo 'selected = "selected" ';} ?>>
+								<option value="Miss" >
 									Miss
 								</option>
-								<option value="Ms."   <?php if($user_title == "Ms."){ echo 'selected = "selected" ';} ?>>
+								<option value="Ms."  >
 									Ms.
 								</option>
-								<option value="Dr."   <?php if($user_title == "Dr."){ echo 'selected = "selected" ';} ?>>
+								<option value="Dr."  >
 									Dr.
 								</option>
 							</select>
@@ -110,7 +110,7 @@ if (isset($_POST['save'])){
 							First Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<input class="form-control" type="text" required  value="<?php echo $first_name; ?>" name="first_name" id="first_name">
+							<input class="form-control" type="text" required  value="" name="first_name" id="first_name">
 						</div>
 					</div>
 
@@ -119,7 +119,7 @@ if (isset($_POST['save'])){
 							Last Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<input class="form-control" type="text" required  value="<?php echo $last_name; ?>" name="last_name" id="last_name">
+							<input class="form-control" type="text" required  value="" name="last_name" id="last_name">
 						</div>
 					</div>
 					<div class="form-group">
@@ -129,7 +129,7 @@ if (isset($_POST['save'])){
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">
 
-								<input   class="input-group email form-control"     type="email" required value="<?php echo $user_email; ?>" name="user_email" id="user_email"  >
+								<input   class="input-group email form-control"     type="email" required value="" name="user_email" id="user_email"  >
 								<div class="input-group-addon">
 									<i class="fa fa-envelope">
 									</i>
@@ -142,7 +142,7 @@ if (isset($_POST['save'])){
 							User Role:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<select id="role_id" name="role_id" class="form-control">
+							<select required id="role_id" name="role_id" class="form-control">
 																
 								<option value="">
 									-Select User Role-
@@ -153,9 +153,6 @@ $roles = DB::query($sql);
 if ($roles) {
 	foreach ($roles as $role) {
 		echo '<option value ="'.$role['role_id'].'"  ';
-		if ($role_id == $role['role_id']){
-			echo ' selected="selected" ';
-		}
 		echo ' > '.$role['role_name'].' </option>';
 	}	
 		
@@ -171,13 +168,12 @@ if ($roles) {
 						</label>
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">
-								<input   class="input-group email form-control"     type="url"  value="<?php echo $user_avatar_url; ?>" name="user_avatar_url" id="user_avatar_url"  >
+								<input   class="input-group email form-control"   placeholder="Enter  Avatar URL"   type="url"  value="" name="user_avatar_url" id="user_avatar_url"  >
 								<div class="input-group-addon">
 									<i class="fa fa-user">
 									</i>
 								</div>
 							</div>
-							<img src="<?php echo $user_avatar_url; ?>" alt="avatar" />
 						</div>
 					</div>							
 					
@@ -189,43 +185,19 @@ if ($roles) {
 						<div class="col-md-9 col-sm-9">
 							<select id="user_status" name="user_status" class="form-control">
 
-								<option value="active" <?php if($user_status == "active"){ echo 'selected = "selected" ';} ?> >
+								<option value="active" selected="selected"
 									Active
 								</option>
-								<option value="disabled"   <?php if($user_status != "active"){ echo 'selected = "selected" ';} ?>>
+								<option value="disabled"   >
 									Disabled
 								</option>
 							</select>
 						</div>
 					</div>
-							<div class="form-group"  >
-						<label class="col-md-3 col-sm-3 control-label">
-							History:
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<p>
-								This entry was created on
-								<strong>
-									<?php echo getDateTime($created_on,"dtLong"); ?>
-								</strong>by
-								<strong>
-									<?php echo get_user_name($created_by); ?>
-								</strong>.
-							</p>
-							<p>
-								It was last modified on
-								<strong>
-									<?php echo getDateTime($last_modified_on,"dtLong"); ?>
-								</strong>by
-								<strong>
-									<?php echo get_user_name($last_modified_by); ?>
-								</strong>.
-							</p>
-						</div>
-					</div>
+ 
 					<!-- Hidden Fields -->
-					<input type="hidden" name="form_name" id="form_name" value="edit_user_form" />
-					<input type="hidden" name="user_id" id="user_id" value="<?php echo $user_id; ?>" />
+					<input type="hidden" name="form_name" id="form_name" value="add_user_form" />
+
 					<!-- /Hidden Fields -->
 
 
