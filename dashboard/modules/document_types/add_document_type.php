@@ -2,14 +2,16 @@
  
  
 if (isset($_POST['save'])){
-	
+/*	
 	echo "<pre>";
 	print_r($_POST);
 	echo "</pre>";
-	
-/* 
-	$language_name	=  $_POST['language_name'] ;
-	$language_status	=  $_POST['language_status'] ;
+*/
+ 
+	$document_type_name	=  $_POST['document_type_name'] ;
+	$document_type_description	=  $_POST['document_type_description'] ;
+	$document_type_extension	=  $_POST['document_type_extension'] ;
+	$document_type_status	=  $_POST['document_type_status'] ;
 	$created_by = $_SESSION['user_id'];
 	$created_on = getDateTime(NULL ,"mySQL");
 	$last_modified_by = $_SESSION['user_id'];
@@ -17,10 +19,12 @@ if (isset($_POST['save'])){
 	
 	// TODO: write a function to check language name already exists
 
-	if($language_name <> ""  ){
-	DB::insert('tams_languages', array(
-				'language_name' 		=> $language_name,	
-				'language_status' 		=> $language_status,	
+	if($document_type_name <> ""  ){
+	DB::insert('tams_document_types', array(
+				'document_type_name' 		=> $document_type_name,	
+				'document_type_desc' 		=> $document_type_description,	
+				'document_type_extension' 		=> $document_type_extension,	
+				'document_type_status' 		=> $document_type_status,	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
 				'last_modified_by'	=> $last_modified_by,
@@ -28,15 +32,15 @@ if (isset($_POST['save'])){
 				
 			)
 			);
-	echo '<script>alert("Added Language Successfully");</script>';
-	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/languages/list_languages");</script>';		
+	echo '<script>alert("Added Document Type Successfully");</script>';
+	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/document_types/list_document_types");</script>';		
 		}
 	else
 	{	
-		echo '<script>alert("Failed!! Unable to Add Language Please Go Back and Try again");</script>';
+		echo '<script>alert("Failed!! Unable to Add Document Type Please Go Back and Try again");</script>';
 		
 		}
-*/
+ 
 
 }
  
@@ -56,7 +60,7 @@ if (isset($_POST['save'])){
 
         <!-- Main content -->
         <section class="content">
-<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/document_type/add_document_type"; ?>" >
+<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/document_types/add_document_type"; ?>" >
  <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
