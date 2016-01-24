@@ -10,7 +10,6 @@ if (isset($_POST['save'])){
 	$last_modified_by = $_SESSION['user_id'];
 	$last_modified_on = getDateTime(NULL ,"mySQL");
 	
-	}
 	// TODO: write a function to check portfolio type already exists
 	
 	if(($portfolio_item_name <> "" )  ){
@@ -32,6 +31,7 @@ if (isset($_POST['save'])){
 	{	
 		echo '<script>alert("Failed!! Unable to Add Portfolio Type Please Go Back and Try again");</script>';
 		
+		}
 		}
 ?>
 <!-- Content Header (Page header) -->
@@ -71,7 +71,7 @@ if (isset($_POST['save'])){
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Type Description:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required 
+							 <input class="form-control" type="text" required placeholder="Add Type Portfolio description Here"
 							 value="" name="portfolio_item_desc" id="portfolio_item_desc">							
 						  </div>
 					</div>
