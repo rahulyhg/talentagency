@@ -8,7 +8,7 @@ $last_name                 = "";
 $dob                       = "";
 $sex                       = "";
 $address                   = "";
-$phone_no                  = "";
+$mobile_no                  = "";
 $email_id                  = "";
 $nationality               = "";
 $passport_no               = "";
@@ -27,28 +27,23 @@ echo "<pre>";
 	print_r($_SESSION);
 
 echo "</pre>";
-
-
-
-
-
+ 
+	$talent_id = "";
 // add talent data
-
-$talent_id                 = create_new_talent_record($_POST, $_SESSION['user_id']);
-echo $talent_id;
-
+	$talent_id  = create_new_talent_record($_POST, $_SESSION['user_id']);
 
 if( (is_int($talent_id)) AND ($talent_id > 0)){
-
-
-	// add talent data
+ 
 
 	// redirect to step 2 of adding talent
-
+	echo '<script>alert("Added Talent Successfully");</script>';
+	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'");</script>';		
+ 
 }
 else
 {
 	// return the error message in a variable and display It
+	echo '<script>alert("Failed!! Unable to Add Talent, Please Check Data");</script>';
 	// convert post variables to variables and present them to client for review and re - submissin
 
 	$first_name = $_POST['first_name'];
@@ -56,28 +51,42 @@ else
 	$dob        = $_POST['dob'];
 	$sex        = $_POST['sex'];
 	$address    = $_POST['address'];
-	$phone_no   = $_POST['phone_no'];
+	$mobile_no   = $_POST['mobile_no'];
 	$email_id   = $_POST['email_id'];
 	$nationality= $_POST['nationality'];
 	$passport_no= $_POST['passport_no'];
 	$qatari_id  = $_POST['qatari_id'];
 	if(isset($_POST['is_qatari'])){
 		$is_qatari = 1;
+	} else {
+		$is_qatari = 0;
 	}
-
+	if(isset($_POST['qatari_id_copy_attached'])){
+		$qatari_id_copy_attached = 1;
+	} else {
+		$qatari_id_copy_attached = 0;
+	}
 	if(isset($_POST['passport_copy_attached'])){
 		$passport_copy_attached = 1;
+	} else {
+		$passport_copy_attached = 0;
 	}
 	if(isset($_POST['noc_required'])){
 		$noc_required = 1;
+	} else {
+		$noc_required = 0;
 	}
 
 	if(isset($_POST['noc_copy_attached'])){
 		$noc_copy_attached = 1;
+	} else {
+		$noc_copy_attached = 0;
 	}
 
 	if(isset($_POST['sponsors_id_copy_attached'])){
 		$sponsors_id_copy_attached = 1;
+	} else {
+		$sponsors_id_copy_attached = 0;
 	}
 
 }
@@ -88,21 +97,88 @@ function create_new_talent_record($data,$user_id)
 	$talent_id = - 1;
 	if($data){
 
-
-
 		// Check submitted data and save them in variables
-
+		
+	$first_name = $data['first_name'];
+	$last_name  = $data['last_name'];
+	$dob        = $data['dob'];
+	$sex        = $data['sex'];
+	$address    = $data['address'];
+	$mobile_no   = $data['mobile_no'];
+	$email_id   = $data['email_id'];
+	$nationality= $data['nationality'];
+	$passport_no= $data['passport_no'];
+	$qatari_id  = $data['qatari_id'];
+	$created_by = $user_id;
+	$created_on = getDateTime(NULL ,"mySQL");
+	$last_modified_by = $user_id;
+	$last_modified_on = getDateTime(NULL ,"mySQL");
+	
 		// set on checkboxes to 1
 
 		// set missing checkboxes to off or 0
+	if(isset($data['is_qatari'])){
+		$is_qatari = 1;
+	} else {
+		$is_qatari = 0;
+	}
+	if(isset($data['qatari_id_copy_attached'])){
+		$qatari_id_copy_attached = 1;
+	} else {
+		$qatari_id_copy_attached = 0;
+	}
+	if(isset($data['passport_copy_attached'])){
+		$passport_copy_attached = 1;
+	} else {
+		$passport_copy_attached = 0;
+	}
+	if(isset($data['noc_required'])){
+		$noc_required = 1;
+	} else {
+		$noc_required = 0;
+	}
 
+	if(isset($data['noc_copy_attached'])){
+		$noc_copy_attached = 1;
+	} else {
+		$noc_copy_attached = 0;
+	}
+
+	if(isset($data['sponsors_id_copy_attached'])){
+		$sponsors_id_copy_attached = 1;
+	} else {
+		$sponsors_id_copy_attached = 0;
+	}
 		// Add data to database and get the new talentID
-
 		//set profile status to draft
+		DB::insert('tams_talent', array(
+						'first_name' 		=> $first_name,						
+						'last_name' 		=> $last_name,						
+						'dob' 				=> $dob,						
+						'sex' 				=> $sex,						
+						'address'	 		=> $address,						
+						'mobile_no' 		=> $mobile_no,						
+						'email_id' 			=> $email_id,
+						'nationality'		=> $nationality,
+						'is_qatari'			=> $is_qatari,
+						'qatari_id'			=> $qatari_id,
+						'qatari_id_copy_attached'=> $qatari_id_copy_attached,
+						'noc_required'		=> $noc_required,
+						'noc_copy_attached'	=> $noc_copy_attached,
+						'passport_no'		=> $passport_no,
+						'passport_copy_attached'=> $passport_copy_attached,
+						'sponsors_id_copy_attached'=> $sponsors_id_copy_attached,
+						'talent_status'		=> "draft",
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						)	
+			);
 
 		// get the new $talent_id
-
-
+		
+		$talent_id = DB::insertId();
 		// return $talent_id;
 	}
 	return $talent_id;
@@ -239,11 +315,11 @@ function create_new_talent_record($data,$user_id)
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
-									Phone No
+									Mobile No
 								</label>
 								<div class="col-md-9 col-sm-9">
 									<div class="input-group">
-										<input class="form-control" type="tel" required placeholder="Enter Phone No" value="<?php echo $phone_no; ?>" name="phone_no" id="phone_no">
+										<input class="form-control" type="tel" required placeholder="Enter Phone No" value="<?php echo $mobile_no; ?>" name="mobile_no" id="mobile_no">
 										<div class="input-group-addon">
 											<i class="fa fa-phone">
 											</i>
@@ -1124,7 +1200,7 @@ function create_new_talent_record($data,$user_id)
 							</i>
 						</a>
 						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
+							Save & Continue &nbsp;
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</button>
