@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.6.21 : Database - teamsutlej_talent
+SQLyog Ultimate v10.00 Beta1
+MySQL - 5.6.15-log : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -130,7 +130,7 @@ CREATE TABLE `tams_portfolio_items` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`portfolio_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_portfolio_items` */
 
@@ -173,14 +173,16 @@ CREATE TABLE `tams_talent` (
   `cv_url` varchar(50) DEFAULT NULL,
   `registration_date` varchar(50) DEFAULT NULL,
   `talent_status` varchar(50) NOT NULL DEFAULT 'active',
-  `created_by_user` varchar(50) DEFAULT NULL,
-  `created_on_date` varchar(50) DEFAULT NULL,
-  `last_modified_by_user` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent` */
+
+insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`area_of_residence`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo_url`,`cv_url`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06');
 
 /*Table structure for table `tams_talent_documents` */
 
@@ -312,7 +314,7 @@ CREATE TABLE `tams_users` (
 
 /*Data for the table `tams_users` */
 
-insert  into `tams_users`(`user_id`,`user_name`,`user_title`,`first_name`,`last_name`,`user_email`,`role_id`,`user_avatar_url`,`auth_code`,`password`,`user_status`,`created_by`,`last_modified_on`,`created_on`,`last_modified_by`) values (1,'test','Mr.','Mansoor ','Rana','mansoor@sutlej.net',3,'http://www.gravatar.com/avatar/28c442cff3c7bad642a680754ddf1598fs=150','778899','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3','active','1','2016-01-24 17:48:40','2015-03-23 19:14:45','1'),(2,'kafia','Miss','Kafia','Ahmed','kafia@sutlej.net',1,'','7445211','6ea24b51386c92ec17b9be87ee1c6ae2c8044169','active','1','2016-01-24 21:04:14','2016-01-24 21:04:14','1');
+insert  into `tams_users`(`user_id`,`user_name`,`user_title`,`first_name`,`last_name`,`user_email`,`role_id`,`user_avatar_url`,`auth_code`,`password`,`user_status`,`created_by`,`last_modified_on`,`created_on`,`last_modified_by`) values (1,'test','Mr.','Mansoor ','Rana','mansoor@sutlej.net',1,'http://www.gravatar.com/avatar/28c442cff3c7bad642a680754ddf1598fs=150','778899','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3','active','1','2016-01-24 22:21:41','2015-03-23 19:14:45','1'),(2,'kafia','Miss','Kafia','Ahmed','kafia@sutlej.net',1,'','7445211','6ea24b51386c92ec17b9be87ee1c6ae2c8044169','active','1','2016-01-24 21:04:14','2016-01-24 21:04:14','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
