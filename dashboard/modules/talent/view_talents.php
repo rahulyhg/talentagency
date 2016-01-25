@@ -39,7 +39,45 @@ $tbl->addCell($talent['role_id']);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
-			  
+// Draft Talents list
+
+$tbl2 = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Draft Talents'));
+$tbl2->addTSection('thead');
+$tbl2->addRow();
+$tbl2->addCell('TalentID', '', 'header');
+$tbl2->addCell('Photo', '', 'header');
+$tbl2->addCell('First Name', '', 'header');
+$tbl2->addCell('Last Name', '', 'header');
+$tbl2->addCell('Gender', '', 'header');
+$tbl2->addCell('Nationality', '', 'header');
+$tbl2->addCell('Registration Date', '', 'header');
+$tbl2->addCell('Age', '', 'header');
+$tbl2->addCell('PhoneNo', '', 'header');
+$tbl2->addCell('Email', '', 'header');
+$tbl2->addCell('Brief', '', 'header');
+$tbl2->addCell('Notes', '', 'header');
+$tbl2->addCell('Evenets?', '', 'header');
+$tbl2->addCell('Experience', '', 'header');
+$tbl2->addCell('Vitals', '', 'header');
+$tbl2->addCell('Actions', '', 'header');
+$tbl2->addTSection('tbody');
+
+
+ 
+$sql = 'SELECT * FROM tams_talent WHERE talent_status = "draft"';
+$get_talents = DB::query($sql);
+foreach($get_talents as $talent) { 
+$tbl2->addRow();
+$tbl2->addCell($talent['talent_id']);
+$tbl2->addCell($talent['dob']);
+$tbl2->addCell($talent['first_name']);
+$tbl2->addCell($talent['last_name']);
+$tbl2->addCell($talent['email_id']);
+$tbl2->addCell($talent['role_id']);
+ 
+$tbl2->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+			   ");
+}			  
 
 ?>
  <!-- Content Header (Page header) -->
@@ -72,4 +110,17 @@ $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF
             <div class="box-footer">
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">List of Draft Talents</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+				<?php  echo $tbl2->display(); ?>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+            </div><!-- /.box-footer-->
+          </div><!-- /.box -->          
      	 </section><!-- /.content -->
