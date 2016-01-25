@@ -886,7 +886,7 @@ if (isset($_POST['save'])){
 									<div class="input-group">
 										<input class="form-control" type="tel" required placeholder="Enter Fax No" value="" name="client_fax" id="client_fax">
 										<div class="input-group-addon">
-											<i class="fa fa-phone">
+											<i class="fa fa-fax">
 											</i>
 										</div>
 									</div>
@@ -923,7 +923,7 @@ if (isset($_POST['save'])){
 							Client Status:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<select id="user_status" name="user_status" class="form-control">
+							<select id="client_status" name="client_status" class="form-control">
 
 								<option value="active" selected="selected">
 									Active

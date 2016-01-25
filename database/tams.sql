@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v10.00 Beta1
-MySQL - 5.6.15-log : Database - teamsutlej_talent
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 5.6.21 : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -45,14 +45,16 @@ CREATE TABLE `tams_clients` (
   `client_email` varchar(100) NOT NULL,
   `client_status` varchar(50) DEFAULT NULL,
   `client_account_manager` varchar(50) DEFAULT NULL,
-  `creadted_by` varchar(50) DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_clients` */
+
+insert  into `tams_clients`(`client_id`,`client_name`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Edward Doyle','Street # 409 Queens Land, Australia							','Queens Land','Australia','09835839076','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-25 18:16:03');
 
 /*Table structure for table `tams_document_types` */
 
@@ -128,7 +130,7 @@ CREATE TABLE `tams_portfolio_items` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`portfolio_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_portfolio_items` */
 
