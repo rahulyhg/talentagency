@@ -12,6 +12,12 @@ if (isset($_POST['save'])){
 	$last_modified_on = getDateTime(NULL ,"mySQL");
 	
 	// TODO: write a function to check language name already exists
+	
+	$language_name_exists = 0;
+	if (language_name_exist($language_name)){
+		$lnguage_name_exists  = -1;
+		
+	}
 
 	if($language_name <> ""  ){
 	DB::insert('tams_languages', array(

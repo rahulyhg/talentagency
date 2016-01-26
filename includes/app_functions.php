@@ -48,7 +48,18 @@ function user_role_name_exist($user_role_name){
 					return false;
 				}
 	}
-
+function language_name_exist($language_name){
+			
+			$sql = 'SELECT count(*) FROM tams_languages WHERE language_name = "'.$language_name.'";';
+			//echo $sql;
+			$language_name_exists = DB::queryFirstField($sql);
+			
+				if ($language_name_exists > 0){
+					return true;
+				} else {
+					return false;
+				}
+	}
 function get_user_name($user_id){
 	$user_name = DB::queryFirstField("SELECT user_name from tams_users WHERE user_id = $user_id");
 	return $user_name;
