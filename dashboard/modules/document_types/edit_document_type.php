@@ -27,7 +27,7 @@ if(isset($_GET['document_type_id'])){
 $document= DB::queryFirstRow($sql);
 $document_type_id = $document['document_type_id'];
 $document_type_name = $document['document_type_name'];
-$document_type_desc = $document['document_type_desc'];
+$document_type_description = $document['document_type_desc'];
 $document_type_extension = $document['document_type_extension'];
 $document_type_status = $document['document_type_status']; 
 $created_on = $document['created_on'];
@@ -129,15 +129,16 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							<?php echo $document_type_id; ?>
 						</div>
 					</div>
- 
-					<div class="form-group"  >
+					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Document Type Name:
+									Document Type Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<?php echo $document_type_name; ?>
+						<input class="form-control" type="text" required 
+							 value="<?php echo $document_type_name; ?>" name="document_type_name" id="document_type_name">
 						</div>
 					</div>
+
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 									Document Type Description:

@@ -10,7 +10,7 @@ $tbl->addCell('Avatar', '', 'header');
 $tbl->addCell('Full Name', '', 'header');
 $tbl->addCell('Email', '', 'header');
 $tbl->addCell('User Role', '', 'header');
-$tbl->addCell('History', '', 'header');
+$tbl->addCell('Status', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
@@ -29,7 +29,7 @@ $tbl->addCell('<img src="'.$user['user_avatar_url'].'" alt="avatar" />');
 $tbl->addCell($user['user_title']." ".$user['first_name']." ".$user['last_name']);
 $tbl->addCell($user['user_email']);
 $tbl->addCell(get_user_role_name($user['role_id']));
- $tbl->addCell("<p>Created on: <strong> ".getDateTime($user['created_on'],'dtLong')." </strong> by <strong>".get_user_name($user['created_by'])."</strong></p> <p>Last Modified: <strong>".getDateTime($user['last_modified_on'],"dtLong")." </strong> by <strong>".get_user_name($user['last_modified_by'])."</strong></p>  ");
+ $tbl->addCell($user['user_status']);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/users/edit_user&user_id=".$user['user_id']."'>Edit User&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }

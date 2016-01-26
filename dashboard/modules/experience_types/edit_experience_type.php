@@ -128,7 +128,8 @@ echo "</pre>";
 							Experience Type Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<?php echo $experience_item_name; ?>
+						<input class="form-control" type="text" required 
+							 value="<?php echo $experience_item_name; ?>" name="experience_item_name" id="experience_item_name">
 						</div>
 					</div>
 					<div class="form-group">
