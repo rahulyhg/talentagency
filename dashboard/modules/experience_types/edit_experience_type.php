@@ -37,7 +37,7 @@ $experience_item_id = $_POST['experience_item_id'];
 $experience_item_name = $_POST['experience_item_name'];
 $experience_item_desc = $_POST['experience_item_desc'];
 $experience_item_status = $_POST['experience_item_status'];
-$last_modified_by = $_SESSION['experience_id'];
+$last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
  
 	if($experience_item_id <> ""){
@@ -147,7 +147,7 @@ echo "</pre>";
 							Experience Type Status:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<select id="document_type_status" name="document_type_status" class="form-control">
+							<select id="experience_type_status" name="experience_type_status" class="form-control">
 
 								<option value="active" <?php if($experience_item_status == "active"){ echo 'selected = "selected" ';} ?> >
 									Active
