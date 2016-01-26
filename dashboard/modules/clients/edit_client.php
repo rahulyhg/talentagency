@@ -1,6 +1,7 @@
 <?php
 
 $client_id = 0;
+$company_name="";
 $client_name = "";
 $client_address = "";
 $client_city = "";
@@ -26,6 +27,7 @@ if(isset($_GET['client_id'])){
 				WHERE client_id = $client_id ;";
 $client= DB::queryFirstRow($sql);
 $client_id = $client['client_id'];
+$company_name = $client['company_name'];
 $client_name = $client['client_name'];
 $client_address = $client['client_address'];
 $client_city = $client['client_city'];
@@ -48,6 +50,7 @@ if(isset($_POST['save']))
 {
  
 $client_id = $_POST['client_id'];
+$company_name =$_POST['company_name'];
 $client_name = $_POST['client_name'];
 $client_address = $_POST['client_address'];
 $client_city = $_POST['client_city'];
@@ -63,6 +66,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
  
 	if($client_id <> ""){
 		$update = DB::update('tams_clients', array(
+				'company_name'=> $company_name,
 				'client_name'=>$client_name,
 				'client_address'=> $client_address,
 				'client_city' => $client_city,
@@ -152,13 +156,21 @@ echo "</pre>";
 							<?php echo $client_id; ?>
 						</div>
 					</div>
+					<div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label">
+							Company Name:
+						</label>
+						<div class="col-md-9 col-sm-9">
+						<input class="form-control" type="text" required  value="<?php echo $company_name; ?>" name="company_name" id="company_name">
+						</div>
+					</div>
  
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label">
-							Client Name:
+							Contact Person Name:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<?php echo $client_name; ?>
+						<input class="form-control" type="text" required  value="<?php echo $client_name; ?>" name="client_name" id="client_name">
 						</div>
 					</div>
 					<div class="form-group">
@@ -186,7 +198,7 @@ echo "</pre>";
 								</label>
 								<div class="col-md-9 col-sm-9">
 									<div class="input-group">
-										<select value="<?php echo $client_country; ?>" id="client_country" name="client_country" class="form-control"   >
+										<select required value="<?php echo $client_country; ?>" id="client_country" name="client_country" class="form-control"   >
 											<option value="">
 											</option>
 											<option value="Qatar">
