@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v10.00 Beta1
-MySQL - 5.6.15-log : Database - teamsutlej_talent
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 5.6.21 : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -35,6 +35,7 @@ DROP TABLE IF EXISTS `tams_clients`;
 
 CREATE TABLE `tams_clients` (
   `client_id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_name` varchar(255) NOT NULL,
   `client_name` varchar(255) NOT NULL,
   `client_address` varchar(255) DEFAULT NULL,
   `client_city` varchar(100) NOT NULL,
@@ -50,11 +51,11 @@ CREATE TABLE `tams_clients` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_clients` */
 
-insert  into `tams_clients`(`client_id`,`client_name`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Edward Doyle','Street # 409 Queens Land, Australia							','Queens Land','Australia','09835839076','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-25 18:16:03');
+insert  into `tams_clients`(`client_id`,`company_name`,`client_name`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','Edward Doyle','street #409,queensland, Australia','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-25 20:01:02'),(2,'ABC productions','John Smith','block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions','Alexandra Saint','block #89 Los angeles, united states				','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01','1','2016-01-26 11:45:01');
 
 /*Table structure for table `tams_document_types` */
 
@@ -71,11 +72,11 @@ CREATE TABLE `tams_document_types` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`document_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_document_types` */
 
-insert  into `tams_document_types`(`document_type_id`,`document_type_name`,`document_type_desc`,`document_type_extension`,`document_type_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'MS Word CV','CV file in MS Word Format','.docx','active','1','2016-01-24 21:45:37','1','2016-01-24 21:45:37');
+insert  into `tams_document_types`(`document_type_id`,`document_type_name`,`document_type_desc`,`document_type_extension`,`document_type_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,NULL,NULL,'.docx','active','1','2016-01-24 21:45:37','1','2016-01-26 06:24:43'),(2,'pdf','pdf documet','.pdf','active','1','2016-01-26 10:09:35','1','2016-01-26 10:10:09');
 
 /*Table structure for table `tams_experience_items` */
 
@@ -110,7 +111,7 @@ CREATE TABLE `tams_languages` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`language_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_languages` */
 
@@ -178,11 +179,11 @@ CREATE TABLE `tams_talent` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent` */
 
-insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`area_of_residence`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo_url`,`cv_url`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06');
+insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`area_of_residence`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo_url`,`cv_url`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com',NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 20:38:04','1','2016-01-25 20:38:04');
 
 /*Table structure for table `tams_talent_documents` */
 

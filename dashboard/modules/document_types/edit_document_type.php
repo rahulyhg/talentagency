@@ -1,8 +1,13 @@
 <?php
 
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+ 
+
 $document_type_id = 0;
 $document_type_name = "";
-$document_type_desc= "";
+$document_type_description= "";
 $document_type_extension = "";
 $document_type_status= ""; 
 $created_on = "";
@@ -37,12 +42,12 @@ if(isset($_POST['save']))
  
 $document_type_id = $_POST['document_type_id'];
 $document_type_name = $_POST['document_type_name'];
-$document_type_desc = $_POST['document_type_desc'];
+$document_type_description = $_POST['document_type_description'];
 $document_type_extension = $_POST['document_type_extension'];
 $document_type_status = $_POST['document_type_status'];
-$last_modified_by = $_SESSION['document_id'];
+$last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
- 
+ /*
 	if($document_type_id <> ""){
 		$update = DB::update('tams_document_types', array(
 				'document_type_name'=>$document_type_name,
@@ -54,19 +59,16 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			),
 			"document_type_id=%s", $document_type_id
 		);
-		
+	
 		if($update)
 		{
 			echo '<script>alert("Edited Details Successfully");</script>';
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/document_types/list_document_types");</script>';
 		}
+	*/
 	}
-	 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
- 
-}
+
+
 
 ?>
 <!-- Content Header (Page header) -->
@@ -142,7 +144,7 @@ echo "</pre>";
 						</label>
 						<div class="col-md-9 col-sm-9">
 						<input class="form-control" type="text" required 
-							 value="<?php echo $document_type_desc; ?>" name="document_type_description" id="document_type_description">
+							 value="<?php echo $document_type_description; ?>" name="document_type_description" id="document_type_description">
 						</div>
 					</div>
 					<div class="form-group">
