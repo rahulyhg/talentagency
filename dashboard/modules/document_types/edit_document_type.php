@@ -105,7 +105,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			<div class="box col-md-6 col-sm-6 col-sx-12">
 				<div class="box-header with-border">
 					<h3 class="box-title">
-						Editing <?php echo $document['document_type_name']; ?>
+						Editing <?php echo $document_type_name; ?>
 					</h3>
 					<div class="box-tools pull-right">
 
