@@ -1,7 +1,6 @@
 <?php
 $language_id = 0;
 $language_name = "";
-$language_description= "";
 $language_status= ""; 
 $created_on = "";
 $created_by = "";
@@ -20,7 +19,6 @@ if(isset($_GET['language_id'])){
 $language= DB::queryFirstRow($sql);
 $language_id = $language['language_id'];
 $language_name = $language['language_name'];
-$language_description = $language['language_description'];
 $language_status = $language['language_status']; 
 $created_on = $language['created_on'];
 $created_by = $language['created_by'];
@@ -34,7 +32,6 @@ if(isset($_POST['save']))
  
 $language_id = $_POST['language_id'];
 $language_name = $_POST['language_name'];
-$language_description = $_POST['language_description'];
 $language_status = $_POST['language_status'];
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
@@ -42,7 +39,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 	if($language_id <> ""){
 		$update = DB::update('tams_languages', array(
 				'language_name'=>$language_name,
-				'language_desc'=> $language_description,
 				'language_status'=> $language_status,
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
@@ -131,16 +127,7 @@ echo "</pre>";
 							 value="<?php echo $language_name; ?>" name="language_name" id="language_name">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-									Language Description:
-						</label>
-						<div class="col-md-9 col-sm-9">
-						<input class="form-control" type="text" required 
-							 value="<?php echo $language_description; ?>" name="language_description" id="language_description">
-						</div>
-					</div>
-					
+
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Language Status:
