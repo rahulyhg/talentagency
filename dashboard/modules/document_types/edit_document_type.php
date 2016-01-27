@@ -1,10 +1,5 @@
 <?php
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
- 
-
 $document_type_id = 0;
 $document_type_name = "";
 $document_type_description= "";
@@ -47,11 +42,11 @@ $document_type_extension = $_POST['document_type_extension'];
 $document_type_status = $_POST['document_type_status'];
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
- /*
+
 	if($document_type_id <> ""){
 		$update = DB::update('tams_document_types', array(
 				'document_type_name'=>$document_type_name,
-				'document_type_desc'=> $document_type_desc,
+				'document_type_desc'=> $document_type_description,
 				'document_type_extension' => $document_type_extension,
 				'document_type_status'=> $document_type_status,
 				'last_modified_by'	=> $last_modified_by,
@@ -65,10 +60,10 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo '<script>alert("Edited Details Successfully");</script>';
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/document_types/list_document_types");</script>';
 		}
-	*/
+
 	}
 
-
+}
 
 ?>
 <!-- Content Header (Page header) -->
