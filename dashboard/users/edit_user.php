@@ -6,27 +6,31 @@ $user_id	=	$_SESSION['user_id'];
 if(isset($_POST['save'])){
 	
 
-unset($_SESSION['firstname']);
-unset($_SESSION['lastname']);
-unset($_SESSION['email']);
+unset($_SESSION['first_name']);
+unset($_SESSION['last_name']);
+unset($_SESSION['user_email']);
+unset($_SESSION['user_avatar_url']);
 
-$firstname	=	$_POST['firstname'];
-$lastname	=	$_POST['lastname'];
-$email		=	$_POST['email'];
+$first_name	=	$_POST['first_name'];
+$last_name	=	$_POST['last_name'];
+$user_email		=	$_POST['user_email'];
+$user_avatar_url = $_POST['user_avatar_url'];
 	if($user_id<>"")
 	   {
-		$update=	DB::update('users', array(	
-						'firstname'  => $firstname,
-						'lastname' 	 => $lastname,
-						'email' 	 => $email,	
+		$update=	DB::update('tams_users', array(	
+						'first_name'  => $first_name,
+						'last_name' 	 => $last_name,
+						'user_email' 	 => $user_email,
+						'user_avatar_url' => $user_avatar_url,
 					),
 					"user_id=%s", $user_id
 					);
 		if($update){
 			
-			$_SESSION['firstname'] 	=	$firstname;
-			$_SESSION['lastname'] 	=	$lastname;
-			$_SESSION['email'] 		=	$email;
+			$_SESSION['first_name'] 	=	$first_name;
+			$_SESSION['last_name'] 	=	$last_name;
+			$_SESSION['user_email'] 		=	$user_email;
+			$_SESSION['user_avatar_url'] = $user_avatar_url;
 			echo '<script>alert("Edited Details Successfully");</script>';
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=users/my_profile");</script>';	
 		}
@@ -59,10 +63,22 @@ $email		=	$_POST['email'];
               <div class="box-tools pull-right">		
 				
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
+              <div class="form-group">
+				<div class="input-group-addon">
+					<i class="fa fa-user">
+					</i>
+					</div>		
+							
+			<input  class="input-group email form-control"     type="url"  value="<?php echo $_SESSION['user_avatar_url']; ?>" name="user_avatar_url" id="user_avatar_url"  >
+				
+						
+			
+						
+					</div>		
+			  </div>
             </div>
             <div class="box-body">
-				
+				<img src="<?php echo $_SESSION['user_avatar_url']; ?>" alt="avatar" />
 						
             </div><!-- /.box-body -->
             <div class="box-footer">
@@ -97,7 +113,8 @@ $email		=	$_POST['email'];
 						<strong>User Name</strong>	
 						</td>	
 						<td>
-						<span><?php echo $_SESSION['username']; ?></span>	
+						<input class="form-control" type="text" required 
+						 value="<?php echo $_SESSION['user_name']; ?>" name="user_name" id="user_name">	
 						</td>	
 					</tr>
 					<!-- /UserName -->
@@ -108,7 +125,7 @@ $email		=	$_POST['email'];
 						</td>	
 						<td>
 						<input class="form-control" type="text" required 
-						 value="<?php echo $_SESSION['firstname']; ?>" name="firstname" id="firstname">	
+						 value="<?php echo $_SESSION['first_name']; ?>" name="first_name" id="first_name">	
 						</td>	
 					</tr>
 					<!-- /First Name -->
@@ -119,7 +136,7 @@ $email		=	$_POST['email'];
 						</td>	
 						<td>
 						<input class="form-control" type="text" required 
-						 value="<?php echo $_SESSION['lastname']; ?>" name="lastname" id="lastname">	
+						 value="<?php echo $_SESSION['last_name']; ?>" name="last_name" id="last_name">	
 						</td>	
 					</tr>
 					<!-- /Last Name -->
@@ -130,7 +147,7 @@ $email		=	$_POST['email'];
 						</td>	
 						<td>
 						<input class="form-control" type="text" required 
-						 value="<?php echo $_SESSION['email']; ?>" name="email" id="email">	
+						 value="<?php echo $_SESSION['user_email']; ?>" name="user_email" id="user_email">	
 						</td>	
 					</tr>
 					<!-- /E-Mail -->
@@ -158,21 +175,25 @@ $email		=	$_POST['email'];
 					
 						
 					</tbody>
-					<tfoot>
-					<tr>
-						<td></td>	
-						<td>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-sm' name="save" value="save">Save &nbsp; <i class="fa fa-chevron-circle-right"></i></button>
-						<a style="margin-right:10px;" class='btn btn-danger btn-sm ' href="<?php echo $_SERVER['PHP_SELF']."?route=users/my_profile"?>">Cancel &nbsp; <i class="fa fa-chevron-circle-right"></i></a>					
-						</td>	
-					</tr>	
-					</tfoot>
 				</table>
 						
             </div><!-- /.box-body -->
-            <div class="box-footer">
-             <small></small>
-            </div><!-- /.box-footer-->
+			<div class="box-footer">
+					<div class="form-group"  >
+						<div class="col-sm-12">
+							<button style="margin-right:10px;"  type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+								Save &nbsp;
+								<i class="fa fa-chevron-circle-right">
+								</i>
+							</button>
+							<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=users/list_users"?>">
+								Cancel &nbsp;
+								<i class="fa fa-chevron-circle-right">
+								</i>
+							</a>
+						</div>	<!-- /.col -->
+					</div>		<!-- /form-group -->
+				</div><!-- /.box-footer-->
           </div><!-- /.box -->
 		  </form>
      	 </div> <!--/.col-md-9 .col-sm-9 -->
