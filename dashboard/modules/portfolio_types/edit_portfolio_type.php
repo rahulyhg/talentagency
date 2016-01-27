@@ -146,7 +146,7 @@ echo "</pre>";
 							portfolio Type Status:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<select id="portfolio_type_status" name="portfolio_type_status" class="form-control">
+							<select id="portfolio_item_status" name="portfolio_item_status" class="form-control">
 
 								<option value="active" <?php if($portfolio_item_status == "active"){ echo 'selected = "selected" ';} ?> >
 									Active
