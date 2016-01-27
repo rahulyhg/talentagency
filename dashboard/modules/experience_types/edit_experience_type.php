@@ -147,7 +147,7 @@ echo "</pre>";
 							Experience Type Status:
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<select id="experience_type_status" name="experience_type_status" class="form-control">
+							<select id="experience_item_status" name="experience_item_status" class="form-control">
 
 								<option value="active" <?php if($experience_item_status == "active"){ echo 'selected = "selected" ';} ?> >
 									Active
