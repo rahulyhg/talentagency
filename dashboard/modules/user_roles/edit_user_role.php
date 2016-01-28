@@ -37,7 +37,7 @@ if (isset($_POST['save'])){
 
 	DB::update('tams_user_roles', array(
 				'role_name' 		=> $user_role_name,	
-				'role_desc'  => $user_role_description,
+				'role_description'  => $user_role_description,
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 				
