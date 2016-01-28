@@ -3,6 +3,7 @@ if (isset($_POST['save'])){
 	
 	$company_name = $_POST['company_name'];
 	$client_name	= $_POST['client_name'];
+	$client_title =$_POST['client_title'];
 	$client_address = $_POST['client_address'];
 	$client_city = $_POST['client_city'];
 	$client_country = $_POST['client_country'];
@@ -25,7 +26,8 @@ if (isset($_POST['save'])){
 	if(($client_name_exists <> -1) AND ($client_name <> "" )  ){
 	DB::insert('tams_clients', array(
 				'company_name'	=> $company_name,
-				'client_name' 		=> $client_name,	
+				'client_name' 		=> $client_name,
+				'client_title' => $client_title,
 				'client_address'=> $client_address,
 				'client_city' => $client_city,
 				'client_country' => $client_country,
@@ -93,6 +95,14 @@ if (isset($_POST['save'])){
 						  <div class="col-md-9 col-sm-9">
 							 <input class="form-control" type="text" required placeholder="Enter Contact Person Name"
 							 value="" name="client_name" id="client_name">							
+						  </div>
+					</div>
+					
+					 <div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label"> Title / Position :</label>
+						  <div class="col-md-9 col-sm-9">
+							 <input class="form-control" type="text" required placeholder="Enter title/position of client"
+							 value="" name="client_title" id="client_title">							
 						  </div>
 					</div>
 
