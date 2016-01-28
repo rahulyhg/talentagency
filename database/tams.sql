@@ -37,6 +37,7 @@ CREATE TABLE `tams_clients` (
   `client_id` int(11) NOT NULL AUTO_INCREMENT,
   `company_name` varchar(255) NOT NULL,
   `client_name` varchar(255) NOT NULL,
+  `client_title` varchar(100) DEFAULT NULL,
   `client_address` varchar(255) DEFAULT NULL,
   `client_city` varchar(100) NOT NULL,
   `client_country` varchar(100) NOT NULL,
@@ -55,7 +56,7 @@ CREATE TABLE `tams_clients` (
 
 /*Data for the table `tams_clients` */
 
-insert  into `tams_clients`(`client_id`,`company_name`,`client_name`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','Edward Doyle','street #409,queensland, Australia','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-25 20:01:02'),(2,'ABC productions','John Smith','block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions','Alexandra Saint','block # 54, los angeles, united states','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01',NULL,'2016-01-27 12:23:07');
+insert  into `tams_clients`(`client_id`,`company_name`,`client_name`,`client_title`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','Edward Doyle',NULL,'street #409,queensland, Australia','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-25 20:01:02'),(2,'ABC productions','John Smith',NULL,'block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions','Alexandra Saint',NULL,'block # 54, los angeles, united states','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01',NULL,'2016-01-27 12:23:07');
 
 /*Table structure for table `tams_document_types` */
 
@@ -131,7 +132,7 @@ CREATE TABLE `tams_portfolio_items` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`portfolio_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_portfolio_items` */
 
