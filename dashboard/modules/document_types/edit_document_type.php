@@ -153,37 +153,37 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 								<option value="" selected="selected">
 									- Select File Extention
 								</option>
-								<option value=".docx" >
+								<option value=".docx" <?php if($document_type_extension == ".docx"){ echo 'selected = "selected" ';} ?>>
 									MS Word .docx
 								</option>
-								<option value=".doc" >
+								<option value=".doc" <?php if($document_type_extension == ".doc"){ echo 'selected = "selected" ';} ?>>
 									MS Word 97 - 2003 .doc
 								</option>
-								<option value=".xlsx" >
+								<option value=".xlsx" <?php if($document_type_extension == ".xlsx"){ echo 'selected = "selected" ';} ?>>
 									MS Excel .xlsx
 								</option>
-								<option value=".xlsx" >
+								<option value=".xlsx" <?php if($document_type_extension == ".xlsx"){ echo 'selected = "selected" ';} ?>>
 									MS Excel 97 - 2003 .xls
 								</option>
-								<option value=".pptx" >
+								<option value=".pptx" <?php if($document_type_extension == ".pptx"){ echo 'selected = "selected" ';} ?>>
 									MS Power Point .pptx
 								</option>	
-								<option value=".ppt" >
+								<option value=".ppt" <?php if($document_type_extension == ".ppt"){ echo 'selected = "selected" ';} ?>>
 									MS Power Point 97 - 2003 .pptx
 								</option>	
-								<option value=".pdf" >
+								<option value=".pdf" <?php if($document_type_extension == ".pdf"){ echo 'selected = "selected" ';} ?>>
 									PDF .pdf
 								</option>
-								<option value=".txt" >
+								<option value=".txt" <?php if($document_type_extension == ".txt"){ echo 'selected = "selected" ';} ?>>
 									Text File .txt
 								</option>
-								<option value=".jpg" >
+								<option value=".jpg" <?php if($document_type_extension == ".jpg"){ echo 'selected = "selected" ';} ?>>
 									JPG Image File .jpg
 								</option>
-								<option value=".png" >
+								<option value=".png" <?php if($document_type_extension == ".png"){ echo 'selected = "selected" ';} ?>>
 									PNG Image File .png
 								</option>
-								<option value=".bmp" >
+								<option value=".bmp" <?php if($document_type_extension == ".bmp"){ echo 'selected = "selected" ';} ?>>
 									Bitmap Image File .bmp
 								</option>
 							</select>
