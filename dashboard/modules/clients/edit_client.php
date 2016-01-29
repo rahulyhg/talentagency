@@ -2,6 +2,7 @@
 
 $client_id = 0;
 $company_name="";
+$logo_url="";
 $client_name = "";
 $client_title = "";
 $client_address = "";
@@ -29,6 +30,7 @@ if(isset($_GET['client_id'])){
 $client= DB::queryFirstRow($sql);
 $client_id = $client['client_id'];
 $company_name = $client['company_name'];
+$logo_url = $client['logo_url'];
 $client_name = $client['client_name'];
 $client_title = $client['client_title'];
 $client_address = $client['client_address'];
@@ -53,6 +55,7 @@ if(isset($_POST['save']))
  
 $client_id = $_POST['client_id'];
 $company_name =$_POST['company_name'];
+$logo_url =$_POST['logo_url'];
 $client_name = $_POST['client_name'];
 $client_title = $_POST['client_title'];
 $client_address = $_POST['client_address'];
@@ -70,6 +73,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 	if($client_id <> ""){
 		$update = DB::update('tams_clients', array(
 				'company_name'=> $company_name,
+				'logo_url'=> $logo_url,
 				'client_name'=>$client_name,
 				'client_title' => $client_title,
 				'client_address'=> $client_address,
@@ -168,6 +172,21 @@ echo "</pre>";
 						<input class="form-control" type="text" required  value="<?php echo $company_name; ?>" name="company_name" id="company_name">
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Company Logo URL :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control" type="url" required value="<?php echo $logo_url; ?>" name="logo_url" id="logo_url"  >
+								<div class="input-group-addon">
+									<i class="fa fa-user">
+									</i>
+								</div>
+							</div>
+						</div>
+					</div>							
+				  
  
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label">

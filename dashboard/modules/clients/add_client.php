@@ -2,6 +2,7 @@
 if (isset($_POST['save'])){
 	
 	$company_name = $_POST['company_name'];
+	$logo_url =$_POST['logo_url'];
 	$client_name	= $_POST['client_name'];
 	$client_title =$_POST['client_title'];
 	$client_address = $_POST['client_address'];
@@ -26,6 +27,7 @@ if (isset($_POST['save'])){
 	if(($client_name_exists <> -1) AND ($client_name <> "" )  ){
 	DB::insert('tams_clients', array(
 				'company_name'	=> $company_name,
+				'logo_url' => $logo_url,
 				'client_name' 		=> $client_name,
 				'client_title' => $client_title,
 				'client_address'=> $client_address,
@@ -89,6 +91,20 @@ if (isset($_POST['save'])){
 							 value="" name="company_name" id="company_name">							
 						  </div>
 					</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Company Logo URL :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control"   placeholder="Enter Company Logo URL"   type="url"  value="" name="logo_url" id="logo_url"  >
+								<div class="input-group-addon">
+									<i class="fa fa-user">
+									</i>
+								</div>
+							</div>
+						</div>
+					</div>							
 				  
                     <div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Contact Person Name:</label>
