@@ -64,7 +64,7 @@ $client_fax = $_POST['client_fax'];
 $client_email = $_POST['client_email'];
 $client_account_manager = $_POST['client_account_manager']; 
 $client_status = $_POST['client_status']; 
-$last_modified_by = $_SESSION['client_id'];
+$last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
  
 	if($client_id <> ""){
@@ -191,7 +191,7 @@ echo "</pre>";
 									Address:
 						</label>
 						<div class="col-md-9 col-sm-9">
-								<textarea class="form-control"><?php echo $client_address; ?>
+								<textarea id="client_address" name="client_address"  class="form-control"><?php echo $client_address; ?>
 								</textarea>
 						</div>
 					</div>
@@ -1044,7 +1044,7 @@ echo "</pre>";
 									<?php echo getDateTime($created_on,"dtLong"); ?>
 								</strong>by
 								<strong>
-									<?php echo get_client_name($created_by); ?>
+									<?php echo get_user_name($created_by); ?>
 								</strong>.
 							</p>
 							<p>
@@ -1053,7 +1053,7 @@ echo "</pre>";
 									<?php echo getDateTime($last_modified_on,"dtLong"); ?>
 								</strong>by
 								<strong>
-									<?php echo get_client_name($last_modified_by); ?>
+									<?php echo get_user_name($last_modified_by); ?>
 								</strong>.
 							</p>
 						</div>
