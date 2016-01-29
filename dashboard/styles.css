@@ -6,3 +6,6 @@
 .table  {
 	overflow-y: scroll;
 }
+a.pull.btn.btn-info.btn-xs{
+	float:right;
+}
