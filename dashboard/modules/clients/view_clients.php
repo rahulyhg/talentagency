@@ -12,6 +12,7 @@ $tbl->addCell('Address', '', 'header');
 $tbl->addCell('Country', '', 'header');
 $tbl->addCell('Phone No', '', 'header');
 $tbl->addCell('Email', '', 'header');
+$tbl->addCell('Notes','','header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
@@ -29,6 +30,7 @@ $tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
 $tbl->addCell($client['client_email']);
+$tbl->addCell($client['client_id']);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit Client&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
