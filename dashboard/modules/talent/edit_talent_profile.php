@@ -159,18 +159,16 @@ echo "</pre>";
 <div class="col-xs-3"> <!-- required for floating -->
 					  <!-- Nav tabs -->
 					  <ul class="nav nav-tabs tabs-left">
-					    <li class="active"><a href="#basic" data-toggle="tab">Basic Information</a></li>
-					    <li><a href="#work" data-toggle="tab">Work Information</a></li>
-					    <li><a href="#contact" data-toggle="tab">Contact Information</a></li>
-					    <li><a href="#contract" data-toggle="tab">Contract Information</a></li>
-					    <li><a href="#address" data-toggle="tab">Address</a></li>
-					    <li><a href="#salary" data-toggle="tab">Salary</a></li>
-					    <li><a href="#emergency" data-toggle="tab">Emergency Contact Information</a></li>
-					    <li><a href="#leave" data-toggle="tab">Leave Entitlements </a></li>
-					    <li><a href="#payment" data-toggle="tab">Payment Methods  </a></li>
-					    <li><a href="#deductions" data-toggle="tab">Deductions </a></li>
-					    <li><a href="#benefits" data-toggle="tab">Benefits </a></li>
-					    <li><a href="#tax" data-toggle="tab">Tax Information</a></li>
+					    <li class="active"><a href="#basic" data-toggle="tab">Basic Info </a></li>
+					<li><a href="#contact" data-toggle="tab">Contact</a></li>
+					  <li><a href="#employbility" data-toggle="tab">Employbility </a></li> 	
+					    <li><a href="#vitals" data-toggle="tab">Vitals</a></li>
+					    <li><a href="#photos" data-toggle="tab">Photos</a></li>
+					    <li><a href="#leave" data-toggle="tab">Experience</a></li>
+					    <li><a href="#payment" data-toggle="tab">Spoken Languages</a></li>
+					    <li><a href="#deductions" data-toggle="tab">Portfolio</a></li>
+					    <li><a href="#notes" data-toggle="tab">Notes</a></li>
+					    <li><a href="#histoy" data-toggle="tab">History</a></li>
 					  </ul>
 </div>					
 <div class="col-xs-9">
