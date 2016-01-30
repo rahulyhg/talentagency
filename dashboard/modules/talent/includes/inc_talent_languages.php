@@ -16,7 +16,7 @@
             <div class="box-body bg-info">
             <div class="row">
   					
-							<div class="tab-pane active" id="vitals">
+							<div class="tab-pane active" id="languages">
 							   
 							</div><!--/.tab-pane-->
 				</div> <!--/.row-->
