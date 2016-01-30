@@ -199,8 +199,7 @@ DROP TABLE IF EXISTS `tams_talent_comments`;
 CREATE TABLE `tams_talent_comments` (
   `talent_comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
-  `talent_comment` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
