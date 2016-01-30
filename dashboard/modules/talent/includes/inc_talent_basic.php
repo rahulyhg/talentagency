@@ -17,7 +17,7 @@
             <div class="row">
   
   
-  		    <h3 class="box-title">Basic Information</h3>
+  		    <h3 class="normal">Basic Information</h3>
 						<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									First Name:

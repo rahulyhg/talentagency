@@ -17,7 +17,7 @@
             <div class="row">
   					
 							<div class="tab-pane active" id="employbility">
-							    <h3 class="box-title"> Nationality
+							    <h3 class="normal"> Nationality
 								</h3>
 				
 							<div class="form-group">
@@ -785,7 +785,7 @@
 							</div>
 							</div><!--/.tab-pane-->
 							<div class="tab-pane active" id="employbility">
-							    <h3 class="box-title"> Employability
+							    <h3 class="normal"> Employability
 								</h3>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">

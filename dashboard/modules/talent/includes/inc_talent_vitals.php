@@ -18,7 +18,7 @@
             <div class="row">
   					
 							<div class="tab-pane active" id="vitals">
-							    <h3 class="box-title"> Vitals
+							    <h3 class="normal"> Vitals
 								</h3>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
