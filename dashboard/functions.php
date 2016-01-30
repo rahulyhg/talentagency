@@ -1,6 +1,6 @@
 <?php
 /**
-* Hel per Functions
+* Helper Functions
  */
 
 // Load Configuration File
