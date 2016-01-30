@@ -39,7 +39,25 @@ $tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
 $tbl->addCell($client['client_email']);
-$tbl->addCell("Latest Comment Goes here..");
+
+
+
+$comment_sql = "SELECT 
+			comment
+			FROM 
+			tams_client_comments
+			WHERE client_id = '".$client['client_id']."' ORDER BY created_on DESC";
+
+$client_comment =  left(DB::queryFirstField($comment_sql), 50);
+
+if($client_comment){
+
+$tbl->addCell($client_comment."...<a  href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View More</a>");	
+} else {
+	$tbl->addCell("<a  href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>Add Note</a>");	
+}
+
+
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit Client&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
