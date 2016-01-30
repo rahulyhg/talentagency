@@ -192,6 +192,24 @@ CREATE TABLE `tams_talent` (
 
 insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`events`,`notes`,`experience`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`area_of_residence`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo_url`,`cv_url`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,NULL,NULL,NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com',NULL,NULL,NULL,NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 20:38:04','1','2016-01-25 20:38:04'),(3,'Alexandra ','Saint','1991-05-09','Female','california, united states						','98706565674','saint@gmail.com',NULL,NULL,NULL,NULL,'United States',0,'',0,1,1,'98787765675',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-27 06:47:56','1','2016-01-27 06:47:56');
 
+/*Table structure for table `tams_talent_comments` */
+
+DROP TABLE IF EXISTS `tams_talent_comments`;
+
+CREATE TABLE `tams_talent_comments` (
+  `talent_comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
+  `talent_comment` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`talent_comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tams_talent_comments` */
+
 /*Table structure for table `tams_talent_documents` */
 
 DROP TABLE IF EXISTS `tams_talent_documents`;
@@ -278,24 +296,6 @@ CREATE TABLE `tams_talent_portfolio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_portfolio` */
-
-/*Table structure for table `tams_user_comments` */
-
-DROP TABLE IF EXISTS `tams_user_comments`;
-
-CREATE TABLE `tams_user_comments` (
-  `talent_comment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
-  `comment` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `created_by` varchar(50) DEFAULT NULL,
-  `created_on` datetime DEFAULT NULL,
-  `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` datetime DEFAULT NULL,
-  PRIMARY KEY (`talent_comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `tams_user_comments` */
 
 /*Table structure for table `tams_user_roles` */
 
