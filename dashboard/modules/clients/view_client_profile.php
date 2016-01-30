@@ -256,21 +256,7 @@ $client_comments = DB::query($comment_sql);
 
 				  
                   <div class="box-body bg-info ">
-<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client_id; ?>" >
-<div class="form-group" style="margin:10px;">
-			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
-</div>
-		<!-- Hidden Fields -->
-					<input type="hidden" name="form_name" id="form_name" value="add_client_comments" />
-					<input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>" />
-					 
-					<!-- /Hidden Fields --> 
 
-<div class="form-group" style="margin:10px;" >
-					<button type="submit" name="save" id="save_note_btn" value="save" class="note  pull-right btn btn-default btn-lg">Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></button> 
-			 </div>
-			 </form>  
-			 <hr>
 			 <p>
 			 <div class="box-comments">
 				 <?php
@@ -306,7 +292,21 @@ $client_comments = DB::query($comment_sql);
 			</div>
 			
 			</p>
-			
+		<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client_id; ?>" >
+<div class="form-group" style="margin:10px;">
+			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
+</div>
+		<!-- Hidden Fields -->
+					<input type="hidden" name="form_name" id="form_name" value="add_client_comments" />
+					<input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>" />
+					 
+					<!-- /Hidden Fields --> 
+
+<div class="form-group" style="margin:10px;" >
+					<button type="submit" name="save" id="save_note_btn" value="save" class="note  pull-right btn btn-default btn-lg">Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></button> 
+			 </div>
+			 </form>  
+ 	
 			
 				</div>	
 				
