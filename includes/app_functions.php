@@ -65,6 +65,35 @@ function get_user_name($user_id){
 	return $user_name;
 }
 
+function get_user_avatar_url ($user_id, $imageWidth = '150'){
+
+$user_avatar_url = DB::queryFirstField("SELECT user_avatar_url FROM tams_users");
+
+if($user_avatar_url == "") {
+	
+	
+$user_email = DB::queryFirstField("SELECT user_email FROM tams_users");
+	
+$userMail = $user_email;
+
+ 
+
+$user_avatar_url = 'http://www.gravatar.com/avatar/'.md5($userMail).'fs='.$imageWidth;
+} 
+
+
+return $user_avatar_url;
+
+}
+
+function get_user_full_name($user_id) {
+	
+	return DB::queryFirstField('SELECT CONCAT(`user_title`, " ",`first_name`," " ,`last_name`) AS fullname FROM tams_users');
+	
+	
+}
+
+
 function get_client_name($client_id){
 	$client_name = DB::queryFirstField("SELECT client_name from tams_clients WHERE client_id = $client_id");
 	return $client_name;

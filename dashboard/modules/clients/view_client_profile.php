@@ -272,14 +272,29 @@ $client_comments = DB::query($comment_sql);
 			 </form>  
 			 <hr>
 			 <p>
+			 <div class="box-comments">
 				 <?php
 				 if ($client_comments) {
 				 	foreach($client_comments as $comment) {
-						print_r($comment);
+						?>
+						<div class="box-comment">
+					
+							<img class="img-circle img-sm" alt="User Image" src="<?php echo get_user_avatar_url($comment['created_by'],'50'); ?>" />
+<div class="comment-text">
+							<span class="username">
+								<?php echo get_user_full_name($comment['created_by']); ?>
+								<span class="text-muted pull-right">
+									<?php echo getDateTime($comment['created_on'],"dtShort"); ?>
+								</span>
+							</span>
+							<?php echo $comment['comment']; ?>
+</div>						
+						</div>
+						<?php
 					}
 				 } else {
 				 
-				  echo "No Client Comments Added";  
+				  echo '<div class="box-comment"><div class="comment-text">No Client Notes Added</div></div>';  
 				  	
 				 }
 				 
@@ -287,6 +302,9 @@ $client_comments = DB::query($comment_sql);
 				  
 				  
 				  ?>
+			
+			</div>
+			
 			</p>
 			
 			
