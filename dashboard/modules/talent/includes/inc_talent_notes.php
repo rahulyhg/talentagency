@@ -10,7 +10,7 @@ if(isset($_POST['form_name'])){
 	$created_on = getDateTime(NULL ,"mySQL");
 	$last_modified_by = $_SESSION['user_id'];
 	$last_modified_on = getDateTime(NULL ,"mySQL");
-	if( $talent_comment <> ""   ){
+	if( $comment <> ""   ){
 	DB::insert('tams_talent_comments', array(
 				'talent_id' 		=> $talent_id,
 				'talent_comment_id' => $talent_comment_id,
