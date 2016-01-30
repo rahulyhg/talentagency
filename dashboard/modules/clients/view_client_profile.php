@@ -237,9 +237,15 @@ $last_modified_on = $client_comment['last_modified_on'];
               </div>
             </div>
 			<div class="row">
-					<input class="form-control" required placeholder="Enter Comment to post" value="" name="comment" id="comment" />
-									<a class='pull pull-left btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>
-				  </div>
+					<textarea id="comment" class="form-control" required placeholder="Enter Comment to post" value="" name="comment" id="comment" ></textarea>
+									<a class='note pull pull-right btn btn-info btn-xs'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a> 
+				</div>
+<script type="text/javascript">
+$("#comment").hide(); // or you can have hidden w/ CSS
+$(".note").click(function(){
+      $("#comment").show("slow");
+});
+</script>
 				  <h4> Latest Comments</h4>
                   <div class="box-body bg-info ">
 					
