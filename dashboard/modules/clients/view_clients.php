@@ -39,7 +39,7 @@ $tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
 $tbl->addCell($client['client_email']);
-$tbl->addCell($client_comment[SELECT LEFT('comment',40) FROM tams_client_comments]);
+$tbl->addCell("Latest Comment Goes here..");
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit Client&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }

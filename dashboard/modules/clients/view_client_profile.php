@@ -1,8 +1,30 @@
 <?php
 $client_id = '0';
+if(isset($_POST['form_name'])){
+	
+	$client_id = $_POST['client_id'];
+	$comment = $_POST['comment'];
+	$created_by = $_SESSION['user_id'];
+	$created_on = getDateTime(NULL ,"mySQL");
+	$last_modified_by = $_SESSION['user_id'];
+	$last_modified_on = getDateTime(NULL ,"mySQL");
+	if( $comment <> ""   ){
+	DB::insert('tams_client_comments', array(
+				'client_id' 		=> $client_id,	
+				'comment'			=> $comment,
+				'created_by' 		=> $created_by,
+				'created_on'	 	=> $created_on,
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+				
+			)
+			); 
+	} 
+	 
+	 
+}
 
-if(isset($_GET['client_id']))
-{
+if(isset($_GET['client_id'])){
 	$client_id = $_GET['client_id'];
 }
 
@@ -13,7 +35,7 @@ if(isset($_GET['client_id']))
 				WHERE client_id = $client_id ;";
 			
 $client = DB::queryFirstRow($sql);
-////print_r($employee);
+////print_r($client);
 //Basic Information
 $company_name = $client['company_name'];
 $logo_url = $client['logo_url'];
@@ -33,20 +55,15 @@ $created_by = $client['created_by'];
 $last_modified_by = $client['last_modified_by'];
 $last_modified_on = $client['last_modified_on'];
 
-	$mysql="SELECT 
+$comment_sql = "SELECT 
 			* 
 			FROM 
 			tams_client_comments
-			WHERE client_id = $client_id;";
+			WHERE client_id = $client_id";
 
-$client_comment = DB::queryFirstRow($mysql);
-$client_comment_id = $client_comment['client_comment_id'];
-$client_id = $client_comment ['client_id'];
-$comment = $client_comment['comment'];
-$created_on = $client_comment['created_on'];
-$created_by = $client_comment['created_by'];
-$last_modified_by = $client_comment['last_modified_by'];
-$last_modified_on = $client_comment['last_modified_on'];
+$client_comments = DB::query($comment_sql);
+
+
 ?>
 <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -236,25 +253,48 @@ $last_modified_on = $client_comment['last_modified_on'];
               		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-			<div class="row">
-					<textarea id="comment" class="form-control" required placeholder="Enter Comment to post" value="" name="comment" id="comment" ></textarea>
-									<a class='note pull pull-right btn btn-info btn-xs'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a> 
-				</div>
-<script type="text/javascript">
-$("#comment").hide(); // or you can have hidden w/ CSS
-$(".note").click(function(){
-      $("#comment").show("slow");
-});
-</script>
-				  <h4> Latest Comments</h4>
-                  <div class="box-body bg-info ">
-					
-				 <?php echo $comment;  ?><br>
-				  <span></span>
-				
-				  </div>
+
 				  
-          </div><!-- /.box Address-->          
+                  <div class="box-body bg-info ">
+<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client_id; ?>" >
+<div class="form-group" style="margin:10px;">
+			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
+</div>
+		<!-- Hidden Fields -->
+					<input type="hidden" name="form_name" id="form_name" value="add_client_comments" />
+					<input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>" />
+					 
+					<!-- /Hidden Fields --> 
+
+<div class="form-group" style="margin:10px;" >
+					<button type="submit" name="save" id="save_note_btn" value="save" class="note  pull-right btn btn-default btn-lg">Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></button> 
+			 </div>
+			 </form>  
+			 <hr>
+			 <p>
+				 <?php
+				 if ($client_comments) {
+				 	foreach($client_comments as $comment) {
+						print_r($comment);
+					}
+				 } else {
+				 
+				  echo "No Client Comments Added";  
+				  	
+				 }
+				 
+				  
+				  
+				  
+				  ?>
+			</p>
+			
+			
+				</div>	
+				
+			 
+				  
+          </div><!-- /.box Comments-->          
     
 </div> <!--/.col-md-12 col-sm-12-->
 			  
