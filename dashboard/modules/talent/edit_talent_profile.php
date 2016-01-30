@@ -15,6 +15,7 @@ $passport_copy_attached    = 0;
 $noc_required              = 0;
 $noc_copy_attached         = 0;
 $sponsors_id_copy_attached = 0;
+$message = "";
 
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
@@ -164,9 +165,9 @@ echo "</pre>";
 					  <li><a href="#employbility" data-toggle="tab">Employbility </a></li> 	
 					    <li><a href="#vitals" data-toggle="tab">Vitals</a></li>
 					    <li><a href="#photos" data-toggle="tab">Photos</a></li>
-					    <li><a href="#leave" data-toggle="tab">Experience</a></li>
-					    <li><a href="#payment" data-toggle="tab">Spoken Languages</a></li>
-					    <li><a href="#deductions" data-toggle="tab">Portfolio</a></li>
+					    <li><a href="#experience" data-toggle="tab">Experience</a></li>
+					    <li><a href="#languages" data-toggle="tab">Spoken Languages</a></li>
+					    <li><a href="#portfolio" data-toggle="tab">Portfolio</a></li>
 					    <li><a href="#notes" data-toggle="tab">Notes</a></li>
 					    <li><a href="#histoy" data-toggle="tab">History</a></li>
 					  </ul>
@@ -174,65 +175,16 @@ echo "</pre>";
 <div class="col-xs-9">
   <!-- Tab panes -->
   <div class="tab-content">
-					  <!-- Basic Information Form Start -->
+					  <!-- Basic Information Tab Panel Start -->
 					    <div class="tab-pane active" id="basic">
-							    <h3 class="box-title">Basic Information</h3>
-						<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									First Name:
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required
-									value="<?php echo $first_name; ?>" name="first_name" id="first_name" placeholder="Enter First Name">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Last Name
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required placeholder="Enter Last Name"
-									value="<?php echo $last_name; ?>" name="last_name" id="last_name">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Date of Birth:
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<div class="input-group">
-
-										<input   class="date input-group form-control"     type="date" required value="<?php echo $dob; ?>" name="dob" id="dob">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar">
-											</i>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Sex:
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<select id="sex" name="sex" class="form-control">
-										<option value="" >
-											-Select gendar-
-										</option>
-										<option value="Male" <?php if($sex == "Male"){ echo 'selected = "selected" ';}?>>
-											Male
-										</option>
-										<option value="Female" <?php if($sex == "Female"){ echo 'selected = "selected" ';}?>>
-											Female
-										</option>
-									</select>
-								</div>
-							</div>
+<?php include("includes/inc_talent_basic.php"); ?>
 						</div><!-- /.col-md-6 -->
-
-					</div> <!-- /.row -->
-							<div class="tab-pane active" id="basic">
+					  <!-- Contact Information Tab Panel Start -->
+					    <div class="tab-pane active" id="contact">
+<?php include("includes/inc_talent_contact.php"); ?>
+						</div><!-- /.col-md-6 -->
+				
+							<div class="tab-pane active" id="employbility">
 							    <h3 class="box-title"> Nationality
 								</h3>
 				
@@ -1065,7 +1017,7 @@ echo "</pre>";
 
 
 						</div><!-- /.tab-pane -->
-
+	 
 <!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="talent_form_step_1" />
 <!-- /Hidden Fields -->
@@ -1086,12 +1038,9 @@ echo "</pre>";
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 					    </div><!-- Basic Information Form End -->
-					    <!-- Work information Form Start -->
-					    <div class="tab-pane" id="work">
-							    <h3 class="box-title">Work Information</h3>
-					    </div><!-- Work information Form End -->
+ 
 	</div>
-			<!--<?php echo $message; ?>-->
+		 <?php echo $message; ?> 
 </div>					    
 					 
 					</div> <!-- /.row -->
