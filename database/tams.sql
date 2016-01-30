@@ -21,13 +21,15 @@ CREATE TABLE `tams_client_comments` (
   `client_id` int(11) NOT NULL COMMENT 'Foreign Key',
   `comment` varchar(255) NOT NULL,
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`client_comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_client_comments` */
+
+insert  into `tams_client_comments`(`client_comment_id`,`client_id`,`comment`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,'Far far away, behind the word mountains far from the countries Vokalia and Consonantia,there live the blind texts. ',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `tams_clients` */
 
@@ -57,7 +59,7 @@ CREATE TABLE `tams_clients` (
 
 /*Data for the table `tams_clients` */
 
-insert  into `tams_clients`(`client_id`,`company_name`,`logo_url`,`client_name`,`client_title`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography',NULL,'Edward Doyle','Managing Director','Al-Sadeeq Akbar\r\nBWP Road\r\n																','Lodhran','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-29 11:24:45'),(2,'ABC productions',NULL,'John Smith','Advertising sales executive','block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions',NULL,'Alexandra Saint','Production Manager','block # 54, los angeles, united states								','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01','1','2016-01-29 12:37:28');
+insert  into `tams_clients`(`client_id`,`company_name`,`logo_url`,`client_name`,`client_title`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','http://www.gravatar.com/avatar/dd242ad63854fb13dfd','Edward Doyle','Managing Director','street # 403,main road,queens land				','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-29 20:07:49'),(2,'ABC productions',NULL,'John Smith','Advertising sales executive','block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions',NULL,'Alexandra Saint','Production Manager','block # 54, los angeles, united states								','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01','1','2016-01-29 12:37:28');
 
 /*Table structure for table `tams_document_types` */
 
