@@ -1,6 +1,7 @@
 <?php
 
 ?>
+<form id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
  <!-- Basic Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -72,9 +73,30 @@
 							</div>
   
               </div> <!--/.body-box-->
- 		
+ 				<div class="box-footer">
+ 								<div class="form-group">
+					<div class="col-sm-12">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/view_talents"?>">
+							Cancel &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</a>
+						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+							Save &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</button>
+					</div>	<!-- /.col -->
+				</div>		<!-- /form-group -->
+				<small>
+				</small>
+			</div><!-- /.box-footer-->	
              </div> <!--/.row-->
-   
+   	 
+
 	 
           </div><!-- /.box Basic Information-->
-					
+			<!-- Hidden Fields -->
+<input type="hidden" name="form_name" id="form_name" value="edit_talent_basic_info" />
+<!-- /Hidden Fields -->
+</form>		

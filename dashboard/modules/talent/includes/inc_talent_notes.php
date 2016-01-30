@@ -106,7 +106,7 @@ $talent_comments = DB::query($comment_sql);
 			</div>
 			
 			</p>
-		<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/process_talent_form&talent_id=".$talent_id; ?>" >
+		<form role="form" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <div class="form-group" style="margin:10px;">
 			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
 </div>
