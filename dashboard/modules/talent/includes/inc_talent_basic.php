@@ -71,14 +71,9 @@
 								</div>
 							</div>
   
-  
-  
-  
-  
-  
-              </div>
+              </div> <!--/.body-box-->
  		
-             </div> 
+             </div> <!--/.row-->
    
 	 
           </div><!-- /.box Basic Information-->
