@@ -236,11 +236,16 @@ $last_modified_on = $client_comment['last_modified_on'];
               		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
+			<div class="row">
+					<input class="form-control" required placeholder="Enter Comment to post" value="" name="comment" id="comment" />
+									<a class='pull pull-left btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>
+				  </div>
+				  <h4> Latest Comments</h4>
                   <div class="box-body bg-info ">
-			
+					
 				 <?php echo $comment;  ?><br>
-				<a class='pull pull-right btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>
 				  <span></span>
+				
 				  </div>
 				  
           </div><!-- /.box Address-->          

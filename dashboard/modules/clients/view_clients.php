@@ -16,7 +16,16 @@ $tbl->addCell('Notes','','header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
- 
+$mysql ='SELECT * FROM tams_client_comments WHERE client_id ="$client_id"'; 
+$client_comment = DB::queryFirstRow($mysql);
+$client_comment_id = $client_comment['client_comment_id'];
+$client_id = $client_comment ['client_id'];
+$comment = $client_comment['comment'];
+$created_on = $client_comment['created_on'];
+$created_by = $client_comment['created_by'];
+$last_modified_by = $client_comment['last_modified_by'];
+$last_modified_on = $client_comment['last_modified_on'];
+
 $sql = 'SELECT * FROM tams_clients WHERE client_status = "active"';
 $get_client_name= DB::query($sql);
 foreach($get_client_name as $client) { 
@@ -30,7 +39,7 @@ $tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
 $tbl->addCell($client['client_email']);
-$tbl->addCell($client['client_id']);
+$tbl->addCell($client_comment[SELECT LEFT('comment',40) FROM tams_client_comments]);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit Client&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }
