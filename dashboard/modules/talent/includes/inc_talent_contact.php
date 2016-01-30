@@ -13,7 +13,7 @@
               		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            <div class="wrapper">
+      
             <div class="box-body bg-info">
             <div class="row">
   					<!-- Form to Edit and display contact information goes here -->
@@ -59,5 +59,4 @@
               </div>
  		
              </div> 
-   </div>
           </div><!-- /.box Contact Information-->

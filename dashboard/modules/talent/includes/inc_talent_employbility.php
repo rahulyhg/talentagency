@@ -783,7 +783,10 @@
 									value="<?php echo $qatari_id; ?>" name="qatari_id" id="qatari_id">
 								</div>
 							</div>
-
+							</div><!--/.tab-pane-->
+							<div class="tab-pane active" id="employbility">
+							    <h3 class="box-title"> Employability
+								</h3>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Is Qatari?
