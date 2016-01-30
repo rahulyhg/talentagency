@@ -33,6 +33,20 @@ $created_by = $client['created_by'];
 $last_modified_by = $client['last_modified_by'];
 $last_modified_on = $client['last_modified_on'];
 
+	$mysql="SELECT 
+			* 
+			FROM 
+			tams_client_comments
+			WHERE client_id = $client_id;";
+
+$client_comment = DB::queryFirstRow($mysql);
+$client_comment_id = $client_comment['client_comment_id'];
+$client_id = $client_comment ['client_id'];
+$comment = $client_comment['comment'];
+$created_on = $client_comment['created_on'];
+$created_by = $client_comment['created_by'];
+$last_modified_by = $client_comment['last_modified_by'];
+$last_modified_on = $client_comment['last_modified_on'];
 ?>
 <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -224,7 +238,7 @@ $last_modified_on = $client['last_modified_on'];
             </div>
                   <div class="box-body bg-info ">
 			
-				 <?php echo $client['comment'];  ?><br>
+				 <?php echo $comment;  ?><br>
 				<a class='pull pull-right btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>
 				  <span></span>
 				  </div>
