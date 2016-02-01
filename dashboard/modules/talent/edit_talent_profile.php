@@ -238,39 +238,39 @@ echo "</pre>";
 <?php include("includes/inc_talent_basic.php"); ?>
 						</div><!-- /.col-md-6 -->
 					  <!-- Contact Information Tab Panel Start -->
-					    <div class="tab-pane active" id="contact">
+					    <div class="tab-pane" id="contact">
 <?php include("includes/inc_talent_contact.php"); ?>
 						</div><!-- /.col-md-6 -->
 					<!-- Employability Information Tab Panel Start -->
-					    <div class="tab-pane active" id="employbility">
+					    <div class="tab-pane" id="employbility">
 <?php include("includes/inc_talent_employbility.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Vitals Information Tab Panel Start -->
-					    <div class="tab-pane active" id="vitals">
+					    <div class="tab-pane" id="vitals">
 <?php include("includes/inc_talent_vitals.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Photos Information Tab Panel Start -->
-					    <div class="tab-pane active" id="photos">
+					    <div class="tab-pane" id="photos">
 <?php include("includes/inc_talent_photos.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Experience Information Tab Panel Start -->
-					    <div class="tab-pane active" id="experience">
+					    <div class="tab-pane" id="experience">
 <?php include("includes/inc_talent_experience.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Languages Information Tab Panel Start -->
-					    <div class="tab-pane active" id="languages">
+					    <div class="tab-pane" id="languages">
 <?php include("includes/inc_talent_languages.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Portfolio Information Tab Panel Start -->
-					    <div class="tab-pane active" id="portfolio">
+					    <div class="tab-pane" id="portfolio">
 <?php include("includes/inc_talent_portfolio.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Notes Information Tab Panel Start -->
-					    <div class="tab-pane active" id="notes">
+					    <div class="tab-pane" id="notes">
 <?php include("includes/inc_talent_notes.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- History Information Tab Panel Start -->
-					    <div class="tab-pane active" id="history">
+					    <div class="tab-pane" id="history">
 <?php include("includes/inc_talent_history.php"); ?>
 						</div><!-- /.col-md-6 -->
 
