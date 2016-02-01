@@ -25,7 +25,7 @@ $get_talents = DB::query($sql);
 foreach($get_talents as $talent) { 
 $tbl->addRow();
 $tbl->addCell($talent['talent_id']);
-$tbl->addCell($talent['dob']);
+$tbl->addCell(getAge($talent['dob']));
 $tbl->addCell($talent['first_name']);
 $tbl->addCell($talent['last_name']);
 $tbl->addCell($talent['email_id']);
@@ -64,7 +64,7 @@ $tbl2->addCell($talent['first_name']);
 $tbl2->addCell($talent['last_name']);
 $tbl2->addCell($talent['sex']);
 $tbl2->addCell($talent['nationality']);
-$tbl2->addCell($talent['dob']);
+$tbl2->addCell(getAge($talent['dob']));
 $tbl2->addCell($talent['mobile_no']);
 $tbl2->addCell($talent['email_id']);
 $tbl2->addCell($talent['registration_date']);
