@@ -112,7 +112,7 @@ $talent_comments = DB::query($comment_sql);
 </div>
 		<!-- Hidden Fields -->
 					<input type="hidden" name="form_name" id="form_name" value="add_talent_comments" />
-					<input type="hidden" name="client_id" id="client_id" value="<?php echo $talent_id; ?>" />
+					<input type="hidden" name="talent_id" id="talent_id" value="<?php echo $talent_id; ?>" />
 					 
 					<!-- /Hidden Fields --> 
 
