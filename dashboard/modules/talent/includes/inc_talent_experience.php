@@ -119,7 +119,7 @@ $talent_experiences = DB::query($experience_sql);
 </script>
 
 
-
+			</div> <!--/.form-group-->
 
 		 <?php
 
@@ -127,7 +127,7 @@ $talent_experiences = DB::query($experience_sql);
 
 		?>
 
-			</div> <!--/.form-group-->
+
 			</div> <!--/.row-->
 			<div class="box-footer">
 				<div class="form-group">

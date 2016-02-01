@@ -110,14 +110,14 @@ $talent_languages = DB::query($language_sql);
 </script>
 
 
-
+		</div> <!--/.form-group-->
 
 		 <?php
 
 		}  // End if $experience_items
 
 		?>   
-		</div> <!--/.form-group-->
+
 							
 				</div> <!--/.row-->
 				<div class="box-footer">
