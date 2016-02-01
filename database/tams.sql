@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.6.21 : Database - teamsutlej_talent
+SQLyog Ultimate v10.00 Beta1
+MySQL - 5.6.15-log : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -214,14 +214,17 @@ CREATE TABLE `tams_talent_comments` (
 DROP TABLE IF EXISTS `tams_talent_documents`;
 
 CREATE TABLE `tams_talent_documents` (
-  `document_type_id` int(11) NOT NULL AUTO_INCREMENT,
-  `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
-  `document_path` varchar(50) DEFAULT NULL,
+  `talent_document_id` int(11) NOT NULL AUTO_INCREMENT,
+  `document_type_id` int(11) NOT NULL,
+  `talent_id` int(11) NOT NULL,
+  `document_description` varchar(255) DEFAULT NULL,
+  `document_path` varchar(255) DEFAULT NULL,
+  `document_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
-  PRIMARY KEY (`document_type_id`)
+  `last_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`talent_document_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_documents` */
@@ -232,12 +235,13 @@ DROP TABLE IF EXISTS `tams_talent_experience`;
 
 CREATE TABLE `tams_talent_experience` (
   `talent_experience_item_id` int(11) NOT NULL AUTO_INCREMENT,
-  `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
-  `talent_experience_item_status` varchar(50) DEFAULT NULL,
+  `talent_id` int(11) DEFAULT NULL,
+  `experience_item_id` int(11) DEFAULT NULL,
+  `experience_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_experience_item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -248,14 +252,15 @@ CREATE TABLE `tams_talent_experience` (
 DROP TABLE IF EXISTS `tams_talent_language`;
 
 CREATE TABLE `tams_talent_language` (
-  `language_id` int(11) NOT NULL AUTO_INCREMENT,
-  `talent_id` int(11) NOT NULL COMMENT 'Foreign Key',
-  `talent_language_status` varchar(50) DEFAULT NULL,
+  `talent_language_id` int(11) NOT NULL AUTO_INCREMENT,
+  `talent_id` int(11) NOT NULL,
+  `language_id` int(11) DEFAULT NULL,
+  `language_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
-  PRIMARY KEY (`language_id`)
+  `last_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`talent_language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_language` */
@@ -265,15 +270,15 @@ CREATE TABLE `tams_talent_language` (
 DROP TABLE IF EXISTS `tams_talent_photos`;
 
 CREATE TABLE `tams_talent_photos` (
+  `talent_photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `talent_id` int(11) NOT NULL,
-  `photo_id` int(11) NOT NULL AUTO_INCREMENT,
-  `photo_url` varchar(50) DEFAULT NULL,
+  `photo_path` varchar(50) DEFAULT NULL,
   `photo_caption` varchar(255) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
-  PRIMARY KEY (`photo_id`)
+  PRIMARY KEY (`talent_photo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_photos` */
@@ -283,18 +288,37 @@ CREATE TABLE `tams_talent_photos` (
 DROP TABLE IF EXISTS `tams_talent_portfolio`;
 
 CREATE TABLE `tams_talent_portfolio` (
-  `portfolio_item_id` int(11) NOT NULL AUTO_INCREMENT,
-  `talent_id` int(11) DEFAULT NULL COMMENT 'Foreign Key',
-  `talent_portfolio_detail` varchar(255) DEFAULT NULL,
-  `talent_portfolio_item_url` varchar(50) DEFAULT NULL,
+  `talent_portfolio_item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `talent_id` int(11) NOT NULL,
+  `portfolio_item_id` int(11) NOT NULL,
+  `portfolio_item_description` varchar(255) DEFAULT NULL,
+  `talent_portfolio_item_url` varchar(255) DEFAULT NULL,
+  `portfolio_item_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
-  `created_on` date DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
-  `last_modified_on` date DEFAULT NULL,
-  PRIMARY KEY (`portfolio_item_id`)
+  `last_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`talent_portfolio_item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_portfolio` */
+
+/*Table structure for table `tams_user_comments` */
+
+DROP TABLE IF EXISTS `tams_user_comments`;
+
+CREATE TABLE `tams_user_comments` (
+  `user_comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `created_by` varchar(50) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tams_user_comments` */
 
 /*Table structure for table `tams_user_roles` */
 
