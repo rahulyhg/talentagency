@@ -100,11 +100,11 @@ function get_client_name($client_id){
 }
 
 function get_experience_item_name($experience_item_id){
-	$experience_item_id = DB:: queryFirstField ("SELECT experience_item_name from tams_experience_items WHERE experience_item_id = $experience_item_id");
+	$experience_item_name = DB:: queryFirstField ("SELECT experience_item_name from tams_experience_items WHERE experience_item_id = $experience_item_id");
 	return $experience_item_name;
 	}
 function get_experience_item_desc ($experience_item_id){
-	$experience_item_id = DB::queryFirstField ("SELECT experience_item_desc from tams_experience_items WHERE experience_item_id = $experience_item_id");
+	$experience_item_desc = DB::queryFirstField ("SELECT experience_item_desc from tams_experience_items WHERE experience_item_id = $experience_item_id");
 	return $experience_item_desc;
 	
 }
