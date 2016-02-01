@@ -3,7 +3,7 @@
 
 
 // List of Experiences
-$sql    = "SELECT `experience_item_id`,`experience_item_name`, `experience_item_desc` FROM `tams_experience_items` WHERE `experience_item_status` = 'active'";
+$sql    = "SELECT `experience_item_id`,`experience_item_name`, `experience_item_desc` FROM `tams_experience_items` WHERE (`experience_item_status` = 'active') AND ( tams_experience_items.`experience_item_id` NOT IN (SELECT experience_item_id FROM tams_talent_experience WHERE talent_id=".$talent_id."))";
 $experience_items = DB::query($sql);
 
 
