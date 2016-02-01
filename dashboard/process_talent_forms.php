@@ -31,13 +31,8 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#experience');	
 			
 		break;
-		
-		default:
-		 echo "Unable to identify the form";
-		 
-	} 
-		switch($_POST['form_name']){
-		case "edit_talent_language_info":
+	
+	case "edit_talent_language_info":
 		$talent_id = $_POST['talent_id'];
 		$language_id = $_POST['language_id'];
 		$created_by = $_SESSION['user_id'];
@@ -57,16 +52,18 @@ if(isset($_POST['form_name'])) {
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
 						)	
-			);
-		}	
+			);	
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#language');	
 			
-		break;
+		break;		
 		
 		default:
 		 echo "Unable to identify the form";
-		 
+		
+		
 	} 
+		
+ 
 	
 	
 	

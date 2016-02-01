@@ -1,7 +1,7 @@
 <?php
 
 // List of Languages
-$sql    = "SELECT `language_id`,`language_name` FROM `tams_languages` WHERE `language_status` = 'active'";
+$sql    = "SELECT `language_id`,`language_name` FROM `tams_languages` WHERE (`language_status` = 'active') AND ( tams_languages.`language_id` NOT IN (SELECT language_id FROM tams_talent_language WHERE talent_id=".$talent_id."))";
 $languages = DB::query($sql);
 
 
@@ -37,8 +37,6 @@ $talent_languages = DB::query($language_sql);
             
             <div class="box-body bg-info">
             <div class="row">
-  					
-			<div class="tab-pane active" id="languages">
 							
 		<?php
 		if($talent_languages )
@@ -120,7 +118,6 @@ $talent_languages = DB::query($language_sql);
 
 		?>   
 		</div> <!--/.form-group-->
-							</div><!--/.tab-pane-->
 							
 				</div> <!--/.row-->
 				<div class="box-footer">
