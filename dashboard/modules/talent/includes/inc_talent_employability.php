@@ -17,7 +17,7 @@
             <div class="box-body bg-info">
             <div class="row">
   					
-							<div class="tab-pane active" id="employbility">
+							<div class="tab-pane active" id="employability">
 							    <h3 class="normal"> Nationality
 								</h3>
 				
@@ -872,6 +872,6 @@
  	
           </div><!-- /.box Employability Information-->
 				<!-- Hidden Fields -->
-<input type="hidden" name="form_name" id="form_name" value="edit_talent_employbility_info" />
+<input type="hidden" name="form_name" id="form_name" value="edit_talent_employability_info" />
 <!-- /Hidden Fields -->
 </form>	
