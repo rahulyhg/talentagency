@@ -98,4 +98,14 @@ function get_client_name($client_id){
 	$client_name = DB::queryFirstField("SELECT client_name from tams_clients WHERE client_id = $client_id");
 	return $client_name;
 }
+
+function get_experience_item_name($experience_item_id){
+	$experience_item_id = DB:: queryFirstField ("SELECT experience_item_name from tams_experience_items WHERE experience_item_id = $experience_item_id");
+	return $experience_item_name;
+	}
+function get_experience_item_desc ($experience_item_id){
+	$experience_item_id = DB::queryFirstField ("SELECT experience_item_desc from tams_experience_items WHERE experience_item_id = $experience_item_id");
+	return $experience_item_desc;
+	
+}
  ?>
