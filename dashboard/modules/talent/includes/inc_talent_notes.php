@@ -132,11 +132,6 @@ $talent_comments = DB::query($comment_sql);
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
