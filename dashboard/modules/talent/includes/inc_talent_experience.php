@@ -1,6 +1,9 @@
 <?php
+
+
+
 // List of Experiences
-$sql              = "SELECT `experience_item_id`,`experience_item_name`, `experience_item_desc` FROM `tams_experience_items` WHERE `experience_item_status` = 'active'";
+$sql    = "SELECT `experience_item_id`,`experience_item_name`, `experience_item_desc` FROM `tams_experience_items` WHERE `experience_item_status` = 'active'";
 $experience_items = DB::query($sql);
 
 
@@ -17,7 +20,7 @@ FROM
 tams_talent_experience
 WHERE talent_id = $talent_id";
 
-$talent_experience = DB::query($experience_sql);
+$talent_experiences = DB::query($experience_sql);
 
 
 ?>
@@ -42,12 +45,37 @@ $talent_experience = DB::query($experience_sql);
 		</div>
 
 		<div class="box-body bg-info">
-			<div class="row">
+		<div class="row">
 
-				<?php
-				if($experience_items )
-				{
-					?>
+		<?php
+		if($talent_experiences )
+		{
+		?>
+		<p>
+		<?php 
+		foreach($talent_experiences as $experience){
+		?>				
+		<span class="label label-info">
+			<?php echo get_experience_item_name($experience['talent_experience_item_id']); ?>
+		</span>	
+			
+
+		<?php
+		} // for each $talent_experiences									
+		?>
+			
+		</p> 
+
+		 <?php
+
+		}  // End if $talent_experiences
+
+		?>
+
+		<?php
+		if($experience_items )
+		{
+			?>
 
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
@@ -93,11 +121,11 @@ $talent_experience = DB::query($experience_sql);
 
 
 
-					<?php
+		 <?php
 
-				}  // End if $experience_items
+		}  // End if $experience_items
 
-				?>
+		?>
 
 			</div> <!--/.form-group-->
 			</div> <!--/.row-->
@@ -118,6 +146,6 @@ $talent_experience = DB::query($experience_sql);
 	</div><!--Experience Information Box-->
 	<!-- Hidden Fields -->
 	<input type="hidden" name="form_name" id="experience_info_hidden_field" value="edit_talent_experience_info" />
-	<input type="hidden" name="talent_id" id="experience_talent_id" value="edit_talent_experience_info" />
+	<input type="hidden" name="talent_id" id="experience_talent_id" value="<?php echo $talent_id; ?>" />
 	<!-- /Hidden Fields -->
 </form>
