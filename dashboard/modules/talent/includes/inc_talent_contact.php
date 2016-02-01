@@ -2,6 +2,7 @@
 // Add form to edit contact information for this talent.
 // code for retrieval and display should go here. 
 ?>
+<form id="edit_talent_contact_info" name="edit_talent_contact_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
  <!-- Contact Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -56,7 +57,29 @@
 									</div>
 								</div>
 							</div>
-              </div>
+              </div> <!--.row-->
+			   				<div class="box-footer">
+ 								<div class="form-group">
+					<div class="col-sm-12">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/view_talents"?>">
+							Cancel &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</a>
+						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+							Save &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</button>
+					</div>	<!-- /.col -->
+				</div>		<!-- /form-group -->
+				<small>
+				</small>
+			</div><!-- /.box-footer-->	
  		
-             </div> 
+             </div> <!--/.box-body-->
           </div><!-- /.box Contact Information-->
+		<!-- Hidden Fields -->
+<input type="hidden" name="form_name" id="form_name" value="edit_talent_contact_info" />
+<!-- /Hidden Fields -->
+</form>		
