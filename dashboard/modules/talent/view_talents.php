@@ -11,15 +11,10 @@ $tbl->addCell('First Name', '', 'header');
 $tbl->addCell('Last Name', '', 'header');
 $tbl->addCell('Gender', '', 'header');
 $tbl->addCell('Nationality', '', 'header');
-$tbl->addCell('Registration Date', '', 'header');
 $tbl->addCell('Age', '', 'header');
 $tbl->addCell('PhoneNo', '', 'header');
 $tbl->addCell('Email', '', 'header');
-$tbl->addCell('Brief', '', 'header');
-$tbl->addCell('Notes', '', 'header');
-$tbl->addCell('Evenets?', '', 'header');
-$tbl->addCell('Experience', '', 'header');
-$tbl->addCell('Vitals', '', 'header');
+$tbl->addCell('Registration Date', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
@@ -50,15 +45,10 @@ $tbl2->addCell('First Name', '', 'header');
 $tbl2->addCell('Last Name', '', 'header');
 $tbl2->addCell('Gender', '', 'header');
 $tbl2->addCell('Nationality', '', 'header');
-$tbl2->addCell('Registration Date', '', 'header');
 $tbl2->addCell('Age', '', 'header');
 $tbl2->addCell('PhoneNo', '', 'header');
 $tbl2->addCell('Email', '', 'header');
-$tbl2->addCell('Brief', '', 'header');
-$tbl2->addCell('Notes', '', 'header');
-$tbl2->addCell('Events?', '', 'header');
-$tbl2->addCell('Experience', '', 'header');
-$tbl2->addCell('Vitals', '', 'header');
+$tbl2->addCell('Registration Date', '', 'header');
 $tbl2->addCell('Actions', '', 'header');
 $tbl2->addTSection('tbody');
 
@@ -69,21 +59,15 @@ $get_talents = DB::query($sql);
 foreach($get_talents as $talent) { 
 $tbl2->addRow();
 $tbl2->addCell($talent['talent_id']);
-$tbl2->addCell($talent['photo_url']);
+$tbl2->addCell($talent['photo1_url']);
 $tbl2->addCell($talent['first_name']);
 $tbl2->addCell($talent['last_name']);
 $tbl2->addCell($talent['sex']);
 $tbl2->addCell($talent['nationality']);
-$tbl2->addCell($talent['registration_date']);
 $tbl2->addCell($talent['dob']);
 $tbl2->addCell($talent['mobile_no']);
 $tbl2->addCell($talent['email_id']);
-$tbl2->addCell($talent['brief']);
-$tbl2->addCell($talent['notes']);
-$tbl2->addCell($talent['events']);
-$tbl2->addCell($talent['experience']);
-$tbl2->addCell($talent['talent_id']);
-
+$tbl2->addCell($talent['registration_date']);
 $tbl2->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");
 }			  
