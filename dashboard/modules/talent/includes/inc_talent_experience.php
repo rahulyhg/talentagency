@@ -1,52 +1,16 @@
 <?php
 
-$talent_id = '0';
-if(isset($_POST['form_name'])){
-	
-	$talent_id = $_POST['talent_id'];
-	$talent_experience_item_id = $_POST['talent_experience_item_id'];
-	$talent_experience_item_status = $_POST['talent_experience_item_status'];
-	$created_by = $_SESSION['user_id'];
-	$created_on = getDateTime(NULL ,"mySQL");
-	$last_modified_by = $_SESSION['user_id'];
-	$last_modified_on = getDateTime(NULL ,"mySQL");
-	if( $talent_experience_item_status <> ""   ){
-	DB::insert('tams_talent_experience', array(
-				'talent_id' 		=> $talent_id,
-				'talent_experience_item_id' => $talent_experience_item_id,
-				'talent_experience_item_status'	=> $talent_experience_item_status,
-				'created_by' 		=> $created_by,
-				'created_on'	 	=> $created_on,
-				'last_modified_by'	=> $last_modified_by,
-				'last_modified_on'	=> $last_modified_on
-				
-			)
-			); 
-	} 
-	 
-	 
-}
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
 }
 
- $sql = "SELECT
-				*
-				FROM
-				tams_talent
-				WHERE talent_id = $talent_id ;";
-$talent = DB::queryFirstRow($sql);
-$talent_id = $talent['talent_id'];
-$first_name = $talent['first_name'];
-$last_name = $talent['last_name'];
-
-$comment_sql = "SELECT 
+$experience_sql = "SELECT 
 			* 
 			FROM 
 			tams_talent_experience
 			WHERE talent_id = $talent_id";
 
-$talent_comments = DB::query($comment_sql);
+$talent_experience = DB::query($experience_sql);
 
 
 ?>
@@ -66,10 +30,11 @@ $talent_comments = DB::query($comment_sql);
             <div class="box-body bg-info">
             <div class="row">
   					
-							<div class="tab-pane active" id="experience">
-							  
-								
-							</div><!--/.tab-pane-->
+  					
+  					
+  					
+  					
+ 
 				</div> <!--/.row-->
 					<div class="box-footer">
  								<div class="form-group">
@@ -92,6 +57,7 @@ $talent_comments = DB::query($comment_sql);
 				</div><!--/.box-body-->
 				</div><!--Experience Information Box-->
 		<!-- Hidden Fields -->
-<input type="hidden" name="form_name" id="form_name" value="edit_talent_experience_info" />
+<input type="hidden" name="form_name" id="experience_info_hidden_field" value="edit_talent_experience_info" />
+<input type="hidden" name="talent_id" id="experience_talent_id" value="edit_talent_experience_info" />
 <!-- /Hidden Fields -->
 </form>		
