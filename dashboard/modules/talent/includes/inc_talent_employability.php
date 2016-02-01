@@ -844,7 +844,14 @@
 								</div>
 							</div>
 
-
+						<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Available for Events ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="events" name="events" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" checked='checked' />
+								</div>
+							</div>
 
 
 						</div><!-- /.tab-pane -->
