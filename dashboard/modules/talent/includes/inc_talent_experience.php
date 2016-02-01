@@ -50,13 +50,20 @@ $talent_experience = DB::query($experience_sql);
 					?>
 
 					<div class="form-group">
-						<label>
-							Experience Items
+						<label class="col-md-3 col-sm-3 control-label">
+							Experience Items :
 						</label>
+						<div class="col-md-9 col-sm-9">
+						<div class="input-group">
+
+				
+									</div>
 						<select name="experience_item_id" id="experience_item_id" class="form-control select2"    >
+					
 							<option value="">
 								Select an experience item
 							</option>
+	
 							<?php 
 							foreach($experience_items as $item){
 								?>	
@@ -66,11 +73,19 @@ $talent_experience = DB::query($experience_sql);
 							<?php
 							} // for each experience item									
 							?>
+
 						</select>
+						</div>
+					
 <script type="text/javascript">
 	$(".select2").select2();
 	
 </script>					
+					<button type="submit" class='btn btn-success btn-xs pull-right' name="save" value="save">
+							Add &nbsp;
+							<i class="glyphicon glyphicon-add">
+							</i>
+					</button>
 					</div>
 
 
@@ -92,11 +107,6 @@ $talent_experience = DB::query($experience_sql);
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
