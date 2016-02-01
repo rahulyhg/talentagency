@@ -103,6 +103,7 @@ function get_experience_item_name($experience_item_id){
 	$experience_item_name = DB:: queryFirstField ("SELECT experience_item_name from tams_experience_items WHERE experience_item_id = $experience_item_id");
 	return $experience_item_name;
 	}
+	
 function get_experience_item_desc ($experience_item_id){
 	$experience_item_desc = DB::queryFirstField ("SELECT experience_item_desc from tams_experience_items WHERE experience_item_id = $experience_item_id");
 	return $experience_item_desc;
@@ -112,5 +113,15 @@ function get_experience_item_desc ($experience_item_id){
 function get_language_name($language_id){
 	$language_name = DB:: queryFirstField ("SELECT language_name from tams_languages WHERE language_id = $language_id");
 	return $language_name;
+	}
+	
+function get_portfolio_item_name($portfolio_item_id){
+	$portfolio_item_name = DB:: queryFirstField ("SELECT portfolio_item_name from tams_portfolio_items WHERE portfolio_item_id = $portfolio_item_id");
+	return $portfolio_item_name;
+	}
+	
+function get_portfolio_item_desc($portfolio_item_id){
+	$portfolio_item_desc = DB:: queryFirstField ("SELECT portfolio_item_desc from tams_portfolio_items WHERE portfolio_item_id = $portfolio_item_id");
+	return $portfolio_item_desc;
 	}
  ?>
