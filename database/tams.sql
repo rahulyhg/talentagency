@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v10.00 Beta1
-MySQL - 5.6.15-log : Database - teamsutlej_talent
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 5.6.21 : Database - teamsutlej_talent
 *********************************************************************
 */
 
@@ -156,8 +156,6 @@ CREATE TABLE `tams_talent` (
   `email_id` varchar(100) DEFAULT NULL,
   `brief` varchar(150) DEFAULT NULL,
   `events` tinyint(1) DEFAULT NULL,
-  `notes` varchar(255) DEFAULT NULL,
-  `experience` tinyint(1) DEFAULT NULL,
   `nationality` varchar(100) DEFAULT NULL,
   `is_qatari` tinyint(1) DEFAULT NULL COMMENT 'Is belongs to Qatar',
   `qatari_id` varchar(100) DEFAULT NULL,
@@ -167,7 +165,6 @@ CREATE TABLE `tams_talent` (
   `passport_no` varchar(100) DEFAULT NULL,
   `passport_copy_attached` tinyint(1) DEFAULT NULL,
   `sponsors_id_copy_attached` tinyint(1) DEFAULT NULL,
-  `area_of_residence` varchar(100) DEFAULT NULL,
   `height_cm` varchar(50) DEFAULT NULL,
   `weight_kg` varchar(50) DEFAULT NULL,
   `hair_color` varchar(50) DEFAULT NULL,
@@ -177,8 +174,10 @@ CREATE TABLE `tams_talent` (
   `waist_cm` varchar(50) DEFAULT NULL,
   `collar_cm` varchar(50) DEFAULT NULL,
   `chest_cm` varchar(50) DEFAULT NULL,
-  `photo_url` varchar(50) DEFAULT NULL,
-  `cv_url` varchar(50) DEFAULT NULL,
+  `photo1_url` varchar(50) DEFAULT NULL,
+  `photo1_caption` varchar(100) DEFAULT NULL,
+  `photo2_url` varchar(50) DEFAULT NULL,
+  `photo2_caption` varchar(100) DEFAULT NULL,
   `registration_date` varchar(50) DEFAULT NULL,
   `talent_status` varchar(50) NOT NULL DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
@@ -190,7 +189,7 @@ CREATE TABLE `tams_talent` (
 
 /*Data for the table `tams_talent` */
 
-insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`events`,`notes`,`experience`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`area_of_residence`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo_url`,`cv_url`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,NULL,NULL,NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com',NULL,NULL,NULL,NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 20:38:04','1','2016-01-25 20:38:04'),(3,'Alexandra ','Saint','1991-05-09','Female','california, united states						','98706565674','saint@gmail.com',NULL,NULL,NULL,NULL,'United States',0,'',0,1,1,'98787765675',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-27 06:47:56','1','2016-01-27 06:47:56');
+insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`events`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo1_url`,`photo1_caption`,`photo2_url`,`photo2_caption`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com',NULL,NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 20:38:04','1','2016-01-25 20:38:04'),(3,'Alexandra ','Saint','1991-05-09','Female','california, united states						','98706565674','saint@gmail.com',NULL,NULL,'United States',0,'',0,1,1,'98787765675',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-27 06:47:56','1','2016-01-27 06:47:56');
 
 /*Table structure for table `tams_talent_comments` */
 
