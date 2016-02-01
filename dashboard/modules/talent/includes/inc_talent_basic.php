@@ -1,5 +1,33 @@
 <?php
+$handle = new upload($_FILES['image_field']);
+if ($handle->uploaded) {
+  $handle->file_new_name_body   = 'image_resized';
+  $handle->image_resize         = true;
+  $handle->image_x              = 100;
+  $handle->image_ratio_y        = true;
+  $handle->process('uploads/talent_profiles/');
+  if ($handle->processed) {
+    echo 'image resized';
+    $handle->clean();
+  } else {
+    echo 'error : ' . $handle->error;
+  }
+}
+echo "<pre>";
+	print_r($_FILES);
+	echo "</pre>";
+	
+/*  
+$target_path = "/uploads/talent_profiles/";
 
+$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    echo "The file ".  basename( $_FILES['uploadedfile']['name']). 
+    " has been uploaded";
+} else{
+    echo "There was an error uploading the file, please try again!";
+}*/
 ?>
 <form id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
  <!-- Basic Information box -->       			
@@ -19,6 +47,7 @@
   
   
   		    <h3 class="normal">Basic Information</h3>
+			<form action="" method="post" id="uploadForm" enctype="multipart/form-data" >
 						<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Photo1 URL :
@@ -33,12 +62,15 @@
                     <!-- image-preview-input -->
                     <div class="input-group-addon btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
+						<label>Choose File <input  class="image-preview-input-title" type="file" name="image_field" /></label><br/>
                         <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
                     </div>
+					
 							</div>
+					<input type="submit" name="Submit" value="upload File" style="float:right;">
 						</div>
 					</div>
+	</form>
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Photo Caption:
@@ -61,11 +93,12 @@
                     </button>
                     <!-- image-preview-input -->
                     <div class="input-group-addon btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
+						<span class="glyphicon glyphicon-folder-open"></span>
+						<label>Choose File <input  class="image-preview-input-title" type="file" name="image_field" /></label><br/>
                         <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
                     </div>
 							</div>
+					<input type="submit" name="Submit" value="upload File" style="float:right;">
 						</div>
 					</div>
 					<div class="form-group">
