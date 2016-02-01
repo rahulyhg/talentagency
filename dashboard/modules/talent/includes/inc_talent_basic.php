@@ -21,15 +21,21 @@
   		    <h3 class="normal">Basic Information</h3>
 						<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Photo2 URL :
+							Photo1 URL :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo1_url" id="photo1_url"  >
-								<div class="input-group-addon">
-									<i class="fa fa-user">
-									</i>
-								</div>
+							<div class="input-group image-preview ">
+								<input   class="input-group form-control image-preview-filename"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo1_url" id="photo1_url"  >
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="input-group-addon btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                    </div>
 							</div>
 						</div>
 					</div>
@@ -47,12 +53,18 @@
 							Photo2 URL :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control"   placeholder="Enter Photo2 URL"   type="url"  value="" name="photo2_url" id="photo2_url"  >
-								<div class="input-group-addon">
-									<i class="fa fa-user">
-									</i>
-								</div>
+							<div class="input-group image-preview ">
+								<input   class="input-group form-control image-preview-filename"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo2_url" id="photo2_url"  >
+                    <!-- image-preview-clear button -->
+                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="input-group-addon btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                    </div>
 							</div>
 						</div>
 					</div>
