@@ -220,7 +220,7 @@ echo "</pre>";
 					  <ul class="nav nav-tabs tabs-left">
 					    <li class="active"><a href="#basic" data-toggle="tab">Basic Info </a></li>
 					<li><a href="#contact" data-toggle="tab">Contact</a></li>
-					  <li><a href="#employbility" data-toggle="tab">Employbility </a></li> 	
+					  <li><a href="#employability" data-toggle="tab">Employability </a></li> 	
 					    <li><a href="#vitals" data-toggle="tab">Vitals</a></li>
 					    <li><a href="#photos" data-toggle="tab">Photos</a></li>
 					    <li><a href="#experience" data-toggle="tab">Experience</a></li>
@@ -242,8 +242,8 @@ echo "</pre>";
 <?php include("includes/inc_talent_contact.php"); ?>
 						</div><!-- /.col-md-6 -->
 					<!-- Employability Information Tab Panel Start -->
-					    <div class="tab-pane" id="employbility">
-<?php include("includes/inc_talent_employbility.php"); ?>
+					    <div class="tab-pane" id="employability">
+<?php include("includes/inc_talent_employability.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Vitals Information Tab Panel Start -->
 					    <div class="tab-pane" id="vitals">
