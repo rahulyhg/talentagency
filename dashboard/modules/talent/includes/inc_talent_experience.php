@@ -56,7 +56,7 @@ $talent_experiences = DB::query($experience_sql);
 		foreach($talent_experiences as $experience){
 		?>				
 		<span class="label label-info">
-			<?php echo get_experience_item_name($experience['talent_experience_item_id']); ?>
+			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	
 			
 
