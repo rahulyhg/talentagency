@@ -20,6 +20,52 @@
   
   		    <h3 class="normal">Basic Information</h3>
 						<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Photo2 URL :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo1_url" id="photo1_url"  >
+								<div class="input-group-addon">
+									<i class="fa fa-user">
+									</i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Photo Caption:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required
+									value="<?php echo $photo1_caption; ?>" name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
+								</div>
+							</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Photo2 URL :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control"   placeholder="Enter Photo2 URL"   type="url"  value="" name="photo2_url" id="photo2_url"  >
+								<div class="input-group-addon">
+									<i class="fa fa-user">
+									</i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Photo Caption:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required
+									value="<?php echo $photo2_caption; ?>" name="photo2_caption" id="photo2_caption" placeholder="Enter Photo Caption">
+								</div>
+							</div>
+						<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									First Name:
 								</label>
@@ -69,6 +115,15 @@
 											Female
 										</option>
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Brief:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<textarea class="form-control" required value="" name="brief" id="brief" placeholder="Enter Brief"><?php echo $brief; ?>
+									</textarea>
 								</div>
 							</div>
   
