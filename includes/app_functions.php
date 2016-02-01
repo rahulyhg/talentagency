@@ -108,4 +108,9 @@ function get_experience_item_desc ($experience_item_id){
 	return $experience_item_desc;
 	
 }
+
+function get_language_name($language_id){
+	$language_name = DB:: queryFirstField ("SELECT language_name from tams_languages WHERE language_id = $language_id");
+	return $language_name;
+	}
  ?>

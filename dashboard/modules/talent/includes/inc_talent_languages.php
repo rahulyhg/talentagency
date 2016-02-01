@@ -1,5 +1,26 @@
 <?php
 
+// List of Languages
+$sql    = "SELECT `language_id`,`language_name` FROM `tams_languages` WHERE `language_status` = 'active'";
+$languages = DB::query($sql);
+
+
+
+
+if(isset($_GET['talent_id']))
+{
+	$talent_id = $_GET['talent_id'];
+}
+
+$language_sql    = "SELECT
+*
+FROM
+tams_talent_language
+WHERE talent_id = $talent_id";
+
+$talent_languages = DB::query($language_sql);
+
+
 ?>
 <form id="edit_talent_languages_info" name="edit_talent_languages_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- Spoken Languages Information box -->       			
@@ -17,9 +38,90 @@
             <div class="box-body bg-info">
             <div class="row">
   					
-							<div class="tab-pane active" id="languages">
-							   
+			<div class="tab-pane active" id="languages">
+							
+		<?php
+		if($talent_languages )
+		{
+		?>
+		<p>
+		<?php 
+		foreach($talent_languages as $language){
+		?>				
+		<span class="label label-info">
+			<?php echo get_language_name($language['language_id']); ?>
+		</span>	
+			
+
+		<?php
+		} // for each $talent_languages									
+		?>
+			
+		</p> 
+
+		 <?php
+
+		}  // End if $talent_languages
+
+		?>
+
+		<?php
+		if($languages )
+		{
+			?>
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Languages Spoken :
+						</label>
+						<div class="col-md-9 col-sm-9">
+						<div class="input-group">
+						<select name="language_id" id="language_id" class=" input-group form-control  select2"  style="padding:5px;"  >
+					
+							<option value="">
+								Select a Language
+							</option>
+	
+							<?php 
+							foreach($languages as $language){
+								?>	
+							<option value="<?php echo $language['language_id'];?>">
+								<?php echo $language['language_name'];?>
+							</option>
+							<?php
+							} // for each language									
+							?>
+
+						</select>
+						<div class="input-group-addon"> <button type="submit" class='btn btn-xs pull-right' name="save" value="save">
+							Add &nbsp;
+							<i class="fa fa-plus">
+							</i>
+					</button>
+					</div>
+						</div>
+				
+				 
+					
+					
+
+					</div>
+					<script type="text/javascript">
+	$(".select2").select2();
+	
+</script>
+
+
+
+
+		 <?php
+
+		}  // End if $experience_items
+
+		?>   
+		</div> <!--/.form-group-->
 							</div><!--/.tab-pane-->
+							
 				</div> <!--/.row-->
 				<div class="box-footer">
  								<div class="form-group">
@@ -29,11 +131,6 @@
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
@@ -43,5 +140,6 @@
 				</div><!--Languages Information Box-->
 		<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_languages_info" />
+<input type="hidden" name="talent_id" id="language_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
