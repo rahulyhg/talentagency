@@ -1,4 +1,12 @@
 <?php
+		
+		//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_photo1']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo1']['tmp_name'])) {
+		echo '<h2> No Logo ploaded</h2>';
+	}  else {
+		echo '<h2> Logo was uploaded</h2>';
+	}
 $handle = new upload($_FILES['talent_photo1']);
 if ($handle->uploaded) {
   $handle->file_new_name_body   = $talent_id.'_profile';
@@ -13,9 +21,10 @@ if ($handle->uploaded) {
     echo 'error : ' . $handle->error;
   }
 }
+echo '<h2> $_FILES variable</h2>';
 echo "<pre>";
-	print_r($_FILES);
-	echo "</pre>";
+print_r($_FILES);
+echo "</pre>";	
 	
 ?>
 <form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
