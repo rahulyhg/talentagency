@@ -2,7 +2,6 @@
 if (isset($_POST['save'])){
 	
 	$company_name = $_POST['company_name'];
-	$logo_url =$_POST['logo_url'];
 	$client_name	= $_POST['client_name'];
 	$client_title =$_POST['client_title'];
 	$client_address = $_POST['client_address'];
@@ -46,6 +45,57 @@ if (isset($_POST['save'])){
 				
 			)
 			);
+					//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
+		echo '<h2> No Logo ploaded</h2>';
+	}  else {
+		echo '<h2> Logo was uploaded</h2>';
+	
+	//if logo file is uploaded process the file with upload class
+	
+	$handle = new upload($_FILES['uploadlogo']);
+		if ($handle->uploaded) {
+			  $handle->file_new_name_body   = $client_id.'_logo';
+			  $handle->image_resize         = true;
+			  $handle->image_x              = 100;
+			  $handle->image_ratio_y        = true;
+			  $handle->allowed = array('image/*');
+			  $handle->image_convert = 'jpg';
+			  $handle->file_overwrite = true;
+			  $handle->process('../uploads/clients/');
+		if ($handle->processed) {
+				
+	// save uploaded file name and path in database table field logo_url
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if client id is not empty update the database */
+	
+		if($client_id <> ""){
+				$update = DB::update('tams_clients', array(
+
+				'logo_url'=> '/talent/uploads/clients/'.$client_id.'_logo.jpg',
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"client_id=%s", $client_id
+		);
+		
+		}
+			echo 'Logo file uploaded and path select saved in database';
+				$handle->clean();
+			} else {
+				echo 'error : ' . $handle->error;
+				
+			} // close handle processed
+			
+		} // close handle uploaded
+		
+		} // close file exist
+	
+
 	echo '<script>alert("Added Client Successfully");</script>';
 	echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/clients/view_clients");</script>';		
 		}
@@ -53,8 +103,16 @@ if (isset($_POST['save'])){
 	{	
 		echo '<script>alert("Failed!! Client Might Already Exist");</script>';
 		
-		}
+	}
 }
+	
+
+		
+echo '<h2> $_FILES variable</h2>';
+echo "<pre>";
+print_r($_FILES);
+echo "</pre>";	
+
 ?>
 <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -72,7 +130,7 @@ if (isset($_POST['save'])){
 <!-- Main content -->
         <section class="content">
 			<div class="row">
-<form role="form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/add_client"; ?>" >
+<form role="form" class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/add_client"; ?>" >
  <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
@@ -91,20 +149,19 @@ if (isset($_POST['save'])){
 							 value="" name="company_name" id="company_name">							
 						  </div>
 					</div>
-					<div class="form-group">
+					
+						<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Company Logo URL :
+							Upload Company Logo :
 						</label>
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">
-								<input   class="input-group form-control"   placeholder="Enter Company Logo URL"   type="url"  value="" name="logo_url" id="logo_url"  >
-								<div class="input-group-addon">
-									<i class="fa fa-user">
-									</i>
-								</div>
+								<input   class="input-group form-control" type="file" value="" name="uploadlogo" id="uploadlogo"  >
+								<img src="<?php echo $logo_url; ?>" alt="no logo uploaded" />
 							</div>
 						</div>
 					</div>							
+ 
 				  
                     <div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Contact Person Name:</label>
