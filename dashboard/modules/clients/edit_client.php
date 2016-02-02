@@ -98,12 +98,21 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		}
 	}
 	*/ 
+	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
+		echo '<h2> No Logo ploaded</h2>';
+	}  else {
+		echo '<h2> Logo was uploaded</h2>';
+	}
+	
+echo '<h2> $_FILES variable</h2>';
+echo "<pre>";
+print_r($_FILES);
+echo "</pre>";	
 	// print all the values of array in $_POST variable
-echo '<h2> $_post variable</h2>';
+/*echo '<h2> $_post variable</h2>';
 	echo "<pre>";
 print_r($_POST);
 echo "</pre>";
-/*
 echo '<h2> $GLOBALS variable</h2>';
  echo "<pre>";
 print_r($GLOBALS);
@@ -116,20 +125,15 @@ echo '<h2> $_REQUEST variable</h2>';
 echo "<pre>";
 print_r($_REQUEST);
 echo "</pre>";
-*/
 echo '<h2> $_SESSION variable</h2>';
 echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
-echo '<h2> $_FILES variable</h2>';
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";
+
 echo '<h2> $_GET variable</h2>';
 echo "<pre>";
 print_r($_GET);
 echo "</pre>";
-/*
 echo '<h2> $_COOKIE variable</h2>';
 echo "<pre>";
 print_r($_COOKIE);
