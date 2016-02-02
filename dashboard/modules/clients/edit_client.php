@@ -73,7 +73,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 	$handle = new upload($_FILES['uploadlogo']);
 		if ($handle->uploaded) {
 			  $handle->file_new_name_body   = $client_id.'_logo';
-			 
 			  $handle->image_resize         = true;
 			  $handle->image_x              = 100;
 			  $handle->image_ratio_y        = true;
@@ -158,43 +157,6 @@ $last_modified_by = $client['last_modified_by'];
 $last_modified_on = $client['last_modified_on'];
 
 }
- 
-
-	// print all the values of array in $_POST variable
-/*echo '<h2> $_post variable</h2>';
-	echo "<pre>";
-print_r($_POST);
-echo "</pre>";
-echo '<h2> $GLOBALS variable</h2>';
- echo "<pre>";
-print_r($GLOBALS);
-echo "</pre>";
-echo '<h2> $_SERVER variable</h2>';
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
-echo '<h2> $_REQUEST variable</h2>';
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
-echo '<h2> $_SESSION variable</h2>';
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
-echo '<h2> $_GET variable</h2>';
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
-echo '<h2> $_COOKIE variable</h2>';
-echo "<pre>";
-print_r($_COOKIE);
-echo "</pre>";
-echo '<h2> $_ENV variable</h2>';
- echo "<pre>";
-print_r($_ENV);
-echo "</pre>";
-*/
 
 
 ?>
