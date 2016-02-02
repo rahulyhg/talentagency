@@ -50,9 +50,9 @@ $last_modified_on = $client['last_modified_on'];
 }
  
 
-if(isset($_POST['save']))
-{
- 
+if(isset($_POST['save'])){
+
+ // getting values from $_post variable & saving into normal variables
 $client_id = $_POST['client_id'];
 $company_name =$_POST['company_name'];
 $logo_url =$_POST['logo_url'];
@@ -69,7 +69,7 @@ $client_account_manager = $_POST['client_account_manager'];
 $client_status = $_POST['client_status']; 
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
- 
+/* if client id is not empty update the database
 	if($client_id <> ""){
 		$update = DB::update('tams_clients', array(
 				'company_name'=> $company_name,
@@ -90,18 +90,55 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			),
 			"client_id=%s", $client_id
 		);
-		
+		//if update is successful redirect the page to view client list
 		if($update)
 		{
 			echo '<script>alert("Edited Details Successfully");</script>';
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/clients/view_clients");</script>';
 		}
 	}
-	 
-echo "<pre>";
+	*/ 
+	// print all the values of array in $_POST variable
+echo '<h2> $_post variable</h2>';
+	echo "<pre>";
 print_r($_POST);
 echo "</pre>";
- 
+/*
+echo '<h2> $GLOBALS variable</h2>';
+ echo "<pre>";
+print_r($GLOBALS);
+echo "</pre>";
+echo '<h2> $_SERVER variable</h2>';
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
+echo '<h2> $_REQUEST variable</h2>';
+echo "<pre>";
+print_r($_REQUEST);
+echo "</pre>";
+*/
+echo '<h2> $_SESSION variable</h2>';
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+echo '<h2> $_FILES variable</h2>';
+echo "<pre>";
+print_r($_FILES);
+echo "</pre>";
+echo '<h2> $_GET variable</h2>';
+echo "<pre>";
+print_r($_GET);
+echo "</pre>";
+/*
+echo '<h2> $_COOKIE variable</h2>';
+echo "<pre>";
+print_r($_COOKIE);
+echo "</pre>";
+echo '<h2> $_ENV variable</h2>';
+ echo "<pre>";
+print_r($_ENV);
+echo "</pre>";
+*/
 }
 
 ?>
@@ -135,8 +172,8 @@ echo "</pre>";
 <section class="content">
 	<div class="row">
 		<!-- Profile box -->
-		<form role="form"class="form-horizontal" method="post"
-		     action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client"; ?>">
+		<form role="form"class="form-horizontal" method="post" enctype="multipart/form-data"
+		     action="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client_id; ?>">
 			<div class="box col-md-6 col-sm-6 col-sx-12">
 				<div class="box-header with-border">
 					<h3 class="box-title">
@@ -186,7 +223,17 @@ echo "</pre>";
 							</div>
 						</div>
 					</div>							
-				  
+				  <div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Upload Logo :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control" type="file" value="" name="uploadlogo" id="uploadlogo"  >
+								
+							</div>
+						</div>
+					</div>							
  
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label">
