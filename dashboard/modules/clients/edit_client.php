@@ -97,12 +97,29 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/clients/view_clients");</script>';
 		}
 	}
-	*/ 
+	*/
+//check if the file is uploaded and process the file if file is uploaded	
 	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
 		echo '<h2> No Logo ploaded</h2>';
 	}  else {
 		echo '<h2> Logo was uploaded</h2>';
-	}
+	//if logo file is uploaded process the file with upload class
+	$handle = new upload($_FILES['uploadlogo']);
+		if ($handle->uploaded) {
+			  $handle->file_new_name_body   = 'image_resized';
+			  $handle->image_resize         = true;
+			  $handle->image_x              = 100;
+			  $handle->image_ratio_y        = true;
+			  $handle->process('/talent/uploads/talent_profiles/');
+			if ($handle->processed) {
+				echo 'image resized';
+				$handle->clean();
+			} else {
+				echo 'error : ' . $handle->error;
+			} // close handle processed
+		} // close handle uploaded
+	} // close file exist
+	
 	
 echo '<h2> $_FILES variable</h2>';
 echo "<pre>";
