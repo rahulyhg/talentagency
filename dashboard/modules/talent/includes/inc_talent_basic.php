@@ -1,11 +1,11 @@
 <?php
-$handle = new upload($_FILES['image_field']);
+$handle = new upload($_FILES['talent_photo1']);
 if ($handle->uploaded) {
-  $handle->file_new_name_body   = 'image_resized';
+  $handle->file_new_name_body   = $talent_id.'_profile';
   $handle->image_resize         = true;
   $handle->image_x              = 100;
   $handle->image_ratio_y        = true;
-  $handle->process('uploads/talent_profiles/');
+  $handle->process('..uploads/talent/talent_profiles/');
   if ($handle->processed) {
     echo 'image resized';
     $handle->clean();
@@ -17,19 +17,8 @@ echo "<pre>";
 	print_r($_FILES);
 	echo "</pre>";
 	
-/*  
-$target_path = "/uploads/talent_profiles/";
-
-$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
-
-if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-    echo "The file ".  basename( $_FILES['uploadedfile']['name']). 
-    " has been uploaded";
-} else{
-    echo "There was an error uploading the file, please try again!";
-}*/
 ?>
-<form id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
+<form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
  <!-- Basic Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -47,30 +36,17 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
   
   
   		    <h3 class="normal">Basic Information</h3>
-			<form action="" method="post" id="uploadForm" enctype="multipart/form-data" >
-						<div class="form-group">
+					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Photo1 URL :
+							Photo 1 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group image-preview ">
-								<input   class="input-group form-control image-preview-filename"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo1_url" id="photo1_url"  >
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="input-group-addon btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-						<label>Choose File <input  class="image-preview-input-title" type="file" name="image_field" /></label><br/>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
-                    </div>
-					
+							<div class="input-group">
+								<input   class="input-group form-control" type="file" value="" name="talent_photo1" id="talent_photo1"  >
+								<img src="<?php echo $photo1_url; ?>" alt="no logo uploaded" />
 							</div>
-					<input type="submit" name="Submit" value="upload File" style="float:right;">
 						</div>
 					</div>
-	</form>
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Photo Caption:
@@ -82,23 +58,13 @@ if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
 							</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Photo2 URL :
+							Photo 2 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group image-preview ">
-								<input   class="input-group form-control image-preview-filename"   placeholder="Enter Photo1 URL"   type="url"  value="" name="photo2_url" id="photo2_url"  >
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="input-group-addon btn btn-default image-preview-input">
-						<span class="glyphicon glyphicon-folder-open"></span>
-						<label>Choose File <input  class="image-preview-input-title" type="file" name="image_field" /></label><br/>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
-                    </div>
+							<div class="input-group">
+								<input   class="input-group form-control" type="file" value="" name="talent_photo2" id="talent_photo2"  >
+								<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
 							</div>
-					<input type="submit" name="Submit" value="upload File" style="float:right;">
 						</div>
 					</div>
 					<div class="form-group">
