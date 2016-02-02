@@ -19,6 +19,116 @@ $created_by = "";
 $last_modified_by = "";
 $last_modified_on = "";
 
+if(isset($_POST['save'])){
+
+ // getting values from $_post variable & saving into normal variables
+$client_id = $_POST['client_id'];
+$company_name =$_POST['company_name'];
+$client_name = $_POST['client_name'];
+$client_title = $_POST['client_title'];
+$client_address = $_POST['client_address'];
+$client_city = $_POST['client_city'];
+$client_country = $_POST['client_country'];
+$client_phone_1 = $_POST['client_phone_1'];
+$client_phone_2 = $_POST['client_phone_2'];
+$client_fax = $_POST['client_fax'];
+$client_email = $_POST['client_email'];
+$client_account_manager = $_POST['client_account_manager']; 
+$client_status = $_POST['client_status']; 
+$last_modified_by = $_SESSION['user_id'];
+$last_modified_on = getDateTime(NULL,"mySQL");
+
+// if client id is not empty update the database
+	if($client_id <> ""){
+		$update = DB::update('tams_clients', array(
+				'company_name'=> $company_name,
+				'logo_url'=> $logo_url,
+				'client_name'=>$client_name,
+				'client_title' => $client_title,
+				'client_address'=> $client_address,
+				'client_city' => $client_city,
+				'client_country' => $client_country,
+				'client_phone_1' => $client_phone_1,
+				'client_phone_2' => $client_phone_2,
+				'client_fax' => $client_fax,
+				'client_email'=> $client_email,
+				'client_account_manager' => $client_account_manager,
+				'client_status'=> $client_status,
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"client_id=%s", $client_id
+			
+		);
+		
+		//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
+		echo '<h2> No Logo ploaded</h2>';
+	}  else {
+		echo '<h2> Logo was uploaded</h2>';
+	
+	//if logo file is uploaded process the file with upload class
+	
+	$handle = new upload($_FILES['uploadlogo']);
+		if ($handle->uploaded) {
+			  $handle->file_new_name_body   = $client_id.'_logo';
+			 
+			  $handle->image_resize         = true;
+			  $handle->image_x              = 100;
+			  $handle->image_ratio_y        = true;
+			  $handle->allowed = array('image/*');
+			  $handle->image_convert = 'jpg';
+			  $handle->file_overwrite = true;
+			  $handle->process('../uploads/clients/');
+		if ($handle->processed) {
+				
+	// save uploaded file name and path in database table field logo_url
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if client id is not empty update the database */
+	
+		if($client_id <> ""){
+				$update = DB::update('tams_clients', array(
+
+				'logo_url'=> '/talent/uploads/clients/'.$client_id.'_logo.jpg',
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"client_id=%s", $client_id
+		);
+		
+		}
+			echo 'Logo file uploaded and path select saved in database';
+				$handle->clean();
+			} else {
+				echo 'error : ' . $handle->error;
+				
+			} // close handle processed
+			
+		} // close handle uploaded
+		
+		} // close file exist
+	
+	
+		//if update is successful redirect the page to view client list
+		
+		if($update)
+		{
+			echo '<script>alert("Edited Details Successfully");</script>';
+			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/clients/view_clients");</script>';
+		}
+	}
+	
+
+echo '<h2> $_FILES variable</h2>';
+echo "<pre>";
+print_r($_FILES);
+echo "</pre>";	
+}
+
 if(isset($_GET['client_id'])){
 	$client_id = $_GET['client_id'];
 
@@ -50,81 +160,6 @@ $last_modified_on = $client['last_modified_on'];
 }
  
 
-if(isset($_POST['save'])){
-
- // getting values from $_post variable & saving into normal variables
-$client_id = $_POST['client_id'];
-$company_name =$_POST['company_name'];
-$logo_url =$_POST['logo_url'];
-$client_name = $_POST['client_name'];
-$client_title = $_POST['client_title'];
-$client_address = $_POST['client_address'];
-$client_city = $_POST['client_city'];
-$client_country = $_POST['client_country'];
-$client_phone_1 = $_POST['client_phone_1'];
-$client_phone_2 = $_POST['client_phone_2'];
-$client_fax = $_POST['client_fax'];
-$client_email = $_POST['client_email'];
-$client_account_manager = $_POST['client_account_manager']; 
-$client_status = $_POST['client_status']; 
-$last_modified_by = $_SESSION['user_id'];
-$last_modified_on = getDateTime(NULL,"mySQL");
-/* if client id is not empty update the database
-	if($client_id <> ""){
-		$update = DB::update('tams_clients', array(
-				'company_name'=> $company_name,
-				'logo_url'=> $logo_url,
-				'client_name'=>$client_name,
-				'client_title' => $client_title,
-				'client_address'=> $client_address,
-				'client_city' => $client_city,
-				'client_country' => $client_country,
-				'client_phone_1' => $client_phone_1,
-				'client_phone_2' => $client_phone_2,
-				'client_fax' => $client_fax,
-				'client_email'=> $client_email,
-				'client_account_manager' => $client_account_manager,
-				'client_status'=> $client_status,
-				'last_modified_by'	=> $last_modified_by,
-				'last_modified_on'	=> $last_modified_on
-			),
-			"client_id=%s", $client_id
-		);
-		//if update is successful redirect the page to view client list
-		if($update)
-		{
-			echo '<script>alert("Edited Details Successfully");</script>';
-			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/clients/view_clients");</script>';
-		}
-	}
-	*/
-//check if the file is uploaded and process the file if file is uploaded	
-	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
-		echo '<h2> No Logo ploaded</h2>';
-	}  else {
-		echo '<h2> Logo was uploaded</h2>';
-	//if logo file is uploaded process the file with upload class
-	$handle = new upload($_FILES['uploadlogo']);
-		if ($handle->uploaded) {
-			  $handle->file_new_name_body   = 'image_resized';
-			  $handle->image_resize         = true;
-			  $handle->image_x              = 100;
-			  $handle->image_ratio_y        = true;
-			  $handle->process('/talent/uploads/talent_profiles/');
-			if ($handle->processed) {
-				echo 'image resized';
-				$handle->clean();
-			} else {
-				echo 'error : ' . $handle->error;
-			} // close handle processed
-		} // close handle uploaded
-	} // close file exist
-	
-	
-echo '<h2> $_FILES variable</h2>';
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";	
 	// print all the values of array in $_POST variable
 /*echo '<h2> $_post variable</h2>';
 	echo "<pre>";
@@ -160,7 +195,7 @@ echo '<h2> $_ENV variable</h2>';
 print_r($_ENV);
 echo "</pre>";
 */
-}
+
 
 ?>
 <!-- Content Header (Page header) -->
@@ -230,20 +265,7 @@ echo "</pre>";
 						<input class="form-control" type="text" required  value="<?php echo $company_name; ?>" name="company_name" id="company_name">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-							Company Logo URL :
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control" type="url" required value="<?php echo $logo_url; ?>" name="logo_url" id="logo_url"  >
-								<div class="input-group-addon">
-									<i class="fa fa-user">
-									</i>
-								</div>
-							</div>
-						</div>
-					</div>							
+									
 				  <div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Upload Logo :
@@ -251,7 +273,7 @@ echo "</pre>";
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">
 								<input   class="input-group form-control" type="file" value="" name="uploadlogo" id="uploadlogo"  >
-								
+								<img src="<?php echo $logo_url; ?>" alt="no logo uploaded" />
 							</div>
 						</div>
 					</div>							
