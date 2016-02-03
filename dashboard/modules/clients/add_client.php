@@ -26,7 +26,6 @@ if (isset($_POST['save'])){
 	if(($client_name_exists <> -1) AND ($client_name <> "" )  ){
 	DB::insert('tams_clients', array(
 				'company_name'	=> $company_name,
-				'logo_url' => $logo_url,
 				'client_name' 		=> $client_name,
 				'client_title' => $client_title,
 				'client_address'=> $client_address,
@@ -45,10 +44,11 @@ if (isset($_POST['save'])){
 				
 			)
 			);
+	$client_id = DB::insertId();
 	//check if the file is uploaded and process the file if file is uploaded	
 	
 	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
-		echo '<h2> No Logo ploaded</h2>';
+		echo '<h2> No Logo uloaded</h2>';
 	}  else {
 		echo '<h2> Logo was uploaded</h2>';
 	
@@ -58,7 +58,7 @@ if (isset($_POST['save'])){
 		if ($handle->uploaded) {
 			  $handle->file_new_name_body   = $client_id.'_logo';
 			  $handle->image_resize         = true;
-			  $handle->image_x              = 100;
+			  $handle->image_x              = 250;
 			  $handle->image_ratio_y        = true;
 			  $handle->allowed = array('image/*');
 			  $handle->image_convert = 'jpg';
