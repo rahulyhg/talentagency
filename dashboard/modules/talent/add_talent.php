@@ -238,10 +238,56 @@ function create_new_talent_record($data,$user_id)
 				</div>
 			</div>
 			<form id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/add_talent"; ?>" >
-
+                <div class="container">
 				<div class="box-body">
-
-
+                    <div class="row">
+						<div class="col-md-6">
+							<h2  class="normal">
+                              Add Photo Upload Fields
+							  </h2>
+							  <div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+							  photo 1:
+							  </label>
+							  <div class="col-md-9 col-sm-9">
+							  <div class="input-group">
+								<input   class="input-group form-control" type="file" value="" name="talent_photo1" id="talent_photo1"  >
+								<img src="<?php echo $photo1_url; ?>" alt="no logo uploaded" />
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Photo Caption:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required
+									 name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
+								</div>
+							</div>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Photo 2 :
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<div class="input-group">
+								<input   class="input-group form-control" type="file" value="" name="talent_photo2" id="talent_photo2"  >
+								<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Photo Caption:
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input class="form-control" type="text" required
+									 name="photo2_caption" id="photo2_caption" placeholder="Enter Photo Caption">
+								</div>
+							</div>
+						</div>
+						
 					<div class="row">
 						<div class="col-md-6">
 							<h2  class="normal">
@@ -300,15 +346,19 @@ function create_new_talent_record($data,$user_id)
 								</div>
 							</div>
 						</div><!-- /.col-md-6 -->
+						
+			      </div> <!-- /.row -->
+					
+					<div class="row">
 						<div class="col-md-6">
-							<h2 class="normal">
+							<h2  class="normal">
 								Contact Information
 							</h2>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
-									Address:
+									Addresss:
 								</label>
-								<div class="col-md-9 col-sm-9">
+							<div class="col-md-9 col-sm-9">
 									<textarea class="form-control" required value="" name="address" id="address" placeholder="Enter Address"><?php echo $address; ?>
 									</textarea>
 								</div>
@@ -327,7 +377,7 @@ function create_new_talent_record($data,$user_id)
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+                        <div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Email :
 								</label>
@@ -346,13 +396,9 @@ function create_new_talent_record($data,$user_id)
 
 						</div><!-- /.col-md-6 -->
 
-
-
-					</div> <!-- /.row -->
-					<div class="row">
 						<div class="col-md-6">
 							<h2  class="normal">
-								Nationality
+							   Nationality
 							</h2>
 							<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
@@ -1094,12 +1140,11 @@ function create_new_talent_record($data,$user_id)
 											<i class="fa fa-globe">
 											</i>
 										</div>
-									</div>
-								</div>
+								
 							</div>
-
-
-							<div class="form-group">
+                        </div>
+                    </div>
+                                <div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Passport No:
 								</label>
@@ -1121,71 +1166,8 @@ function create_new_talent_record($data,$user_id)
 
 						</div><!-- /.col-md-6 -->
 
-
-						<div class="col-md-6">
-							<h2  class="normal">
-								Employability
-							</h2>
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Is Qatari?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari" data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Qatari ID Copy ?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="qatari_id_copy_attached" name="qatari_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Passport Copy ?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="passport_copy_attached" name="passport_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									NOC Required?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="noc_required" name="noc_required" data-on-text="Required" data-off-text="NotRequired" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									NOC Copy ?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="noc_copy_attached" name="noc_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Sponsors ID Copy ?
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="sponsors_id_copy_attached" name="sponsors_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
-								</div>
-							</div>
-
-
-
-
-						</div><!-- /.col-md-6 -->
+						</div>
+						
 <!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="talent_form_step_1" />
 <!-- /Hidden Fields -->
