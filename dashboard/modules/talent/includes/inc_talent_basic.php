@@ -147,7 +147,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		if($client_id <> ""){
 				$update = DB::update('tams_talent', array(
 
-				'photo1_url'=> '/talent/uploads/talent_profiles/'.$talent_id.'_photo1.jpg',
+				'photo1_url'=> '/talent/uploads/talent/talent_profiles/'.$talent_id.'_photo1.jpg',
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),
@@ -171,6 +171,12 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/talent/view_talents");</script>';
 		}
 	}
+	
+echo '<h2> $_FILES variable</h2>';
+echo "<pre>";
+print_r($_FILES);
+echo "</pre>";
+
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
 
@@ -219,16 +225,12 @@ $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 
 }
-
 	
-echo '<h2> $_FILES variable</h2>';
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";	
 	
 ?>
 
- <!-- Basic Information box -->       			
+ <!-- Basic Information box -->  
+  <form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" > 
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
@@ -243,7 +245,6 @@ echo "</pre>";
             <div class="box-body bg-info">
             <div class="row">
   
-  <form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
   		    <h3 class="normal">Basic Information</h3>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">

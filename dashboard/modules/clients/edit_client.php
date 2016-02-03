@@ -230,7 +230,7 @@ $last_modified_on = $client['last_modified_on'];
 									
 				  <div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Upload Logo :
+							Upload Company Logo :
 						</label>
 						<div class="col-md-9 col-sm-9">
 							<div class="input-group">

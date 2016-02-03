@@ -5,10 +5,10 @@ $tbl->addRow();
 $tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/add_client'>Add New Client&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
 $tbl->addCell(' Client ID', '', 'header');
+$tbl->addCell(' Company Logo','','header');
 $tbl->addCell(' Company Name','','header');
 $tbl->addCell(' Contact Person Name', '', 'header');
 $tbl->addCell('Title/Position','','header');
-$tbl->addCell('Address', '', 'header');
 $tbl->addCell('Country', '', 'header');
 $tbl->addCell('Phone No', '', 'header');
 $tbl->addCell('Email', '', 'header');
@@ -30,12 +30,12 @@ $sql = 'SELECT * FROM tams_clients WHERE client_status = "active"';
 $get_client_name= DB::query($sql);
 foreach($get_client_name as $client) { 
 $tbl->addRow();
-$tbl->addCell($client['client_id'].'&nbsp&nbsp&nbsp'."<a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
+$tbl->addCell($client['client_id'].'&nbsp&nbsp'."<a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
 			   ");
+$tbl->addCell('<img src="'.$client['logo_url'].'" alt="Logo" width="100px" height="100px"; />');
 $tbl->addCell($client['company_name']);
 $tbl->addCell($client['client_name']);
 $tbl->addCell($client['client_title']);
-$tbl->addCell($client['client_address']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
 $tbl->addCell($client['client_email']);
