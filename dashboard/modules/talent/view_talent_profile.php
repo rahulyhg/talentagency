@@ -50,32 +50,31 @@ $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 
 }
-
 /*
  $sql = "SELECT
     `tams_talent`.*
-    , `jobs`.`job_title`
-    , `departments`.`department_name`
-    , `contract_types`.`contract_type`
-    , `employment_types`.`status_type_name`
-    , `base`.`base_name`
-    , `locations`.`location_name`
+    , `tams_talent_experience`.`experience_item_id`
+    , `tams_talent_portfolio`.`portfolio_item_id`
+    , `tams_talent_documents`.`document_type_id`
+    , `tams_talent_language`.`language_id`
+    , `tams_talent_photos`.`talent_photo_id`
+    , `tams_talent_comments`.`comment`
 FROM
-    `employees`
-    LEFT JOIN `base` 
-        ON (`employees`.`base_id` = `base`.`base_id`)
-    LEFT JOIN `departments` 
-        ON (`departments`.`department_id` = `employees`.`department_id`)
-    LEFT JOIN `contract_types` 
-        ON (`employees`.`contract_type_id` = `contract_types`.`contract_type_id`)
-    LEFT JOIN `jobs` 
-        ON (`jobs`.`job_id` = `employees`.`job_id`)
-    LEFT JOIN `locations` 
-        ON (`employees`.`location_id` = `locations`.`location_id`) AND (`locations`.`base_id` = `base`.`base_id`)
-    LEFT JOIN `employment_types` 
-        ON (`employment_types`.`status_type_id` = `employees`.`status_type_id`) 
-			WHERE ((`employees`.employee_id=$employee_id )AND (`employees`.company_id=$company_id ));";
-*/			
+    `tams_talent`
+    LEFT JOIN `tams_talent_experience` 
+        ON (`tams_talent`.`experience_item_id` = `tams_talent_experience`.`experience_item_id`)
+    LEFT JOIN `tams_talent_portfolio` 
+        ON (`tams_talent_portfolio`.`portfolio_item_id` = `tams_talent`.`portfolio_item_id`)
+    LEFT JOIN `tams_talent_documents` 
+        ON (`tams_talent`.`document_type_id` = `tams_talent_documents`.`document_type_id`)
+    LEFT JOIN `tams_talent_language` 
+        ON (`tams_talent_language`.`language_id` = `tams_talent`.`language_id`)
+    LEFT JOIN `tams_talent_photos` 
+        ON (`tams_talent`.`talent_photo_id` = `tams_talent_photos`.`talent_photo_id`)
+    LEFT JOIN `tams_talent_comments` 
+        ON (`tams_talent_comments`.`comment` = `tams_talent`.`comment`) 
+			";
+	*/		
 $talent = DB::queryFirstRow($sql);
 ////print_r($talent);
 //Basic Information
@@ -95,6 +94,10 @@ if (is_null($dob) OR $dob == "" ) {
 $nationality = $talent['nationality'];
 if (is_null($nationality) OR $nationality == "" ) {
 	$nationality = " - not set - ";
+}
+$brief = $talent['brief'];
+if (is_null($brief) OR $brief == "" ) {
+	$brief = " - not set - ";
 }
 
 // Contact Information
@@ -359,10 +362,10 @@ $emp_benefits = DB::query($sql_benefits);
 	            		<p class="text-left"><?php echo $dob; ?></p>
 	            	</div>      	    	
 	            	<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Nationality :</strong></p>
+	            		<p class="text-right"><strong>Brief :</strong></p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6"> 
-	            		<p class="text-left"><?php echo $nationality;  ?></p>
+	            		<p class="text-left"><?php echo $brief;  ?></p>
 	            	</div>		            	 
               </div>
  		
@@ -414,11 +417,11 @@ $emp_benefits = DB::query($sql_benefits);
             </div><!-- /.box-footer-->
           </div><!-- /.box Contact Information-->
 
-   <!-- Address box -->       			
+   <!-- Experience box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Address
+              	Experience
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -426,24 +429,25 @@ $emp_benefits = DB::query($sql_benefits);
               </div>
             </div>
                   <div class="box-body bg-info ">
-				  <address>
-				 <?php echo $employee['address_1'];  ?><br>
-				 <?php echo $employee['address_2'];  ?><br>
-				 <?php echo $employee['city']; ?>  <?php echo $employee['zip_postal_code']; ?><br>
-				 <?php echo $employee['country']; ?> 	
-				  </address>
+				  <div class="row">
+				  <div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>List of Experiences : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['experience_item_id']; ?></p>
+	            </div>
 				  </div>
-				  	   
+				  </div>	   
             <div class="box-footer">
-			 <div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#address" title="">Edit Address</a></div>
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#experience'; ?>" title="">Edit Experience</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Address-->          
     
-   <!-- Emergency Contact Information box -->       			
+   <!-- Portfolio Items Information box -->       			
        		<div class="box ">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Emergency Contact Information
+              	Portfolio Items
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -453,16 +457,10 @@ $emp_benefits = DB::query($sql_benefits);
                  <div class="box-body bg-gray">
                  <div class="row">
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Next of Kin : </strong></p>
+	            		<p class="text-right"><strong>List of Portfolio items : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $next_of_kin; ?></p>
-	            </div>
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Contact No : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $kin_contact; ?></p>
+	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['portfolio_item_id']; ?></p>
 	            </div>
 				
 				</div>
@@ -470,7 +468,7 @@ $emp_benefits = DB::query($sql_benefits);
 				</div>
 				  	   
             <div class="box-footer">
-			<div class="text-right"><a href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#emergency" title="">Edit Emergency Contact</a></div>
+			<div class="text-right"><a href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#portfolio'; ?>" title="">Edit Portfolio Items</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Emergency Contact Information-->     
                      			
@@ -575,6 +573,13 @@ $emp_benefits = DB::query($sql_benefits);
             </div>
                   <div class="box-body bg-info">
 				  <div class="row">
+				  
+				<div class="col-md-6 col-sm-6 ">
+	            		<p class="text-right"><strong>Nationality :</strong></p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6"> 
+	            		<p class="text-left"><?php echo $nationality;  ?></p>
+	            </div>	
 				  	            
 				<div class="col-md-6 col-sm-6  ">
 	            		<p class="text-right"><strong>Is Qatari? :</strong></p>
@@ -647,11 +652,11 @@ $emp_benefits = DB::query($sql_benefits);
             </div><!-- /.box-footer-->
           </div><!-- /.box Contract Information box  --> 
           
-   <!-- Salary  -->       			
+   <!-- Spoken Languages  -->       			
        		<div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Salary
+              	Spoken Languages
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -662,67 +667,35 @@ $emp_benefits = DB::query($sql_benefits);
                   <div class="row">
                   					  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Currency : </strong></p>
+	            		<p class="text-right"><strong>Spoken Languages : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $currency_code; ?></p>
+	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['language_id']; ?></p>
 	            </div>
                   					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Annual Salary : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $annual_salary; ?></p>
-	            </div>
- 
-                  					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Monthly Salary : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $monthly_salary; ?></p>
-	            </div>
-                   	
-                  					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Daily Wage : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $daily_wage; ?></p>
-	            </div>
-                   	
-                  					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Hourly Rate : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $hourly_rate; ?></p>
-	            </div>
-                   	
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>OverTime Allowed : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $over_time_allowed; ?></p>
-	            </div>                  	
-                  	
-                  	
                   	
                   </div>
-				 
 				  
 				  </div>
 				  	   
             <div class="box-footer">
-			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#employability'; ?>" title="">Edit Employability Information</a></div>
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#languages'; ?>" title="">Edit Spoken Languages</a></div>
             </div><!-- /.box-footer-->
-          </div><!-- /.box Salary -->      
+          </div><!-- /.box Languages -->      
+         			
+</div> 	<!-- /.Row 1 Colum 2 Ends-->
 
-   <!-- Leave Entitlements  -->       			
-       		<div class="box box-info">
+</div> <!-- /.Row 1 Ends-->
+ <!-- Row 2 Starts -->        
+<div class="row">
+ <!-- Row 2 Column 1 Starts -->
+       		<div class="col-md-6">
+              
+   <!-- Talent Photos box -->       			
+       		<div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Leave Entitlements
+              	Talent Photos
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -730,29 +703,35 @@ $emp_benefits = DB::query($sql_benefits);
               </div>
             </div>
                   <div class="box-body bg-info">
-				  <p><strong>Working Days per Month : </strong> <?php echo $employee['n_work_day']; ?></p>
-				  <p><strong>Off Days Yearly : </strong> <?php echo $employee['n_day_off']; ?></p>
+				  <div class="row">
+                  					  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Talent Photos : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['talent_photo_id']; ?></p>
+	            </div>
+                  					  	            
+                  	
+                  </div>
 				  
 				  </div>
 				  	   
             <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#leave" title="">Edit Leaves</a></div>
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#photos'; ?>" title="">Edit Talent Photos</a></div>
             </div><!-- /.box-footer-->
-          </div><!-- /.box Salary -->     
-       			
-</div> 	<!-- /.Row 1 Colum 2 Ends-->
-
-</div> <!-- /.Row 1 Ends-->
-
+          </div><!-- /.box Talent Photos  -->  
+  			
+       		</div><!-- /.Row 2 Column 1 Ends-->
 
 <!-- Row 2 Column 2 Starts -->
 			<div class="col-md-6">
 			
- <!-- Deductions box -->   			
+ <!-- Talent Notes box -->   			
 			<div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Deductions
+              	Notes
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -763,139 +742,20 @@ $emp_benefits = DB::query($sql_benefits);
 				    <div class="row"> 	            
 				<div class="col-md-10 col-sm-10 ">
 					
-	            <p class="text-right"><?php echo $tbl->display();?></p>
+	            <p class="text-right"><?php echo $talent['talent_id']."".$talent['$comment'];?></p>
 	            
 	            </div>
 	            
 				  </div>
 				 </div> 	   
             <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#deductions" title="">Edit Deductions</a></div>
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#notes'; ?>" title="">Add Notes </a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Deductions  -->       			
   
-   <!-- Tax Information -->       			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Tax Information
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body">
-				  
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#tax" title="">Edit Tax Information</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Tax Information-->    
-  
-     			
 </div> 	<!-- /.Colum 2 Ends-->
-   <!-- Payroll Information -->  
-   <div class="col-md-12">   			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Payroll History
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <?php 
-            $payslip_sql ="SELECT 
-							`payslips`.`payslip_id`
-							, `payslips`.`job_title`
-							,`payslips`.`period_name`
-							, `payslips`.`gross_salary`
-							, `payslips`.`net_salary`
-							, `payslips`.`benefits_total`
-							, `payslips`.`employee_tax_total`
-							, `payslips`.`employee_deductions_total` FROM payslips 
-							WHERE `payslips`.`employee_id`=$employee_id ORDER BY `payslips`.`period_id` DESC;";
-							            
-///            $payslip_sql = "SELECT ps.`payslip_id`, ps.`job_title`,ps.`period_name`, ps.`gross_salary`, ps.`net_salary`, ps.`benefits_total`, ps.`employee_deductions_total` FROM payslips ps WHERE ps.`employee_id`=$employee_id ORDER BY ps.`payslip_id` DESC";
-            $payslips =  DB::query($payslip_sql);
-            $i=1;
-            ?>
-            <div class="box-body">
-	            <table id="emp_payslips" class="table table-bordered">
-	                    <tbody><tr>
-	                      <th style="width: 10px">#</th>
-	                      <th>Period</th>
-	                      <th>Job Title</th>
-	                      <th>Gross Salary</th>
-	                      <th>Benefits</th>
-	                      <th>Deductions</th>
-	                      <th>Employee Tax Total</th>
-	                      <th>Net Salary</th>
-	                      <th>View Slip</th>
-	                    </tr>
-					<?php foreach($payslips as $payslip){ ?>
-						<tr>
-							<td class="text-right"><?php echo $i++ ?></td>
-							<td><?php echo $payslip['period_name']; ?></td>
-							<td><?php echo $payslip['job_title']; ?></td>
-							<td class="text-right"><?php echo round2dp($payslip['gross_salary']); ?></td>
-							<td class="text-right"><?php echo round2dp($payslip['benefits_total']); ?></td>
-							<td class="text-right"><?php echo round2dp($payslip['employee_deductions_total']); ?></td>
-							<td class="text-right"><?php echo round2dp($payslip['employee_tax_total']); ?> </td>
-							<td class="text-right"><?php echo round2dp($payslip['net_salary']); ?></td>
-							<td><a href="?route=payroll/view_payslip&payslip_id=<?php echo $payslip['payslip_id']; ?>">View Slip</a></td>
-						</tr>
-					<?php } ?>
-					<tr>
-	<?php $total_net_salary = DB::queryFirstField("SELECT
-												    SUM(`net_salary`)
-												FROM
-												    `payslips`
-												WHERE (`employee_id` =$employee_id);"); ?>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="text-right" ><strong><?php echo round2dp($total_net_salary); ?></strong></td>
-							<td></td>
-						</tr>
-					</table>
-				  
-			</div>
-
-          </div><!-- /.box Payroll Information-->   
-   </div> 
 </div> <!-- /.Row 2 Ends-->
 
-<?php 
-//Basic Information
-
-//Other information
-
-//Contact Infromation
-
-//Emergency Contact INFO_ALL
-
-//Address
-
-//Bank Information
-
-//Team & Management 
-
-//Holiday and Leaves
-
-//Wages & Benefits
-
-// Taxes & Deductions
-
-?>
  
 				  </div>
 			
@@ -903,15 +763,4 @@ $emp_benefits = DB::query($sql_benefits);
              <small></small>
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
-     	 </section><!-- /.content --><?php
-
-?>
-<script>
-$(document).ready(function(){
-		$('#emp_payslips').dataTable( {
-  "pageLength": 5
-} );
-	
-});
-
-</script>
+     	 </section><!-- /.content -->
