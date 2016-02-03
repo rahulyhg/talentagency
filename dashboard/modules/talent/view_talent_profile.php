@@ -23,6 +23,7 @@ $nationality = $talent['nationality'];
 $passport_no = $talent['passport_no'];
 $qatari_id   = $talent['qatari_id'];
 $is_qatari   = $talent['is_qatari'];
+$qatari_id_copy_attached = $talent['qatari_id_copy_attached'];
 $passport_copy_attached  = $talent['passport_copy_attached'];
 $noc_required     = $talent['noc_required'];
 $noc_copy_attached   = $talent['noc_copy_attached'];
@@ -49,7 +50,7 @@ $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 
 }
-$talent_full_name = $talent['first_name'].' '.$talent['last_name'];
+
 /*
  $sql = "SELECT
     `tams_talent`.*
@@ -74,102 +75,152 @@ FROM
     LEFT JOIN `employment_types` 
         ON (`employment_types`.`status_type_id` = `employees`.`status_type_id`) 
 			WHERE ((`employees`.employee_id=$employee_id )AND (`employees`.company_id=$company_id ));";
-			
-$employee = DB::queryFirstRow($sql);
-////print_r($employee);
+*/			
+$talent = DB::queryFirstRow($sql);
+////print_r($talent);
 //Basic Information
 
-$employee_full_name = $employee['firstname'].' '.$employee['lastname'];
-$gender = get_emp_gender($employee_id);
-if (is_null($gender) OR $gender == "" ) {
-	$gender = " - not set - ";
+$talent_full_name = $talent['first_name'].' '.$talent['last_name'];
+$sex = get_talent_gender($talent_id);
+if (is_null($sex) OR $sex == "" ) {
+	$sex = " - not set - ";
 } 
-$dob = $employee['birthday'];
+$dob = $talent['dob'];
 if (is_null($dob) OR $dob == "" ) {
 	$dob = " - not set - ";
-	$age = " - not set - ";
 } else {
-	$dob = getDateTime($dob,"dLong");
-	$age = getAge($employee['birthday']);
+	$age = getAge($talent['dob']);
 }
-$marital_status = $employee['marital_status'];
-if (is_null($marital_status) OR $marital_status == "" ) {
-	$marital_status = " - not set - ";
-}
-$nationality = $employee['nationality'];
+
+$nationality = $talent['nationality'];
 if (is_null($nationality) OR $nationality == "" ) {
 	$nationality = " - not set - ";
 }
 
 // Contact Information
-$phone = $employee['phone'];
-if (is_null($phone) OR $phone == "" ) {
-	$phone = " - not set - ";
-} 
-$mobile = $employee['mobile'];
-if (is_null($mobile) OR $mobile == "" ) {
-	$mobile = " - not set - ";
-}
-$email = $employee['email'];  
-if (is_null($email) OR $email == "" ) {
-	$email = " - not set - ";
-}
-// Emergency Contact Information
-$next_of_kin = " - not set - ";
-$kin_contact = " - not set - ";
 
-
-// Work Information
-$employee_code = $employee['employee_code'];
-if (is_null($employee_code) OR $employee_code == "" ) {
-	$employee_code = " - not set - ";
+$mobile_no = $talent['mobile_no'];
+if (is_null($mobile_no) OR $mobile_no == "" ) {
+	$mobile_no = " - not set - ";
 }
-$ssn = $employee['ssn'];
-if (is_null($ssn) OR $ssn == "" ) {
-	$ssn = " - not set - ";
-}
-$job_title = $employee['job_title'];
-if (is_null($job_title) OR $job_title == "" ) {
-	$job_title = " - not set - ";
-}
-$department_name = $employee['department_name'];
-if (is_null($department_name) OR $department_name == "" ) {
-	$department_name = " - not set - ";
-}
-$base_name = $employee['base_name'];
-if (is_null($base_name) OR $base_name == "" ) {
-	$base_name = " - not set - ";
-}
-$location_name = $employee['location_name'];
-if (is_null($location_name) OR $location_name == "" ) {
-	$location_name = " - not set - ";
-}
-$status = $employee['status'];
-if (is_null($status) OR $status == "" ) {
-	$status = " - not set - ";
+$email_id = $talent['email_id'];  
+if (is_null($email_id) OR $email_id == "" ) {
+	$email_id = " - not set - ";
 }
 
-
-//Contract Informaiton
-
-$hire_date = $employee['hire_date'];
-
-if (is_null($hire_date) OR $hire_date == "" ) {
-	$hire_date = " - not set - ";
-} else {
-	$hire_date = getDateTime($hire_date, "dLong");
+// Vital Information
+$height_cm = $talent['height_cm'];
+if (is_null($height_cm) OR $height_cm == "" ) {
+	$height_cm = " - not set - ";
+}
+$weight_kg = $talent['weight_kg'];
+if (is_null($weight_kg) OR $weight_kg == "" ) {
+	$weight_kg = " - not set - ";
+}
+$hair_color = $talent['hair_color'];
+if (is_null($hair_color) OR $hair_color == "" ) {
+	$hair_color = " - not set - ";
+}
+$eye_color = $talent['eye_color'];
+if (is_null($eye_color) OR $eye_color == "" ) {
+	$eye_color = " - not set - ";
+}
+$dress_size = $talent['dress_size'];
+if (is_null($dress_size) OR $dress_size == "" ) {
+	$dress_size = " - not set - ";
+}
+$shoe_size = $talent['shoe_size'];
+if (is_null($shoe_size) OR $shoe_size == "" ) {
+	$shoe_size = " - not set - ";
+}
+$waist_cm = $talent['waist_cm'];
+if (is_null($waist_cm) OR $waist_cm == "" ) {
+	$waist_cm = " - not set - ";
+}
+$collar_cm = $talent['collar_cm'];
+if (is_null($collar_cm) OR $collar_cm == "" ) {
+	$collar_cm = " - not set - ";
+}
+$chest_cm = $talent['chest_cm'];
+if (is_null($chest_cm) OR $chest_cm == "" ) {
+	$chest_cm = " - not set - ";
 }
 
-$contract_type = $employee['contract_type'];
-if (is_null($contract_type) OR $contract_type == "" ) {
-	$contract_type = " - not set - ";
-} 
+//Employability Informaiton
 
-$status_type_name = $employee['status_type_name'];
-if (is_null($status_type_name) OR $status_type_name == "" ) {
-	$status_type_name = " - not set - ";
+$is_qatari = $talent['is_qatari'];
+
+if (is_null($is_qatari) OR $is_qatari == "" ) {
+	$is_qatari = " - not set - ";
+}elseif($is_qatari == 1 ){
+		$is_qatari = "Yes";
+	}
+	else {
+		$is_qatari = "No"; 
+	}
+$qatari_id = $talent['qatari_id'];
+if (is_null($qatari_id) OR $qatari_id == "" ) {
+	$qatari_id = " - not set - ";
 } 
 
+$passport_no = $talent['passport_no'];
+if (is_null($passport_no) OR $passport_no == "" ) {
+	$passport_no = " - not set - ";
+} 
+$qatari_id_copy_attached = $talent['qatari_id_copy_attached'];
+if (is_null($qatari_id_copy_attached) OR $qatari_id_copy_attached == "" ) {
+	$qatari_id_copy_attached = " - not set - ";
+}
+	elseif($qatari_id_copy_attached == 1 ){
+		$qatari_id_copy_attached = "Attached";
+	}
+		else {
+			$qatari_id_copy_attached ="Not-Attached"; 
+	}  
+$passport_copy_attached = $talent['passport_copy_attached'];
+if (is_null($passport_copy_attached) OR $passport_copy_attached == "" ) {
+	$passport_copy_attached = " - not set - ";
+}elseif($passport_copy_attached == 1 ){
+		$passport_copy_attached = "Attached";
+	}
+	else {
+		$passport_copy_attached ="Not-Attached"; 
+	} 
+$noc_required = $talent['noc_required'];
+if (is_null($noc_required) OR $noc_required == "" ) {
+	$noc_required = " - not set - ";
+}
+elseif($noc_required == 1 ){
+		$noc_required = "Yes";
+	}
+	else {
+		$noc_required ="No"; 
+	}  
+$noc_copy_attached = $talent['noc_copy_attached'];
+if (is_null($noc_copy_attached) OR $noc_copy_attached == "" ) {
+	$noc_copy_attached = " - not set - ";
+}
+elseif($noc_copy_attached == 1 ){
+		$noc_copy_attached = "Attached";
+	}
+	else {
+		$noc_copy_attached ="Not-Attached"; 
+	}  
+$sponsors_id_copy_attached = $talent['sponsors_id_copy_attached'];
+if (is_null($sponsors_id_copy_attached) OR $sponsors_id_copy_attached == "" ) {
+	$sponsors_id_copy_attached = " - not set - ";
+}
+elseif($sponsors_id_copy_attached == 1 ){
+		$sponsors_id_copy_attached = "Attached";
+	}
+	else {
+		$sponsors_id_copy_attached ="Not-Attached"; 
+	} 
+$events = $talent['events'];
+if (is_null($events) OR $events == "" ) {
+	$events = " - not set - ";
+} 
+/*
 // Salary Infromation
 $currency_code = $employee['currency_code'];
 if (is_null($currency_code) OR $currency_code == "" ) {
@@ -352,7 +403,7 @@ $emp_benefits = DB::query($sql_benefits);
 	            		<p class="text-right"><strong>Address :</strong></p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $Address; ?>&nbsp;</p>
+	            		<p class="text-left"><?php echo $address; ?>&nbsp;</p>
 	            	</div>
               	
               </div>
@@ -427,11 +478,11 @@ $emp_benefits = DB::query($sql_benefits);
 <!-- Row 1 Column 2 Starts -->
 			<div class="col-md-6 col-sm-6">
 			
- <!-- Work Information box -->   			
+ <!-- Vital Information box -->   			
 			<div class="box ">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Work Information
+              	Vital Information
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -442,45 +493,63 @@ $emp_benefits = DB::query($sql_benefits);
 				<div class="row">
 				
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Employee ID :</strong></p>
+	            		<p class="text-right"><strong>Height <small>cm</small>:</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $employee_code; ?></p>
+	            		<p class="text-left"><?php echo $height_cm; ?></p>
 	            </div>
 	              
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>SSN : </strong></p>
+	            		<p class="text-right"><strong>Weight <small>kg</small>: </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $ssn;  ?></p>
+	            		<p class="text-left"><?php echo $weight_kg;  ?></p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Job Title : </strong></p>
+	            		<p class="text-right"><strong>Hair Color : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $job_title; ?></p>
+	            		<p class="text-left"><?php echo $hair_color; ?></p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Department :</strong></p>
+	            		<p class="text-right"><strong>Eye Color :</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $department_name; ?></p>
+	            		<p class="text-left"><?php echo $eye_color; ?></p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Base :</strong></p>
+	            		<p class="text-right"><strong>Dress Size:</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $base_name; ?></p>
+	            		<p class="text-left"><?php echo $dress_size; ?></p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Location :</strong></p>
+	            		<p class="text-right"><strong>Shoe Size :</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $location_name; ?></p>
+	            		<p class="text-left"><?php echo $shoe_size; ?></p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $waist_cm; ?></p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Collar <small>cm</small> :</strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $collar_cm; ?></p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Chest <small>cm</small> :</strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $chest_cm; ?></p>
 	            </div>
 		            	                        
               	
@@ -488,16 +557,16 @@ $emp_benefits = DB::query($sql_benefits);
 				  </div>
 				  	   
             <div class="box-footer">
-			 <div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#work" title="">Edit Work Information</a></div>
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#vitals'; ?>" title="">Edit Vitals Information</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Work Information box  -->     
        
             			
-  <!-- Contract Information box -->   			
+  <!-- Employability Information box -->   			
 			<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Contract Information
+              	Employability Information
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -508,37 +577,73 @@ $emp_benefits = DB::query($sql_benefits);
 				  <div class="row">
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Hiring Date :</strong></p>
+	            		<p class="text-right"><strong>Is Qatari? :</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $hire_date; ?></p>
+	            		<p class="text-left"><?php echo $is_qatari; ?></p>
 	            </div>
 	
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Employment Status :</strong></p>
+	            		<p class="text-right"><strong>Qatari ID :</strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $status_type_name; ?></p>
+	            		<p class="text-left"><?php echo $qatari_id; ?></p>
 	            </div>
-
+  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Qatari ID Copy? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $qatari_id_copy_attached; ?></p>
+	            </div>
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Contract Type : </strong></p>
+	            		<p class="text-right"><strong>Passport No : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $contract_type; ?></p>
+	            		<p class="text-left"><?php echo $passport_no; ?></p>
 	            </div>
- 
-
-                         	
-               
-              	
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Passport ID Copy? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $passport_copy_attached; ?></p>
+	            </div>
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>NOC Required? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $noc_required; ?></p>
+	            </div>
+								  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>NOC Copy? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $noc_copy_attached; ?></p>
+	            </div>
+								  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Sponsors ID Copy? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $sponsors_id_copy_attached; ?></p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Available for Events ? : </strong></p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $events; ?></p>
+	            </div>
+	
               </div>
 				  </div>
 				  	   
             <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#contract" title="">Edit Contract Information</a></div>
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#employability'; ?>" title="">Edit Employability Information</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Contract Information box  --> 
           
@@ -609,7 +714,7 @@ $emp_benefits = DB::query($sql_benefits);
 				  </div>
 				  	   
             <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#salary" title="">Edit Salary</a></div>
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#employability'; ?>" title="">Edit Employability Information</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Salary -->      
 
@@ -639,82 +744,7 @@ $emp_benefits = DB::query($sql_benefits);
 
 </div> <!-- /.Row 1 Ends-->
 
- <!-- Row 2 Starts -->        
-<div class="row">
- <!-- Row 2 Column 1 Starts -->
-       		<div class="col-md-6">
-              
-   <!-- Payment Methods box -->       			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Payment Methods
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body">
-				  
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#payment" title="">Edit Payment Methods</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Payment Methods  -->  
-  
-   <!-- Benefits box -->       			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Benefits
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body bg-info">
-                   <div class="row">
-                   <div class="col-md-10 col-sm-10 ">
-                   <div class="col-md-6 col-sm-6  ">
-                   <?php foreach($emp_benefits as $benefits) {
-					$benefit_type_id = $benefits['benefit_type_id'];
-					$sql_benefit_type = "SELECT benefit_type FROM benefit_types WHERE benefit_type_id=$benefit_type_id";
-					$benefit_type = DB::queryFirstField($sql_benefit_type);
-					
-					?>
-	            		<p class="text-right"><strong><?php echo $benefit_type; ?>:</strong>&nbsp;</p>
-	            		<?php } ?>
-	            </div>
-	            <div class="col-md-6 col-sm-6 ">
-	            		<?php foreach($emp_benefits as $benefits) {
-					
-					$benefit_amount = $benefits['amount'];
-					if(($benefit_amount == '0.00') OR (is_null($benefit_amount)) OR ($benefit_amount == "")){
-						$benefit_amount = "-not set-";
-						}else{
-							$benefit_amount = $benefits['amount'];
-						}
-					
-					?>
-	            <p class="text-left"><?php echo round2dp($benefit_amount)." ".$benefits['currency_code']; ?><br/></p>
-	            <?php } ?>	 
-	            </div>
-                   
-				  
-	            </div>
-	            </div>
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="index.php?route=employees/edit_employee_profile&employee_id=<?php echo $employee_id; ?>#benefits" title="">Edit Benefits</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Benefits-->
 
-               			
-       		</div><!-- /.Row 2 Column 1 Ends-->
 <!-- Row 2 Column 2 Starts -->
 			<div class="col-md-6">
 			
