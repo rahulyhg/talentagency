@@ -105,8 +105,8 @@ $client_comments = DB::query($comment_sql);
             <div class="box-body">
 				<img src="<?php echo $logo_url; ?>" alt="Logo" alt="company logo" width="100px" height="99px"/>	
             </div><!-- /.box-body -->
-            <div class="box-footer">
-             <small></small>
+           	 <div  class="box-footer">
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client_id; ?>" title="Edit Logo">Edit Logo</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
           </div> <!--/.col-md-4 .col-sm-4 -->
@@ -157,6 +157,9 @@ $client_comments = DB::query($comment_sql);
              </div> 
              </form>
 			 </div> 
+			  <div  class="box-footer">
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client_id; ?>" title="Edit Basic Information">Edit Basic Information</a></div>
+            </div><!-- /.box-footer-->
           </div><!-- /.box Basic Information-->
 		  </div> <!--/.col-md-7 col-sm-7-->
 		  	  <!-- Address box --> 
@@ -194,7 +197,9 @@ $client_comments = DB::query($comment_sql);
 					</div>
 					
             </div><!-- /.box-body -->
-            
+            <div  class="box-footer">
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client_id; ?>" title="Edit Address Information">Edit Address Information</a></div>
+            </div><!-- /.box-footer-->
           </div><!-- /.box -->
           </div> <!--/.col-md-4 .col-sm-4 -->
 		  	<div class="col-md-7 col-sm-7">
@@ -238,6 +243,9 @@ $client_comments = DB::query($comment_sql);
               	
               </div>
 				  </div>
+			<div  class="box-footer">
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client_id; ?>" title="Edit Contact Information">Edit Contact Information</a></div>
+            </div><!-- /.box-footer-->
           </div><!-- /.box Contact Information-->
 		  </div> <!--/.col-md-7 col-sm-7-->
 		  <div class="col-md-12 col-sm-12">
