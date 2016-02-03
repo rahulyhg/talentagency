@@ -255,6 +255,7 @@ $last_modified_on = $talent['last_modified_on'];
 						</label>
 						<div class="col-md-9 col-sm-9">
 						<img src="<?php echo $photo1_url; ?>" alt="no photo uploaded" />
+		<!-- input-group image-preview [FROM HERE]-->
             <div class="input-group image-preview">
                 <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                 <span class="input-group-btn">
@@ -288,22 +289,23 @@ $last_modified_on = $talent['last_modified_on'];
 						</label>
 						<div class="col-md-9 col-sm-9">
 						<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
-            <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+						<!-- input-group image-preview2 [FROM HERE]-->
+            <div class="input-group image-preview2">
+                <input type="text" class="form-control image-preview-filename2" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                 <span class="input-group-btn">
                     <!-- image-preview-clear button -->
-                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                    <button  type="submit" class="btn btn-default image-preview-clear2" style="display:none;">
                         <span class="glyphicon glyphicon-remove"></span> Clear
                     </button>
                     <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
+                    <div class="btn btn-default image-preview-input2">
                         <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
+                        <span class="image-preview-input-title2">Browse</span>
                         <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo2" id="talent_photo2"/> <!-- Form Upload Field -->
                     </div>
                     <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
                 </span>
-            </div><!-- /input-group image-preview [TO HERE]-->
+            </div><!-- /input-group image-preview2 [TO HERE]-->
 						</div>
 					</div>	
 					<div class="form-group">
