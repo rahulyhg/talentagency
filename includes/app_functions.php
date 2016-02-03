@@ -134,4 +134,5 @@ function get_document_type_desc($document_type_id){
 	$document_type_desc = DB:: queryFirstField ("SELECT document_type_desc from tams_document_types WHERE document_type_id = $document_type_id");
 	return $document_type_desc;
 	}
+	
  ?>
