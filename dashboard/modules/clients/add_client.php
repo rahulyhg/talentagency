@@ -45,7 +45,7 @@ if (isset($_POST['save'])){
 				
 			)
 			);
-					//check if the file is uploaded and process the file if file is uploaded	
+	//check if the file is uploaded and process the file if file is uploaded	
 	
 	if(!file_exists($_FILES['uploadlogo']['tmp_name']) || !is_uploaded_file($_FILES['uploadlogo']['tmp_name'])) {
 		echo '<h2> No Logo ploaded</h2>';

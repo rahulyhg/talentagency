@@ -103,8 +103,7 @@ $client_comments = DB::query($comment_sql);
 			  </div>
             </div>
             <div class="box-body">
-				<img src="modules/clients/comp-placeholder.png" alt="company logo" width="130px" height="99px"/>
-			   <!-- <?php echo $logo_url; ?>-->			
+				<img src="<?php echo $logo_url; ?>" alt="Logo" alt="company logo" width="100px" height="99px"/>	
             </div><!-- /.box-body -->
             <div class="box-footer">
              <small></small>
@@ -266,7 +265,7 @@ $client_comments = DB::query($comment_sql);
 						<div class="box-comment">
 					
 							<img class="img-circle img-sm" alt="User Image" src="<?php echo get_user_avatar_url($comment['created_by'],'50'); ?>" />
-<div class="comment-text">
+			<div class="comment-text">
 							<span class="username">
 								<?php echo get_user_full_name($comment['created_by']); ?>
 								<span class="text-muted pull-right">
@@ -274,7 +273,7 @@ $client_comments = DB::query($comment_sql);
 								</span>
 							</span>
 							<?php echo $comment['comment']; ?>
-</div>						
+			</div>						
 						</div>
 						<?php
 					}
