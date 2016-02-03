@@ -44,6 +44,7 @@ h3.normal {
 .image-preview-input-title {
     margin-left:2px;
 }
+<<<<<<< HEAD
  p.one {
 display:block;
 margin-left:15px;
@@ -64,3 +65,29 @@ font-size:20px;
 }
 
 
+=======
+
+
+.image-preview-input2 {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input2 input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title2 {
+    margin-left:2px;
+}
+>>>>>>> cf24b6be4f9afa8d10fdd621ac72ac6a4fd30679

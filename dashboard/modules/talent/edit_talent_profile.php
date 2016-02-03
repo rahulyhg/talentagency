@@ -235,6 +235,7 @@ echo "</pre>";
 					  <li><a href="#employability" data-toggle="tab">Employability </a></li> 	
 					    <li><a href="#vitals" data-toggle="tab">Vitals</a></li>
 					    <li><a href="#photos" data-toggle="tab">Photos</a></li>
+						<li><a href="#documents" data-toggle="tab">Documents</a></li>
 					    <li><a href="#experience" data-toggle="tab">Experience</a></li>
 					    <li><a href="#languages" data-toggle="tab">Spoken Languages</a></li>
 					    <li><a href="#portfolio" data-toggle="tab">Portfolio</a></li>
@@ -264,6 +265,10 @@ echo "</pre>";
 				<!-- Photos Information Tab Panel Start -->
 					    <div class="tab-pane" id="photos">
 <?php include("includes/inc_talent_photos.php"); ?>
+						</div><!-- /.col-md-6 -->
+			<!-- Documents Information Tab Panel Start -->
+					    <div class="tab-pane" id="documents">
+<?php include("includes/inc_talent_document.php"); ?>
 						</div><!-- /.col-md-6 -->
 				<!-- Experience Information Tab Panel Start -->
 					    <div class="tab-pane" id="experience">
