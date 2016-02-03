@@ -35,10 +35,8 @@ $message="";
 
 // getting values from $_post variable & saving into normal variables
 
-if(isset($_POST['save']))
-{
+if(isset($_POST['save'])) {
  
-$talent_id = $_POST['talent_id'];
 $talent_id = $_POST['talent_id'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -170,12 +168,12 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo '<script>alert("Edited Details Successfully");</script>';
 			echo '<script>window.location.replace("'.$_SERVER['PHP_SELF'].'?route=modules/talent/view_talents");</script>';
 		}
-	}
+}
 	
-echo '<h2> $_FILES variable</h2>';
+/*echo '<h2> $_FILES variable</h2>';
 echo "<pre>";
 print_r($_FILES);
-echo "</pre>";
+echo "</pre>";*/
 
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
@@ -186,6 +184,7 @@ if(isset($_GET['talent_id'])){
 				tams_talent
 				WHERE talent_id = $talent_id ;";
 $talent= DB::queryFirstRow($sql);
+
 $talent_id = $talent['talent_id'];
 $first_name = $talent['first_name'];
 $last_name = $talent['last_name'];
@@ -230,7 +229,7 @@ $last_modified_on = $talent['last_modified_on'];
 ?>
 
  <!-- Basic Information box -->  
-  <form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" > 
+  <form enctype="multipart/form-data" id="edit_talent_basic_info" name="edit_talent_basic_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" > 
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
@@ -246,20 +245,37 @@ $last_modified_on = $talent['last_modified_on'];
             <div class="row">
   
   		    <h3 class="normal">Basic Information</h3>
+
+			<div class="form-group">
+
+					</div>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Photo 1 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control" type="file" value="" name="talent_photo1" id="talent_photo1"  >
-								<img src="<?php echo $photo1_url; ?>" alt="no logo uploaded" />
-							</div>
+						<img src="<?php echo $photo1_url; ?>" alt="no photo uploaded" />
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo2" id="talent_photo2"/> <!-- Form Upload Field -->
+                    </div>
+                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
-					</div>
+					</div>					
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
-									Photo Caption:
+									Photo 1 Caption:
 								</label>
 								<div class="col-md-9 col-sm-9">
 									<input class="form-control" type="text" required
@@ -271,12 +287,25 @@ $last_modified_on = $talent['last_modified_on'];
 							Photo 2 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control" type="file" value="" name="talent_photo2" id="talent_photo2"  >
-								<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
-							</div>
+						<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo2" id="talent_photo2"/> <!-- Form Upload Field -->
+                    </div>
+                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
-					</div>
+					</div>	
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									Photo Caption:
