@@ -30,9 +30,9 @@ $sql = 'SELECT * FROM tams_clients WHERE client_status = "active"';
 $get_client_name= DB::query($sql);
 foreach($get_client_name as $client) { 
 $tbl->addRow();
-$tbl->addCell($client['client_id'].'&nbsp&nbsp&nbsp'."<a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
+$tbl->addCell($client['client_id'].'&nbsp&nbsp'."<a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
 			   ");
-$tbl->addCell('<img src="'.$client['logo_url'].'" alt="Logo" />');
+$tbl->addCell('<img src="'.$client['logo_url'].'" alt="Logo" width="100px" height="100px"; />');
 $tbl->addCell($client['company_name']);
 $tbl->addCell($client['client_name']);
 $tbl->addCell($client['client_title']);

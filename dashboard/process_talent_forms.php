@@ -58,7 +58,7 @@ if(isset($_POST['form_name'])) {
 			
 		break;		
 		
-		case "edit_talent_basic_info":
+	/*	case "edit_talent_basic_info":
 		$talent_id = $_POST['talent_id'];
 		$photo1_url=$_POST['photo1_url'];
 		$photo1_caption=$_POST['photo1_caption'];
@@ -98,7 +98,7 @@ if(isset($_POST['form_name'])) {
 		}			
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#basic');	
 			
-		break;		
+		break;	*/	
 		
 		default:
 		 echo "Unable to identify the form";
