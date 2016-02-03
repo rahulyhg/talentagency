@@ -24,6 +24,7 @@ $talent_experiences = DB::query($experience_sql);
 
 
 ?>
+
 <form
 	id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 	<!-- Experience Information box -->
@@ -45,17 +46,21 @@ $talent_experiences = DB::query($experience_sql);
 		</div>
 
 		<div class="box-body bg-info">
-		<div class="row">
-
+		
+		<div class="row" >
+	
+        
 		<?php
 		if($talent_experiences )
+			
 		{
 		?>
-		<p>
+		<p class="one">
 		<?php 
 		foreach($talent_experiences as $experience){
 		?>				
 		<span class="label label-info">
+        <button style="float:right"><i class="fa fa-times"></i></button>
 			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	
 			
@@ -149,3 +154,4 @@ $talent_experiences = DB::query($experience_sql);
 	<input type="hidden" name="talent_id" id="experience_talent_id" value="<?php echo $talent_id; ?>" />
 	<!-- /Hidden Fields -->
 </form>
+</html>
