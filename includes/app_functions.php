@@ -124,4 +124,14 @@ function get_portfolio_item_desc($portfolio_item_id){
 	$portfolio_item_desc = DB:: queryFirstField ("SELECT portfolio_item_desc from tams_portfolio_items WHERE portfolio_item_id = $portfolio_item_id");
 	return $portfolio_item_desc;
 	}
+	
+function get_document_type_name($document_type_id){
+	$document_type_name = DB:: queryFirstField ("SELECT document_type_name from tams_document_types WHERE document_type_id = $document_type_id");
+	return $document_type_name;
+	}
+	
+function get_document_type_desc($document_type_id){
+	$document_type_desc = DB:: queryFirstField ("SELECT document_type_desc from tams_document_types WHERE document_type_id = $document_type_id");
+	return $document_type_desc;
+	}
  ?>

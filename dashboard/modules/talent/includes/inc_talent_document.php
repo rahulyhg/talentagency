@@ -44,7 +44,7 @@ $talent_document = DB::query($document_sql);
 		foreach($talent_document as $document){
 		?>				
 		<span class="label label-info">
-			<?php echo get_portfolio_type_name($document['document_type_id']); ?>
+			<?php echo get_document_type_name($document['document_type_id']); ?>
 		</span>	
 			
 
