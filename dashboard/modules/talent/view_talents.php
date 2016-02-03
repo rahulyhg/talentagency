@@ -56,8 +56,8 @@ $sql = 'SELECT * FROM tams_talent WHERE talent_status = "draft"';
 $get_talents = DB::query($sql);
 foreach($get_talents as $talent) { 
 $tbl2->addRow();
-/*$tbl2->addCell("<a href='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'><img src="'.$talent['photo1_url'].'" alt="Photo1" width="100px" height="100px"; /></a>");
-*/$tbl2->addCell($talent['first_name']." ".$talent['last_name']);
+$tbl2->addCell("<a href='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'><img src="'.$talent['photo1_url'].'" alt="Photo1" width="100px" height="100px"; /></a>");
+$tbl2->addCell($talent['first_name']." ".$talent['last_name']);
 $tbl2->addCell($talent['sex']);
 $tbl2->addCell(getAge($talent['dob']));
 $tbl2->addCell($talent['mobile_no']);
