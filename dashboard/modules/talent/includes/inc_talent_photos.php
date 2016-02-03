@@ -17,10 +17,7 @@
             <div class="box-body bg-info">
             <div class="row">
   					
-							<div class="tab-pane active" id="photos">
-
-								
-							</div><!--/.tab-pane-->
+					
 				</div> <!--/.row-->
 			 				<div class="box-footer">
  								<div class="form-group">
@@ -30,11 +27,6 @@
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>

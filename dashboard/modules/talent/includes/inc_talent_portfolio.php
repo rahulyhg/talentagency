@@ -1,4 +1,24 @@
 <?php
+// List of Portfolio
+$sql    = "SELECT `portfolio_item_id`,`portfolio_item_name`, `portfolio_item_desc` FROM `tams_portfolio_items` WHERE (`portfolio_item_status` = 'active') AND ( tams_portfolio_items.`portfolio_item_id` NOT IN (SELECT portfolio_item_id FROM tams_talent_portfolio WHERE talent_id=".$talent_id."))";
+$portfolio_items = DB::query($sql);
+
+
+
+
+if(isset($_GET['talent_id']))
+{
+	$talent_id = $_GET['talent_id'];
+}
+
+$portfolio_sql    = "SELECT
+*
+FROM
+tams_talent_portfolio
+WHERE talent_id = $talent_id";
+
+$talent_portfolio = DB::query($portfolio_sql);
+
 
 ?>
 <form id="edit_talent_portfolio_info" name="edit_talent_portfolio_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
@@ -16,11 +36,87 @@
             
             <div class="box-body bg-info">
             <div class="row">
-  					
-							<div class="tab-pane active" id="portfolio">
-							  
-								
-							</div><!--/.tab-pane-->
+			
+			<?php
+		if($talent_portfolio )
+		{
+		?>
+		<p>
+		<?php 
+		foreach($talent_portfolio as $portfolio){
+		?>				
+		<span class="label label-info">
+			<?php echo get_portfolio_item_name($portfolio['portfolio_item_id']); ?>
+		</span>	
+			
+
+		<?php
+		} // for each $talent_portfolio									
+		?>
+			
+		</p> 
+
+		 <?php
+
+		}  // End if $talent_portfolio
+
+		?>
+
+		<?php
+		if($portfolio_items )
+		{
+			?>
+			
+  					<div class="form-group">
+						<div class="col-md-9 col-sm-9">
+						<div class="input-group">
+						<span><select name="portfolio_item_id" id="portfolio_item_id" class=" input-group form-control  select2"  style="padding:5px;"  >
+					
+							<option value="">
+								Select a portfolio item
+							</option>
+	
+							<?php 
+							foreach($portfolio_items as $item){
+								?>	
+							<option value="<?php echo $item['portfolio_item_id'];?>">
+								<?php echo $item['portfolio_item_name'];?>
+							</option>
+							<?php
+							} // for each portfolio item									
+							?>
+
+						</select></span>
+						<span> <input class="form-control" type="text" required placeholder="Add Description Here"
+							 value="" name="portfolio_item_desc" id="portfolio_item_desc"></span>
+						<span><input class="form-control" type="url" required placeholder="Add URL Here"
+							 value="" name="talent_portfolio_item_url" id="talent_portfolio_item_url"></span>
+						<span><div class="input-group-addon"> <button type="submit" class='btn btn-xs pull-right' name="save" value="save">
+							Add &nbsp;
+							<i class="fa fa-plus">
+							</i>
+					</button>
+					</div></span>
+						</div>
+				
+				 
+					
+					
+
+					</div>
+					<script type="text/javascript">
+	$(".select2").select2();
+	
+</script>
+
+
+			</div> <!--/.form-group-->
+ <?php
+
+		}  // End if $portfolio_items
+
+?>				
+				
 				</div> <!--/.row-->
 				<div class="box-footer">
  								<div class="form-group">
@@ -30,11 +126,6 @@
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
@@ -44,5 +135,6 @@
 				</div><!--Portfolio Information Box-->
 	<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_portfolio_info" />
+<input type="hidden" name="talent_id" id="portfolio_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
