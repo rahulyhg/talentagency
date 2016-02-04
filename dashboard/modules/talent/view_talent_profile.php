@@ -50,6 +50,26 @@ $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 
 }
+$mysql ='SELECT * FROM tams_talent_experience WHERE talent_id ="$talent_id"'; 
+$experience = DB::queryFirstRow($mysql);
+$talent_experience_id = $experience['talent_experience_id'];
+$experience_item_id = $experience['experience_item_id'];
+$experience_status = $experience['experience_status'];
+$created_on = $experience['created_on'];
+$created_by = $experience['created_by'];
+$last_modified_by = $experience['last_modified_by'];
+$last_modified_on = $experience['last_modified_on'];
+
+$mysql2 ='SELECT * FROM tams_experience_items WHERE experience_item_status ="active"';
+$item = DB::queryFirstRow($mysql2);
+$experience_item_id = $item['experience_item_id'];
+$experience_item_name = $item['experience_item_name'];
+$experience_item_status = $item['experience_item_status'];
+$created_on = $item['created_on'];
+$created_by = $item['created_by'];
+$last_modified_by = $item['last_modified_by'];
+$last_modified_on = $item['last_modified_on'];
+
 /*
  $sql = "SELECT
     `tams_talent`.*
@@ -434,7 +454,8 @@ $emp_benefits = DB::query($sql_benefits);
 	            		<p class="text-right"><strong>List of Experiences : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['experience_item_id']; ?></p>
+	            		<p class="text-left"><?php echo $item['experience_item_name']; ?></p>
+						
 	            </div>
 				  </div>
 				  </div>	   

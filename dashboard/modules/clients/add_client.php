@@ -105,13 +105,7 @@ if (isset($_POST['save'])){
 		
 	}
 }
-	
 
-		
-echo '<h2> $_FILES variable</h2>';
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";	
 
 ?>
 <!-- Content Header (Page header) -->
