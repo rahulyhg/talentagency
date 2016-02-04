@@ -53,32 +53,32 @@ $last_modified_on = getDateTime(NULL,"mySQL");
             
             <div class="box-body bg-info">
             <div class="row">
-  					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Last Modified by :
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<div class="input-group">
+						<div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label">
+							History:
+						</label>
+						<div class="col-md-9 col-sm-9">
+							<p>
+								This entry was created on
+								<strong>
+									<?php echo getDateTime($created_on,"dtLong"); ?>
+								</strong>by
+								<strong>
+									<?php echo get_user_name($created_by); ?>
+								</strong>.
+							</p>
+							<p>
+								It was last modified on
+								<strong>
+									<?php echo getDateTime($last_modified_on,"dtLong"); ?>
+								</strong>by
+								<strong>
+									<?php echo get_user_name($last_modified_by); ?>
+								</strong>.
+							</p>
+						</div>
+					</div>
 
-									<span><?php echo $talent['last_modified_by'];?></span>	
-										
-									</div>
-								</div>
-							</div>
-					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Last Modified On :
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<div class="input-group">
-
-									<span><?php echo $talent['last_modified_on'];?></span>	
-										
-									</div>
-								</div>
-							</div>
-						
-           
 				</div> <!--/.row-->
 					<div class="box-footer">
  								<div class="form-group">
@@ -88,11 +88,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
-						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
-							Save &nbsp;
-							<i class="fa fa-chevron-circle-right">
-							</i>
-						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
@@ -102,5 +97,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 				</div><!--History Information Box-->
 	<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_history_info" />
+<input type="hidden" name="talent_id" id="history_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
