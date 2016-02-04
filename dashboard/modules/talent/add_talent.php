@@ -29,7 +29,7 @@ if(isset($_POST['save'])){
 echo "<pre>";	
 	print_r($_POST);
 	print_r($_SESSION);
-
+	print_r($_FILES);
 echo "</pre>";
  
 	$talent_id = "";
@@ -52,10 +52,6 @@ else
 
 	$first_name = $_POST['first_name'];
 	$last_name  = $_POST['last_name'];
-	$photo1_url	= $_POST['photo1_url'];
-	$photo1_caption=$_POST['photo1_caption'];
-	$photo2_url =$_POST['photo2_url'];
-	$photo2_caption=$_POST['photo2_caption'];
 	$dob        = $_POST['dob'];
 	$sex        = $_POST['sex'];
 	$address    = $_POST['address'];
@@ -285,7 +281,7 @@ function create_new_talent_record($data,$user_id)
 <!-- Main content -->
 <section                    class="content">
 	<div class="row">
-
+<form role="form" id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/add_talent"; ?>" >
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
@@ -303,7 +299,6 @@ function create_new_talent_record($data,$user_id)
 					</button>
 				</div>
 			</div>
-			<form id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/add_talent"; ?>" >
                 <div class="container">
 				<div class="box-body">
                     <div class="row">
@@ -1254,15 +1249,16 @@ function create_new_talent_record($data,$user_id)
 						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
-			</form>
+			
 			<div class="box-footer">
 				<small>
 				</small>
 			</div><!-- /.box-footer-->
-		</div><!-- /.box -->
+		</div><!-- /.container -->
 
 
-
+</div><!--/.box-->
+</form>
 	</div><!-- /.row -->
 
 </section><!--  /.content -->
