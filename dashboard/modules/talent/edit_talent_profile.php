@@ -240,7 +240,7 @@ echo "</pre>";
 					    <li><a href="#languages" data-toggle="tab">Spoken Languages</a></li>
 					    <li><a href="#portfolio" data-toggle="tab">Portfolio</a></li>
 					    <li><a href="#notes" data-toggle="tab">Notes</a></li>
-					    <li><a href="#histoy" data-toggle="tab">History</a></li>
+					    <li><a href="#history" data-toggle="tab">History</a></li>
 					  </ul>
 </div>					
 <div class="col-xs-9">

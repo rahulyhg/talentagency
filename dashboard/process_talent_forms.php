@@ -84,7 +84,37 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');	
 			
 		break;
+		/*
+		case "edit_talent_contact_info":
+		$talent_id = $_POST['talent_id'];
+		$email_id =$_POST['email_id'];
+		$address =$_POST['address'];
+		$mobile_no =$_POST['mobile_no'];
+		$created_by = $_SESSION['user_id'];
+		$created_on = getDateTime(NULL ,"mySQL");
+		$last_modified_by =	$_SESSION['user_id'];
+		$last_modified_on = getDateTime(NULL ,"mySQL");
 		
+		if(($talent_id > 0) AND ($talent_id <> "")){
+			
+		
+			// process Talent Contact Information edit form
+		DB::insert('tams_talent', array(
+ 						'talent_id'			=> $talent_id,
+ 						'email_id'=> $email_id,
+						'Address' => $address,
+						'mobile_no' => $mobile_no,
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						)	
+			);
+		}			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#contact');	
+			
+		break;
+		*/
 		case "edit_talent_portfolio_info":
 		$talent_id = $_POST['talent_id'];
 		$portfolio_item_id = $_POST['portfolio_item_id'];

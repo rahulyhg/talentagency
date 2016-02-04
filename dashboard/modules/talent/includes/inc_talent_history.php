@@ -1,6 +1,43 @@
 <?php
+if(isset($_SESSION['user_id'])){
+$user_id	=	$_SESSION['user_id'];
+}
+$created_by="";
+$created_on="";
+$last_modified_by="";
+$last_modified_on="";
 
-?>
+if(isset($_GET['talent_id'])){
+	$talent_id = $_GET['talent_id'];
+
+		$sql = "SELECT
+				*
+				FROM
+				tams_talent
+				WHERE talent_id = $talent_id ;";
+$talent= DB::queryFirstRow($sql);
+$created_on = $talent['created_on'];
+$created_by = $talent['created_by'];
+$last_modified_by = $talent['last_modified_by'];
+$last_modified_on = $talent['last_modified_on'];
+}
+
+if(isset($_POST['save']))
+{
+$last_modified_by = $_SESSION['user_id'];
+$last_modified_on = getDateTime(NULL,"mySQL");
+ 
+	if($talent_id <> ""){
+		$update = DB::update('tams_talent', array(
+		
+			'last_modified_by'	=> $last_modified_by,
+			'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+	}
+}
+	?>
 <form id="edit_talent_history_info" name="edit_talent_history_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- History Information box -->       			
        		<div class="box box-info">
@@ -16,11 +53,32 @@
             
             <div class="box-body bg-info">
             <div class="row">
-  					
-							<div class="tab-pane active" id="history">
-							   
-								
-							</div><!--/.tab-pane-->
+  					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Last Modified by :
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+
+									<span><?php echo $talent['last_modified_by'];?></span>	
+										
+									</div>
+								</div>
+							</div>
+					<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Last Modified On :
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+
+									<span><?php echo $talent['last_modified_on'];?></span>	
+										
+									</div>
+								</div>
+							</div>
+						
+           
 				</div> <!--/.row-->
 					<div class="box-footer">
  								<div class="form-group">
