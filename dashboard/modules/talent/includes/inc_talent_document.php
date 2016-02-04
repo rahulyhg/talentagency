@@ -125,7 +125,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							Upload Document :
 						</label>
 						<div class="col-md-9 col-sm-9">
-						<img src="<?php echo $photo1_url; ?>" alt="no file uploaded" />
+						<img src="<?php echo $document_path; ?>" alt="no file uploaded" />
 		<!-- input-group image-preview [FROM HERE]-->
             <div class="input-group image-preview">
                 <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
