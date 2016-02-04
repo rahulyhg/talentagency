@@ -24,6 +24,22 @@ $talent_experiences = DB::query($experience_sql);
 
 
 ?>
+<style>
+.two{
+	margin: 0px 5px 14px 20px;
+   font-size:10px;
+   float:right;
+	width:20px;
+	height:20px;
+	color:black;
+	background-color: #00C0EF;
+}
+.one {
+margin-left:20px;
+font-size:25px;
+
+}     
+</style>
 
 <form
 	id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
@@ -59,8 +75,8 @@ $talent_experiences = DB::query($experience_sql);
 		<?php 
 		foreach($talent_experiences as $experience){
 		?>				
-		<span class="label label-info">
-        <button style="float:right"><i class="fa fa-times"></i></button>
+		<span class="label label-info" style="display:inline-block;">
+        <button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
 			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	
 			

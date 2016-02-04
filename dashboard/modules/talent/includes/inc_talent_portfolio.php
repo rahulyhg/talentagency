@@ -21,6 +21,22 @@ $talent_portfolio = DB::query($portfolio_sql);
 
 
 ?>
+<style>
+.two{
+	margin: 0px 5px 14px 20px;
+   font-size:10px;
+   float:right;
+	width:20px;
+	height:20px;
+	color:black;
+	background-color: #00C0EF;
+}
+.one {
+margin-left:20px;
+font-size:25px;
+
+}  
+</style>
 <form id="edit_talent_portfolio_info" name="edit_talent_portfolio_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- Portfolio Information box -->       			
        		<div class="box box-info">
@@ -41,11 +57,12 @@ $talent_portfolio = DB::query($portfolio_sql);
 		if($talent_portfolio )
 		{
 		?>
-		<p>
+		<p class="one">
 		<?php 
 		foreach($talent_portfolio as $portfolio){
 		?>				
-		<span class="label label-info">
+		<span class="label label-info" style="display:inline-block;">
+		<button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
 			<?php echo get_portfolio_item_name($portfolio['portfolio_item_id']); ?>
 		</span>	
 			

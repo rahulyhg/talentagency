@@ -19,6 +19,23 @@ WHERE talent_id = $talent_id";
 
 $talent_document = DB::query($document_sql);
 ?>
+<style>
+
+.two{
+	margin: 0px 5px 14px 20px;
+   font-size:10px;
+   float:right;
+	width:20px;
+	height:20px;
+	color:black;
+	background-color: #00C0EF;
+}
+.one {
+margin-left:20px;
+font-size:25px;
+
+}   
+</style>
 <form id="edit_talent_document_info" name="edit_talent_document_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- Documents Information box -->       			
        		<div class="box box-info">
@@ -39,11 +56,12 @@ $talent_document = DB::query($document_sql);
 		if($talent_document )
 		{
 		?>
-		<p>
+		<p class="one">
 		<?php 
 		foreach($talent_document as $document){
 		?>				
-		<span class="label label-info">
+		<span class="label label-info" style="display:inline-block;">
+		<button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
 			<?php echo get_document_type_name($document['document_type_id']); ?>
 		</span>	
 			

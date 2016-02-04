@@ -22,6 +22,22 @@ $talent_languages = DB::query($language_sql);
 
 
 ?>
+<style>
+.two{
+	margin: 0px 5px 14px 20px;
+   font-size:10px;
+   float:right;
+	width:20px;
+	height:20px;
+	color:black;
+	background-color: #00C0EF;
+}
+.one {
+margin-left:20px;
+font-size:25px;
+
+}  
+</style>
 <form id="edit_talent_languages_info" name="edit_talent_languages_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- Spoken Languages Information box -->       			
        		<div class="box box-info">
@@ -42,11 +58,12 @@ $talent_languages = DB::query($language_sql);
 		if($talent_languages )
 		{
 		?>
-		<p>
+		<p class="one">
 		<?php 
 		foreach($talent_languages as $language){
 		?>				
-		<span class="label label-info">
+		<span class="label label-info" style="display:inline-block;">
+		<button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
 			<?php echo get_language_name($language['language_id']); ?>
 		</span>	
 			
