@@ -18,6 +18,10 @@ $passport_copy_attached    = 0;
 $noc_required              = 0;
 $noc_copy_attached         = 0;
 $sponsors_id_copy_attached = 0;
+$photo1_url					="";
+$photo1_caption				="";
+$photo2_url					="";
+$photo2_caption				="";
 
 
 
@@ -48,6 +52,10 @@ else
 
 	$first_name = $_POST['first_name'];
 	$last_name  = $_POST['last_name'];
+	$photo1_url	= $_POST['photo1_url'];
+	$photo1_caption=$_POST['photo1_caption'];
+	$photo2_url =$_POST['photo2_url'];
+	$photo2_caption=$_POST['photo2_caption'];
 	$dob        = $_POST['dob'];
 	$sex        = $_POST['sex'];
 	$address    = $_POST['address'];
@@ -92,6 +100,56 @@ else
 }
 }; // End if form submitted
 
+	$talent_id = DB::insertId();
+		//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_photo1']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo1']['tmp_name'])) {
+		echo '<h2> No Photo uloaded</h2>';
+	}  else {
+		echo '<h2> Photo was uploaded</h2>';
+	
+	//if logo file is uploaded process the file with upload class
+	
+	$handle = new upload($_FILES['talent_photo1']);
+		if ($handle->uploaded) {
+			  $handle->file_new_name_body   = $talent_id.'_photo1';
+			  $handle->image_resize         = true;
+			  $handle->image_x              = 250;
+			  $handle->image_ratio_y        = true;
+			  $handle->allowed = array('image/*');
+			  $handle->image_convert = 'jpg';
+			  $handle->file_overwrite = true;
+			  $handle->process('../uploads/talent_profiles/');
+		if ($handle->processed) {
+				
+	// save uploaded file name and path in database table field logo_url
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if client id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent', array(
+
+				'photo1_url'=> '/talent/uploads/talent_profiles/'.$talent_id.'_photo1.jpg',
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+			echo 'Logo file uploaded and path select saved in database';
+				$handle->clean();
+			} else {
+				echo 'error : ' . $handle->error;
+				
+			} // close handle processed
+			
+		} // close handle uploaded
+		
+		} // close file exist
 function create_new_talent_record($data,$user_id)
 {
 	$talent_id = - 1;
@@ -101,6 +159,10 @@ function create_new_talent_record($data,$user_id)
 		
 	$first_name = $data['first_name'];
 	$last_name  = $data['last_name'];
+	$photo1_url = $data['photo1_url'];
+	$photo1_caption =$data['photo1_caption'];
+	$photo2_url  =$data['photo2_url'];
+	$photo2_caption=$data['photo2_caption'];
 	$dob        = $data['dob'];
 	$sex        = $data['sex'];
 	$address    = $data['address'];
@@ -153,7 +215,11 @@ function create_new_talent_record($data,$user_id)
 		//set profile status to draft
 		DB::insert('tams_talent', array(
 						'first_name' 		=> $first_name,						
-						'last_name' 		=> $last_name,						
+						'last_name' 		=> $last_name,
+						'photo1_url'		=> $photo1_url,
+						'photo1_caption'	=> $photo1_caption,
+						'photo2_url'		=> $photo2_url,
+						'photo2_caption'	=> $photo2_caption,
 						'dob' 				=> $dob,						
 						'sex' 				=> $sex,						
 						'address'	 		=> $address,						
@@ -179,7 +245,7 @@ function create_new_talent_record($data,$user_id)
 		// get the new $talent_id
 		
 		$talent_id = DB::insertId();
-		// return $talent_id;
+	
 	}
 	return $talent_id;
 
