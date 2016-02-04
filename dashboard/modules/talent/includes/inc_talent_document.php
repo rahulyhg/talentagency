@@ -22,9 +22,10 @@ $talent_document = DB::query($document_sql);
 <style>
 
 .two{
-	margin: 0px 5px 14px 20px;
-   font-size:10px;
-   float:right;
+	border:0px;
+	margin: -3px -9px 6px 10px;
+   font-size:12px;
+
 	width:20px;
 	height:20px;
 	color:black;
@@ -32,7 +33,7 @@ $talent_document = DB::query($document_sql);
 }
 .one {
 margin-left:20px;
-font-size:25px;
+font-size:19px;
 
 }   
 </style>
