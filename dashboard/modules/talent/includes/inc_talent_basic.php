@@ -322,7 +322,7 @@ $last_modified_on = $talent['last_modified_on'];
 									Photo 1 Caption:
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required
+									<input class="form-control" type="text"  
 									value="<?php echo $photo1_caption; ?>" name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
 								</div>
 							</div>
@@ -356,7 +356,7 @@ $last_modified_on = $talent['last_modified_on'];
 									Photo Caption:
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required
+									<input class="form-control" type="text"  
 									value="<?php echo $photo2_caption; ?>" name="photo2_caption" id="photo2_caption" placeholder="Enter Photo Caption">
 								</div>
 							</div>

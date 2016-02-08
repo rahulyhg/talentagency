@@ -75,7 +75,7 @@ if(isset($_POST['form_name'])) {
 				$update = DB::update('tams_talent', array(
 
 				'photo1_url'=> '/talent/uploads/talent_profiles/'.$talent_id.'_photo1.jpg',
-				'photo1_caption' =	$_POST['photo1_caption'],
+				'photo1_caption' =>	$_POST['photo1_caption'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),
