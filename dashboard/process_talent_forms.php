@@ -299,7 +299,7 @@ if(isset($_POST['form_name'])) {
 			$handle1->allowed = array('image/*');
 			$handle1->image_convert = 'jpg';
 			$handle1->file_overwrite = true;
-			$handle1->process('..uploads/talent_profiles/');
+			$handle1->process('../uploads/talent_profiles/');
 		if ($handle1->processed) {
 			
 	// save uploaded file name and path in database table field logo_url
