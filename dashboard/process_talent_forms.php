@@ -187,7 +187,7 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');	
 			
 		break;
-		/*
+		
 		case "edit_talent_contact_info":
 		$talent_id = $_POST['talent_id'];
 		$email_id =$_POST['email_id'];
@@ -202,7 +202,7 @@ if(isset($_POST['form_name'])) {
 			
 		
 			// process Talent Contact Information edit form
-		DB::insert('tams_talent', array(
+		DB::update('tams_talent', array(
  						'talent_id'			=> $talent_id,
  						'email_id'=> $email_id,
 						'Address' => $address,
@@ -211,13 +211,14 @@ if(isset($_POST['form_name'])) {
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
-						)	
+						),
+			"talent_id=%s", $talent_id						
 			);
 		}			
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#contact');	
 			
 		break;
-		*/
+	
 		case "edit_talent_portfolio_info":
 		$talent_id = $_POST['talent_id'];
 		$portfolio_item_id = $_POST['portfolio_item_id'];
