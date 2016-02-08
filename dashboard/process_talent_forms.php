@@ -277,7 +277,9 @@ if(isset($_POST['form_name'])) {
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
-						)	
+						)
+						,
+			"talent_id=%s", $talent_id	
 			);
 		}			
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#basic');	
