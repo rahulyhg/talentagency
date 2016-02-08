@@ -793,7 +793,7 @@
 									Is Qatari?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari" data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari" value="<?php if($is_qatari == "1"){ echo 'selected = "Qatari" ';} else{ echo 'selected ="Non-Qatari"';} ?>" data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" checked='checked' />
 								</div>
 							</div>
 
@@ -880,5 +880,6 @@
           </div><!-- /.box Employability Information-->
 				<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_employability_info" />
+<input type="hidden" name="talent_id" id="employability_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>	

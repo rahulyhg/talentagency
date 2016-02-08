@@ -218,6 +218,48 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#contact');	
 			
 		break;
+		
+		case "edit_talent_employability_info":
+		$talent_id = $_POST['talent_id'];
+		$nationality = $_POST['nationality'];
+		$passport_no = $_POST['passport_no'];
+		$qatari_id   = $_POST['qatari_id'];
+		$is_qatari   = $_POST['is_qatari'];
+		$passport_copy_attached  = $_POST['passport_copy_attached'];
+		$noc_required     = $_POST['noc_required'];
+		$noc_copy_attached   = $_POST['noc_copy_attached'];
+		$sponsors_id_copy_attached = $_POST['sponsors_id_copy_attached'];
+		$created_by = $_SESSION['user_id'];
+		$created_on = getDateTime(NULL ,"mySQL");
+		$last_modified_by =	$_SESSION['user_id'];
+		$last_modified_on = getDateTime(NULL ,"mySQL");
+		
+		if(($talent_id > 0) AND ($talent_id <> "")){
+			
+		
+			// process Talent Employability Information edit form
+		DB::update('tams_talent', array(
+ 						'talent_id'			=> $talent_id,
+						'nationality' => $nationality,
+						'passport_no' => $passport_no,
+						'qatari_id' => $qatari_id,
+						'is_qatari' => $is_qatari,
+						'passport_copy_attached' => $passport_copy_attached,
+						'noc_required' => $noc_required,
+						'noc_copy_attached'=> $noc_copy_attached,
+						'sponsors_id_copy_attached' => $sponsors_id_copy_attached,
+						'events'=> $events,
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						),
+			"talent_id=%s", $talent_id						
+			);
+		}			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#employability');	
+			
+		break;
 	
 		case "edit_talent_portfolio_info":
 		$talent_id = $_POST['talent_id'];
