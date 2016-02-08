@@ -10,7 +10,6 @@ if (isset($_POST['save'])){
  
 	$document_type_name	=  $_POST['document_type_name'] ;
 	$document_type_description	=  $_POST['document_type_description'] ;
-	$document_type_extension	=  $_POST['document_type_extension'] ;
 	$document_type_status	=  $_POST['document_type_status'] ;
 	$created_by = $_SESSION['user_id'];
 	$created_on = getDateTime(NULL ,"mySQL");
@@ -22,8 +21,7 @@ if (isset($_POST['save'])){
 	if($document_type_name <> ""  ){
 	DB::insert('tams_document_types', array(
 				'document_type_name' 		=> $document_type_name,	
-				'document_type_desc' 		=> $document_type_description,	
-				'document_type_extension' 		=> $document_type_extension,	
+				'document_type_desc' 		=> $document_type_description,		
 				'document_type_status' 		=> $document_type_status,	
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
@@ -87,55 +85,7 @@ if (isset($_POST['save'])){
 							 value="" name="document_type_description" id="document_type_description">							
 						  </div>
 					</div>
-					 
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-							Document File Type:
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<select id="document_type_extension" name="document_type_extension" class="form-control">
-
-								<option value="" selected="selected">
-									- Select File Extention
-								</option>
-								<option value=".docx" >
-									MS Word .docx
-								</option>
-								<option value=".doc" >
-									MS Word 97 - 2003 .doc
-								</option>
-								<option value=".xlsx" >
-									MS Excel .xlsx
-								</option>
-								<option value=".xlsx" >
-									MS Excel 97 - 2003 .xls
-								</option>
-								<option value=".pptx" >
-									MS Power Point .pptx
-								</option>	
-								<option value=".ppt" >
-									MS Power Point 97 - 2003 .pptx
-								</option>	
-								<option value=".pdf" >
-									PDF .pdf
-								</option>
-								<option value=".txt" >
-									Text File .txt
-								</option>
-								<option value=".jpg" >
-									JPG Image File .jpg
-								</option>
-								<option value=".png" >
-									PNG Image File .png
-								</option>
-								<option value=".bmp" >
-									Bitmap Image File .bmp
-								</option>
-							</select>
-						</div>
-					</div> 
- 
- 
+			
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Document Type Status:

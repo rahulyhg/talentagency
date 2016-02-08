@@ -69,7 +69,6 @@ CREATE TABLE `tams_document_types` (
   `document_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `document_type_name` varchar(50) DEFAULT NULL,
   `document_type_desc` varchar(255) DEFAULT NULL,
-  `document_type_extension` varchar(50) DEFAULT NULL,
   `document_type_status` varchar(50) NOT NULL DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
@@ -80,7 +79,7 @@ CREATE TABLE `tams_document_types` (
 
 /*Data for the table `tams_document_types` */
 
-insert  into `tams_document_types`(`document_type_id`,`document_type_name`,`document_type_desc`,`document_type_extension`,`document_type_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'docx','MS word document','.docx','active','1','2016-01-24 21:45:37','1','2016-01-26 06:24:43'),(2,'pdf','PDF document ','.pdf','active','1','2016-01-26 10:09:35','1','2016-01-27 11:46:08');
+insert  into `tams_document_types`(`document_type_id`,`document_type_name`,`document_type_desc`,`document_type_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'NOC Copy','NOC Copy','active','1','2016-01-24 21:45:37','1','2016-01-26 06:24:43'),(2,'Passport Copy','Passport Copy','active','1','2016-01-26 10:09:35','1','2016-01-27 11:46:08');
 
 /*Table structure for table `tams_experience_items` */
 
@@ -225,11 +224,11 @@ CREATE TABLE `tams_talent_documents` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_document_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_documents` */
 
-insert  into `tams_talent_documents`(`talent_document_id`,`document_type_id`,`talent_id`,`document_name`,`document_description`,`document_path`,`document_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,2,3,NULL,NULL,NULL,'active','1','2016-02-03 10:25:45','1','2016-02-03 10:25:45'),(2,1,1,NULL,NULL,NULL,'active','1','2016-02-04 08:59:49','1','2016-02-04 08:59:49');
+insert  into `tams_talent_documents`(`talent_document_id`,`document_type_id`,`talent_id`,`document_name`,`document_description`,`document_path`,`document_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,2,3,NULL,NULL,NULL,'active','1','2016-02-03 10:25:45','1','2016-02-03 10:25:45');
 
 /*Table structure for table `tams_talent_experience` */
 

@@ -8,7 +8,6 @@ $tbl->addRow();
 $tbl->addCell('Type ID', '', 'header');
 $tbl->addCell('Type Name', '', 'header');
 $tbl->addCell('Description', '', 'header');
-$tbl->addCell('Extension','','header');
 $tbl->addCell('Status', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
@@ -21,7 +20,6 @@ $tbl->addRow();
 $tbl->addCell($type['document_type_id']);
 $tbl->addCell($type['document_type_name']);
 $tbl->addCell($type['document_type_desc']);
-$tbl->addCell($type['document_type_extension']);
 $tbl->addCell($type['document_type_status']);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/document_types/edit_document_type&document_type_id=".$type['document_type_id']."'>Edit Document Type&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
 			   ");

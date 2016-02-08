@@ -3,7 +3,6 @@
 $document_type_id = 0;
 $document_type_name = "";
 $document_type_description= "";
-$document_type_extension = "";
 $document_type_status= ""; 
 $created_on = "";
 $created_by = "";
@@ -23,7 +22,6 @@ $document= DB::queryFirstRow($sql);
 $document_type_id = $document['document_type_id'];
 $document_type_name = $document['document_type_name'];
 $document_type_description = $document['document_type_desc'];
-$document_type_extension = $document['document_type_extension'];
 $document_type_status = $document['document_type_status']; 
 $created_on = $document['created_on'];
 $created_by = $document['created_by'];
@@ -38,7 +36,6 @@ if(isset($_POST['save']))
 $document_type_id = $_POST['document_type_id'];
 $document_type_name = $_POST['document_type_name'];
 $document_type_description = $_POST['document_type_description'];
-$document_type_extension = $_POST['document_type_extension'];
 $document_type_status = $_POST['document_type_status'];
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
@@ -47,7 +44,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		$update = DB::update('tams_document_types', array(
 				'document_type_name'=>$document_type_name,
 				'document_type_desc'=> $document_type_description,
-				'document_type_extension' => $document_type_extension,
 				'document_type_status'=> $document_type_status,
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
@@ -143,52 +139,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							 value="<?php echo $document_type_description; ?>" name="document_type_description" id="document_type_description">
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-							Document File Type:
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<select id="document_type_extension" name="document_type_extension" class="form-control">
-
-								<option value="" selected="selected">
-									- Select File Extention
-								</option>
-								<option value=".docx" <?php if($document_type_extension == ".docx"){ echo 'selected = "selected" ';} ?>>
-									MS Word .docx
-								</option>
-								<option value=".doc" <?php if($document_type_extension == ".doc"){ echo 'selected = "selected" ';} ?>>
-									MS Word 97 - 2003 .doc
-								</option>
-								<option value=".xlsx" <?php if($document_type_extension == ".xlsx"){ echo 'selected = "selected" ';} ?>>
-									MS Excel .xlsx
-								</option>
-								<option value=".xlsx" <?php if($document_type_extension == ".xlsx"){ echo 'selected = "selected" ';} ?>>
-									MS Excel 97 - 2003 .xls
-								</option>
-								<option value=".pptx" <?php if($document_type_extension == ".pptx"){ echo 'selected = "selected" ';} ?>>
-									MS Power Point .pptx
-								</option>	
-								<option value=".ppt" <?php if($document_type_extension == ".ppt"){ echo 'selected = "selected" ';} ?>>
-									MS Power Point 97 - 2003 .pptx
-								</option>	
-								<option value=".pdf" <?php if($document_type_extension == ".pdf"){ echo 'selected = "selected" ';} ?>>
-									PDF .pdf
-								</option>
-								<option value=".txt" <?php if($document_type_extension == ".txt"){ echo 'selected = "selected" ';} ?>>
-									Text File .txt
-								</option>
-								<option value=".jpg" <?php if($document_type_extension == ".jpg"){ echo 'selected = "selected" ';} ?>>
-									JPG Image File .jpg
-								</option>
-								<option value=".png" <?php if($document_type_extension == ".png"){ echo 'selected = "selected" ';} ?>>
-									PNG Image File .png
-								</option>
-								<option value=".bmp" <?php if($document_type_extension == ".bmp"){ echo 'selected = "selected" ';} ?>>
-									Bitmap Image File .bmp
-								</option>
-							</select>
-						</div>
-					</div> 
 					
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
