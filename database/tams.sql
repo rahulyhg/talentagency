@@ -55,11 +55,11 @@ CREATE TABLE `tams_clients` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_clients` */
 
-insert  into `tams_clients`(`client_id`,`company_name`,`logo_url`,`client_name`,`client_title`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','http://www.gravatar.com/avatar/dd242ad63854fb13dfd','Edward Doyle','Managing Director','street # 403,main road,queens land				','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-01-29 20:07:49'),(2,'ABC productions',NULL,'John Smith','Advertising sales executive','block # 34, main street, Qatar							','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-01-26 11:34:16'),(3,'Start Films Productions',NULL,'Alexandra Saint','Production Manager','block # 54, los angeles, united states								','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01','1','2016-01-29 12:37:28');
+insert  into `tams_clients`(`client_id`,`company_name`,`logo_url`,`client_name`,`client_title`,`client_address`,`client_city`,`client_country`,`client_phone_1`,`client_phone_2`,`client_fax`,`client_email`,`client_status`,`client_account_manager`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Angels Photography','/talent/uploads/clients/1_logo.jpg','Edward Doyle','Operation Manager','street # 403,main road,queens land																																																																												','Queens Land','Australia','6325453746842','0985093853','9023582958','edward@gmail.com','active','Ashley','1','2016-01-25 18:16:03','1','2016-02-02 10:41:09'),(2,'ABC productions','/talent/uploads/clients/2_logo.jpg','John Smith','Advertising sales executive','block # 34, main street, Qatar															','Qatar','Qatar','0989877875767','987856754564','878798780','john@gmail.com','active','John','1','2016-01-26 11:34:16','1','2016-02-02 10:14:04'),(3,'Start Films Productions','/talent/uploads/clients/3_logo.jpg','Alexandra Saint','Production Manager','block # 54, los angeles, united states								','Los Angeles','United States','8735893754','894366346','4893679834','saint@gmail.com','active','Scott','1','2016-01-26 11:45:01','1','2016-02-02 09:30:02'),(4,'XYZ Entertainment','/talent/uploads/clients/4_logo.jpg','Sanjay Kapoor','CEO','5-km main mumbai road, 												','Mumbai','India','8473894573','3457965354','3242376865','sanjay@gmail.com','active','Rohit Sharma','1','2016-02-02 18:06:16','1','2016-02-03 07:15:56'),(6,'Entwine Advertising agency','/talent/uploads/clients/6_logo.jpg','Mariah Desouza ','Marketing Manager','Cald Well Street 												','England','United Kingdom','876676990','576576456','341237512','mariah@agency.com','active','Nicole Arnold','1','2016-02-02 18:54:01','1','2016-02-03 07:15:04'),(7,'AVG Entertainment','/talent/uploads/clients/7_logo.jpg',' Abdullah','Producer','main street # 56 																						','Lahore','Pakistan','769878975','35465777','4353453','abdullah@avg.com','active','Huzaifa','1','2016-02-03 07:09:41','1','2016-02-04 05:49:59');
 
 /*Table structure for table `tams_document_types` */
 
@@ -185,11 +185,11 @@ CREATE TABLE `tams_talent` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent` */
 
-insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`events`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo1_url`,`photo1_caption`,`photo2_url`,`photo2_caption`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar','+923333414999','mansoor@sutlej.net',NULL,NULL,'Pakistan',0,'46666',0,1,1,'53131133',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 18:45:06','1','2016-01-25 18:45:06'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com',NULL,NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-25 20:38:04','1','2016-01-25 20:38:04'),(3,'Alexandra ','Saint','1991-05-09','Female','california, united states						','98706565674','saint@gmail.com',NULL,NULL,'United States',0,'',0,1,1,'98787765675',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','1','2016-01-27 06:47:56','1','2016-01-27 06:47:56');
+insert  into `tams_talent`(`talent_id`,`first_name`,`last_name`,`dob`,`sex`,`Address`,`mobile_no`,`email_id`,`brief`,`events`,`nationality`,`is_qatari`,`qatari_id`,`qatari_id_copy_attached`,`noc_required`,`noc_copy_attached`,`passport_no`,`passport_copy_attached`,`sponsors_id_copy_attached`,`height_cm`,`weight_kg`,`hair_color`,`eye_color`,`dress_size`,`shoe_size`,`waist_cm`,`collar_cm`,`chest_cm`,`photo1_url`,`photo1_caption`,`photo2_url`,`photo2_caption`,`registration_date`,`talent_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,'Mansoor','Rana','1978-01-20','Male','Al-Sadeeq Akbar House, Lodhran								','+923333414999','mansoor@sutlej.net','																																																																																																																					',NULL,'Pakistan',NULL,'446666',0,0,0,'5313113344',0,0,'180.33','95','black','Dark brown','Large','40','38','24','34','/talent/uploads/talent_profiles/1_photo1.jpg','Hello World','/talent/uploads/talent_profiles/1_photo2.jpg','Hello',NULL,'draft','1','2016-02-08 10:56:04','1','2016-02-08 10:56:04'),(2,'john','rambo','1993-08-26','Male','	XYZ								','8907876677','john@gmail.com','																											',NULL,'United States',0,'676975695767',0,1,1,'7679807659765',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/talent/uploads/talent_profiles/2_photo1.jpg','My Brand','/talent/uploads/talent_profiles/2_photo2.jpg','My Brand',NULL,'draft','1','2016-02-08 09:08:24','1','2016-02-08 09:08:24'),(3,'Alexandra ','Saint','1991-05-09','Female','california, united states						','98706565674','saint@gmail.com','									',NULL,'United States',0,'',0,1,1,'98787765675',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/talent/uploads/talent_profiles/3_photo1.jpg','Hi','/talent/uploads/talent_profiles/3_photo2.jpg','Hello',NULL,'draft','1','2016-02-08 09:10:07','1','2016-02-08 09:10:07'),(12,'Hello','Fellow','2016-02-08','Male','street XYZ,																							','789787766','anybody@example.com','																																				',NULL,'Pakistan',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/talent/uploads/talent_profiles/12_photo1.jpg','Hello World','/talent/uploads/talent_profiles/12_photo2.jpg','Hello',NULL,'draft','1','2016-02-08 08:59:08','1','2016-02-08 08:59:09');
 
 /*Table structure for table `tams_talent_comments` */
 
@@ -216,6 +216,7 @@ CREATE TABLE `tams_talent_documents` (
   `talent_document_id` int(11) NOT NULL AUTO_INCREMENT,
   `document_type_id` int(11) NOT NULL,
   `talent_id` int(11) NOT NULL,
+  `document_name` varchar(255) DEFAULT NULL,
   `document_description` varchar(255) DEFAULT NULL,
   `document_path` varchar(255) DEFAULT NULL,
   `document_status` varchar(50) DEFAULT 'active',
@@ -224,9 +225,11 @@ CREATE TABLE `tams_talent_documents` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_document_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_documents` */
+
+insert  into `tams_talent_documents`(`talent_document_id`,`document_type_id`,`talent_id`,`document_name`,`document_description`,`document_path`,`document_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,2,3,NULL,NULL,NULL,'active','1','2016-02-03 10:25:45','1','2016-02-03 10:25:45'),(2,1,1,NULL,NULL,NULL,'active','1','2016-02-04 08:59:49','1','2016-02-04 08:59:49');
 
 /*Table structure for table `tams_talent_experience` */
 
@@ -242,9 +245,11 @@ CREATE TABLE `tams_talent_experience` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_experience_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_experience` */
+
+insert  into `tams_talent_experience`(`talent_experience_item_id`,`talent_id`,`experience_item_id`,`experience_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,1,'active','1','2016-02-01 09:31:31','1','2016-02-01 09:31:31'),(2,1,2,'active','1','2016-02-01 09:32:19','1','2016-02-01 09:32:19'),(3,1,1,'active','1','2016-02-01 09:32:26','1','2016-02-01 09:32:26'),(4,1,2,'active','1','2016-02-01 09:32:45','1','2016-02-01 09:32:45');
 
 /*Table structure for table `tams_talent_language` */
 
@@ -260,9 +265,11 @@ CREATE TABLE `tams_talent_language` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_language` */
+
+insert  into `tams_talent_language`(`talent_language_id`,`talent_id`,`language_id`,`language_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,1,'active','1','2016-02-01 10:12:08','1','2016-02-01 10:12:08'),(2,1,2,'active','1','2016-02-01 10:13:02','1','2016-02-01 10:13:02'),(3,1,5,'active','1','2016-02-01 10:13:23','1','2016-02-01 10:13:23');
 
 /*Table structure for table `tams_talent_photos` */
 
@@ -298,9 +305,11 @@ CREATE TABLE `tams_talent_portfolio` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_portfolio_item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_portfolio` */
+
+insert  into `tams_talent_portfolio`(`talent_portfolio_item_id`,`talent_id`,`portfolio_item_id`,`portfolio_item_description`,`talent_portfolio_item_url`,`portfolio_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,2,NULL,NULL,'active','1','2016-02-04 08:52:04','1','2016-02-04 08:52:04');
 
 /*Table structure for table `tams_user_comments` */
 
