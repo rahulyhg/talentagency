@@ -247,9 +247,9 @@ if(isset($_POST['form_name'])) {
 	
 		case "edit_talent_basic_info":
 		$talent_id = $_GET['talent_id'];
- 
+
 		$photo1_caption=$_POST['photo1_caption'];
- 
+		
 		$photo2_caption=$_POST['photo2_caption'];
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
@@ -282,9 +282,111 @@ if(isset($_POST['form_name'])) {
 						,
 			"talent_id=%s", $talent_id	
 			);
-		}			
-		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#basic');	
+			//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_photo1']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo1']['tmp_name'])) {
+			// Do nothing
+	}  else {
+		
+	//if logo file is uploaded process the file with upload class
+	
+	$handle1 = new upload($_FILES['talent_photo1']);
+		if ($handle1->uploaded) {
+			$handle1->file_new_name_body   = $talent_id.'_photo1';
+			$handle1->image_resize         = true;
+			$handle1->image_x              = 100;
+			$handle1->image_ratio_y        = true;
+			$handle1->allowed = array('image/*');
+			$handle1->image_convert = 'jpg';
+			$handle1->file_overwrite = true;
+			$handle1->process('..uploads/talent_profiles/');
+		if ($handle1->processed) {
 			
+	// save uploaded file name and path in database table field logo_url
+	
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if talent id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent', array(
+
+				'photo1_url'=> '/talent/uploads/talent_profiles/'.$talent_id.'_photo1.jpg',
+				'photo1_caption'=> $_POST['photo1_caption'],
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+		echo 'Photo is uploaded and path select saved in database';	
+			$handle1->clean();
+		} else {
+			echo 'error : ' . $handle1->error;
+		} // close handle processed
+		} // close handle uploaded
+		} // close file exist
+		
+		//check if the file is uploaded and process the file if file is uploaded
+			if(!file_exists($_FILES['talent_photo2']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo2']['tmp_name'])) {
+		// Do nothing
+	}  else {
+	//if logo file is uploaded process the file with upload class
+	
+	$handle2 = new upload($_FILES['talent_photo2']);
+		if ($handle2->uploaded) {
+			  $handle2->file_new_name_body   = $talent_id.'_photo2';
+			  $handle2->image_resize         = true;
+			  $handle2->image_x              = 250;
+			  $handle2->image_ratio_y        = true;
+			  $handle2->allowed = array('image/*');
+			  $handle2->image_convert = 'jpg';
+			  $handle2->file_overwrite = true;
+			  $handle2->process('../uploads/talent_profiles/');
+		if ($handle2->processed) {
+				
+	// save uploaded file name and path in database table field logo_url
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if talent id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent', array(
+
+				'photo2_url'=> '/talent/uploads/talent_profiles/'.$talent_id.'_photo2.jpg',
+				'photo2_caption' =>	$_POST['photo2_caption'],
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+			echo 'Logo file uploaded and path select saved in database';
+				$handle2->clean();
+			} else {
+				echo 'error : ' . $handle2->error;
+				
+			} // close handle processed
+			
+		} // close handle uploaded
+		
+		} // close file exist
+			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#basic');	
+	
+			
+		} else {
+			
+			
+		header('Location: index.php?route=modules/talent/add_talent&error=1&msg=bad-data');		
+		}
+				
 		break;		
 		
 		default:

@@ -159,7 +159,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo 'error : ' . $handle1->error;
 		} // close handle processed
 		} // close handle uploaded
-		} // close file exist
+		
 				
 	//check if the file is uploaded and process the file if file is uploaded	
 	
@@ -207,7 +207,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			echo 'error : ' . $handle2->error;
 		} // close handle processed
 		} // close handle uploaded
-	
+	} // close file exist
 				
 	//if update is successful redirect the page to view client list
 				
