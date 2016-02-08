@@ -281,7 +281,7 @@ function create_new_talent_record($data,$user_id)
 <!-- Main content -->
 <section                    class="content">
 	<div class="row">
-<form role="form" id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/add_talent"; ?>" >
+<form role="form" id="add_talent_form" name="add_talent_form" class="form-horizontal" method="post" enctype="multipart/form-data" action="process_talent_forms.php" >
 		<!-- Default box -->
 		<div class="box">
 			<div class="box-header with-border">
@@ -304,52 +304,44 @@ function create_new_talent_record($data,$user_id)
                     <div class="row">
 						<div class="col-md-6">
 							<h2  class="normal">
-                              Add Photo Upload Fields
+                              Upload a Photo
 							  </h2>
 							  <div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-							  photo 1:
-							  </label>
-							  <div class="col-md-9 col-sm-9">
-							  <div class="input-group">
-								<input   class="input-group form-control" type="file" value="" name="talent_photo1" id="talent_photo1"  >
-								<img src="<?php echo $photo1_url; ?>" alt="no logo uploaded" />
-							</div>
+ 
+							  <div class="col-md-12 col-sm-12">
+		<!-- input-group image-preview [FROM HERE]-->
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo1" id="talent_photo1"/> <!-- Form Upload Field -->
+                    </div>
+                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
-					</div>
+						</div>
+
 					
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
-									Photo Caption:
+									Caption:
 								</label>
 								<div class="col-md-9 col-sm-9">
 									<input class="form-control" type="text" required
 									 name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
 								</div>
 							</div>
-					<div class="form-group">
-						<label class="col-md-3 col-sm-3 control-label">
-							Photo 2 :
-						</label>
-						<div class="col-md-9 col-sm-9">
-							<div class="input-group">
-								<input   class="input-group form-control" type="file" value="" name="talent_photo2" id="talent_photo2"  >
-								<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
-							</div>
+
 						</div>
-					</div>
-					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Photo Caption:
-								</label>
-								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required
-									 name="photo2_caption" id="photo2_caption" placeholder="Enter Photo Caption">
-								</div>
-							</div>
-						</div>
-						
-					<div class="row">
+ 
 						<div class="col-md-6">
 							<h2  class="normal">
 								Basic Information

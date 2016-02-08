@@ -6,6 +6,14 @@ require_once('functions.php');
 if(isset($_POST['form_name'])) {
 	
 	switch($_POST['form_name']){
+		
+		// Add New Talent Form
+		case "":
+		
+		break;
+		
+		
+		// Edit Talent Experience Info 		
 		case "edit_talent_experience_info":
 		$talent_id = $_POST['talent_id'];
 		$experience_item_id = $_POST['experience_item_id'];
