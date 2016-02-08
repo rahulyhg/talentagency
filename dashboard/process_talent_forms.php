@@ -260,6 +260,49 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#employability');	
 			
 		break;
+		
+		case "edit_talent_vitals_info":
+		$talent_id = $_POST['talent_id'];
+		$height_cm = $_POST['height_cm'];
+		$weight_kg = $_POST['weight_kg'];
+		$hair_color=$_POST['hair_color'];
+		$eye_color=$_POST['eye_color'];
+		$dress_size=$_POST['dress_size'];
+		$shoe_size=$_POST['shoe_size'];
+		$waist_cm=$_POST['waist_cm'];
+		$collar_cm=$_POST['collar_cm'];
+		$chest_cm=$_POST['chest_cm'];
+		$created_by = $_SESSION['user_id'];
+		$created_on = getDateTime(NULL ,"mySQL");
+		$last_modified_by =	$_SESSION['user_id'];
+		$last_modified_on = getDateTime(NULL ,"mySQL");
+		
+		if(($talent_id > 0) AND ($talent_id <> "")){
+			
+		
+			// process Talent Vitals Information edit form
+		DB::update('tams_talent', array(
+ 						'talent_id'			=> $talent_id,
+						'height_cm' => $height_cm,
+						'weight_kg' => $weight_kg,
+						'hair_color'=>$hair_color,
+						'eye_color'=>$eye_color,
+						'dress_size'=>$dress_size,
+						'shoe_size'=>$shoe_size,
+						'waist_cm'=>$waist_cm,
+						'collar_cm'=>$collar_cm,
+						'chest_cm'=>$chest_cm,
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						),
+			"talent_id=%s", $talent_id						
+			);
+		}			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#vitals');	
+			
+		break;
 	
 		case "edit_talent_portfolio_info":
 		$talent_id = $_POST['talent_id'];

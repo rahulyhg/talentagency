@@ -131,5 +131,6 @@
 				</div><!--Vitals Information Box-->
 	<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_vitals_info" />
+<input type="hidden" name="talent_id" id="vital_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
