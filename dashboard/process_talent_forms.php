@@ -196,7 +196,6 @@ if(isset($_POST['form_name'])) {
 		if ($handle1->uploaded) {
 			$handle1->file_new_name_body   = $talent_id.'_doc';
 			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
-			$handle1->file_new_name_ext = 'pdf';
 			$handle1->file_overwrite = true;
 			$handle1->process('../uploads/documents/');
 		if ($handle1->processed) {
@@ -212,7 +211,7 @@ if(isset($_POST['form_name'])) {
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_documents', array(
 
-				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc.pdf',
+				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc',
 				'document_description' =>$_POST['document_description'],
 				'document_name' => $_POST['document_name'],
 				'last_modified_by'	=> $last_modified_by,

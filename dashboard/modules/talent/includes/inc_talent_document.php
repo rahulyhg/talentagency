@@ -1,8 +1,6 @@
 <?php
-
-
 // List of Documents
-$sql    = "SELECT `document_type_id`,`document_name`,`document_description`, `document_path`, `document_status` FROM `tams_talent_documents` WHERE (`document_status` = 'active') AND ( tams_talent_documents.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id."))";
+$sql    = "SELECT `document_type_id`,`document_type_name`,`document_type_desc`, `document_type_status` FROM `tams_document_types` WHERE (`document_type_status` = 'active') AND ( tams_document_types.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id."))";
 $document_types = DB::query($sql);
 
 if(isset($_GET['talent_id']))
@@ -17,9 +15,11 @@ tams_talent_documents
 WHERE talent_id = $talent_id";
 
 $talent_document = DB::query($document_sql);
+
 if(isset($_POST['save'])) {
  
 $talent_id = $_POST['talent_id'];
+$document_type_id = $_POST['document_type_id'];
 $document_status = $_POST['document_status']; 
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
@@ -30,6 +30,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		$update = DB::update('tams_talent_documents', array(
 			
 			'talent_id' => $talent_id,
+			'document_type_id' => $document_type_id,
 			'document_status' => $document_status,
 			'last_modified_by'	=> $last_modified_by,
 			'last_modified_on'	=> $last_modified_on
@@ -49,7 +50,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		if ($handle1->uploaded) {
 			$handle1->file_new_name_body   = $talent_id.'_doc';
 			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
-			$handle1->file_new_name_ext = 'pdf';
 			$handle1->file_overwrite = true;
 			$handle1->process('../uploads/documents/');
 		if ($handle1->processed) {
@@ -65,9 +65,8 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_documents', array(
 
-				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc.pdf',
+				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc',
 				'document_description' =>$_POST['document_description'],
-				'document_name' => $_POST['document_name'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),
@@ -85,7 +84,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 				
 }
 ?>
-<form  enctype="multipart/form-data" id="edit_talent_document_info" name="edit_talent_document_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
+<form  enctype="multipart/form-data" id="edit_talent_document_info" name="edit_talent_document_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Documents Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -100,12 +99,60 @@ $last_modified_on = getDateTime(NULL,"mySQL");
             
             <div class="box-body bg-info">
             <div class="row">
+			
+			
+		<?php
+		if($talent_document )
+			
+		{
+		?>
+		<?php 
+		foreach($talent_document as $document){
+		?>				
+		<?php
+		} // for each $talent_document									
+		?>
+
+		 <?php
+
+		}  // End if $talent_document
+
+		?>
+
+		<?php
+		if($document_types )
+		{
+			?>
 				<div class="form-group"  >
-						<label class="col-md-3 col-sm-3 control-label"> Document Name:</label>
+						<label class="col-md-3 col-sm-3 control-label"> Document Type:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required placeholder="Add Document Name " 
-							 value="" name="document_name" id="document_name">							
-						  </div>
+						<div class="input-group">
+						<select name="document_type_id" id="document_type_id" class=" input-group form-control  select2"  style="padding:5px;"  >
+					
+							<option value="">
+								Select an document type
+							</option>
+	
+							<?php 
+							foreach($document_types as $type){
+								?>	
+							<option value="<?php echo $type['document_type_id'];?>">
+								<?php echo $type['document_type_name'];?>
+							</option>
+							<?php
+							} // for each document 								
+							?> 
+
+						</select>
+						<div class="input-group-addon"> <button type="submit" class='btn btn-xs pull-right' name="save" value="save">
+							Add &nbsp;
+							<i class="fa fa-plus">
+							</i>
+					</button>
+					</div>
+						</div>
+	
+					</div>
 					</div>
 
                     <div class="form-group"  >
@@ -121,7 +168,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							Upload Document :
 						</label>
 						<div class="col-md-9 col-sm-9">
-						<img src="<?php echo $document_path; ?>" alt="no file uploaded" />
+					
 		<!-- input-group image-preview [FROM HERE]-->
             <div class="input-group image-preview">
                 <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -148,7 +195,12 @@ text/plain, application/pdf" name="talent_doc" id="talent_doc"/> <!-- Form Uploa
 	$(".select2").select2();
 	
 </script>
-							
+					<?php
+
+		}  // End if $document_type
+
+		?>
+		
 				</div> <!--/.row-->
 				<div class="box-footer">
  								<div class="form-group">
