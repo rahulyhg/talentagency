@@ -2,7 +2,7 @@
 
 
 // List of Documents
-$sql    = "SELECT `document_type_id`,`document_description`, `document_path`, `document_status` FROM `tams_talent_documents` WHERE (`document_status` = 'active') AND ( tams_talent_documents.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id."))";
+$sql    = "SELECT `document_type_id`,`document_name`,`document_description`, `document_path`, `document_status` FROM `tams_talent_documents` WHERE (`document_status` = 'active') AND ( tams_talent_documents.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id."))";
 $document_types = DB::query($sql);
 
 if(isset($_GET['talent_id']))
@@ -20,9 +20,6 @@ $talent_document = DB::query($document_sql);
 if(isset($_POST['save'])) {
  
 $talent_id = $_POST['talent_id'];
-$document_type_id = $_POST['document_type_id'];
-$document_description = $_POST['document_description'];
-$document_path = $_POST['document_path'];
 $document_status = $_POST['document_status']; 
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
@@ -33,9 +30,6 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		$update = DB::update('tams_talent_documents', array(
 			
 			'talent_id' => $talent_id,
-			'document_type_id' => $document_type_id,
-			'document_description' => $document_description,
-			'document_path' => $document_path,
 			'document_status' => $document_status,
 			'last_modified_by'	=> $last_modified_by,
 			'last_modified_on'	=> $last_modified_on
@@ -55,9 +49,9 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		if ($handle1->uploaded) {
 			$handle1->file_new_name_body   = $talent_id.'_doc';
 			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
-			$handle->file_new_name_ext = 'pdf';
+			$handle1->file_new_name_ext = 'pdf';
 			$handle1->file_overwrite = true;
-			$handle1->process('..uploads/documents/');
+			$handle1->process('../uploads/documents/');
 		if ($handle1->processed) {
 			
 	// save uploaded file name and path in database table field logo_url
@@ -72,6 +66,8 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 				$update = DB::update('tams_talent_documents', array(
 
 				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc.pdf',
+				'document_description' =>$_POST['document_description'],
+				'document_name' => $_POST['document_name'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),

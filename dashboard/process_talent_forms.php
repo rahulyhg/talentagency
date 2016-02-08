@@ -163,14 +163,14 @@ if(isset($_POST['form_name'])) {
 		break;	
 
 		case "edit_talent_document_info":
-		$talent_id = $_POST['talent_id'];
+		$talent_id = $_GET['talent_id'];
 		$document_type_id = $_POST['document_type_id'];
 		$created_by = $_SESSION['user_id'];
 		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
 		$last_modified_on = getDateTime(NULL ,"mySQL");
 		
-		if(($document_type_id > 0) AND ($document_type_id <> "")){
+		if(($talent_id > 0) AND ($talent_id <> "")){
 			
 		
 			// process Talent Document Information edit form
@@ -181,11 +181,64 @@ if(isset($_POST['form_name'])) {
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
-						)	
+						),
+			"talent_id=%s", $talent_id	
 			);
-		}			
-		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');	
+			//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_doc']['tmp_name']) || !is_uploaded_file($_FILES['talent_doc']['tmp_name'])) {
+		// do nothing
+	}  else {
+
+	//if logo file is uploaded process the file with upload class
+	
+	$handle1 = new upload($_FILES['talent_doc']);
+		if ($handle1->uploaded) {
+			$handle1->file_new_name_body   = $talent_id.'_doc';
+			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
+			$handle1->file_new_name_ext = 'pdf';
+			$handle1->file_overwrite = true;
+			$handle1->process('../uploads/documents/');
+		if ($handle1->processed) {
 			
+	// save uploaded file name and path in database table field logo_url
+	
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if client id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent_documents', array(
+
+				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc.pdf',
+				'document_description' =>$_POST['document_description'],
+				'document_name' => $_POST['document_name'],
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+		echo 'Photo is uploaded and path select saved in database';	
+			$handle1->clean();
+		} else {
+			echo 'error : ' . $handle1->error;
+		} // close handle processed
+		} // close handle uploaded
+		} // close file exist
+			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');	
+	
+			
+		}/* else {
+			
+			
+		header('Location: index.php?route=modules/talent/add_talent&error=1&msg=bad-data');		
+		}				
+			*/
 		break;
 		
 		case "edit_talent_contact_info":
