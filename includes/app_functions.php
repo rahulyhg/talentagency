@@ -136,7 +136,7 @@ function get_document_type_desc($document_type_id){
 	}
 function get_talent_gender($talent_id){
 	$sex = DB::queryFirstField("SELECT sex from tams_talent WHERE talent_id = $talent_id");
-	if ($sex == 'M'){
+	if ($sex == 'Male'){
 		$sex = "Male";
 	} else {
 		$sex = "Female";

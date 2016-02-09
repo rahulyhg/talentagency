@@ -24,7 +24,7 @@ $document_status = $_POST['document_status'];
 $last_modified_by = $_SESSION['user_id'];
 $last_modified_on = getDateTime(NULL,"mySQL");
 
- // if client id is not empty update the database
+ // if talent id is not empty update the database
  
 	if($talent_id <> ""){
 		$update = DB::update('tams_talent_documents', array(
@@ -60,7 +60,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			$last_modified_by = $_SESSION['user_id'];
 			$last_modified_on = getDateTime(NULL,"mySQL");
 			
-	/* if client id is not empty update the database */
+	/* if talent id is not empty update the database */
 	
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_documents', array(

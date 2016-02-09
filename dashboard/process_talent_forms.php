@@ -69,7 +69,7 @@ if(isset($_POST['form_name'])) {
 			$last_modified_by = $_SESSION['user_id'];
 			$last_modified_on = getDateTime(NULL,"mySQL");
 			
-	/* if client id is not empty update the database */
+	/* if talent id is not empty update the database */
 	
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent', array(
@@ -206,14 +206,13 @@ if(isset($_POST['form_name'])) {
 			$last_modified_by = $_SESSION['user_id'];
 			$last_modified_on = getDateTime(NULL,"mySQL");
 			
-	/* if client id is not empty update the database */
+	/* if talent id is not empty update the database */
 	
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_documents', array(
 
 				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc',
 				'document_description' =>$_POST['document_description'],
-				'document_name' => $_POST['document_name'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),
@@ -232,12 +231,12 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');	
 	
 			
-		}/* else {
+		} else {
 			
 			
 		header('Location: index.php?route=modules/talent/add_talent&error=1&msg=bad-data');		
 		}				
-			*/
+		
 		break;
 		
 		case "edit_talent_contact_info":
@@ -357,14 +356,14 @@ if(isset($_POST['form_name'])) {
 		break;
 	
 		case "edit_talent_portfolio_info":
-		$talent_id = $_POST['talent_id'];
+		$talent_id = $_GET['talent_id'];
 		$portfolio_item_id = $_POST['portfolio_item_id'];
 		$created_by = $_SESSION['user_id'];
 		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
 		$last_modified_on = getDateTime(NULL ,"mySQL");
 		
-		if(($portfolio_item_id > 0) AND ($portfolio_item_id <> "")){
+			if(($talent_id > 0) AND ($talent_id <> "")){
 			
 		
 			// process Talent Portfolio Information edit form
@@ -375,11 +374,62 @@ if(isset($_POST['form_name'])) {
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
-						)	
+						),
+			"talent_id=%s", $talent_id	
 			);
-		}			
-		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#portfolio');	
+			//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_portfolio']['tmp_name']) || !is_uploaded_file($_FILES['talent_portfolio']['tmp_name'])) {
+		// do nothing
+	}  else {
+
+	//if logo file is uploaded process the file with upload class
+	
+	$handle = new upload($_FILES['talent_portfolio']);
+		if ($handle->uploaded) {
+			$handle->file_new_name_body   = $talent_id.'_portfolio';
+			$handle->allowed = array('application/pdf','application/msword','text/plain', 'text/rtf', 'image/*','application/zip','audio/mp3', 'audio/mpeg', 'audio/mpeg3', 'audio/x-mpeg-3', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/x-ms-wmv', 'application/x-rar-compressed');
+			$handle->file_overwrite = true;
+			$handle->process('../uploads/portfolio/');
+		if ($handle->processed) {
 			
+	// save uploaded file name and path in database table field logo_url
+	
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if talent id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent_portfolio', array(
+
+				'portfolio_item_url'=> '/talent/uploads/portfolio/'.$talent_id.'_portfolio',
+				'portfolio_item_description' =>$_POST['portfolio_item_description'],
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+		echo 'Photo is uploaded and path select saved in database';	
+			$handle->clean();
+		} else {
+			echo 'error : ' . $handle->error;
+		} // close handle processed
+		} // close handle uploaded
+		} // close file exist
+			
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#portfolio');	
+	
+			
+		} else {
+			
+			
+		header('Location: index.php?route=modules/talent/add_talent&error=1&msg=bad-data');		
+		}
+		
 		break;
 	
 		case "edit_talent_basic_info":
