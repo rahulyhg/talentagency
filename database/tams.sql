@@ -215,7 +215,6 @@ CREATE TABLE `tams_talent_documents` (
   `talent_document_id` int(11) NOT NULL AUTO_INCREMENT,
   `document_type_id` int(11) NOT NULL,
   `talent_id` int(11) NOT NULL,
-  `document_name` varchar(255) DEFAULT NULL,
   `document_description` varchar(255) DEFAULT NULL,
   `document_path` varchar(255) DEFAULT NULL,
   `document_status` varchar(50) DEFAULT 'active',
@@ -224,11 +223,11 @@ CREATE TABLE `tams_talent_documents` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_document_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_documents` */
 
-insert  into `tams_talent_documents`(`talent_document_id`,`document_type_id`,`talent_id`,`document_name`,`document_description`,`document_path`,`document_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,2,3,NULL,NULL,NULL,'active','1','2016-02-03 10:25:45','1','2016-02-03 10:25:45');
+insert  into `tams_talent_documents`(`talent_document_id`,`document_type_id`,`talent_id`,`document_description`,`document_path`,`document_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,2,3,NULL,NULL,'active','1','2016-02-03 10:25:45','1','2016-02-03 10:25:45'),(5,1,1,'Passport Copy','/talent/uploads/documents/1_doc','active','1','2016-02-08 12:59:46','1','2016-02-09 08:13:00'),(6,2,1,'Passport Copy','/talent/uploads/documents/1_doc','active','1','2016-02-09 08:13:00','1','2016-02-09 08:13:00');
 
 /*Table structure for table `tams_talent_experience` */
 
@@ -244,11 +243,11 @@ CREATE TABLE `tams_talent_experience` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_experience_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_experience` */
 
-insert  into `tams_talent_experience`(`talent_experience_item_id`,`talent_id`,`experience_item_id`,`experience_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,1,'active','1','2016-02-01 09:31:31','1','2016-02-01 09:31:31'),(2,1,2,'active','1','2016-02-01 09:32:19','1','2016-02-01 09:32:19'),(3,1,1,'active','1','2016-02-01 09:32:26','1','2016-02-01 09:32:26'),(4,1,2,'active','1','2016-02-01 09:32:45','1','2016-02-01 09:32:45');
+insert  into `tams_talent_experience`(`talent_experience_item_id`,`talent_id`,`experience_item_id`,`experience_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,1,'active','1','2016-02-01 09:31:31','1','2016-02-01 09:31:31'),(2,1,2,'active','1','2016-02-01 09:32:19','1','2016-02-01 09:32:19');
 
 /*Table structure for table `tams_talent_language` */
 
@@ -297,18 +296,16 @@ CREATE TABLE `tams_talent_portfolio` (
   `talent_id` int(11) NOT NULL,
   `portfolio_item_id` int(11) NOT NULL,
   `portfolio_item_description` varchar(255) DEFAULT NULL,
-  `talent_portfolio_item_url` varchar(255) DEFAULT NULL,
+  `portfolio_item_url` varchar(255) DEFAULT NULL,
   `portfolio_item_status` varchar(50) DEFAULT 'active',
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_on` datetime DEFAULT NULL,
   PRIMARY KEY (`talent_portfolio_item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tams_talent_portfolio` */
-
-insert  into `tams_talent_portfolio`(`talent_portfolio_item_id`,`talent_id`,`portfolio_item_id`,`portfolio_item_description`,`talent_portfolio_item_url`,`portfolio_item_status`,`created_by`,`created_on`,`last_modified_by`,`last_modified_on`) values (1,1,2,NULL,NULL,'active','1','2016-02-04 08:52:04','1','2016-02-04 08:52:04');
 
 /*Table structure for table `tams_user_comments` */
 
