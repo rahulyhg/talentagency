@@ -66,7 +66,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 	/* if talent id is not empty update the database */
 	
 		if($talent_id <> ""){
-				$update = DB::update('tams_talent_documents', array(
+				$update = DB::update('tams_talent_portfolio', array(
 
 				'portfolio_item_url'=> '/talent/uploads/portfolio/'.$talent_id.'_portfolio',
 				'portfolio_item_description' =>$_POST['portfolio_item_description'],
@@ -86,10 +86,9 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		} // close file exist
 				
 }
-
 ?>
 
-<form id="edit_talent_portfolio_info" name="edit_talent_portfolio_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
+<form enctype="multipart/form-data" id="edit_talent_portfolio_info" name="edit_talent_portfolio_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Portfolio Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -183,7 +182,8 @@ $last_modified_on = getDateTime(NULL,"mySQL");
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="application/pdf,application/msword,text/plain, text/rtf, image/*,application/zip, audio/mp3,audio/mpeg, audio/mpeg3, audio/x-mpeg-3, video/mpeg, video/mp4, video/quicktime, video/x-ms-wmv, application/x-rar-compressed" name="talent_portfolio" id="talent_portfolio"/> <!-- Form Upload Field -->
+                        <input type="file" accept="application/pdf,application/msword,text/plain, text/rtf, image/*,application/zip, audio/mp3,audio/mpeg,
+						audio/mpeg3, audio/x-mpeg-3, video/mpeg, video/mp4, video/quicktime, video/x-ms-wmv, application/x-rar-compressed" name="talent_portfolio" id="talent_portfolio"/> <!-- Form Upload Field -->
                     </div>
                     <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
                 </span>
