@@ -69,32 +69,7 @@ $created_on = $item['created_on'];
 $created_by = $item['created_by'];
 $last_modified_by = $item['last_modified_by'];
 $last_modified_on = $item['last_modified_on'];
-
-/*
- $sql = "SELECT
-    `tams_talent`.*
-    , `tams_talent_experience`.`experience_item_id`
-    , `tams_talent_portfolio`.`portfolio_item_id`
-    , `tams_talent_documents`.`document_type_id`
-    , `tams_talent_language`.`language_id`
-    , `tams_talent_photos`.`talent_photo_id`
-    , `tams_talent_comments`.`comment`
-FROM
-    `tams_talent`
-    LEFT JOIN `tams_talent_experience` 
-        ON (`tams_talent`.`experience_item_id` = `tams_talent_experience`.`experience_item_id`)
-    LEFT JOIN `tams_talent_portfolio` 
-        ON (`tams_talent_portfolio`.`portfolio_item_id` = `tams_talent`.`portfolio_item_id`)
-    LEFT JOIN `tams_talent_documents` 
-        ON (`tams_talent`.`document_type_id` = `tams_talent_documents`.`document_type_id`)
-    LEFT JOIN `tams_talent_language` 
-        ON (`tams_talent_language`.`language_id` = `tams_talent`.`language_id`)
-    LEFT JOIN `tams_talent_photos` 
-        ON (`tams_talent`.`talent_photo_id` = `tams_talent_photos`.`talent_photo_id`)
-    LEFT JOIN `tams_talent_comments` 
-        ON (`tams_talent_comments`.`comment` = `tams_talent`.`comment`) 
-			";
-	*/		
+		
 $talent = DB::queryFirstRow($sql);
 ////print_r($talent);
 //Basic Information
@@ -243,62 +218,7 @@ $events = $talent['events'];
 if (is_null($events) OR $events == "" ) {
 	$events = " - not set - ";
 } 
-/*
-// Salary Infromation
-$currency_code = $employee['currency_code'];
-if (is_null($currency_code) OR $currency_code == "" ) {
-	$currency_code = " - not set - ";
-} 
-$monthly_salary = $employee['salary'];
-if (is_null($monthly_salary) OR $monthly_salary == "" ) {
-	$monthly_salary = " - not set - ";
-	$annual_salary = $monthly_salary;
-	$daily_wage = $monthly_salary;
-	$hourly_rate = $monthly_salary;
-} else {
-	$annual_salary = round2dp($monthly_salary * 12);
-	$daily_wage = round2dp($monthly_salary / $employee['n_work_day']);
-	$hourly_rate = round2dp(($monthly_salary / $employee['n_work_day']) / 8);
-	$monthly_salary = round2dp($monthly_salary);
-	
-} 
-if ($employee['n_work_day'] < 23 ) {
-$over_time_allowed = "No";	
-}else {
-$over_time_allowed = "Yes";	
-}
-?>
-<?php 
-$sql_deduction = "SELECT * FROM employee_deductions WHERE  (employee_id=$employee_id)";
-$emp_deductions = DB::query($sql_deduction);
 
-$tbl = new HTML_Table('', 'data-table table', array('data-title'=>'List of Deductions'));
-$tbl->addTSection('thead');
-$tbl->addRow();
-$tbl->addCell('', '', 'header');
-$tbl->addCell('Deductions', '', 'header');
-$tbl->addCell('E.C', '', 'header');
-$tbl->addTSection('tbody');
-?>
-<?php
- foreach($emp_deductions as $deduction) {
- 	$deduction_type_id = $deduction['deduction_type_id'];
-	$sql_deduction_type = "SELECT deduction_type FROM deduction_types WHERE deduction_type_id=$deduction_type_id";
-	$deduction_type = DB::queryFirstField($sql_deduction_type);
-if($deduction_type == "" OR is_null($deduction_type)){
-	$deduction_type = "-not set-";
-}
-$tbl->addRow();
-$tbl->addCell($deduction_type);
-$tbl->addCell(round2dp($deduction['employee_amount']).' '.$deduction['currency_code']);
-$tbl->addCell(round2dp($deduction['employer_cont']).' '.$deduction['currency_code']);
-
-}
-
-$sql_benefits = "SELECT * FROM employee_benefits WHERE  (employee_id=$employee_id)";
-$emp_benefits = DB::query($sql_benefits);
-
-*/
 ?>
 <style>
 @media (max-width: 769px) {
