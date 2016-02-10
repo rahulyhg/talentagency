@@ -1,26 +1,5 @@
 <?php
 
-if(isset($_POST['submit'])){ 
-	  //do  something here in code 
-	  if(preg_match("/^[A-Za-z]+/", $_POST['name'])){ 
-	   $name=$_POST['name'];
-//connect  to the database 
-	  $db=mysqli_connect ("localhost",  "root", "", "teamsutlej_talent") or die ('I cannot connect  to the database because: ' . mysql_error());	   
-	  
-	  //-select  the database to use 
-	/*  $mydb=mysql_select_db("teamsutlej_talent"); */
-	  //-query  the database table 
-	  $sql="SELECT talent_id, first_name, last_name FROM tams_talent WHERE  first_name LIKE '%" . $name . "%' OR last_name LIKE '%" . $name  ."%'"; 
-		//-run  the query against the mysql query function 
-	$talent= DB::queryFirstRow($sql);
-	$result=mysqli_query($db,$sql);
-
-	
-	  }
-	  else{ 
-	  echo  "<p>Please enter a search query</p>"; 
-	  }
-}	  
 ?>
 <!--   Content Header (Page header) -->
 <section class="content-header">
@@ -69,16 +48,36 @@ if(isset($_POST['submit'])){
                 <div class="box-footer">
                   <div class="row">
 				  <?php
-//-create  while loop and loop through result set 
-	  while($row=mysqli_fetch_array($result)){ 
-	          $first_name  =$row['first_name']; 
-	          $last_name=$row['last_name']; 
-	          $talent_id=$row['talent_id']; 
-	  //-display the result of the array 
-	  echo "<ul>\n"; 
-	  echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" .$first_name . " " . $last_name . "</a></li>\n"; 
-	  echo "</ul>"; 
-		} 
+				  
+						if(isset($_POST['submit'])){ 
+							  //do  something here in code 
+							  if(preg_match("/^[A-Za-z]+/", $_POST['name'])){ 
+							   $name=$_POST['name'];
+						//connect  to the database 
+							  $db=mysqli_connect ("localhost",  "root", "", "teamsutlej_talent") or die ('I cannot connect  to the database because: ' . mysql_error());	   
+							  
+							  //-select  the database to use 
+							/*  $mydb=mysql_select_db("teamsutlej_talent"); */
+							  //-query  the database table 
+							  $sql="SELECT talent_id, first_name, last_name FROM tams_talent WHERE  first_name LIKE '%" . $name . "%' OR last_name LIKE '%" . $name  ."%'"; 
+								//-run  the query against the mysql query function 
+							$talent= DB::queryFirstRow($sql);
+							$result=mysqli_query($db,$sql);
+						//-create  while loop and loop through result set 
+							  while($row=mysqli_fetch_array($result)){ 
+									  $first_name  =$row['first_name']; 
+									  $last_name=$row['last_name']; 
+									  $talent_id=$row['talent_id']; 
+							  //-display the result of the array 
+							  echo "<ul>\n"; 
+							  echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" .$first_name . " " . $last_name . "</a></li>\n"; 
+							  echo "</ul>"; 
+								}
+						}
+							  else{ 
+							  echo  "<p>Please enter a search query</p>"; 
+							  }
+						}	  		
 		?>
                   </div><!-- /.row -->
                 </div><!-- /.box-footer -->
