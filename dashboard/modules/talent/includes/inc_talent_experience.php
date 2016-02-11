@@ -135,7 +135,7 @@ font-size:19px;
 					
 
 					</div>
-					<script type="text/javascript">
+<script type="text/javascript">
 	$(".select2").select2();
 	
 </script>

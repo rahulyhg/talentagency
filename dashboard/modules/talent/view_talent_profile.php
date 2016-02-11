@@ -1,5 +1,5 @@
 <?php
-
+// tams_talent
 $talent_id = '0';
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
@@ -50,6 +50,7 @@ $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 
 }
+// tams_talent_experience
 $mysql ='SELECT * FROM tams_talent_experience WHERE talent_id ="$talent_id"'; 
 $experience = DB::queryFirstRow($mysql);
 $talent_experience_id = $experience['talent_experience_id'];
@@ -59,7 +60,7 @@ $created_on = $experience['created_on'];
 $created_by = $experience['created_by'];
 $last_modified_by = $experience['last_modified_by'];
 $last_modified_on = $experience['last_modified_on'];
-
+// tams_experience_items
 $mysql2 ='SELECT * FROM tams_experience_items WHERE experience_item_status ="active"';
 $item = DB::queryFirstRow($mysql2);
 $experience_item_id = $item['experience_item_id'];
@@ -69,6 +70,65 @@ $created_on = $item['created_on'];
 $created_by = $item['created_by'];
 $last_modified_by = $item['last_modified_by'];
 $last_modified_on = $item['last_modified_on'];
+// tams_talent_portfolio
+$mysql3 ='SELECT * FROM tams_talent_portfolio WHERE talent_id ="$talent_id"'; 
+$portfolio = DB::queryFirstRow($mysql3);
+$talent_portfolio_item_id = $portfolio['talent_portfolio_item_id'];
+$portfolio_item_id = $portfolio['portfolio_item_id'];
+$portfolio_item_status = $portfolio['portfolio_item_status'];
+$created_on = $portfolio['created_on'];
+$created_by = $portfolio['created_by'];
+$last_modified_by = $portfolio['last_modified_by'];
+$last_modified_on = $portfolio['last_modified_on'];
+// tams_portfolio_items
+$mysql4 ='SELECT * FROM tams_portfolio_items WHERE portfolio_item_status ="active"';
+$item2 = DB::queryFirstRow($mysql4);
+$portfolio_item_id = $item2['portfolio_item_id'];
+$portfolio_item_name = $item2['portfolio_item_name'];
+$portfolio_item_status = $item2['portfolio_item_status'];
+$created_on = $item2['created_on'];
+$created_by = $item2['created_by'];
+$last_modified_by = $item2['last_modified_by'];
+$last_modified_on = $item2['last_modified_on'];
+// tams_talent_language
+$mysql5 ='SELECT * FROM tams_talent_language WHERE talent_id ="$talent_id"'; 
+$language = DB::queryFirstRow($mysql5);
+$talent_language_id = $language['talent_language_id'];
+$language_id = $language['language_id'];
+$language_status = $language['language_status'];
+$created_on = $language['created_on'];
+$created_by = $language['created_by'];
+$last_modified_by = $language['last_modified_by'];
+$last_modified_on = $language['last_modified_on'];
+// tams_languages
+$mysql6 ='SELECT * FROM tams_languages WHERE language_status ="active"';
+$lang = DB::queryFirstRow($mysql6);
+$language_id = $lang['language_id'];
+$language_name = $lang['language_name'];
+$language_status = $lang['language_status'];
+$created_on = $lang['created_on'];
+$created_by = $lang['created_by'];
+$last_modified_by = $lang['last_modified_by'];
+$last_modified_on = $lang['last_modified_on'];
+// tams_talent_comments
+$mysql7 ='SELECT * FROM tams_talent_comments WHERE talent_id ="$talent_id"'; 
+$comment = DB::queryFirstRow($mysql7);
+$talent_comment_id = $comment['talent_comment_id'];
+$comment = $comment['comment'];
+$created_on = $language['created_on'];
+$created_by = $language['created_by'];
+$last_modified_by = $language['last_modified_by'];
+$last_modified_on = $language['last_modified_on'];
+// tams_talent_photos
+$mysql8 ='SELECT * FROM tams_talent_photos WHERE talent_id ="$talent_id"';
+$photo = DB::queryFirstRow($mysql8);
+$talent_photo_id = $photo['talent_photo_id'];
+$photo_path = $photo['photo_path'];
+$photo_caption = $photo['photo_caption'];
+$created_on = $photo['created_on'];
+$created_by = $photo['created_by'];
+$last_modified_by = $photo['last_modified_by'];
+$last_modified_on = $photo['last_modified_on'];
 		
 $talent = DB::queryFirstRow($sql);
 ////print_r($talent);
@@ -273,9 +333,9 @@ if (is_null($events) OR $events == "" ) {
             
             <div class="box-body bg-info">
             <div class="row">
-			<!--	<div class="col-md-3 col-sm-3  image pull-left">
-              		<?php /*echo get_talent_photo($talent_id,100);*/ ?>
-            	</div>-->
+				<div class="col-md-3 col-sm-3  image pull-left">
+              		<?php echo get_talent_image($talent_id); ?>
+            	</div>
             	<div class="col-md-9 col-sm-9  ">
 	            	<div class="col-md-6 col-sm-6  ">
 	            		<p class="text-right"><strong>Full Name :</strong></p>
@@ -401,7 +461,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>List of Portfolio items : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['portfolio_item_id']; ?></p>
+	            		<p class="text-left"><?php echo $item2['portfolio_item_name']; ?></p>
 	            </div>
 				
 				</div>
@@ -611,7 +671,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>Spoken Languages : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['language_id']; ?></p>
+	            		<p class="text-left"><?php echo $lang['language_name']; ?></p>
 	            </div>
                   					  	            
                   	
@@ -650,7 +710,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>Talent Photos : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $talent['talent_id']."".$talent['talent_photo_id']; ?></p>
+	            		<p class="text-left"><img src="<?php echo $talent['photo_path']; ?>" alt="talent_photo"/></p>
 	            </div>
                   					  	            
                   	
@@ -683,7 +743,7 @@ if (is_null($events) OR $events == "" ) {
 				    <div class="row"> 	            
 				<div class="col-md-10 col-sm-10 ">
 					
-	            <p class="text-right"><?php echo $talent['talent_id']."".$talent['$comment'];?></p>
+	            <p class="text-right"><?php echo $comment['$comment'];?></p>
 	            
 	            </div>
 	            

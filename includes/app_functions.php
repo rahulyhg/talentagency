@@ -143,4 +143,11 @@ function get_talent_gender($talent_id){
 	}
 	return $sex;
 }
+function get_talent_image($talent_id) {
+	// Get Gravitar
+	if (file_exists(ROOT_PATH.'uploads/talent_profiles/'.$talent_id.'_photo1.jpg')){
+		$image = '<img src="'.SITE_ROOT.'uploads/talent_profiles/'.$talent_id.'_photo1.jpg" class="img-responsive" alt="User Image" />';	
+	}
+	return $image;
+}
  ?>
