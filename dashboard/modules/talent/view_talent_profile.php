@@ -434,7 +434,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>List of Experiences : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $item['experience_item_name']; ?></p>
+	            		<p class="text-left"><?php echo list_talent_experiences($talent_id); ?></p>
 						
 	            </div>
 				  </div>
@@ -461,7 +461,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>List of Portfolio items : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $item2['portfolio_item_name']; ?></p>
+	            		<p class="text-left"><?php echo list_talent_portfolios($talent_id);; ?></p>
 	            </div>
 				
 				</div>
@@ -671,7 +671,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>Spoken Languages : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $lang['language_name']; ?></p>
+	            		<p class="text-left"><?php echo list_talent_languages($talent_id); ?></p>
 	            </div>
                   					  	            
                   	
@@ -743,7 +743,7 @@ if (is_null($events) OR $events == "" ) {
 				    <div class="row"> 	            
 				<div class="col-md-10 col-sm-10 ">
 					
-	            <p class="text-right"><?php echo $comment['$comment'];?></p>
+	            <p class="text-right"><?php echo list_talent_comments($talent_id);?></p>
 	            
 	            </div>
 	            
