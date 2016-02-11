@@ -68,7 +68,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_photos', array(
 
-				'photo_path'=> '/talent/uploads/talent_photos/'.$talent_id.'_photo.jpg',
+				'photo_path'=> '/talent/uploads/talent_photos/'.$talent_id.'_photo',
 				'photo_caption'=> $_POST['photo_caption'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
@@ -126,7 +126,13 @@ $last_modified_on = getDateTime(NULL,"mySQL");
             </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
 					</div>			
-					
+					<div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label"> Photo Caption:</label>
+						  <div class="col-md-9 col-sm-9">
+							 <input class="form-control" type="text" required placeholder="Add Photo Caption " 
+							 value="" name="photo_caption" id="photo_caption">							
+						  </div>
+						  </div>
 					
 				</div> <!--/.row-->
 			 				<div class="box-footer">

@@ -710,7 +710,7 @@ if (is_null($events) OR $events == "" ) {
 	            		<p class="text-right"><strong>Talent Photos : </strong></p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><img src="<?php echo list_talent_photos($talent_id); ?>" alt="talent_photo"/></p>
+	            		<p class="text-left"><?php echo list_talent_photos($talent_id); ?></p>
 	            </div>
                   					  	            
                   	
