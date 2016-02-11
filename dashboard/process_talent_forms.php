@@ -587,10 +587,10 @@ if(isset($_POST['form_name'])) {
 		if(($talent_id > 0) AND ($talent_id <> "")){
 			
 		
-			// process Talent Contact Information edit form
+			// process Talent Notes Information edit form
 		DB::update('tams_talent_comments', array(
  						'talent_id'			=> $talent_id,
- 						'comment'=> $comment,
+ 						'comment'			=> $comment,
 						'created_by' 		=> $created_by,
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,

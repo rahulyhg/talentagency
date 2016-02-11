@@ -290,4 +290,11 @@ function list_talent_photos($talent_id) {
 
 	}
 }
+// Get Talent Full Name	
+function get_talent_full_name($talent_id) {
+	
+	return DB::queryFirstField('SELECT CONCAT(`first_name`," " ,`last_name`) AS fullname FROM tams_talent');
+	
+	
+}
  ?>

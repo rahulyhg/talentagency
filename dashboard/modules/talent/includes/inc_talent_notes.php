@@ -4,7 +4,6 @@ $talent_id = '0';
 if(isset($_POST['form_name'])){
 	
 	$talent_id = $_POST['talent_id'];
-	$talent_comment_id = $_POST['talent_comment_id'];
 	$comment = $_POST['comment'];
 	$created_by = $_SESSION['user_id'];
 	$created_on = getDateTime(NULL ,"mySQL");
@@ -13,7 +12,6 @@ if(isset($_POST['form_name'])){
 	if( $comment <> ""   ){
 	DB::insert('tams_talent_comments', array(
 				'talent_id' 		=> $talent_id,
-				'talent_comment_id' => $talent_comment_id,
 				'comment'	=> $comment,
 				'created_by' 		=> $created_by,
 				'created_on'	 	=> $created_on,
@@ -39,6 +37,11 @@ $talent = DB::queryFirstRow($sql);
 $talent_id = $talent['talent_id'];
 $first_name = $talent['first_name'];
 $last_name = $talent['last_name'];
+$talent_status = $talent['talent_status']; 
+$created_on = $talent['created_on'];
+$created_by = $talent['created_by'];
+$last_modified_by = $talent['last_modified_by'];
+$last_modified_on = $talent['last_modified_on'];
 
 $comment_sql = "SELECT 
 			* 
@@ -48,12 +51,16 @@ $comment_sql = "SELECT
 
 $talent_comments = DB::query($comment_sql);
 
-
+echo "<pre>";
+	print_r($_POST);
+	print_r($_SESSION);
+	print_r($_FILES);
+	echo "</pre>";
 ?>
 
 <!-- Notes Information box -->       			
 				
-<form id="edit_talent_notes_info" name="edit_talent_notes_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >		
+		
 			<div class="col-md-12 col-sm-12">
 		     <!-- Comment box -->       			
        		<div class="box box-info">
@@ -70,7 +77,6 @@ $talent_comments = DB::query($comment_sql);
 				  
                   <div class="box-body bg-info ">
 				  <div class="row">
-					<div class="tab-pane active" id="notes">
 			 <p>
 			 <div class="box-comments">
 				 <?php
@@ -79,10 +85,10 @@ $talent_comments = DB::query($comment_sql);
 						?>
 						<div class="box-comment">
 					
-							<img class="img-circle img-sm" alt="User Image" src="<?php echo get_user_avatar_url($comment['created_by'],'50'); ?>" />
+							<img class="img-circle img-sm" alt="Talent Image" src="<?php echo get_talent_image($comment['created_by']); ?>" />
 							<div class="comment-text">
 							<span class="username">
-								<?php echo get_user_full_name($comment['created_by']); ?>
+								<?php echo get_talent_full_name($comment['created_by']); ?>
 								<span class="text-muted pull-right">
 									<?php echo getDateTime($comment['created_on'],"dtShort"); ?>
 								</span>
@@ -106,18 +112,19 @@ $talent_comments = DB::query($comment_sql);
 			</div>
 			
 			</p>
-		<form role="form" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
-<div class="form-group" style="margin:10px;">
+<form id="edit_talent_notes_info" name="edit_talent_notes_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
+		<div class="form-group" style="margin:10px;">
 			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
-</div>
+		</div>
+<!-- Hidden Fields -->
+<input type="hidden" name="form_name" id="form_name" value="edit_talent_notes_info" />
+<input type="hidden" name="talent_id" id="notes_talent_id" value="<?php echo $talent_id; ?>" />
+<!-- /Hidden Fields -->
 	
 			<div class="form-group" style="margin:10px;" >
 					<button type="submit" name="save" id="save_note_btn" value="save" class="note  pull-right btn btn-default btn-lg">Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></button> 
 			 </div>
-			 </form>  
- 	
-			</div><!--/.tab-pane-->
-				
+</form>
 			</div> <!--/.row-->
 			<div class="box-footer">
  								<div class="form-group">
@@ -137,8 +144,4 @@ $talent_comments = DB::query($comment_sql);
     
 </div> <!--/.col-md-12 col-sm-12-->
 <!--Notes Information Box-->
-<!-- Hidden Fields -->
-<input type="hidden" name="form_name" id="form_name" value="edit_talent_notes_info" />
-<input type="hidden" name="talent_id" id="notes_talent_id" value="<?php echo $talent_id; ?>" />
-<!-- /Hidden Fields -->
-</form>	
+
