@@ -1,7 +1,93 @@
 <?php
+//reset all the form fields
+$photo_path="";
+$photo_caption="";
+
+if(isset($_GET['talent_id']))
+{
+	$talent_id = $_GET['talent_id'];
+}
+
+$photo_sql    = "SELECT
+*
+FROM
+tams_talent_photos
+WHERE talent_id = $talent_id";
+
+$talent_photos = DB::query($photo_sql);
+
+// getting values from $_post variable & saving into normal variables
+
+if(isset($_POST['save'])) {
+ 
+$talent_id = $_POST['talent_id'];
+$last_modified_by = $_SESSION['user_id'];
+$last_modified_on = getDateTime(NULL,"mySQL");
+
+// if talent id is not empty update the database
+ 
+	if($talent_id <> ""){
+		$update = DB::update('tams_talent_photos', array(
+			
+			'talent_id' => $talent_id,
+			'last_modified_by'	=> $last_modified_by,
+			'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+	//check if the file is uploaded and process the file if file is uploaded	
+	
+	if(!file_exists($_FILES['talent_photo']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo']['tmp_name'])) {
+		echo '<h2> No Logo ploaded</h2>';
+	}  else {
+		echo '<h2> Logo was uploaded</h2>';
+	}
+	//if logo file is uploaded process the file with upload class
+	
+	$handle = new upload($_FILES['talent_photo']);
+		if ($handle->uploaded) {
+			$handle->file_new_name_body   = $talent_id.'_photo';
+			$handle->image_resize         = true;
+			$handle->image_x              = 100;
+			$handle->image_ratio_y        = true;
+			$handle->allowed = array('image/*');
+			$handle->image_convert = 'jpg';
+			$handle->file_overwrite = true;
+			$handle->process('../uploads/talent_photos/');
+		if ($handle->processed) {
+			
+	// save uploaded file name and path in database table field logo_url
+	
+	
+			$last_modified_by = $_SESSION['user_id'];
+			$last_modified_on = getDateTime(NULL,"mySQL");
+			
+	/* if client id is not empty update the database */
+	
+		if($talent_id <> ""){
+				$update = DB::update('tams_talent_photos', array(
+
+				'photo_path'=> '/talent/uploads/talent_photos/'.$talent_id.'_photo.jpg',
+				'photo_caption'=> $_POST['photo_caption'],
+				'last_modified_by'	=> $last_modified_by,
+				'last_modified_on'	=> $last_modified_on
+			),
+			"talent_id=%s", $talent_id
+		);
+		
+		}
+		echo 'Photo is uploaded and path select saved in database';	
+			$handle->clean();
+		} else {
+			echo 'error : ' . $handle->error;
+		} // close handle processed
+		} // close handle uploaded
+		} // close file exist	
+}
 
 ?>
-<form id="edit_talent_photos_info" name="edit_talent_photos_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
+<form enctype="multipart/form-data" id="edit_talent_photos_info" name="edit_talent_photos_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Talent Photos Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
@@ -16,7 +102,31 @@
             
             <div class="box-body bg-info">
             <div class="row">
-  					
+  					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Photo :
+						</label>
+						<div class="col-md-9 col-sm-9">
+		<!-- input-group image-preview [FROM HERE]-->
+            <div class="input-group image-preview">
+                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                <span class="input-group-btn">
+                    <!-- image-preview-clear button -->
+                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+                    <!-- image-preview-input -->
+                    <div class="btn btn-default image-preview-input">
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">Browse</span>
+                        <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo" id="talent_photo"/> <!-- Form Upload Field -->
+                    </div>
+                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                </span>
+            </div><!-- /input-group image-preview [TO HERE]-->
+						</div>
+					</div>			
+					
 					
 				</div> <!--/.row-->
 			 				<div class="box-footer">
@@ -27,6 +137,11 @@
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
+						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+							Save &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+					</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
@@ -36,5 +151,6 @@
 				</div><!--Photos Information Box-->
 		<!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_photos_info" />
+<input type="hidden" name="talent_id" id="photos_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
