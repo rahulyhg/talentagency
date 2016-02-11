@@ -278,15 +278,16 @@ function list_talent_photos($talent_id) {
 	if ($Photos) {
 	
 		foreach ($Photos as $img) {
+			
+			if (file_exists(ROOT_PATH.'uploads/talent_photos/'.$talent_id.'_photo')){
+		$list = '<img src="'.SITE_ROOT.'uploads/talent_photos/'.$talent_id.'_photo" class="img-responsive" alt="Talent Photo" /><br>';	
+		//$list = '<img src="'.$img['photo_path'].'" class="img-responsive" alt="Talent Photo" /><br>';	
+	}
+	return $list;
 		 
-			$list .= '<img src='.$img['Photo_path'].' alt="Talent Photo" /><br>';
 			
 		}
-	
-	
+
 	}
-		 
- 
-	return $list;
 }
  ?>
