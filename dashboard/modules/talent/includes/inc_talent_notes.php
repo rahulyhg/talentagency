@@ -80,7 +80,7 @@ $talent_comments = DB::query($comment_sql);
 						<div class="box-comment">
 					
 							<img class="img-circle img-sm" alt="User Image" src="<?php echo get_user_avatar_url($comment['created_by'],'50'); ?>" />
-<div class="comment-text">
+							<div class="comment-text">
 							<span class="username">
 								<?php echo get_user_full_name($comment['created_by']); ?>
 								<span class="text-muted pull-right">
@@ -88,7 +88,7 @@ $talent_comments = DB::query($comment_sql);
 								</span>
 							</span>
 							<?php echo $comment['comment']; ?>
-</div>						
+						</div>						
 						</div>
 						<?php
 					}
@@ -110,13 +110,8 @@ $talent_comments = DB::query($comment_sql);
 <div class="form-group" style="margin:10px;">
 			<textarea  name="comment" id="comment" class="form-control" required placeholder="Enter a New Note" ></textarea>
 </div>
-		<!-- Hidden Fields -->
-					<input type="hidden" name="form_name" id="form_name" value="add_talent_comments" />
-					<input type="hidden" name="talent_id" id="talent_id" value="<?php echo $talent_id; ?>" />
-					 
-					<!-- /Hidden Fields --> 
-
-<div class="form-group" style="margin:10px;" >
+	
+			<div class="form-group" style="margin:10px;" >
 					<button type="submit" name="save" id="save_note_btn" value="save" class="note  pull-right btn btn-default btn-lg">Add Note&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></button> 
 			 </div>
 			 </form>  
@@ -144,5 +139,6 @@ $talent_comments = DB::query($comment_sql);
 <!--Notes Information Box-->
 <!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="edit_talent_notes_info" />
+<input type="hidden" name="talent_id" id="notes_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>	
