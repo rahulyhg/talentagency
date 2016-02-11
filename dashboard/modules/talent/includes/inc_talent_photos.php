@@ -53,7 +53,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 			$handle->image_ratio_y        = true;
 			$handle->allowed = array('image/*');
 			$handle->image_convert = 'jpg';
-			$handle->file_overwrite = true;
+			//$handle->file_overwrite = true;
 			$handle->process('../uploads/talent_photos/');
 		if ($handle->processed) {
 			

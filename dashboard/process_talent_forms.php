@@ -635,7 +635,7 @@ if(isset($_POST['form_name'])) {
 		if ($handle->uploaded) {
 			$handle->file_new_name_body   = $talent_id.'_photo';
 			$handle->allowed = array('image/*');
-			$handle->file_overwrite = true;
+		//	$handle->file_overwrite = true;
 			$handle->process('../uploads/talent_photos/');
 		if ($handle->processed) {
 			
