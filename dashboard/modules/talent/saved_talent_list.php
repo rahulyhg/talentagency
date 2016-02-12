@@ -1,32 +1,6 @@
 <?php
-if(isset($_post['search']))
- {
-	$valuetosearch=$_post['valuetosearch'];
-	$query="SELECT * FROM `user` WHERE CONCAT(`first_name`,`last_name`,`nationality`,`height_cm`,`dob`) LIKE '%".$valuetosearch.");
-	$search_result=filterTable($query);
-	
-	
-}
-else{
-	
-	$query ="SELECT * FROM `user`'';
-	$search_result=filterTable($query);
-	
-}
-function filterTable($query)
-{
-	$connect=mysqli_connect ("localhost",  "root", "", "teamsutlej_talent");
-	$filter_Result=mysqli_query($connect,$query);
-	return filter_Result;
-	
-}
 
 ?>
-
-
-
-
-
 <!--   Content Header (Page header) -->
 <section class="content-header">
 	<h1>
@@ -67,32 +41,64 @@ function filterTable($query)
                 </div><!-- /.box-header -->
 				<h3>Search  Talent </h3> 
 	    		<p>You  may search either by first or last name</p> 
-				<form action="" method="post"> 
-				  <input  type="text" name="valuetosearch" placeholder="value to search"><br><br>
-				  
-				  <input  type="submit" name="search" value="Filter"> <br><br>
-				 <table>
-				 <tr>
-				 <th>first_name</th>
-				 <th>last_name</th>
-				<th>nationality</th>
-				<th>height_cm</th>
-				<th>dob</th>
-				</tr>
-				<?php while($row =mysqli_fetch_array($search_result)):?>
-				<tr>
-				<td><?php $row['first_name'];?></td>
-				<td><?php $row['last_name'];?></td>
-				<td><?php $row['nationality'];?></td>
-				<td><?php $row['height_cm'];?></td>
-				<td><?php $row['dob'];?></td>
-				</tr>
-				<?php endwhile;?>
-				</table>
+				<form  method="post" action=""  id="searchform"> 
+				  <input  type="text" name="find">
+                  	
+				 <Select NAME="field"><option selected>Filter by</option>
+						<Option VALUE="first_name">First Name</option>
+						<Option VALUE="last_name">Last Name</option>
+						<Option VALUE="nationality">Nationality</option>
+						<Option VALUE="height_cm">height</option>
+						<Option VALUE="dob">Age</option>
+						<Option VALUE="eye_color">eye_color</option>
+					  <Option VALUE="sex">gender</option>
+					   <Option VALUE="experience_item_name">experience_item_name</option>
+				  </select>
+				  <input  type="submit" name="submit" value="Search"> 
 				</form>
                 <div class="box-footer">
                   <div class="row">
-				
+				  <?php
+				  
+						if(isset($_POST['submit'])){ 
+							  //do  something here in code 
+							  if(preg_match("/^[A-Za-z]+/", $_POST['find'])){ 
+							   $find=$_POST['find'];
+						//connect  to the database 
+							  $db=mysqli_connect ("localhost",  "root", "", "teamsutlej_talent") or die ('I cannot connect  to the database because: ' . mysql_error());	   
+							  
+							  //-select  the database to use 
+							/*  $mydb=mysql_select_db("teamsutlej_talent"); */
+							  //-query  the database table 
+							  $sql="SELECT talent_id, first_name, last_name , nationality , height_cm , dob , eye_color , sex FROM tams_talent WHERE  first_name LIKE '%" . $find . "%' OR last_name LIKE '%" . $find  ."%' OR nationality LIKE '%" . $find ."%' OR dob LIKE '%" . $find . "%' OR eye_color LIKE '%" . $find ."%' OR sex LIKE '%" . $find . "%'"; 
+								//-run  the query against the mysql query function 
+							$talent= DB::queryFirstRow($sql);
+							$result=mysqli_query($db,$sql);
+						//-create  while loop and loop through result set 
+							  while($row=mysqli_fetch_array($result)){ 
+									  $first_name  =$row['first_name']; 
+									  $last_name=$row['last_name']; 
+									  $nationality=$row['nationality']; 
+									    $height_cm=$row['height_cm']; 
+										 $dob=getAge($row['dob']);
+										 $eye_color=$row['eye_color'];
+										 $sex=get_talent_gender($row['talent_id']);
+										
+							  //-display the result of the array 
+							    echo "<ul>\n"; 
+							  echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " .$height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
+							
+
+							  echo "</ul>"; 
+								}
+								
+						}
+						
+							  else{ 
+							  echo  "<p>Please enter a search query.</p>"; 
+							  }
+						}	  		
+		?>
                   </div><!-- /.row -->
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
