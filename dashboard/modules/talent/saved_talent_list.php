@@ -84,12 +84,17 @@
 										 $eye_color=$row['eye_color'];
 										 $sex=get_talent_gender($row['talent_id']);
 										
-							  //-display the result of the array 
-							    echo "<ul>\n"; 
-							  echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " .$height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
+							    //-display the result of the array 
+							  echo "<p><span><h4>" .$row['first_name']."".$row['last_name']."</h4></span>"
+						."<span><h4>".$row['dob']."</h4></span>".
+						"<span><h4>".$row['nationality']."</h4></span>".
+                       	"<span><h4>".$row['height_cm']."</h4></span>"."</p>";
+							 
+							  //  echo "<ul>\n"; 
+							 // echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " .$height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
 							
 
-							  echo "</ul>"; 
+						//	  echo "</ul>"; 
 								}
 								
 						}
