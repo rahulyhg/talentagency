@@ -1,4 +1,44 @@
 <?php
+$tbl2 = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'List of Draft Talents'));
+$tbl2->addTSection('thead');
+$tbl2->addRow();
+$tbl2->addCell('Photo', '', 'header');
+$tbl2->addCell('Full Name', '', 'header');
+$tbl2->addCell('Gender', '', 'header');
+$tbl2->addCell('Age', '', 'header');
+$tbl2->addCell('Height', '', 'header');
+$tbl2->addCell('weight', '', 'header');
+$tbl2->addCell('Nationality', '', 'header');
+$tbl2->addCell('Experience', '', 'header');
+$tbl2->addCell('Actions', '', 'header');
+$tbl2->addTSection('tbody');
+
+$mysql ='SELECT * FROM tams_talent_experience WHERE talent_id ="$talent_id"'; 
+$experience = DB::queryFirstRow($mysql);
+$experience_item_id = $experience['experience_item_id'];
+$talent_experience_item_id = $experience ['talent_experience_item_id'];
+$created_on = $experience['created_on'];
+$created_by = $experience['created_by'];
+$last_modified_by = $experience['last_modified_by'];
+$last_modified_on = $experience['last_modified_on'];
+
+ 
+$sql = 'SELECT * FROM tams_talent WHERE talent_status = "draft"';
+$get_talents = DB::query($sql);
+foreach($get_talents as $talent) { 
+$tbl2->addRow();
+$tbl2->addCell("<a href='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'><img src='".$talent['photo1_url']."' alt='Photo1' width='100px' height='100px'; /></a>");
+$tbl2->addCell($talent['first_name']." ".$talent['last_name']);
+$tbl2->addCell($talent['sex']);
+$tbl2->addCell(getAge($talent['dob']));
+$tbl2->addCell($talent['height_cm']);
+$tbl2->addCell($talent['weight_kg']);
+$tbl2->addCell($talent['nationality']);
+$tbl2->addCell(list_talent_experiences($experience['talent_id']));
+$tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a><br/>
+				<a class='pull btn btn-danger btn-circle btn-xs' href ='#'>Save Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a><br/><a class='btn btn-info btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
+}			  
+
 
 ?>
 <!--   Content Header (Page header) -->
@@ -56,6 +96,7 @@
 				  </select>
 				  <input  type="submit" name="submit" value="Search"> 
 				</form>
+			
                 <div class="box-footer">
                   <div class="row">
 				  <?php
@@ -107,6 +148,9 @@
 							  }
 						}	  		
 		?>
+			<div class="box-body">
+				<?php  echo $tbl2->display(); ?>
+            </div><!-- /.box-body -->
                   </div><!-- /.row -->
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
