@@ -74,21 +74,24 @@
 								//-run  the query against the mysql query function 
 							$talent= DB::queryFirstRow($sql);
 							$result=mysqli_query($db,$sql);
-						//-create  while loop and loop through result set 
+						//-create  while loop and loop through result set
+							$html="";
 							  while($row=mysqli_fetch_array($result)){ 
-									  $first_name  =$row['first_name']; 
-									  $last_name=$row['last_name']; 
-									  $nationality=$row['nationality']; 
-									    $height_cm=$row['height_cm']; 
-										 $dob=getAge($row['dob']);
-										 $eye_color=$row['eye_color'];
-										 $sex=get_talent_gender($row['talent_id']);
-										
+							  
+								echo"<div>".$row['first_name']."</div>"; 
+								echo "<div>".$row['last_name']."</div>"; 
+								echo "<div>".$row['nationality']."</div>"; 
+								echo "<div>".$row['height_cm']."</div>"; 
+								echo "<div>".getAge($row['dob'])."</div>";
+								echo "<div>".$row['eye_color']."</div>";
+								echo "<div>".get_talent_gender($row['talent_id'])."</div>";
+								echo "<br/>";
+								
 							    //-display the result of the array 
-							  echo "<p><span><h4>" .$row['first_name']."".$row['last_name']."</h4></span>"
-						."<span><h4>".$row['dob']."</h4></span>".
-						"<span><h4>".$row['nationality']."</h4></span>".
-                       	"<span><h4>".$row['height_cm']."</h4></span>"."</p>";
+							//  echo "<p><span><h4>" .$row['first_name']."".$row['last_name']."</h4></span>"
+					//	."<span><h4>".$row['dob']."</h4></span>".
+					//	"<span><h4>".$row['nationality']."</h4></span>".
+                      // 	"<span><h4>".$row['height_cm']."</h4></span>"."</p>";
 							 
 							  //  echo "<ul>\n"; 
 							 // echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " .$height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
