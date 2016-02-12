@@ -70,7 +70,7 @@
 							  //-select  the database to use 
 							/*  $mydb=mysql_select_db("teamsutlej_talent"); */
 							  //-query  the database table 
-							  $sql="SELECT talent_id, first_name, last_name , nationality , height_cm , dob , eye_color , sex FROM tams_talent WHERE  first_name LIKE '%" . $find . "%' OR last_name LIKE '%" . $find  ."%' OR nationality LIKE '%" . $find ."%' OR dob LIKE '%" . $find . "%' OR eye_color LIKE '%" . $find ."%' OR sex LIKE '%" . $find . "%'"; 
+							  $sql="SELECT talent_id, first_name, last_name , nationality , height_cm , dob , eye_color , sex FROM tams_talent WHERE  first_name LIKE '%" . $find . "%' OR last_name LIKE '%" . $find  ."%' OR nationality LIKE '%" . $find ."%' OR height_cm LIKE '%" . $find . "%'  OR dob LIKE '%" . $find . "%' OR eye_color LIKE '%" . $find ."%' OR sex LIKE '%" . $find . "%'"; 
 								//-run  the query against the mysql query function 
 							$talent= DB::queryFirstRow($sql);
 							$result=mysqli_query($db,$sql);
