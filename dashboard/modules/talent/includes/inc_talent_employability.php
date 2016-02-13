@@ -793,7 +793,7 @@
 									Is Qatari?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari" value="<?php if($is_qatari == "1"){ echo 'selected = "Qatari" ';} else{ echo 'selected ="Non-Qatari"';} ?>" data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="is_qatari" name="is_qatari"   data-on-text="Qatari" data-off-text="Non-Qatari" data-on-color="success" data-off-color="danger" <?php if( $is_qatari == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -802,7 +802,7 @@
 									Qatari ID Copy ?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="qatari_id_copy_attached" name="qatari_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="qatari_id_copy_attached" name="qatari_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" <?php if( $qatari_id_copy_attached == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -811,7 +811,7 @@
 									Passport Copy ?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="passport_copy_attached" name="passport_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="passport_copy_attached" name="passport_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" <?php if( $passport_copy_attached == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -820,7 +820,7 @@
 									NOC Required?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="noc_required" name="noc_required" data-on-text="Required" data-off-text="NotRequired" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="noc_required" name="noc_required" data-on-text="Required" data-off-text="NotRequired" data-on-color="success" data-off-color="danger" <?php if( $noc_required == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -830,7 +830,7 @@
 									NOC Copy ?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="noc_copy_attached" name="noc_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="noc_copy_attached" name="noc_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" <?php if( $noc_copy_attached == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -840,7 +840,7 @@
 									Sponsors ID Copy ?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="sponsors_id_copy_attached" name="sponsors_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="sponsors_id_copy_attached" name="sponsors_id_copy_attached" data-on-text="Attached" data-off-text="Not-Attached" data-on-color="success" data-off-color="danger" <?php if( $sponsors_id_copy_attached == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 
@@ -849,7 +849,7 @@
 									Available for Events ?
 								</label>
 								<div class="col-md-9 col-sm-9">
-									<input type="checkbox" class="form-control switch" id="events" name="events" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" checked='checked' />
+									<input type="checkbox" class="form-control switch" id="events" name="events" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" <?php if( $events == 1 ) { echo "checked='checked'"; } ?> />
 								</div>
 							</div>
 

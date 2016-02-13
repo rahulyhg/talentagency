@@ -299,7 +299,7 @@ if(isset($_POST['form_name'])) {
 	
 /*********************************************************
 * 
-***************   EDIT EMPLOYBILITY INFO FORM   **********************
+***************   EDIT EMPLOYBILITY INFO FORM   ********** 
 * 
 ***********************************************************/		
 	
@@ -309,15 +309,47 @@ if(isset($_POST['form_name'])) {
 		$nationality = $_POST['nationality'];
 		$passport_no = $_POST['passport_no'];
 		$qatari_id   = $_POST['qatari_id'];
-		$is_qatari   = $_POST['is_qatari'];
-		$passport_copy_attached  = $_POST['passport_copy_attached'];
-		$noc_required     = $_POST['noc_required'];
-		$noc_copy_attached   = $_POST['noc_copy_attached'];
-		$sponsors_id_copy_attached = $_POST['sponsors_id_copy_attached'];
-		$created_by = $_SESSION['user_id'];
-		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
 		$last_modified_on = getDateTime(NULL ,"mySQL");
+	
+	if(isset($_POST['is_qatari'])){
+		$is_qatari = 1;
+	} else {
+		$is_qatari = 0;
+	}
+	if(isset($_POST['qatari_id_copy_attached'])){
+		$qatari_id_copy_attached = 1;
+	} else {
+		$qatari_id_copy_attached = 0;
+	}
+	if(isset($_POST['passport_copy_attached'])){
+		$passport_copy_attached = 1;
+	} else {
+		$passport_copy_attached = 0;
+	}
+	if(isset($_POST['noc_required'])){
+		$noc_required = 1;
+	} else {
+		$noc_required = 0;
+	}
+	if(isset($_POST['noc_copy_attached'])){
+		$noc_copy_attached = 1;
+	} else {
+		$noc_copy_attached = 0;
+	}
+	if(isset($_POST['sponsors_id_copy_attached'])){
+		$sponsors_id_copy_attached = 1;
+	} else {
+		$sponsors_id_copy_attached = 0;
+	}
+	if(isset($_POST['events'])){
+		$events = 1;
+	} else {
+		$events = 0;
+	}	
+	
+	
+	
 		
 		if(($talent_id > 0) AND ($talent_id <> "")){
 			
@@ -329,13 +361,12 @@ if(isset($_POST['form_name'])) {
 						'passport_no' => $passport_no,
 						'qatari_id' => $qatari_id,
 						'is_qatari' => $is_qatari,
+						'qatari_id_copy_attached' => $qatari_id_copy_attached,
 						'passport_copy_attached' => $passport_copy_attached,
 						'noc_required' => $noc_required,
 						'noc_copy_attached'=> $noc_copy_attached,
 						'sponsors_id_copy_attached' => $sponsors_id_copy_attached,
 						'events'=> $events,
-						'created_by' 		=> $created_by,
-						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
 						),
@@ -631,7 +662,7 @@ if(isset($_POST['form_name'])) {
 
 /*********************************************************
 * 
-***************  NOTEST FORM   **********************
+***************  NOTES FORM   **********************
 * 
 ***********************************************************/		
 
