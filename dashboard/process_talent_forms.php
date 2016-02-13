@@ -115,7 +115,7 @@ if(isset($_POST['form_name'])) {
 
 /*********************************************************
 * 
-***************   EDIT EXPERIENCE INFO FORM   **********************
+***************   EDIT EXPERIENCE INFO FORM   ************** 
 * 
 ***********************************************************/
 		
@@ -691,63 +691,62 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#notes');	
 			
 		break;
-		
-		case "edit_talent_photos_info":
-		$talent_id = $_GET['talent_id'];
+/*********************************************************
+* 
+***************  ADD PHOTOS FORM   **********************
+* 
+***********************************************************/		
+		case "add_talent_photo":
+		$talent_id = $_POST['talent_id'];
+		$photo_caption = $_POST['photo_caption'];
 		$created_by = $_SESSION['user_id'];
 		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
 		$last_modified_on = getDateTime(NULL ,"mySQL");
 		
-			if(($talent_id > 0) AND ($talent_id <> "")){
-			
-		
-			// process Talent Photos Information edit form
-		DB::insert('tams_talent_photos', array(
- 						'talent_id'			=> $talent_id,
-						'created_by' 		=> $created_by,
-						'created_on'	 	=> $created_on,
-						'last_modified_by'	=> $last_modified_by,
-						'last_modified_on'	=> $last_modified_on
-						),
-			"talent_id=%s", $talent_id	
-			);
+		if(($talent_id > 0) AND ($talent_id <> "")){
+ 
 			//check if the file is uploaded and process the file if file is uploaded	
 	
 	if(!file_exists($_FILES['talent_photo']['tmp_name']) || !is_uploaded_file($_FILES['talent_photo']['tmp_name'])) {
 		// do nothing
 	}  else {
 
-	//if logo file is uploaded process the file with upload class
-	
-	$handle = new upload($_FILES['talent_photo']);
+	//if photo is uploaded process the file with upload class
+			// process Talent Photos Information edit form
+		DB::insert('tams_talent_photos', array(
+ 						'talent_id'			=> $talent_id,
+						'photo_caption'		=> $photo_caption,
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						) 
+		);
+			
+		$photo_id = DB::insertId();
+		$photo_name .= $talent_id."_".$photo_id;	
+			
+		$handle = new upload($_FILES['talent_photo']);
 		if ($handle->uploaded) {
-			$handle->file_new_name_body   = $talent_id.'_photo';
+			$handle->file_new_name_body   = $photo_name;
 			$handle->allowed = array('image/*');
 		//	$handle->file_overwrite = true;
+			$handle->image_convert = 'jpg';
 			$handle->process('../uploads/talent_photos/');
 		if ($handle->processed) {
 			
 	// save uploaded file name and path in database table field logo_url
 	
-	
-			$last_modified_by = $_SESSION['user_id'];
-			$last_modified_on = getDateTime(NULL,"mySQL");
-			
 	/* if talent id is not empty update the database */
-	
-		if($talent_id <> ""){
 				$update = DB::update('tams_talent_photos', array(
 
-				'photo_path'=> '/talent/uploads/talent_photos/'.$talent_id.'_photo',
-				'photo_caption' =>$_POST['photo_caption'],
-				'last_modified_by'	=> $last_modified_by,
-				'last_modified_on'	=> $last_modified_on
+				'photo_path'=> '/talent/uploads/talent_photos/'.$photo_name.'.jpg'
 			),
-			"talent_id=%s", $talent_id
+			"talent_photo_id=%s", $photo_id
 		);
 		
-		}
+	
 		echo 'Photo is uploaded and path select saved in database';	
 			$handle->clean();
 		} else {

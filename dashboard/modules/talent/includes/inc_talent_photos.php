@@ -18,6 +18,7 @@ $talent_photos = DB::query($photo_sql);
 
 // getting values from $_post variable & saving into normal variables
 
+/*
 if(isset($_POST['save'])) {
  
 $talent_id = $_POST['talent_id'];
@@ -62,9 +63,9 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 	
 			$last_modified_by = $_SESSION['user_id'];
 			$last_modified_on = getDateTime(NULL,"mySQL");
-			
+*/			
 	/* if client id is not empty update the database */
-	
+/*	
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_photos', array(
 
@@ -85,26 +86,39 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		} // close handle uploaded
 		} // close file exist	
 }
-
+*/
 ?>
 <form enctype="multipart/form-data" id="edit_talent_photos_info" name="edit_talent_photos_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Talent Photos Information box -->       			
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Photos Information
+              	Photos
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
               		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-            
+                       
             <div class="box-body bg-info">
+            <div class="row">
+            	<div class="form-group">
+				 <?php  foreach($talent_photos as $photo) {?>
+				  	<div class="col-md-3 col-sm-3">
+						<img  class="img-responsive center-block img-rounded" src="<?php echo $photo['photo_path']; ?>" alt="<?php echo $photo['photo_caption']; ?>"  />	<span class="caption"><?php echo $photo['photo_caption']; ?></span>	
+				  		
+				  		
+				  	</div>
+				<?php }  ?>
+				  
+            	</div>	
+            </div>
+                        
             <div class="row">
   					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
-							Photo :
+						Add a Photo :
 						</label>
 						<div class="col-md-9 col-sm-9">
 		<!-- input-group image-preview [FROM HERE]-->
@@ -119,7 +133,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="talent_photo" id="talent_photo"/> <!-- Form Upload Field -->
+                        <input type="file" required  accept="image/png, image/jpeg, image/gif" name="talent_photo" id="talent_photo"/> <!-- Form Upload Field -->
                     </div>
                     <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
                 </span>
@@ -129,7 +143,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 					<div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Photo Caption:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required placeholder="Add Photo Caption " 
+							 <input class="form-control" type="text" required placeholder="Enter Photo Caption Or Description" 
 							 value="" name="photo_caption" id="photo_caption">							
 						  </div>
 						  </div>
@@ -156,7 +170,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 				</div><!--/.box-body-->
 				</div><!--Photos Information Box-->
 		<!-- Hidden Fields -->
-<input type="hidden" name="form_name" id="form_name" value="edit_talent_photos_info" />
+<input type="hidden" name="form_name" id="form_name" value="add_talent_photo" />
 <input type="hidden" name="talent_id" id="photos_talent_id" value="<?php echo $talent_id; ?>" />
 <!-- /Hidden Fields -->
 </form>		
