@@ -1,6 +1,7 @@
 <?php
 
 $talent_id = '0';
+/*
 if(isset($_POST['form_name'])){
 	
 	$talent_id = $_POST['talent_id'];
@@ -24,38 +25,26 @@ if(isset($_POST['form_name'])){
 	 
 	 
 }
+*/
 if(isset($_GET['talent_id'])){
 	$talent_id = $_GET['talent_id'];
 }
-
- $sql = "SELECT
-				*
-				FROM
-				tams_talent
-				WHERE talent_id = $talent_id ;";
-$talent = DB::queryFirstRow($sql);
-$talent_id = $talent['talent_id'];
-$first_name = $talent['first_name'];
-$last_name = $talent['last_name'];
-$talent_status = $talent['talent_status']; 
-$created_on = $talent['created_on'];
-$created_by = $talent['created_by'];
-$last_modified_by = $talent['last_modified_by'];
-$last_modified_on = $talent['last_modified_on'];
 
 $comment_sql = "SELECT 
 			* 
 			FROM 
 			tams_talent_comments
-			WHERE talent_id = $talent_id";
+			WHERE talent_id = $talent_id
+			ORDER BY talent_comment_id DESC";
 
 $talent_comments = DB::query($comment_sql);
-
+/*
 echo "<pre>";
 	print_r($_POST);
 	print_r($_SESSION);
 	print_r($_FILES);
 	echo "</pre>";
+*/
 ?>
 
 <!-- Notes Information box -->       			
@@ -78,17 +67,17 @@ echo "<pre>";
                   <div class="box-body bg-info ">
 				  <div class="row">
 			 <p>
-			 <div class="box-comments">
+			 <div class="box-comments"  style="margin:10px;">
 				 <?php
 				 if ($talent_comments) {
 				 	foreach($talent_comments as $comment) {
 						?>
 						<div class="box-comment">
 					
-							<img class="img-circle img-sm" alt="Talent Image" src="<?php echo get_talent_image($comment['created_by']); ?>" />
+							<img class="img-circle img-sm" alt="Talent Image" src="<?php echo get_user_avatar_url($comment['created_by']); ?>" />
 							<div class="comment-text">
 							<span class="username">
-								<?php echo get_talent_full_name($comment['created_by']); ?>
+								<?php echo get_user_full_name($comment['created_by']); ?>
 								<span class="text-muted pull-right">
 									<?php echo getDateTime($comment['created_on'],"dtShort"); ?>
 								</span>

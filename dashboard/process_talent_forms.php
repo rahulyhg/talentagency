@@ -578,7 +578,7 @@ if(isset($_POST['form_name'])) {
 
 		case "edit_talent_notes_info":
 		$talent_id = $_POST['talent_id'];
-		$comment =$_POST['comment'];
+		$comment = $_POST['comment'];
 		$created_by = $_SESSION['user_id'];
 		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
@@ -588,15 +588,14 @@ if(isset($_POST['form_name'])) {
 			
 		
 			// process Talent Notes Information edit form
-		DB::update('tams_talent_comments', array(
+		DB::insert('tams_talent_comments', array(
  						'talent_id'			=> $talent_id,
  						'comment'			=> $comment,
 						'created_by' 		=> $created_by,
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
 						'last_modified_on'	=> $last_modified_on
-						),
-			"talent_id=%s", $talent_id						
+						)						
 			);
 		}			
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#notes');	
