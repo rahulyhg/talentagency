@@ -135,7 +135,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
                         <span class="image-preview-input-title">Browse</span>
                         <input type="file" required  accept="image/png, image/jpeg, image/gif" name="talent_photo" id="talent_photo"/> <!-- Form Upload Field -->
                     </div>
-                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                    <button   name="save" type="submit" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
                 </span>
             </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
