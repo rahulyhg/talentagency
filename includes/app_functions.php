@@ -74,7 +74,7 @@ function get_user_name($user_id){
 }
 
 // Get User Avatar URL
-function get_user_avatar_url ($user_id, $imageWidth = '150'){
+function get_user_avatar_url($user_id, $imageWidth = '150'){
 
 $user_avatar_url = DB::queryFirstField("SELECT user_avatar_url FROM tams_users");
 

@@ -8,6 +8,11 @@ if(isset($_POST['form_name'])) {
 	switch($_POST['form_name']){
 		
 		// Add New Talent Form
+/*********************************************************
+* 
+***************   ADD TALENT FORM   **********************
+* 
+***********************************************************/		
 		case "add_talent_form_step_1":
 				$talent_id = - 1;
 				$first_name = $_POST['first_name'];
@@ -107,6 +112,12 @@ if(isset($_POST['form_name'])) {
 			
 		break;
 
+
+/*********************************************************
+* 
+***************   EDIT EXPERIENCE INFO FORM   **********************
+* 
+***********************************************************/
 		
 		// Edit Talent Experience Info 		
 		case "edit_talent_experience_info":
@@ -135,7 +146,12 @@ if(isset($_POST['form_name'])) {
 			
 		break;
 		// process Talent Language Information edit form
-		
+
+/*********************************************************
+* 
+***************   EDIT LANGUAGE INFO FORM   **********************
+* 
+***********************************************************/		
 	case "edit_talent_languages_info":
 		$talent_id = $_POST['talent_id'];
 		$language_id = $_POST['language_id'];
@@ -161,6 +177,11 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#languages');	
 			
 		break;	
+/*********************************************************
+* 
+***************   EDIT DOCUMENT INFO FORM   **********************
+* 
+***********************************************************/		
 
 		case "edit_talent_document_info":
 		$talent_id = $_GET['talent_id'];
@@ -238,6 +259,11 @@ if(isset($_POST['form_name'])) {
 		}				
 		
 		break;
+/*********************************************************
+* 
+***************   EDIT CONTACT INFO FORM   **********************
+* 
+***********************************************************/		
 		
 		case "edit_talent_contact_info":
 		$talent_id = $_POST['talent_id'];
@@ -269,6 +295,14 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#contact');	
 			
 		break;
+	
+	
+/*********************************************************
+* 
+***************   EDIT EMPLOYBILITY INFO FORM   **********************
+* 
+***********************************************************/		
+	
 		
 		case "edit_talent_employability_info":
 		$talent_id = $_POST['talent_id'];
@@ -311,6 +345,12 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#employability');	
 			
 		break;
+
+/*********************************************************
+* 
+***************   EDIT VITALS INFO FORM   *****************
+* 
+***********************************************************/		
 		
 		case "edit_talent_vitals_info":
 		$talent_id = $_POST['talent_id'];
@@ -354,6 +394,12 @@ if(isset($_POST['form_name'])) {
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#vitals');	
 			
 		break;
+
+/*********************************************************
+* 
+***************   EDIT PORTFOLIO INFO FORM   **********************
+* 
+***********************************************************/		
 	
 		case "edit_talent_portfolio_info":
 		$talent_id = $_GET['talent_id'];
@@ -431,6 +477,13 @@ if(isset($_POST['form_name'])) {
 		}
 		
 		break;
+
+/*********************************************************
+* 
+***************   EDIT BASIC INFO FORM *****************
+* 
+***********************************************************/		
+
 	
 		case "edit_talent_basic_info":
 		$talent_id = $_GET['talent_id'];
@@ -576,6 +629,12 @@ if(isset($_POST['form_name'])) {
 				
 		break;
 
+/*********************************************************
+* 
+***************  NOTEST FORM   **********************
+* 
+***********************************************************/		
+
 		case "edit_talent_notes_info":
 		$talent_id = $_POST['talent_id'];
 		$comment = $_POST['comment'];
@@ -672,6 +731,14 @@ if(isset($_POST['form_name'])) {
 		}
 		
 		break;
+		
+/*********************************************************
+* 
+***************   NO FORM   **********************
+* 
+***********************************************************/		
+		
+		
 		
 		default:
 		 echo "Unable to identify the form";
