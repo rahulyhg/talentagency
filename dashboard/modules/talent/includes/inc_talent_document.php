@@ -16,73 +16,7 @@ WHERE talent_id = $talent_id";
 
 $talent_document = DB::query($document_sql);
 
-if(isset($_POST['save'])) {
- 
-$talent_id = $_POST['talent_id'];
-$document_type_id = $_POST['document_type_id'];
-$document_status = $_POST['document_status']; 
-$last_modified_by = $_SESSION['user_id'];
-$last_modified_on = getDateTime(NULL,"mySQL");
 
- // if talent id is not empty update the database
- 
-	if($talent_id <> ""){
-		$update = DB::update('tams_talent_documents', array(
-			
-			'talent_id' => $talent_id,
-			'document_type_id' => $document_type_id,
-			'document_status' => $document_status,
-			'last_modified_by'	=> $last_modified_by,
-			'last_modified_on'	=> $last_modified_on
-			),
-			"talent_id=%s", $talent_id
-		);
-	//check if the file is uploaded and process the file if file is uploaded	
-	
-	if(!file_exists($_FILES['talent_doc']['tmp_name']) || !is_uploaded_file($_FILES['talent_doc']['tmp_name'])) {
-		echo '<h2> No file ploaded</h2>';
-	}  else {
-		echo '<h2> file was uploaded</h2>';
-	}
-	//if logo file is uploaded process the file with upload class
-	
-	$handle1 = new upload($_FILES['talent_doc']);
-		if ($handle1->uploaded) {
-			$handle1->file_new_name_body   = $talent_id.'_doc';
-			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
-			$handle1->file_overwrite = true;
-			$handle1->process('../uploads/documents/');
-		if ($handle1->processed) {
-			
-	// save uploaded file name and path in database table field logo_url
-	
-	
-			$last_modified_by = $_SESSION['user_id'];
-			$last_modified_on = getDateTime(NULL,"mySQL");
-			
-	/* if talent id is not empty update the database */
-	
-		if($talent_id <> ""){
-				$update = DB::update('tams_talent_documents', array(
-
-				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc',
-				'document_description' =>$_POST['document_description'],
-				'last_modified_by'	=> $last_modified_by,
-				'last_modified_on'	=> $last_modified_on
-			),
-			"talent_id=%s", $talent_id
-		);
-		
-		}
-		echo 'Photo is uploaded and path select saved in database';	
-			$handle1->clean();
-		} else {
-			echo 'error : ' . $handle1->error;
-		} // close handle processed
-		} // close handle uploaded
-		} // close file exist
-				
-}
 ?>
 <form  enctype="multipart/form-data" id="edit_talent_document_info" name="edit_talent_document_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Documents Information box -->       			
@@ -100,7 +34,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
             <div class="box-body bg-info">
             <div class="row">
 			
-			
+		<div class="form-group">	
 		<?php
 		if($talent_document )
 			
@@ -108,7 +42,14 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		?>
 		<?php 
 		foreach($talent_document as $document){
-		?>				
+		?>	
+ 		<div class="col-md-3 col-sm-3">
+        <a href="<?php echo $document['document_path']; ?>" class="btn btn-info btn-lg "><i class="fa fa-2x fa-file"></i> &nbsp;<?php echo $document['document_description']; ?></a>
+		</div>	
+ 
+			
+
+
 		<?php
 		} // for each $talent_document									
 		?>
@@ -118,7 +59,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 		}  // End if $talent_document
 
 		?>
-
+		</div>
 		<?php
 		if($document_types )
 		{
@@ -144,12 +85,7 @@ $last_modified_on = getDateTime(NULL,"mySQL");
 							?> 
 
 						</select>
-						<div class="input-group-addon"> <button type="submit" class='btn btn-xs pull-right' name="save" value="save">
-							Add &nbsp;
-							<i class="fa fa-plus">
-							</i>
-					</button>
-					</div>
+	 
 						</div>
 	
 					</div>
