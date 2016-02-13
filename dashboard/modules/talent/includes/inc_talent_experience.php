@@ -76,7 +76,7 @@ font-size:19px;
 		<?php 
 		foreach($talent_experiences as $experience){
 		?>				
-		<span class="label label-info" style="display:inline-block;">
+		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
         <button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
 			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	

@@ -565,7 +565,7 @@ if(isset($_POST['form_name'])) {
 		if ($handle1->uploaded) {
 			$handle1->file_new_name_body   = $talent_id.'_photo1';
 			$handle1->image_resize         = true;
-			$handle1->image_x              = 100;
+			$handle1->image_x              = 250;
 			$handle1->image_ratio_y        = true;
 			$handle1->allowed = array('image/*');
 			$handle1->image_convert = 'jpg';
