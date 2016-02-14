@@ -97,7 +97,7 @@ $talent_portfolio_item = DB::query($portfolio_sql);
 					</div>
 						</div>
 	
-					</div>
+				 
 					</div> <!--/.form-group-->
 						 <div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Portfolio Description:</label>

@@ -31,8 +31,8 @@ $tbl->addCell($talent['email_id']);
 $tbl->addCell($talent['nationality']);
 $tbl->addCell($talent['brief']);
  
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
-			   <a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
+$tbl->addCell("<a class=' btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit &nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a> &nbsp;&nbsp;
+			   <a class='btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View &nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
 }
 // Draft Talents list
 /*
