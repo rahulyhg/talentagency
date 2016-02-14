@@ -42,9 +42,13 @@ $talent_document = DB::query($document_sql);
 		?>
 		<?php 
 		foreach($talent_document as $document){
+		
+		$doc_type = DB::queryFirstField("SELECT document_type_name from tams_document_types WHERE document_type_id = ".$document['document_type_id']);	
+			
 		?>	
  		<div class="col-md-3 col-sm-3">
-        <a href="<?php echo $document['document_path']; ?>" class="btn btn-info btn-lg "><i class="fa fa-2x fa-file"></i> &nbsp;<?php echo $document['document_description']; ?></a>
+ 		<?php echo $doc_type; ?>
+        <a target="_blank" href="<?php echo $document['document_path']; ?>" class="btn btn-info btn-lg "><i class="fa fa-2x fa-file"></i> &nbsp;<?php echo $document['document_description']; ?></a>
 		</div>	
  
 			
@@ -117,7 +121,7 @@ $talent_document = DB::query($document_sql);
                     <div class="btn btn-default image-preview-input">
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                        <input type="file" accept="image/png, image/jpeg, image/gif,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
 text/plain, application/pdf" name="talent_doc" id="talent_doc"/> <!-- Form Upload Field -->
                     </div>
                     <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>

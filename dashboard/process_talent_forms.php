@@ -194,17 +194,7 @@ if(isset($_POST['form_name'])) {
 		if(($talent_id > 0) AND ($talent_id <> "")){
 			
 		
-			// process Talent Document Information edit form
-		DB::insert('tams_talent_documents', array(
- 						'talent_id'			=> $talent_id,
- 						'document_type_id'=> $document_type_id,
-						'created_by' 		=> $created_by,
-						'created_on'	 	=> $created_on,
-						'last_modified_by'	=> $last_modified_by,
-						'last_modified_on'	=> $last_modified_on
-						),
-			"talent_id=%s", $talent_id	
-			);
+		
 			//check if the file is uploaded and process the file if file is uploaded	
 	
 	if(!file_exists($_FILES['talent_doc']['tmp_name']) || !is_uploaded_file($_FILES['talent_doc']['tmp_name'])) {
@@ -212,13 +202,23 @@ if(isset($_POST['form_name'])) {
 	}  else {
 
 	//if logo file is uploaded process the file with upload class
-	
+		// process Talent Document Information edit form
+		DB::insert('tams_talent_documents', array(
+ 						'talent_id'			=> $talent_id,
+ 						'document_type_id'=> $document_type_id,
+						'created_by' 		=> $created_by,
+						'created_on'	 	=> $created_on,
+						'last_modified_by'	=> $last_modified_by,
+						'last_modified_on'	=> $last_modified_on
+						)
+			);
+		$doc_id = DB::insertId();
 	$handle1 = new upload($_FILES['talent_doc']);
 		if ($handle1->uploaded) {
-			$handle1->file_new_name_body   = $talent_id.'_doc';
-			$handle1->allowed = array('application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
+			$handle1->file_new_name_body   = $talent_id.'_'.$doc_id;
+			$handle1->allowed = array('image/png', 'image/jpeg', 'image/gif', 'application/pdf','application/msword','application/vnd.ms-powerpoint', 'application/vnd.ms-excel','text/plain');
 			$handle1->file_overwrite = true;
-			$handle1->process('../uploads/documents/');
+			$handle1->process('../uploads/talent_documents/');
 		if ($handle1->processed) {
 			
 	// save uploaded file name and path in database table field logo_url
@@ -232,12 +232,12 @@ if(isset($_POST['form_name'])) {
 		if($talent_id <> ""){
 				$update = DB::update('tams_talent_documents', array(
 
-				'document_path'=> '/talent/uploads/documents/'.$talent_id.'_doc',
+				'document_path'=> '/talent/uploads/talent_documents/'.$handle1->file_dst_name,
 				'document_description' =>$_POST['document_description'],
 				'last_modified_by'	=> $last_modified_by,
 				'last_modified_on'	=> $last_modified_on
 			),
-			"talent_id=%s", $talent_id
+			"talent_document_id=%s", $doc_id
 		);
 		
 		}
