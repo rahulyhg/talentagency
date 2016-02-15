@@ -260,7 +260,7 @@ function list_talent_comments($talent_id) {
 		foreach($talent_comments as $comment){
 			
 			$list .= '<span class="username" >';			
-			$list .= get_talent_comment($comment['comment'])." </span>";
+			$list .= get_user_full_name($comment['created_by']). $comment['comment']." </span>";
 	
 		}
  	}
@@ -300,23 +300,4 @@ function get_talent_full_name($talent_id) {
 	
 }
 
-// Get Talent Comment
-/*function get_talent_comment($talent_id){
-	
-	
-$comment_sql = "SELECT 
-			* 
-			FROM 
-			tams_talent_comments
-			WHERE talent_id = $talent_id";
-
-$talent_comments = DB::query($comment_sql);
-
-		if ($talent_comments) {
-			foreach($talent_comments as $comment) {
-						echo get_user_full_name($comment['created_by']);
-						echo getDateTime($comment['created_on'],"dtShort");
-}
-		}
-}*/
  ?>
