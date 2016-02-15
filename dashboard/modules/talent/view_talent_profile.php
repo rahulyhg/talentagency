@@ -278,6 +278,12 @@ $events = $talent['events'];
 if (is_null($events) OR $events == "" ) {
 	$events = " - not set - ";
 } 
+elseif($events == 1 ){
+		$events = "Available";
+	}
+	else {
+		$events ="Not-Available"; 
+	} 
 
 ?>
 <style>
