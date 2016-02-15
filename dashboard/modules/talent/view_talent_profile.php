@@ -299,6 +299,15 @@ elseif($events == 1 ){
 	margin:2px;
 	font-size: 14px;
 }	
+
+.carousel-inner{
+  width:100%;
+  max-height: 300px !important;
+  min-height: 300px;
+}
+.carousel-inner img {
+  height: 280px!important;
+}
 </style>
 <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -390,7 +399,7 @@ elseif($events == 1 ){
        		<div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Talent Photos
+            Photos
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -510,7 +519,7 @@ elseif($events == 1 ){
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Experienced in
+              	Experience
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -534,7 +543,7 @@ elseif($events == 1 ){
        		<div class="box ">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Portfolio Items
+              	Portfolio Links
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -544,7 +553,49 @@ elseif($events == 1 ){
                  <div class="box-body bg-gray">
                  <div class="row">
 	            <div class="col-md-12 col-sm-12 "> 
-	            		<p><?php echo list_talent_portfolios($talent_id); ?></p>
+	            <?php 
+					$portfolio_sql    = "SELECT
+					*
+					FROM
+					tams_talent_portfolio
+					WHERE talent_id = $talent_id";
+
+					$talent_portfolio_item = DB::query($portfolio_sql);
+	            
+	            
+	            ?>
+	            	<?php
+		if($talent_portfolio_item )
+		{
+		?>
+		<?php 
+		foreach($talent_portfolio_item as $portfolio){
+		$portfolio_item_name = DB::queryFirstField("SELECT portfolio_item_name from tams_portfolio_items  WHERE portfolio_item_id = ".$portfolio['portfolio_item_id']);	
+		?>
+ 
+ 		<div class="form-group">
+	 		<div class="col-md-3 col-sm-3">
+	 		<strong><?php echo $portfolio_item_name; ?> : </strong>
+	 		</div>
+	 		<div class="col-md-6 col-sm-6">
+	 		<?php echo $portfolio['portfolio_item_description']; ?>
+	 		</div>
+	 		<div class="col-md-3 col-sm-3">
+	 		 <a target="_blank" href="<?php echo $portfolio['portfolio_item_url']; ?>" ><i class="fa fa-open"></i> &nbsp; Open Link
+	 		 </a>
+	 		</div> 		 
+ 
+		</div>	
+		<?php
+		} // for each $talent_portfolio									
+		?>
+
+		 <?php
+
+		}  // End if $talent_portfolio
+
+ ?>
+
 	            </div>
 				
 				</div>
@@ -775,14 +826,59 @@ elseif($events == 1 ){
               </div>
             </div>
                   <div class="box-body bg-gray">
-				    <div class="row"> 	            
-				<div class="col-md-10 col-sm-10 ">
+				    <div class="row"> 	
+			<?php 
+			$comment_sql = "SELECT 
+			* 
+			FROM 
+			tams_talent_comments
+			WHERE talent_id = $talent_id
+			ORDER BY talent_comment_id DESC";
+
+			$talent_comments = DB::query($comment_sql);
+			
+			?>	    
+				                
+				 
 					
-	            <p class="text-right"><?php echo list_talent_comments($talent_id);?></p>
+	        <p>
+			 <div class="box-comments"  style="margin:10px;">
+				 <?php
+				 if ($talent_comments) {
+				 	foreach($talent_comments as $comment) {
+						?>
+						<div class="box-comment">
+					
+							<img class="img-circle img-sm" alt="Talent Image" src="<?php echo get_user_avatar_url($comment['created_by']); ?>" />
+							<div class="comment-text">
+							<span class="username">
+								<?php echo get_user_full_name($comment['created_by']); ?>
+								<span class="text-muted pull-right">
+									<?php echo getDateTime($comment['created_on'],"dtShort"); ?>
+								</span>
+							</span>
+							<?php echo $comment['comment']; ?>
+						</div>						
+						</div>
+						<?php
+					}
+				 } else {
+				 
+				  echo '<div class="box-comment"><div class="comment-text">No Talent Notes Added</div></div>';  
+				  	
+				 }
+				 
+				  
+				  
+				  
+				  ?>
+			
+			</div>
+			
+			</p>
 	            
 	            </div>
-	            
-				  </div>
+	             
 				 </div> 	   
             <div class="box-footer">
 			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#notes'; ?>" title="">Add Notes </a></div>

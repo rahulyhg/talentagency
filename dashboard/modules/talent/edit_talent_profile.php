@@ -121,7 +121,7 @@ $last_modified_on = $talent['last_modified_on'];
 			<div class="box-header with-border">
 				<h3 class="box-title">
 					Editing <?php echo $talent['first_name']; ?> Profile
-				</h3>
+				</h3>  &nbsp;&nbsp; <a class='btn btn-info btn-xs' href ='<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent_id; ?>' > &nbsp;&nbsp; View Profile &nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
 				<div class="box-tools pull-right">
 					<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box">
 						<i class="fa fa-minus">
