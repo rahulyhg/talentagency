@@ -712,13 +712,49 @@ elseif($events == 1 ){
                   <div class="box-body bg-info">
 				  <div class="row">
                   					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Talent Photos : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo list_talent_photos($talent_id); ?></p>
-	            </div>
-                  					  	            
+              <div id="talent_photos" class="carousel slide" data-ride="carousel">
+ 
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img  src="<?php echo $photo1_url; ?>" alt="<?php echo $photo1_caption; ?>">
+
+                    <div class="carousel-caption">
+                      <?php echo $photo1_caption; ?>
+                    </div>
+                  </div>
+           <!-- If there is second image --> 
+           <?php if ($photo2_url) { ?>
+                  <div class="item">
+                    <img  src="<?php echo $photo2_url; ?>" alt="<?php echo $photo2_caption; ?>">
+
+                    <div class="carousel-caption">
+                      <?php echo $photo2_caption; ?>
+                    </div>
+                  </div>
+           <?php }  ?>          
+                  
+       <!-- If there are other photos -->
+    <?php    
+       
+       
+     ?>             
+                  <div class="item">
+                    <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+
+                    <div class="carousel-caption">
+                      Next Photos will be iterated here
+                    </div>
+                  </div>
+       <?php  }  ?>           
+                  
+                </div>
+                <a class="left carousel-control" href="#talent_photos" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#talent_photos" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>			  	            
                   	
                   </div>
 				  
