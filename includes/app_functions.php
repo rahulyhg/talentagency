@@ -176,21 +176,22 @@ function get_talent_image($talent_id) {
 function list_talent_experiences($talent_id) {
 	$list = "";
 	 
-	
-	$query = "SELECT tams_experience_items.experience_item_name, tams_talent_experience.experience_item_id, tams_talent.talent_id from tams_experience_items,tams_talent_experience,tams_talent WHERE tams_experience_items.experience_item_id=tams_talent_experience.experience_item_id AND tams_talent_experience.talent_id=tams_talent.talent_id";
-	
-	$experiences = DB::query($query);
-	
-	if ($experiences) {
-	
-		foreach ($experiences as $exp) {
-		 
-			$list .= ''.$exp['experience_item_name'].'<br>';
+		$experience_sql    = "SELECT
+		*
+		FROM
+		tams_talent_experience
+		WHERE talent_id = $talent_id";
+
+		$talent_experiences = DB::query($experience_sql);
+	if($talent_experiences ) {	
+	 	
+		foreach($talent_experiences as $experience){
 			
+			$list .= '<span class="label label-info" >';			
+			$list .= get_experience_item_name($experience['experience_item_id'])." </span>";
+	
 		}
-	
-	
-	}
+ 	}
 		 
  
 	return $list;
