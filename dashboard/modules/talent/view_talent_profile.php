@@ -295,7 +295,10 @@ elseif($events == 1 ){
         text-align: right;
     }
 }
-	
+.label {
+	margin:2px;
+	font-size: 14px;
+}	
 </style>
 <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -427,7 +430,7 @@ elseif($events == 1 ){
        		<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title"> 
-              	Experience
+              	Experienced in
               	 </h3>
               <div class="box-tools pull-right">
               		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
@@ -436,11 +439,8 @@ elseif($events == 1 ){
             </div>
                   <div class="box-body bg-info ">
 				  <div class="row">
-				  <div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>List of Experiences : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo list_talent_experiences($talent_id); ?></p>
+				  <div class="col-md-12 col-sm-12  ">
+	             <p><?php echo list_talent_experiences($talent_id); ?></p>
 						
 	            </div>
 				  </div>
