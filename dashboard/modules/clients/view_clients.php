@@ -4,7 +4,6 @@ $tbl->addTSection('thead');
 $tbl->addRow();
 $tbl->addCell("<a class='pull btn btn-success btn-md' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/add_client'>Add New Client&nbsp;&nbsp;<span class='glyphicon glyphicon-plus'></span></a>");
 $tbl->addRow();
-$tbl->addCell(' Client ID', '', 'header');
 $tbl->addCell(' Company Logo','','header');
 $tbl->addCell(' Company Name','','header');
 $tbl->addCell(' Contact Person Name', '', 'header');
@@ -30,8 +29,6 @@ $sql = 'SELECT * FROM tams_clients WHERE client_status = "active"';
 $get_client_name= DB::query($sql);
 foreach($get_client_name as $client) { 
 $tbl->addRow();
-$tbl->addCell($client['client_id'].'&nbsp&nbsp'."<a class='pull btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
-			   ");
 $tbl->addCell('<img src="'.$client['logo_url'].'" alt="Logo" width="100px" height="100px"; />');
 $tbl->addCell($client['company_name']);
 $tbl->addCell($client['client_name']);
@@ -58,7 +55,8 @@ $tbl->addCell($client_comment."...<a  href ='".$_SERVER['PHP_SELF']."?route=modu
 }
 
 
-$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit Client&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
+$tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/edit_client&client_id=".$client['client_id']."'>Edit &nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a> &nbsp;&nbsp;
+<a class='btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/clients/view_client_profile&client_id=".$client['client_id']."'>View &nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
 			   ");
 }
 		

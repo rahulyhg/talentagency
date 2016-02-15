@@ -463,11 +463,8 @@ elseif($events == 1 ){
             </div>
                  <div class="box-body bg-gray">
                  <div class="row">
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>List of Portfolio items : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo list_talent_portfolios($talent_id);; ?></p>
+	            <div class="col-md-12 col-sm-12 "> 
+	            		<p><?php echo list_talent_portfolios($talent_id); ?></p>
 	            </div>
 				
 				</div>
@@ -672,12 +669,8 @@ elseif($events == 1 ){
             </div>
                   <div class="box-body bg-gray">
                   <div class="row">
-                  					  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Spoken Languages : </strong></p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo list_talent_languages($talent_id); ?></p>
+	            <div class="col-md-12 col-sm-12 "> 
+	            		<p><?php echo list_talent_languages($talent_id); ?></p>
 	            </div>
                   					  	            
                   	

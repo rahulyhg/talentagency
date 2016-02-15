@@ -200,46 +200,44 @@ function list_talent_experiences($talent_id) {
 function list_talent_portfolios($talent_id) {
 	$list = "";
 	 
-	
-	$query = "SELECT tams_portfolio_items.portfolio_item_name, tams_talent_portfolio.talent_id from tams_portfolio_items,tams_talent_portfolio WHERE tams_portfolio_items.portfolio_item_id = tams_talent_portfolio.portfolio_item_id";
-	
-	$portfolios = DB::query($query);
-	
-	if ($portfolios) {
-	
-		foreach ($portfolios as $port) {
-		 
-			$list .= ''.$port['portfolio_item_name'].'<br>';
+	 $portfolio_sql    = "SELECT
+		*
+		FROM
+		tams_talent_portfolio
+		WHERE talent_id = $talent_id";
+
+		$talent_portfolio = DB::query($portfolio_sql);
+	if($talent_portfolio ) {	
+	 	
+		foreach($talent_portfolio as $portfolio){
 			
+			$list .= '<span class="label label-info" >';			
+			$list .= get_portfolio_item_name($portfolio['portfolio_item_id'])." </span>";
+	
 		}
-	
-	
-	}
-		 
- 
+ 	}
 	return $list;
 }
 // List of Talent Spoken Languages
 function list_talent_languages($talent_id) {
 	$list = "";
 	 
-	
-	$query = "SELECT tams_languages.language_name, tams_talent_language.talent_id from tams_languages,tams_talent_language WHERE tams_languages.language_id = tams_talent_language.language_id";
-	
-	$languages = DB::query($query);
-	
-	if ($languages) {
-	
-		foreach ($languages as $lang) {
-		 
-			$list .= ''.$lang['language_name'].'<br>';
+	 $language_sql    = "SELECT
+		*
+		FROM
+		tams_talent_language
+		WHERE talent_id = $talent_id";
+
+		$talent_language = DB::query($language_sql);
+	if($talent_language ) {	
+	 	
+		foreach($talent_language as $language){
 			
+			$list .= '<span class="label label-info" >';			
+			$list .= get_language_name($language['language_id'])." </span>";
+	
 		}
-	
-	
-	}
-		 
- 
+ 	}
 	return $list;
 }
 
@@ -248,21 +246,24 @@ function list_talent_comments($talent_id) {
 	$list = "";
 	 
 	
-	$query = "SELECT tams_talent_comments.comment, tams_talent.talent_id from tams_talent_comments,tams_talent WHERE tams_talent_comments.talent_id = tams_talent.talent_id";
 	
-	$Comments = DB::query($query);
-	
-	if ($Comments) {
-	
-		foreach ($Comments as $com) {
-		 
-			$list .= ''.$com['comment'].'<br>';
+	 $comment_sql    = "SELECT
+		*
+		FROM
+		tams_talent_comments
+		WHERE talent_id = $talent_id
+		ORDER BY talent_comment_id DESC";
+
+		$talent_comments = DB::query($comment_sql);
+	if($talent_comments ) {	
+	 	
+		foreach($talent_comments as $comment){
 			
+			$list .= '<span class="username" >';			
+			$list .= get_talent_comment($comment['comment'])." </span>";
+	
 		}
-	
-	
-	}
-		 
+ 	}
  
 	return $list;
 }
@@ -298,4 +299,24 @@ function get_talent_full_name($talent_id) {
 	
 	
 }
+
+// Get Talent Comment
+/*function get_talent_comment($talent_id){
+	
+	
+$comment_sql = "SELECT 
+			* 
+			FROM 
+			tams_talent_comments
+			WHERE talent_id = $talent_id";
+
+$talent_comments = DB::query($comment_sql);
+
+		if ($talent_comments) {
+			foreach($talent_comments as $comment) {
+						echo get_user_full_name($comment['created_by']);
+						echo getDateTime($comment['created_on'],"dtShort");
+}
+		}
+}*/
  ?>
