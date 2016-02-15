@@ -379,13 +379,93 @@ elseif($events == 1 ){
               </div>
  		
              </div> 
-             </form>
+            
 			 </div> 
             <div  class="box-footer">
 			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#basic'; ?>" title="Edit Basic Information">Edit Basic Information</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Basic Information-->
-  
+           
+   <!-- Talent Photos box -->       			
+       		<div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"> 
+              	Talent Photos
+              	 </h3>
+              <div class="box-tools pull-right">
+              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
+              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+                  <div class="box-body bg-info">
+				  <div class="row">
+                  					  	            
+              <div id="talent_photos" class="carousel slide" data-ride="carousel">
+ 
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img  class="img-responsive center-block img-rounded" src="<?php echo $photo1_url; ?>" alt="<?php echo $photo1_caption; ?>">
+
+                    <div class="carousel-caption">
+                      <?php echo $photo1_caption; ?>
+                    </div>
+                  </div>
+           <!-- If there is second image --> 
+           <?php if ($photo2_url) { ?>
+                  <div class="item">
+                    <img  class="img-responsive center-block img-rounded" src="<?php echo $photo2_url; ?>" alt="<?php echo $photo2_caption; ?>">
+
+                    <div class="carousel-caption">
+                      <?php echo $photo2_caption; ?>
+                    </div>
+                  </div>
+           <?php }  ?>          
+                  
+       <!-- If there are other photos -->
+    <?php    
+       $photo_sql    = "SELECT
+		*
+		FROM
+		tams_talent_photos
+		WHERE talent_id = $talent_id";
+
+		$talent_photos = DB::query($photo_sql);
+		if ($talent_photos ) {
+			
+		foreach ($talent_photos as $photo) {
+			
+		
+     ?>             
+                  <div class="item">
+                    <img  class="img-responsive center-block img-rounded" src="<?php echo $photo['photo_path']; ?>" alt="<?php echo $photo['photo_caption']; ?>">
+
+                    <div class="carousel-caption">
+                    <?php echo $photo['photo_caption']; ?>
+                    </div>
+                  </div>
+       <?php  
+        }
+        } 
+               ?>           
+                  
+                </div>
+                <a class="left carousel-control" href="#talent_photos" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#talent_photos" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>			  	            
+                  	
+                  </div>
+				  
+				  </div>
+				  	   
+            <div class="box-footer">
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#photos'; ?>" title="">Edit Talent Photos</a></div>
+            </div><!-- /.box-footer-->
+          </div><!-- /.box Talent Photos  -->  
+          
    <!-- Contact Information box -->       			
        		<div class="box">
             <div class="box-header with-border">
@@ -682,88 +762,8 @@ elseif($events == 1 ){
 			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#languages'; ?>" title="">Edit Spoken Languages</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Languages -->      
-         			
-</div> 	<!-- /.Row 1 Colum 2 Ends-->
-
-</div> <!-- /.Row 1 Ends-->
- <!-- Row 2 Starts -->        
-<div class="row">
- <!-- Row 2 Column 1 Starts -->
-       		<div class="col-md-6">
-              
-   <!-- Talent Photos box -->       			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Talent Photos
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body bg-info">
-				  <div class="row">
-                  					  	            
-              <div id="talent_photos" class="carousel slide" data-ride="carousel">
  
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <img  src="<?php echo $photo1_url; ?>" alt="<?php echo $photo1_caption; ?>">
-
-                    <div class="carousel-caption">
-                      <?php echo $photo1_caption; ?>
-                    </div>
-                  </div>
-           <!-- If there is second image --> 
-           <?php if ($photo2_url) { ?>
-                  <div class="item">
-                    <img  src="<?php echo $photo2_url; ?>" alt="<?php echo $photo2_caption; ?>">
-
-                    <div class="carousel-caption">
-                      <?php echo $photo2_caption; ?>
-                    </div>
-                  </div>
-           <?php }  ?>          
-                  
-       <!-- If there are other photos -->
-    <?php    
-       
-       
-     ?>             
-                  <div class="item">
-                    <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
-
-                    <div class="carousel-caption">
-                      Next Photos will be iterated here
-                    </div>
-                  </div>
-       <?php  }  ?>           
-                  
-                </div>
-                <a class="left carousel-control" href="#talent_photos" data-slide="prev">
-                  <span class="fa fa-angle-left"></span>
-                </a>
-                <a class="right carousel-control" href="#talent_photos" data-slide="next">
-                  <span class="fa fa-angle-right"></span>
-                </a>
-              </div>			  	            
-                  	
-                  </div>
-				  
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#photos'; ?>" title="">Edit Talent Photos</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Talent Photos  -->  
-  			
-       		</div><!-- /.Row 2 Column 1 Ends-->
-
-<!-- Row 2 Column 2 Starts -->
-			<div class="col-md-6">
-			
- <!-- Talent Notes box -->   			
+  <!-- Talent Notes box -->   			
 			<div class="box">
             <div class="box-header with-border">
               <h3 class="box-title"> 
@@ -787,10 +787,14 @@ elseif($events == 1 ){
             <div class="box-footer">
 			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#notes'; ?>" title="">Add Notes </a></div>
             </div><!-- /.box-footer-->
-          </div><!-- /.box Deductions  -->       			
-  
-</div> 	<!-- /.Colum 2 Ends-->
-</div> <!-- /.Row 2 Ends-->
+          </div><!-- /.box Notes  -->   
+ 
+ 
+ 
+</div> 	<!-- /.Row 1 Colum 2 Ends-->
+
+</div> <!-- /.Row 1 Ends-->
+ 
 
  
 				  </div>
