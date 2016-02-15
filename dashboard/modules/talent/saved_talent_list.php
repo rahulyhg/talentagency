@@ -34,7 +34,7 @@ $tbl2->addCell(getAge($talent['dob']));
 $tbl2->addCell($talent['height_cm']);
 $tbl2->addCell($talent['weight_kg']);
 $tbl2->addCell($talent['nationality']);
-$tbl2->addCell(list_talent_experiences($experience['talent_id']));
+$tbl2->addCell(list_talent_experiences($talent['talent_id']));
 $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a><br/>
 				<a class='pull btn btn-danger btn-circle btn-xs' href ='#'>Save Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a><br/><a class='btn btn-info btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
 }			  
@@ -42,6 +42,8 @@ $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SER
 
 ?>
 <!--   Content Header (Page header) -->
+
+
 <section class="content-header">
 	<h1>
 		Saved Talent
@@ -87,16 +89,19 @@ $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SER
 				 <Select NAME="field"><option selected>Filter by</option>
 						<Option VALUE="first_name">First Name</option>
 						<Option VALUE="last_name">Last Name</option>
+					
 						<Option VALUE="nationality">Nationality</option>
-						<Option VALUE="height_cm">height</option>
 						<Option VALUE="dob">Age</option>
-						<Option VALUE="eye_color">eye_color</option>
-					  <Option VALUE="sex">gender</option>
-					   <Option VALUE="experience_item_name">experience_item_name</option>
-				  </select>
+						<Option VALUE="sex">Gender</option>
+						<Option VALUE="eye_color">eye color</option>
+						<Option VALUE="height_cm">height</option>
+						</select>
+						<table id="example" class="display" cellspacing="0" width="100%">
+      
 				  <input  type="submit" name="submit" value="Search"> 
-				</form>
-			
+			</form>
+	
+
                 <div class="box-footer">
                   <div class="row">
 				  <?php
@@ -111,8 +116,8 @@ $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SER
 							  //-select  the database to use 
 							/*  $mydb=mysql_select_db("teamsutlej_talent"); */
 							  //-query  the database table 
-							  $sql="SELECT talent_id, first_name, last_name , nationality , height_cm , dob , eye_color , sex FROM tams_talent WHERE  first_name LIKE '%" . $find . "%' OR last_name LIKE '%" . $find  ."%' OR nationality LIKE '%" . $find ."%' OR height_cm LIKE '%" . $find . "%'  OR dob LIKE '%" . $find . "%' OR eye_color LIKE '%" . $find ."%' OR sex LIKE '%" . $find . "%'"; 
-								//-run  the query against the mysql query function 
+							  $sql="SELECT talent_id, first_name, last_name , nationality , dob , sex , eye_color ,height_cm FROM tams_talent WHERE  first_name LIKE '%" . $find . "%' OR last_name LIKE '%" . $find  ."%' OR nationality LIKE '%" . $find ."%' OR dob LIKE '%" . $find . "%'  OR sex LIKE '%" . $find . "%' OR eye_color LIKE '%" . $find ."%' OR height_cm LIKE '%" . $find . "%'"; 
+								//-run  the query against the mysql query function  
 							$talent= DB::queryFirstRow($sql);
 							$result=mysqli_query($db,$sql);
 						//-create  while loop and loop through result set
@@ -122,10 +127,11 @@ $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SER
 								echo"<div>".$row['first_name']."</div>"; 
 								echo "<div>".$row['last_name']."</div>"; 
 								echo "<div>".$row['nationality']."</div>"; 
-								echo "<div>".$row['height_cm']."</div>"; 
 								echo "<div>".getAge($row['dob'])."</div>";
-								echo "<div>".$row['eye_color']."</div>";
 								echo "<div>".get_talent_gender($row['talent_id'])."</div>";
+								echo "<div>".$row['eye_color']."</div>";
+								echo "<div>".$row['height_cm']."</div>"; 
+								
 								echo "<br/>";
 								
 							    //-display the result of the array 
@@ -134,11 +140,11 @@ $tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SER
 					//	"<span><h4>".$row['nationality']."</h4></span>".
                       // 	"<span><h4>".$row['height_cm']."</h4></span>"."</p>";
 							 
-							  //  echo "<ul>\n"; 
-							 // echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " .$height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
+							  // echo "<ul>\n"; 
+							 // echo "<li>" . "<a  href =".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id'].">" . $first_name . " " . $last_name ." ". $nationality . " " . $height_cm . " " . $dob . " " . $eye_color . " " . $sex . "</a></li>\n"; 
 							
 
-						//	  echo "</ul>"; 
+					 // echo "</ul>"; 
 								}
 								
 						}
