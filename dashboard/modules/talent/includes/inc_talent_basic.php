@@ -401,7 +401,7 @@ $last_modified_on = $talent['last_modified_on'];
 								<div class="col-md-9 col-sm-9">
 									<select id="sex" name="sex" class="form-control">
 										<option value="" >
-											-Select gendar-
+											-Select gender-
 										</option>
 										<option value="Male" <?php if($sex == "Male"){ echo 'selected = "selected" ';}?>>
 											Male

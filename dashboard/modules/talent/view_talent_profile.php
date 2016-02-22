@@ -19,6 +19,8 @@ $brief = $talent['brief'];
 $address = $talent['Address'];
 $mobile_no = $talent['mobile_no'];
 $email_id = $talent['email_id'];
+$twitter = $talent['twitter'];
+$instagram = $talent['instagram'];
 $nationality = $talent['nationality'];
 $passport_no = $talent['passport_no'];
 $qatari_id   = $talent['qatari_id'];
@@ -500,7 +502,19 @@ elseif($events == 1 ){
 	            	<div class="col-md-6 col-sm-6 "> 
 	            		<p class="text-left"> <?php echo $email_id; ?> </p>
 	            	</div>	
-						<div class="col-md-6 col-sm-6  ">
+	            	<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Twitter : </strong></p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"> <?php echo $twitter; ?> </p>
+	            	</div>	            	
+	            	<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Instagram : </strong></p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"> <?php echo $instagram; ?> </p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6  ">
 	            		<p class="text-right"><strong>Address :</strong></p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 

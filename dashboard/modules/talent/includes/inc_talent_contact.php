@@ -57,6 +57,38 @@
 									</div>
 								</div>
 							</div>
+                        <div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Twitter :
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+
+										<input   class="input-group form-control"     type="text"  value="<?php echo $twitter; ?>" name="twitter" id="twitter"  placeholder="Enter twitter handle">
+										<div class="input-group-addon">
+											<i class="fa fa-twitter">
+											</i>
+										</div>
+									</div>
+								</div>
+							</div>
+                        <div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Instagram :
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<div class="input-group">
+
+										<input   class="input-group form-control"     type="text"  value="<?php echo $instagram; ?>" name="instagram" id="instagram"  placeholder="Enter Instagram Link">
+										<div class="input-group-addon">
+											<i class="fa fa-instagram">
+											</i>
+										</div>
+									</div>
+								</div>
+							</div>								
+							
+							
               </div> <!--.row-->
 			   				<div class="box-footer">
  								<div class="form-group">

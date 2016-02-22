@@ -1,6 +1,10 @@
 <?php 
 
- ini_set('max_execution_time', 90); //300 seconds = 5 minute
+ini_set('upload_max_filesize', '15M');
+ini_set('post_max_size', '15M');
+ini_set('max_input_time', 300);
+ini_set('max_execution_time', 300);
+
 require_once('functions.php');
  
 if(isset($_POST['form_name'])) {
@@ -21,6 +25,8 @@ if(isset($_POST['form_name'])) {
 				$sex        = $_POST['sex'];
 				$address    = $_POST['address'];
 				$mobile_no   = $_POST['mobile_no'];
+				$twitter   = $_POST['twitter'];
+				$instagram   = $_POST['instagram'];
 				$email_id   = $_POST['email_id'];
 				$nationality= $_POST['nationality'];
 				$passport_no= $_POST['passport_no'];
@@ -38,6 +44,8 @@ if(isset($_POST['form_name'])) {
 						'address'	 		=> $address,						
 						'mobile_no' 		=> $mobile_no,						
 						'email_id' 			=> $email_id,
+						'twitter' 			=> $twitter,
+						'instagram' 		=> $instagram,
 						'nationality'		=> $nationality,
 						'talent_status'		=> "draft",
 						'created_by' 		=> $created_by,
@@ -60,9 +68,9 @@ if(isset($_POST['form_name'])) {
 	$handle = new upload($_FILES['talent_photo1']);
 		if ($handle->uploaded) {
 			  $handle->file_new_name_body   = $talent_id.'_photo1';
-			  $handle->image_resize         = true;
-			  $handle->image_x              = 250;
-			  $handle->image_ratio_y        = true;
+			  //$handle->image_resize         = true;
+			  //$handle->image_x              = 250;
+			  //$handle->image_ratio_y        = true;
 			  $handle->allowed = array('image/*');
 			  $handle->image_convert = 'jpg';
 			  $handle->file_overwrite = true;
@@ -268,6 +276,8 @@ if(isset($_POST['form_name'])) {
 		case "edit_talent_contact_info":
 		$talent_id = $_POST['talent_id'];
 		$email_id =$_POST['email_id'];
+		$twitter   = $_POST['twitter'];
+		$instagram   = $_POST['instagram'];
 		$address =$_POST['address'];
 		$mobile_no =$_POST['mobile_no'];
 		$created_by = $_SESSION['user_id'];
@@ -281,9 +291,11 @@ if(isset($_POST['form_name'])) {
 			// process Talent Contact Information edit form
 		DB::update('tams_talent', array(
  						'talent_id'			=> $talent_id,
- 						'email_id'=> $email_id,
-						'Address' => $address,
-						'mobile_no' => $mobile_no,
+ 						'email_id'			=> $email_id,
+ 						'twitter' 			=> $twitter,
+						'instagram' 		=> $instagram,
+						'Address' 			=> $address,
+						'mobile_no' 		=> $mobile_no,
 						'created_by' 		=> $created_by,
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
@@ -524,9 +536,9 @@ if(isset($_POST['form_name'])) {
 	$handle1 = new upload($_FILES['talent_photo1']);
 		if ($handle1->uploaded) {
 			$handle1->file_new_name_body   = $talent_id.'_photo1';
-			$handle1->image_resize         = true;
-			$handle1->image_x              = 250;
-			$handle1->image_ratio_y        = true;
+			//$handle1->image_resize         = true;
+			//$handle1->image_x              = 250;
+			//$handle1->image_ratio_y        = true;
 			$handle1->allowed = array('image/*');
 			$handle1->image_convert = 'jpg';
 			$handle1->file_overwrite = true;
@@ -570,9 +582,9 @@ if(isset($_POST['form_name'])) {
 	$handle2 = new upload($_FILES['talent_photo2']);
 		if ($handle2->uploaded) {
 			  $handle2->file_new_name_body   = $talent_id.'_photo2';
-			  $handle2->image_resize         = true;
-			  $handle2->image_x              = 250;
-			  $handle2->image_ratio_y        = true;
+			//  $handle2->image_resize         = true;
+			//  $handle2->image_x              = 250;
+			//  $handle2->image_ratio_y        = true;
 			  $handle2->allowed = array('image/*');
 			  $handle2->image_convert = 'jpg';
 			  $handle2->file_overwrite = true;
