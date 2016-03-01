@@ -98,16 +98,12 @@ $photo2_caption				="";
 						</div>
 						</div>
 
-					
-					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Caption:
-								</label>
+					<!-- Hidden Caption Field -->
 								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text" required
+									<input class="form-control" type="hidden"
 									 name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
 								</div>
-							</div>
+					<!-- /Hidden Caption Field -->
 
 						</div>
  

@@ -297,7 +297,7 @@ $last_modified_on = $talent['last_modified_on'];
 							Photo 1 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-						<img src="<?php echo $photo1_url; ?>" alt="no photo uploaded" />
+						<img src="<?php echo $photo1_url; ?>" alt="no photo uploaded" style="max-width:500px;" />
 		<!-- input-group image-preview [FROM HERE]-->
             <div class="input-group image-preview">
                 <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -316,22 +316,20 @@ $last_modified_on = $talent['last_modified_on'];
                 </span>
             </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
-					</div>					
-					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Photo 1 Caption:
-								</label>
+					</div>	
+					<!-- Hidden Caption Field -->					
 								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text"  
+									<input class="form-control" type="hidden"  
 									value="<?php echo $photo1_caption; ?>" name="photo1_caption" id="photo1_caption" placeholder="Enter Photo Caption">
 								</div>
-							</div>
+						
+					<!-- /Hidden Caption Field -->
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 control-label">
 							Photo 2 :
 						</label>
 						<div class="col-md-9 col-sm-9">
-						<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" />
+						<img src="<?php echo $photo2_url; ?>" alt="no photo uploaded" style="max-width:500px;" />
 						<!-- input-group image-preview2 [FROM HERE]-->
             <div class="input-group image-preview2">
                 <input type="text" class="form-control image-preview-filename2" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -351,15 +349,12 @@ $last_modified_on = $talent['last_modified_on'];
             </div><!-- /input-group image-preview2 [TO HERE]-->
 						</div>
 					</div>	
-					<div class="form-group">
-								<label class="col-md-3 col-sm-3 control-label">
-									Photo Caption:
-								</label>
+	   <!-- Hidden Caption Field -->
 								<div class="col-md-9 col-sm-9">
-									<input class="form-control" type="text"  
+									<input class="form-control" type="hidden"  
 									value="<?php echo $photo2_caption; ?>" name="photo2_caption" id="photo2_caption" placeholder="Enter Photo Caption">
 								</div>
-							</div>
+		 <!-- /Hidden Caption Field -->
 						<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
 									First Name:
