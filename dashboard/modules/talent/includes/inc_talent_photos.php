@@ -139,15 +139,13 @@ $last_modified_on = getDateTime(NULL,"mySQL");
                 </span>
             </div><!-- /input-group image-preview [TO HERE]-->
 						</div>
-					</div>			
-					<div class="form-group"  >
-						<label class="col-md-3 col-sm-3 control-label"> Photo Caption:</label>
+					</div>
+						<!--Hidden Caption Field-->
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required placeholder="Enter Photo Caption Or Description" 
+							 <input class="form-control" type="hidden" placeholder="Enter Photo Caption Or Description" 
 							 value="" name="photo_caption" id="photo_caption">							
 						  </div>
-						  </div>
-					
+					<!--Hidden Caption Field-->
 				</div> <!--/.row-->
 			 				<div class="box-footer">
  								<div class="form-group">
