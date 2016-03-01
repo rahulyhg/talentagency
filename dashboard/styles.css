@@ -1,3 +1,6 @@
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family:  'Muli', sans-serif;
+}
 .logo img {
 	height: 80%;
 	display: block;
@@ -44,11 +47,7 @@ h3.normal {
 .image-preview-input-title {
     margin-left:2px;
 }
-<<<<<<< HEAD
-
-
-
-=======
+ 
 
 
 .image-preview-input2 {
@@ -73,7 +72,7 @@ h3.normal {
 .image-preview-input-title2 {
     margin-left:2px;
 }
->>>>>>> cf24b6be4f9afa8d10fdd621ac72ac6a4fd30679
+ 
 /*CSS for Search Form */
 
 .dropdown.dropdown-lg .dropdown-menu {

@@ -1,7 +1,6 @@
     <!-- Load CSS Files -->
 	
-	 <!-- custom style sheet -->
-    <link href="<?php echo SITE_ROOT;  ?>assets/custom/css/style.css" rel="stylesheet" type="text/css" />
+
     <!-- Bootstrap 3.3.2 -->
     <link href="<?php echo SITE_ROOT;  ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
@@ -61,9 +60,11 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo SITE_ROOT;  ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />    
-        
-    <link href="styles.css" rel="stylesheet" type="text/css" />
-    
+   <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>     
+    	 <!-- custom style sheet -->
+    <link href="<?php echo SITE_ROOT;  ?>assets/custom/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo SITE_ROOT;  ?>dashboard/styles.css" rel="stylesheet" type="text/css" />
+
     
        <!-- Load JavaScripts -->
 

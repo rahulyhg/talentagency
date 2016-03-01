@@ -12,7 +12,7 @@
     <link href="../assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="../assets/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
-
+  <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,6 +25,9 @@
  	.login-page, .register-page {
     background: #00B5CA none repeat scroll 0% 0%;
 } 
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family:  'Muli', sans-serif;
+}
  </style>   </head>
 
   <body class="login-page">

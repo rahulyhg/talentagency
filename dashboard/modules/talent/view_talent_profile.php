@@ -358,34 +358,34 @@ elseif($events == 1 ){
             	</div>
             	<div class="col-md-9 col-sm-9  ">
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Full Name :</strong></p>
+	            		<p class="text-right"><strong>Full Name :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $talent_full_name; ?></p>
+	            		<p class="text-left"><?php echo $talent_full_name; ?> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Gender :</strong></p>
+	            		<p class="text-right"><strong>Gender :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $sex;  ?></p>
+	            		<p class="text-left"><?php echo $sex;  ?> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6">
-	            		<p class="text-right"><strong>Age :</strong></p>
+	            		<p class="text-right"><strong>Age :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo getAge($talent['dob']);  ?> years</p>
+	            		<p class="text-left"><?php echo getAge($talent['dob']);  ?> years &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Date of Birth :</strong></p>
+	            		<p class="text-right"><strong>Date of Birth :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $dob; ?></p>
+	            		<p class="text-left"><?php echo $dob; ?> &nbsp;</p>
 	            	</div>      	    	
 	            	<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Brief :</strong></p>
+	            		<p class="text-right"><strong>Brief :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6"> 
-	            		<p class="text-left"><?php echo $brief;  ?></p>
+	            		<p class="text-left"><?php echo $brief;  ?> &nbsp;</p>
 	            	</div>		            	 
               </div>
  		
@@ -491,31 +491,31 @@ elseif($events == 1 ){
                   <div class="box-body bg-gray">
 				  <div class="row">
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Mobile Number :</strong></p>
+	            		<p class="text-right"><strong>Mobile Number :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
 	            		<p class="text-left"><?php echo $mobile_no; ?>&nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Email : </strong></p>
+	            		<p class="text-right"><strong>Email : </strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"> <?php echo $email_id; ?> </p>
+	            		<p class="text-left"> <?php echo $email_id; ?> &nbsp;</p>
 	            	</div>	
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Twitter : </strong></p>
+	            		<p class="text-right"><strong>Twitter : </strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"> <?php echo $twitter; ?> </p>
+	            		<p class="text-left"> <?php echo $twitter; ?> &nbsp;</p>
 	            	</div>	            	
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Instagram : </strong></p>
+	            		<p class="text-right"><strong>Instagram : </strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"> <?php echo $instagram; ?> </p>
+	            		<p class="text-left"> <?php echo $instagram; ?> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Address :</strong></p>
+	            		<p class="text-right"><strong>Address :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
 	            		<p class="text-left"><?php echo $address; ?>&nbsp;</p>
@@ -543,7 +543,7 @@ elseif($events == 1 ){
                   <div class="box-body bg-info ">
 				  <div class="row">
 				  <div class="col-md-12 col-sm-12  ">
-	             <p><?php echo list_talent_experiences($talent_id); ?></p>
+	             <p><?php echo list_talent_experiences($talent_id); ?> &nbsp;</p>
 						
 	            </div>
 				  </div>
@@ -640,63 +640,63 @@ elseif($events == 1 ){
 				<div class="row">
 				
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Height <small>cm</small>:</strong></p>
+	            		<p class="text-right"><strong>Height <small>cm</small>:</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $height_cm; ?></p>
+	            		<p class="text-left"><?php echo $height_cm; ?> &nbsp;</p>
 	            </div>
 	              
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Weight <small>kg</small>: </strong></p>
+	            		<p class="text-right"><strong>Weight <small>kg</small>: </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $weight_kg;  ?></p>
+	            		<p class="text-left"><?php echo $weight_kg;  ?> &nbsp;</p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Hair Color : </strong></p>
+	            		<p class="text-right"><strong>Hair Color : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $hair_color; ?></p>
+	            		<p class="text-left"><?php echo $hair_color; ?> &nbsp;</p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Eye Color :</strong></p>
+	            		<p class="text-right"><strong>Eye Color :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $eye_color; ?></p>
+	            		<p class="text-left"><?php echo $eye_color; ?> &nbsp;</p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Dress Size:</strong></p>
+	            		<p class="text-right"><strong>Dress Size:</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $dress_size; ?></p>
+	            		<p class="text-left"><?php echo $dress_size; ?> &nbsp;</p>
 	            </div>
 	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Shoe Size :</strong></p>
+	            		<p class="text-right"><strong>Shoe Size :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $shoe_size; ?></p>
+	            		<p class="text-left"><?php echo $shoe_size; ?> &nbsp;</p>
 	            </div>
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong></p>
+	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $waist_cm; ?></p>
+	            		<p class="text-left"><?php echo $waist_cm; ?> &nbsp;</p>
 	            </div>
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Collar <small>cm</small> :</strong></p>
+	            		<p class="text-right"><strong>Collar <small>cm</small> :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $collar_cm; ?></p>
+	            		<p class="text-left"><?php echo $collar_cm; ?> &nbsp;</p>
 	            </div>
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Chest <small>cm</small> :</strong></p>
+	            		<p class="text-right"><strong>Chest <small>cm</small> :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $chest_cm; ?></p>
+	            		<p class="text-left"><?php echo $chest_cm; ?> &nbsp;</p>
 	            </div>
 		            	                        
               	
@@ -724,73 +724,73 @@ elseif($events == 1 ){
 				  <div class="row">
 				  
 				<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Nationality :</strong></p>
+	            		<p class="text-right"><strong>Nationality :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6"> 
-	            		<p class="text-left"><?php echo $nationality;  ?></p>
+	            		<p class="text-left"><?php echo $nationality;  ?> &nbsp;</p>
 	            </div>	
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Is Qatari? :</strong></p>
+	            		<p class="text-right"><strong>Is Qatari? :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $is_qatari; ?></p>
+	            		<p class="text-left"><?php echo $is_qatari; ?> &nbsp;</p>
 	            </div>
 	
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Qatari ID :</strong></p>
+	            		<p class="text-right"><strong>Qatari ID :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $qatari_id; ?></p>
+	            		<p class="text-left"><?php echo $qatari_id; ?> &nbsp;</p>
 	            </div>
   	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Qatari ID Copy? : </strong></p>
+	            		<p class="text-right"><strong>Qatari ID Copy? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $qatari_id_copy_attached; ?></p>
+	            		<p class="text-left"><?php echo $qatari_id_copy_attached; ?> &nbsp;</p>
 	            </div>
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Passport No : </strong></p>
+	            		<p class="text-right"><strong>Passport No : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $passport_no; ?></p>
+	            		<p class="text-left"><?php echo $passport_no; ?> &nbsp;</p>
 	            </div>
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Passport ID Copy? : </strong></p>
+	            		<p class="text-right"><strong>Passport ID Copy? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $passport_copy_attached; ?></p>
+	            		<p class="text-left"><?php echo $passport_copy_attached; ?> &nbsp;</p>
 	            </div>
 				  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>NOC Required? : </strong></p>
+	            		<p class="text-right"><strong>NOC Required? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $noc_required; ?></p>
+	            		<p class="text-left"><?php echo $noc_required; ?> &nbsp;</p>
 	            </div>
 								  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>NOC Copy? : </strong></p>
+	            		<p class="text-right"><strong>NOC Copy? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $noc_copy_attached; ?></p>
+	            		<p class="text-left"><?php echo $noc_copy_attached; ?> &nbsp;</p>
 	            </div>
 								  	            
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Sponsors ID Copy? : </strong></p>
+	            		<p class="text-right"><strong>Sponsors ID Copy? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $sponsors_id_copy_attached; ?></p>
+	            		<p class="text-left"><?php echo $sponsors_id_copy_attached; ?> &nbsp;</p>
 	            </div>
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Available for Events ? : </strong></p>
+	            		<p class="text-right"><strong>Available for Events ? : </strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $events; ?></p>
+	            		<p class="text-left"><?php echo $events; ?> &nbsp;</p>
 	            </div>
 	
               </div>
@@ -815,7 +815,7 @@ elseif($events == 1 ){
                   <div class="box-body bg-gray">
                   <div class="row">
 	            <div class="col-md-12 col-sm-12 "> 
-	            		<p><?php echo list_talent_languages($talent_id); ?></p>
+	            		<p><?php echo list_talent_languages($talent_id); ?> &nbsp;</p>
 	            </div>
                   					  	            
                   	
@@ -889,7 +889,7 @@ elseif($events == 1 ){
 			
 			</div>
 			
-			</p>
+			 &nbsp;</p>
 	            
 	            </div>
 	             
