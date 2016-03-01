@@ -13,7 +13,7 @@ $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
  
-$sql = 'SELECT * FROM tams_experience_items WHERE experience_item_status = "active"';
+$sql = "SELECT * FROM tams_experience_items WHERE experience_item_status = 'active' ORDER BY experience_item_name ASC";
 $get_experience_types = DB::query($sql);
 foreach($get_experience_types as $type) { 
 $tbl->addRow();
