@@ -202,7 +202,7 @@ $photo2_caption				="";
 								<div class="col-md-9 col-sm-9">
 									<div class="input-group">
 
-										<input   class="input-group email form-control"     type="email" required value="<?php echo $email_id; ?>" name="email_id" id="email_id"  placeholder="Enter email address">
+										<input   class="input-group email form-control" type="email" value="<?php echo $email_id; ?>" name="email_id" id="email_id"  placeholder="Enter email address">
 										<div class="input-group-addon">
 											<i class="fa fa-envelope">
 											</i>
