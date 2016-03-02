@@ -12,7 +12,7 @@ $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
  
-$sql = 'SELECT * FROM tams_languages WHERE language_status = "active"';
+$sql = 'SELECT * FROM tams_languages WHERE language_status = "active" ORDER BY language_name';
 $get_language = DB::query($sql);
 foreach($get_language as $type) { 
 $tbl->addRow();

@@ -18,6 +18,7 @@ $passport_copy_attached    = 0;
 $noc_required              = 0;
 $noc_copy_attached         = 0;
 $sponsors_id_copy_attached = 0;
+$events="";
 $photo1_url					="";
 $photo1_caption				="";
 $photo2_url					="";
@@ -1009,7 +1010,14 @@ $photo2_caption				="";
 									value="<?php echo $qatari_id; ?>" name="qatari_id" id="qatari_id">
 								</div>
 							</div>
-
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Available for Events ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="events" name="events" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" <?php if( $events == 1 ) { echo "checked='checked'"; } ?> />
+								</div>
+							</div>
 
 						</div><!-- /.col-md-6 -->
 

@@ -142,7 +142,7 @@ $last_modified_on = $talent['last_modified_on'];
 					  <ul class="nav nav-tabs tabs-left">
 					    <li class="active"><a href="#basic" data-toggle="tab">Basic Info </a></li>
 					<li><a href="#contact" data-toggle="tab">Contact</a></li>
-					  <li><a href="#employability" data-toggle="tab">Employability </a></li> 	
+					 <!-- <li><a href="#employability" data-toggle="tab">Employability </a></li> -->	
 					    <li><a href="#vitals" data-toggle="tab">Vitals</a></li>
 					    <li><a href="#photos" data-toggle="tab">Photos</a></li>
 						<li><a href="#documents" data-toggle="tab">Documents</a></li>
