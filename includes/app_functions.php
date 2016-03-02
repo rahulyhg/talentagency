@@ -188,7 +188,7 @@ function list_talent_experiences($talent_id) {
 		foreach($talent_experiences as $experience){
 			
 			$list .= '<span class="label label-info" >';			
-			$list .= get_experience_item_name($experience['experience_item_id'])." </span>";
+			$list .= get_experience_item_name($experience['experience_item_id'])." </span><br/>";
 	
 		}
  	}
@@ -212,7 +212,7 @@ function list_talent_portfolios($talent_id) {
 		foreach($talent_portfolio as $portfolio){
 			
 			$list .= '<span class="label label-info" >';			
-			$list .= get_portfolio_item_name($portfolio['portfolio_item_id'])." </span>";
+			$list .= get_portfolio_item_name($portfolio['portfolio_item_id'])." </span><br/>";
 	
 		}
  	}
@@ -234,7 +234,7 @@ function list_talent_languages($talent_id) {
 		foreach($talent_language as $language){
 			
 			$list .= '<span class="label label-info" >';			
-			$list .= get_language_name($language['language_id'])." </span>";
+			$list .= get_language_name($language['language_id'])." </span><br/>";
 	
 		}
  	}
@@ -260,7 +260,7 @@ function list_talent_comments($talent_id) {
 		foreach($talent_comments as $comment){
 			
 			$list .= '<span class="username" >';			
-			$list .= get_user_full_name($comment['created_by']). $comment['comment']." </span>";
+			$list .= get_user_full_name($comment['created_by']). $comment['comment']." </span><br/>";
 	
 		}
  	}
