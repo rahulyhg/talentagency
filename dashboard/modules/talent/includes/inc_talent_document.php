@@ -114,15 +114,16 @@ $talent_document = DB::query($document_sql);
                 <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                 <span class="input-group-btn">
                     <!-- image-preview-clear button -->
-                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                  <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
                         <span class="glyphicon glyphicon-remove"></span> Clear
                     </button>
                     <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
+                    <div class="btn btn-default file-preview-text image-preview-input">
+						<span class='wrap-indicator' onclick='$(\"#show-detailed-text\").modal(\"show\")' title='NOTES.txt'></span>
                         <span class="glyphicon glyphicon-folder-open"></span>
                         <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-text/plain, application/pdf" name="talent_doc" id="talent_doc"/> <!-- Form Upload Field -->
+                        <input type="file" class="file"  accept="image/png, image/jpeg, image/gif,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+text/plain, application/pdf" data-preview-file-type="text" name="talent_doc" id="talent_doc"/> <!-- Form Upload Field -->
                     </div>
                     <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
                 </span>
