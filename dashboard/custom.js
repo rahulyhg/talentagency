@@ -100,13 +100,13 @@ $('.data-table').dataTable( {
     } );
 	
 $('.input-group.date').datepicker({
-    format: "yyyy-mm-dd",
+    format: "dd-mm-yyyy",
     autoclose:true,
     todayHighlight: true
 });
 
 $('.input-group.daterange').daterangepicker({
-    format: 'YYYY-MM-DD',
+    format: 'DD-MM-YYYY',
     ranges: {
        'Today': [moment(), moment()],
        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -118,8 +118,8 @@ $('.input-group.daterange').daterangepicker({
      
 });
 $('.input-group.daterange').on('apply.daterangepicker', function(ev, picker) {
-  $('#start_date').val(picker.startDate.format('YYYY-MM-DD'));
-  $('#end_date').val(picker.endDate.format('YYYY-MM-DD'));
+  $('#start_date').val(picker.startDate.format('DD-MM-YYYY'));
+  $('#end_date').val(picker.endDate.format('DD-MM-YYYY'));
 });
 
 $("abbr.timeago").timeago();
@@ -247,6 +247,132 @@ $(function() {
             $(".image-preview-filename2").val(file.name);            
             img.attr('src', e.target.result);
             $(".image-preview2").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
+/* / close Code for fileupload Button */
+
+
+/* Code for Doc type fileupload Button  1*/
+
+$(document).on('click', '#close-preview', function(){ 
+    $('.file-preview').popover('hide');
+    // Hover befor close the preview
+    $('.file-preview').hover(
+        function () {
+           $(this).closest('.file-preview').popover('show');
+        }, 
+         function () {
+           $(this).closest('.file-preview').popover('hide');
+        }
+    );    
+});
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.file-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no File",
+        placement:'bottom'
+    });
+    // Clear event
+   		$('.file-preview-clear').click(function(){
+        $('.file-preview').attr("data-content","").popover('hide');
+        $('.file-preview-filename').val("");
+        $('.file-preview-clear').hide();
+        $('.file-preview-input input:file').val("");
+        $(".file-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".file-preview-input input:file").change(function (){     
+        var file = $('<object/>', {
+            id: 'dynamic',
+            width:500,
+            height:500
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".file-preview-input-title").text("Change");
+            $(".file-preview-clear").show();
+            $(".file-preview-filename").val(file.name);            
+            file.attr('src', e.target.result);
+            $(".file-preview").attr("data-content",$(file)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
+/* / close Code for fileupload Button */
+
+
+/* Code for fileupload Button2 */
+
+$(document).on('click', '#close-preview2', function(){ 
+    $('.file-preview2').popover('hide');
+    // Hover befor close the preview
+    $('.file-preview2').hover(
+        function () {
+           $(this).closest('.file-preview2').popover('show');
+        }, 
+         function () {
+           $(this).closest('.file-preview2').popover('hide');
+        }
+    );    
+});
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview2',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.file-preview2').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no file",
+        placement:'bottom'
+    });
+    // Clear event
+   		$('.file-preview-clear2').click(function(){
+        $('.file-preview2').attr("data-content","").popover('hide');
+        $('.file-preview-filename2').val("");
+        $('.file-preview-clear2').hide();
+        $('.file-preview-input2 input:file').val("");
+        $(".file-preview-input-title2").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".file-preview-input2 input:file").change(function (){     
+        var file = $('<object/>', {
+            id: 'dynamic',
+            width:500,
+            height:500
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".file-preview-input-title2").text("Change");
+            $(".file-preview-clear2").show();
+            $(".file-preview-filename2").val(file.name);            
+            file.attr('src', e.target.result);
+            $(".file-preview2").attr("data-content",$(file)[0].outerHTML).popover("show");
         }        
         reader.readAsDataURL(file);
     });  

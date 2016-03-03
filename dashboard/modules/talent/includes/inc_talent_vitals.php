@@ -78,7 +78,7 @@
 							</div>
 					<div class="form-group">
 								<label class="col-md-3 col-sm-3 control-label">
-									Waist <small>cm</small>:
+									Waist <small>inch</small>:
 								</label>
 								<div class="col-md-9 col-sm-9">
 									
