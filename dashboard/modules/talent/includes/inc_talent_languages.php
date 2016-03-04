@@ -64,7 +64,8 @@ font-size:19px;
 		foreach($talent_languages as $language){
 		?>				
 		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
-		<button style="float:right" class="two"><a href="#"></a><i class="fa fa-times"></i></button>
+	<a class="two" href="delete.php?id=<?php echo $id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > x </a><i class="fa fa-times"></i>
 			<?php echo get_language_name($language['language_id']); ?>
 		</span>	
 			

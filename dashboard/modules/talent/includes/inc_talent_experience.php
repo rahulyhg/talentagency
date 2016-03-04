@@ -28,9 +28,9 @@ $talent_experiences = DB::query($experience_sql);
 .two{
 	border:0px;
 	margin: -3px -9px 6px 10px;
-   font-size:12px;
-
-	width:20px;
+   font-size:14px;
+    float:right;
+	width:15px;
 	height:20px;
 	color:black;
 	background-color: #00C0EF;
@@ -77,8 +77,8 @@ font-size:19px;
 		foreach($talent_experiences as $experience){
 		?>				
 		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
-        <button style="float:right" class="two"><a href="delete.php?id=<?php echo $id; ?>" 
-    onclick="return confirm('Are you sure you wish to delete this Record?');"> X </a><i class="fa fa-times"></i></button>
+       <a class="two" href="delete.php?id=<?php echo $id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > x </a>
 			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	
 			
