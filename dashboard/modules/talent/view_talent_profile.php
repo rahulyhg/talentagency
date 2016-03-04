@@ -380,13 +380,37 @@ elseif($events == 1 ){
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
 	            		<p class="text-left"><?php echo $dob; ?> &nbsp;</p>
-	            	</div>      	    	
+	            	</div>  
+					<div class="col-md-6 col-sm-6 ">
+	            		<p class="text-right"><strong>Nationality :</strong> &nbsp;</p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6"> 
+	            		<p class="text-left"><?php echo $nationality;  ?> &nbsp;</p>
+					</div>	
+					<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Qatari ID :</strong> &nbsp;</p>
+					</div>
+					<div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $qatari_id; ?> &nbsp;</p>
+					</div>
+					<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Passport No : </strong> &nbsp;</p>
+					</div>
+					<div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $passport_no; ?> &nbsp;</p>
+					</div>
 	            	<div class="col-md-6 col-sm-6 ">
 	            		<p class="text-right"><strong>Brief :</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6"> 
 	            		<p class="text-left"><?php echo $brief;  ?> &nbsp;</p>
-	            	</div>		            	 
+	            	</div>	
+					<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Available for Events ? : </strong> &nbsp;</p>
+					</div>
+					<div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $events; ?> &nbsp;</p>
+					</div>					
               </div>
  		
              </div> 
@@ -528,6 +552,215 @@ elseif($events == 1 ){
 			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#contact'; ?>" title="">Edit Contact Information</a></div>
             </div><!-- /.box-footer-->
           </div><!-- /.box Contact Information-->
+<!-- /.box Emergency Contact Information-->     
+                     			
+       		</div><!-- /.Row 1 Column 1 Ends-->
+<!-- Row 1 Column 2 Starts -->
+			<div class="col-md-6 col-sm-6">
+			
+ <!-- Vital Information box -->   			
+			<div class="box ">
+            <div class="box-header with-border">
+              <h3 class="box-title"> 
+              	Vital Information
+              	 </h3>
+              <div class="box-tools pull-right">
+              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
+              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+                <div class="box-body bg-gray">
+				<div class="row">
+				
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Height <small>cm</small>:</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $height_cm; ?> &nbsp;</p>
+	            </div>
+	              
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Weight <small>kg</small>: </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $weight_kg;  ?> &nbsp;</p>
+	            </div>
+	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Hair Color : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $hair_color; ?> &nbsp;</p>
+	            </div>
+	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Eye Color :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $eye_color; ?> &nbsp;</p>
+	            </div>
+	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Dress Size:</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $dress_size; ?> &nbsp;</p>
+	            </div>
+	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Shoe Size :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $shoe_size; ?> &nbsp;</p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $waist_cm; ?> &nbsp;</p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Collar <small>cm</small> :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $collar_cm; ?> &nbsp;</p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Chest <small>cm</small> :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $chest_cm; ?> &nbsp;</p>
+	            </div>
+		            	                        
+              	
+              </div>
+				  </div>
+				  	   
+            <div class="box-footer">
+			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#vitals'; ?>" title="">Edit Vitals Information</a></div>
+            </div><!-- /.box-footer-->
+          </div><!-- /.box Work Information box  -->     
+       
+            			
+  <!-- Employability Information box -->   			
+<!--
+			<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title"> 
+              	Employability Information
+              	 </h3>
+              <div class="box-tools pull-right">
+              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
+              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+                  <div class="box-body bg-info">
+				  <div class="row">
+				  
+				<div class="col-md-6 col-sm-6 ">
+	            		<p class="text-right"><strong>Nationality :</strong> &nbsp;</p>
+	            	</div>
+	            	<div class="col-md-6 col-sm-6"> 
+	            		<p class="text-left"><?php echo $nationality;  ?> &nbsp;</p>
+	            </div>	
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Is Qatari? :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $is_qatari; ?> &nbsp;</p>
+	            </div>
+	
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Qatari ID :</strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $qatari_id; ?> &nbsp;</p>
+	            </div>
+  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Qatari ID Copy? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $qatari_id_copy_attached; ?> &nbsp;</p>
+	            </div>
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Passport No : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $passport_no; ?> &nbsp;</p>
+	            </div>
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Passport ID Copy? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $passport_copy_attached; ?> &nbsp;</p>
+	            </div>
+				  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>NOC Required? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $noc_required; ?> &nbsp;</p>
+	            </div>
+								  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>NOC Copy? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $noc_copy_attached; ?> &nbsp;</p>
+	            </div>
+								  	            
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Sponsors ID Copy? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $sponsors_id_copy_attached; ?> &nbsp;</p>
+	            </div>
+				<div class="col-md-6 col-sm-6  ">
+	            		<p class="text-right"><strong>Available for Events ? : </strong> &nbsp;</p>
+	            </div>
+	            <div class="col-md-6 col-sm-6 "> 
+	            		<p class="text-left"><?php echo $events; ?> &nbsp;</p>
+	            </div>
+	
+              </div>
+				  </div>
+				  	   
+            <div class="box-footer">
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#employability'; ?>" title="">Edit Employability Information</a></div>
+            </div><!-- /.box-footer-->
+       <!--   </div><!-- /.box Contract Information box  --> 
+          
+   <!-- Spoken Languages  -->       			
+       		<div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title"> 
+              	Spoken Languages
+              	 </h3>
+              <div class="box-tools pull-right">
+              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
+              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+                  <div class="box-body bg-gray">
+                  <div class="row">
+	            <div class="col-md-12 col-sm-12 "> 
+	            		<p><?php echo list_talent_languages($talent_id); ?> &nbsp;</p>
+	            </div>
+                  					  	            
+                  	
+                  </div>
+				  
+				  </div>
+				  	   
+            <div class="box-footer">
+			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#languages'; ?>" title="">Edit Spoken Languages</a></div>
+            </div><!-- /.box-footer-->
+          </div><!-- /.box Languages -->
 
    <!-- Experience box -->       			
        		<div class="box box-info">
@@ -619,214 +852,7 @@ elseif($events == 1 ){
             <div class="box-footer">
 			<div class="text-right"><a href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#portfolio'; ?>" title="">Edit Portfolio Items</a></div>
             </div><!-- /.box-footer-->
-          </div><!-- /.box Emergency Contact Information-->     
-                     			
-       		</div><!-- /.Row 1 Column 1 Ends-->
-<!-- Row 1 Column 2 Starts -->
-			<div class="col-md-6 col-sm-6">
-			
- <!-- Vital Information box -->   			
-			<div class="box ">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Vital Information
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                <div class="box-body bg-gray">
-				<div class="row">
-				
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Height <small>cm</small>:</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $height_cm; ?> &nbsp;</p>
-	            </div>
-	              
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Weight <small>kg</small>: </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $weight_kg;  ?> &nbsp;</p>
-	            </div>
-	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Hair Color : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $hair_color; ?> &nbsp;</p>
-	            </div>
-	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Eye Color :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $eye_color; ?> &nbsp;</p>
-	            </div>
-	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Dress Size:</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $dress_size; ?> &nbsp;</p>
-	            </div>
-	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Shoe Size :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $shoe_size; ?> &nbsp;</p>
-	            </div>
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $waist_cm; ?> &nbsp;</p>
-	            </div>
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Collar <small>cm</small> :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $collar_cm; ?> &nbsp;</p>
-	            </div>
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Chest <small>cm</small> :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $chest_cm; ?> &nbsp;</p>
-	            </div>
-		            	                        
-              	
-              </div>
-				  </div>
-				  	   
-            <div class="box-footer">
-			 <div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#vitals'; ?>" title="">Edit Vitals Information</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Work Information box  -->     
-       
-            			
-  <!-- Employability Information box -->   			
-			<div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Employability Information
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body bg-info">
-				  <div class="row">
-				  
-				<div class="col-md-6 col-sm-6 ">
-	            		<p class="text-right"><strong>Nationality :</strong> &nbsp;</p>
-	            	</div>
-	            	<div class="col-md-6 col-sm-6"> 
-	            		<p class="text-left"><?php echo $nationality;  ?> &nbsp;</p>
-	            </div>	
-				  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Is Qatari? :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $is_qatari; ?> &nbsp;</p>
-	            </div>
-	
-				  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Qatari ID :</strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $qatari_id; ?> &nbsp;</p>
-	            </div>
-  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Qatari ID Copy? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $qatari_id_copy_attached; ?> &nbsp;</p>
-	            </div>
-				  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Passport No : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $passport_no; ?> &nbsp;</p>
-	            </div>
-				  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Passport ID Copy? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $passport_copy_attached; ?> &nbsp;</p>
-	            </div>
-				  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>NOC Required? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $noc_required; ?> &nbsp;</p>
-	            </div>
-								  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>NOC Copy? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $noc_copy_attached; ?> &nbsp;</p>
-	            </div>
-								  	            
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Sponsors ID Copy? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $sponsors_id_copy_attached; ?> &nbsp;</p>
-	            </div>
-				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Available for Events ? : </strong> &nbsp;</p>
-	            </div>
-	            <div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"><?php echo $events; ?> &nbsp;</p>
-	            </div>
-	
-              </div>
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#employability'; ?>" title="">Edit Employability Information</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Contract Information box  --> 
-          
-   <!-- Spoken Languages  -->       			
-       		<div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title"> 
-              	Spoken Languages
-              	 </h3>
-              <div class="box-tools pull-right">
-              		<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button>
-              		<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-                  <div class="box-body bg-gray">
-                  <div class="row">
-	            <div class="col-md-12 col-sm-12 "> 
-	            		<p><?php echo list_talent_languages($talent_id); ?> &nbsp;</p>
-	            </div>
-                  					  	            
-                  	
-                  </div>
-				  
-				  </div>
-				  	   
-            <div class="box-footer">
-			<div class="text-right"><a  href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent_id.'#languages'; ?>" title="">Edit Spoken Languages</a></div>
-            </div><!-- /.box-footer-->
-          </div><!-- /.box Languages -->      
+          </div>		  
  
   <!-- Talent Notes box -->   			
 			<div class="box">
