@@ -416,6 +416,14 @@ $last_modified_on = $talent['last_modified_on'];
 									</textarea>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-md-3 col-sm-3 control-label">
+									Available for Events ?
+								</label>
+								<div class="col-md-9 col-sm-9">
+									<input type="checkbox" class="form-control switch" id="events" name="events" data-on-text="Yes" data-off-text="No" data-on-color="success" data-off-color="danger" <?php if( $events == 1 ) { echo "checked='checked'"; } ?> />
+								</div>
+							</div>
   
               </div> <!--/.body-box-->
  				<div class="box-footer">

@@ -1,6 +1,6 @@
 <?php
 // List of Documents
-$sql    = "SELECT `document_type_id`,`document_type_name`,`document_type_desc`, `document_type_status` FROM `tams_document_types` WHERE (`document_type_status` = 'active') AND ( tams_document_types.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id."))";
+$sql    = "SELECT `document_type_id`,`document_type_name`,`document_type_desc`, `document_type_status` FROM `tams_document_types` WHERE (`document_type_status` = 'active') AND ( tams_document_types.`document_type_id` NOT IN (SELECT document_type_id FROM tams_talent_documents WHERE talent_id=".$talent_id.")) ORDER BY document_type_name";
 $document_types = DB::query($sql);
 
 if(isset($_GET['talent_id']))
@@ -46,10 +46,11 @@ $talent_document = DB::query($document_sql);
 		$doc_type = DB::queryFirstField("SELECT document_type_name from tams_document_types WHERE document_type_id = ".$document['document_type_id']);	
 			
 		?>	
- 		<div class="col-md-3 col-sm-3">
+ 		<div class="col-md-3 col-sm-3 file-preview-frame"  style="background-color: whitesmoke;">
  		<?php echo $doc_type; ?>
-        <a target="_blank" href="<?php echo $document['document_path']; ?>" class="btn btn-info btn-lg "><i class="fa fa-2x fa-file"></i> &nbsp;<?php echo $document['document_description']; ?></a>
-		</div>	
+        <a target="_blank" href="<?php echo $document['document_path']; ?>"><embed src="<?php echo $document['document_path']; ?>" class="img-responsive center-block img-rounded"/>&nbsp;<?php echo $document['document_description']; ?></a>	
+		</div>
+	
  
 			
 
@@ -110,21 +111,21 @@ $talent_document = DB::query($document_sql);
 						<div class="col-md-9 col-sm-9">
 					
 		<!-- input-group image-preview [FROM HERE]-->
-            <div class="input-group image-preview">
-                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+            <div class="input-group file-preview">
+            <!--    <input type="text" class="form-control file-preview-filename" disabled="disabled"> --><!-- don't give a name === doesn't send on POST/GET -->
                 <span class="input-group-btn">
                     <!-- image-preview-clear button -->
-                    <button  type="submit" class="btn btn-default image-preview-clear" style="display:none;">
+                 <!-- <button  type="submit" class="btn btn-default file-preview-clear" style="display:none;">
                         <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
+                    </button>-->
                     <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-text/plain, application/pdf" name="talent_doc" id="talent_doc"/> <!-- Form Upload Field -->
+                    <div class="btn btn-default file-preview-input">
+                   <!--     <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="file-preview-input-title">Browse</span>-->
+                        <input type="file" class="file"  accept="image/png, image/jpeg, image/gif,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+text/plain, application/pdf" data-preview-file-type="text" name="talent_doc" id="talent_doc"/> <!-- Form Upload Field -->
                     </div>
-                    <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+                 <!--   <button type="button" name="save"  class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>-->
                 </span>
             </div><!-- /input-group image-preview [TO HERE]-->
 						</div>

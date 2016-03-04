@@ -35,8 +35,8 @@ $tbl2->addCell($talent['height_cm']);
 $tbl2->addCell($talent['weight_kg']);
 $tbl2->addCell($talent['nationality']);
 $tbl2->addCell(list_talent_experiences($talent['talent_id']));
-$tbl2->addCell("<a class='pull btn btn-warning btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a><br/>
-				<a class='pull btn btn-danger btn-circle btn-xs' href ='#'>Save Talent&nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a><br/><a class='btn btn-info btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View Profile&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
+$tbl2->addCell("<a class='pull btn btn-danger btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a><br/>
+				<a class='btn btn-info btn-circle btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
 }			  
 
 

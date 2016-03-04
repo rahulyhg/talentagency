@@ -1,7 +1,7 @@
 <?php
 
 // List of Languages
-$sql    = "SELECT `language_id`,`language_name` FROM `tams_languages` WHERE (`language_status` = 'active') AND ( tams_languages.`language_id` NOT IN (SELECT language_id FROM tams_talent_language WHERE talent_id=".$talent_id."))";
+$sql    = "SELECT `language_id`,`language_name` FROM `tams_languages` WHERE (`language_status` = 'active') AND ( tams_languages.`language_id` NOT IN (SELECT language_id FROM tams_talent_language WHERE talent_id=".$talent_id.")) ORDER BY language_name";
 $languages = DB::query($sql);
 
 

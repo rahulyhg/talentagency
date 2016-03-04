@@ -4,13 +4,15 @@
     <!-- Bootstrap 3.3.2 -->
     <link href="<?php echo SITE_ROOT;  ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="<?php echo SITE_ROOT;  ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo SITE_ROOT;  ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />	
     <!-- Ionicons -->
     <link href="<?php echo SITE_ROOT;  ?>assets/ionic-master/release/css/ionic.css" rel="stylesheet" type="text/css" />
-        <!-- DATA TABLES -->
+        <!-- Bootstrap File Input -->
+    <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-fileinput-master/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+		<!-- DATA TABLES -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" /> 
      <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/bootstrap3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />  
- <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" />    	
+	<link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" />    	
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" />
 <!-- Bootstrap-Switches -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css" /> 
@@ -70,9 +72,12 @@
 
     <!-- jQuery 2.1.3 -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
+     <!-- Bootstrap File Input -->
+    <script src="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-fileinput-master/js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
+	<script src="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-fileinput-master/js/fileinput.min.js"></script>
+	<!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo SITE_ROOT;  ?>assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
- <!-- Pace Plugin -->
+	<!-- Pace Plugin -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/pace/pace.js" type="text/javascript"></script>  
     
    <!-- X-Editable Plugin -->
@@ -82,7 +87,7 @@
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/select2/select2.min.js" type="text/javascript"></script>       
      <!-- Typeahead Plugin -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/typeaheadjs/lib/typeahead.js" type="text/javascript"></script>
-        <script src="<?php echo SITE_ROOT;  ?>assets/plugins/typeaheadjs/typeaheadjs.js" type="text/javascript"></script>
+    <script src="<?php echo SITE_ROOT;  ?>assets/plugins/typeaheadjs/typeaheadjs.js" type="text/javascript"></script>
      <!-- InputMask -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
