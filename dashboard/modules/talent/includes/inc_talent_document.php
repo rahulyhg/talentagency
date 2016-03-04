@@ -48,8 +48,9 @@ $talent_document = DB::query($document_sql);
 		?>	
  		<div class="col-md-3 col-sm-3 file-preview-frame"  style="background-color: whitesmoke;">
  		<?php echo $doc_type; ?>
-        <embed src="<?php echo $document['document_path']; ?>" class="img-responsive center-block img-rounded"/>&nbsp;<?php echo $document['document_description']; ?>
-		</div>	
+        <a target="_blank" href="<?php echo $document['document_path']; ?>"><embed src="<?php echo $document['document_path']; ?>" class="img-responsive center-block img-rounded"/>&nbsp;<?php echo $document['document_description']; ?></a>	
+		</div>
+	
  
 			
 
