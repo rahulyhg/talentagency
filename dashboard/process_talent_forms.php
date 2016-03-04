@@ -35,6 +35,11 @@ if(isset($_POST['form_name'])) {
 				$created_on = getDateTime(NULL ,"mySQL");
 				$last_modified_by =	$_SESSION['user_id'];
 				$last_modified_on = getDateTime(NULL ,"mySQL");
+				if(isset($_POST['events'])){
+				$events = 1;
+				} else {
+				$events = 0;
+				}	
 			
 			DB::insert('tams_talent', array(
 						'first_name' 		=> $first_name,						
@@ -47,6 +52,9 @@ if(isset($_POST['form_name'])) {
 						'twitter' 			=> $twitter,
 						'instagram' 		=> $instagram,
 						'nationality'		=> $nationality,
+						'passport_no'       => $passport_no,
+						'qatari_id'			=> $qatari_id,
+						'events'			=> $events,
 						'talent_status'		=> "draft",
 						'created_by' 		=> $created_by,
 						'created_on'	 	=> $created_on,
