@@ -490,19 +490,26 @@ if(isset($_POST['form_name'])) {
 	
 		case "edit_talent_basic_info":
 		$talent_id = $_GET['talent_id'];
-
 		$photo1_caption=$_POST['photo1_caption'];
-		
 		$photo2_caption=$_POST['photo2_caption'];
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
 		$dob = $_POST['dob'];
 		$sex = $_POST['sex'];
+		$nationality = $_POST['nationality'];
+		$passport_no = $_POST['passport_no'];
+		$qatari_id   = $_POST['qatari_id'];
 		$brief = $_POST['brief'];
 		$created_by = $_SESSION['user_id'];
 		$created_on = getDateTime(NULL ,"mySQL");
 		$last_modified_by =	$_SESSION['user_id'];
 		$last_modified_on = getDateTime(NULL ,"mySQL");
+		
+		if(isset($_POST['events'])){
+		$events = 1;
+		} else {
+		$events = 0;
+		}	
 		
 		if(($talent_id > 0) AND ($talent_id <> "")){
 			
@@ -516,7 +523,11 @@ if(isset($_POST['form_name'])) {
 						'last_name'=> $last_name, 
 						'dob' => $dob,
 						'sex' => $sex,
+						'nationality' => $nationality,
+						'passport_no' => $passport_no,
+						'qatari_id' => $qatari_id,
 						'brief' => $brief,
+						'events'=> $events,
 						'created_by' 		=> $created_by,
 						'created_on'	 	=> $created_on,
 						'last_modified_by'	=> $last_modified_by,
