@@ -55,8 +55,10 @@ $talent_portfolio_item = DB::query($portfolio_sql);
 	 		<?php echo $portfolio['portfolio_item_description']; ?>
 	 		</div>
 	 		<div class="col-md-6 col-sm-6">
-	 		 <a target="_blank" href="<?php echo $portfolio['portfolio_item_url']; ?>" ><i class="fa fa-open"></i> &nbsp;<?php echo $portfolio['portfolio_item_url']; ?></a>
-	 		</div> 		 
+	 		<a target="_blank" href="<?php echo $portfolio['portfolio_item_url']; ?>" ><i class="fa fa-open"></i> &nbsp;<?php echo $portfolio['portfolio_item_url']; ?></a>
+	 		<a class="pull-right btn btn-default btn-xs" href="process_talent_deletes.php?action=delete_portfolio_item&id=<?php echo $portfolio['talent_portfolio_item_id']; ?>&talent_id=<?php echo $talent_id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > delete </a>
+			</div> 		 
  
 		</div>	
 		<?php
