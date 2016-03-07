@@ -59,6 +59,34 @@ if(isset($_GET['action'])) {
 		
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#portfolio');		
 		break;
+		
+/*********************************************************
+* 
+***************   DELETE TALENT PHOTO   ************** 
+* 
+***********************************************************/	
+
+	case "delete_talent_photo":
+		$talent_id = $_GET['talent_id'];
+		$id = $_GET['id'];	
+		DB::delete('tams_talent_photos', "talent_photo_id=%s AND talent_id=%s", $id, $talent_id);
+		
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#photos');		
+		break;
+		
+/*********************************************************
+* 
+***************   DELETE DOCUMENT   ************** 
+* 
+***********************************************************/	
+
+	case "delete_document":
+		$talent_id = $_GET['talent_id'];
+		$id = $_GET['id'];	
+		DB::delete('tams_talent_documents', "talent_document_id=%s AND talent_id=%s", $id, $talent_id);
+		
+		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');		
+		break;
 	}
 	
 } else {

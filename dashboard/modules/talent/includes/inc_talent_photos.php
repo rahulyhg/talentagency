@@ -105,10 +105,11 @@ $last_modified_on = getDateTime(NULL,"mySQL");
             <div class="row">
             	<div class="form-group">
 				 <?php  foreach($talent_photos as $photo) {?>
-				  	<div class="col-md-3 col-sm-3">
-						<img  class="img-responsive center-block img-rounded" src="<?php echo $photo['photo_path']; ?>" alt="<?php echo $photo['photo_caption']; ?>"  />	<span class="caption"><?php echo $photo['photo_caption']; ?></span>	
-				  		
-				  		
+				  	<div class="col-md-3 col-sm-3 file-preview-frame" style="background-color:whitesmoke;">
+					<a class="pull-right btn btn-default btn-xs" href="process_talent_deletes.php?action=delete_talent_photo&id=<?php echo $photo['talent_photo_id']; ?>&talent_id=<?php echo $talent_id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > X </a>
+				<img  class="img-responsive center-block img-rounded" src="<?php echo $photo['photo_path']; ?>" alt="<?php echo $photo['photo_caption']; ?>"  />	<span class="caption"><?php echo $photo['photo_caption']; ?></span>
+			
 				  	</div>
 				<?php }  ?>
 				  
