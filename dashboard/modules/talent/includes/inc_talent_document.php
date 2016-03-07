@@ -18,6 +18,17 @@ $talent_document = DB::query($document_sql);
 
 
 ?>
+<style>
+.three{
+	border:0px;
+	margin: 0px 2px 10px 10px;
+    font-size:15px;
+    float:right;
+	width:15px;
+	height:20px;
+	color:black;
+	}
+</style>
 <form  enctype="multipart/form-data" id="edit_talent_document_info" name="edit_talent_document_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 <!-- Documents Information box -->       			
        		<div class="box box-info">
@@ -48,7 +59,10 @@ $talent_document = DB::query($document_sql);
 		?>	
  		<div class="col-md-3 col-sm-3 file-preview-frame"  style="background-color: whitesmoke;">
  		<?php echo $doc_type; ?>
+		 <a class="pull-right btn btn-default btn-xs" href="process_talent_deletes.php?action=delete_experience_item&id=<?php echo $experience['talent_experience_item_id']; ?>&talent_id=<?php echo $talent_id; ?>"
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > X </a>
         <a target="_blank" href="<?php echo $document['document_path']; ?>"><embed src="<?php echo $document['document_path']; ?>" class="img-responsive center-block img-rounded"/>&nbsp;<?php echo $document['document_description']; ?></a>	
+		
 		</div>
 	
  
