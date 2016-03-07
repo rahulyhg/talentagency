@@ -90,7 +90,7 @@ foreach($get_talents as $talent) {
             
                   
               <ul class="nav nav-stacked">
-                <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="#">Experiences <span class="pull-right"><?php echo list_talent_experiences($talent['talent_id']);?></span></a></li>
                 <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
                 <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
                 <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
