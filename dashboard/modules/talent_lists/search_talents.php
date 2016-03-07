@@ -80,7 +80,7 @@ foreach($get_talents as $talent) {
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
               <h3 class="widget-user-username"><?php echo $talent['first_name']." ".$talent['last_name']; ?></h3>
-              <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+              <h5 class="widget-user-desc"><?php echo $talent['sex'];?>,&nbsp;<?php echo getAge($talent['dob']);  ?> Years</h5>
             </div>
             <div class="widget-user-image">
             <img class="img-circle" src="<?php echo $talent['photo1_url']; ?>"  alt="talent_photo"  />
