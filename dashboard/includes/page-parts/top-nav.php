@@ -37,15 +37,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent <span class="caret"></span></a>
+     <li class="dropdown">
+  
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent Lists <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?route=modules/talent/add_talent">Add New Talent</a></li>
+ 	 
+			<li><a href="index.php?route=modules/talent/saved_talent_list">Search for Talents</a></li>   			
+			<li class="divider"></li>				     
 
+			<li><a href="index.php?route=modules/talent/saved_talent_list"> Manage Talent Lists </a></li>   			
+			<li class="divider"></li>				     
+ 
+          </ul>
+        </li>            
+      
+      <li class="dropdown">
+ 
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Data Entry <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            
+			<li><a href="index.php?route=modules/talent/view_talents">View Talent List</a></li>
+			       
             <li class="divider"></li>
-			<li><a href="index.php?route=modules/talent/view_talents">View Talent List</a></li>            
-            <li class="divider"></li>
-			<li><a href="index.php?route=modules/talent/saved_talent_list">Saved Talent Lists</a></li>   			
+
+			<li><a href="index.php?route=modules/talent/add_talent">Add New Talent</a></li>
+     
           </ul>
         </li>      
       <li class="dropdown">
