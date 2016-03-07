@@ -524,7 +524,7 @@ elseif($events == 1 ){
 	            		<p class="text-right"><strong>Email : </strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"> <?php echo $email_id; ?> &nbsp;</p>
+	            		<p class="text-left">&nbsp;<a href="mailto:<?php echo $email_id; ?>"> <?php echo $email_id; ?></a></p>
 	            	</div>	
 	            	<div class="col-md-6 col-sm-6  ">
 	            		<p class="text-right"><strong>Twitter : </strong> &nbsp;</p>
