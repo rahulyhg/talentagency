@@ -68,6 +68,7 @@ echo "<pre>";
 				  <div class="row">
 			 <p>
 			 <div class="box-comments"  style="margin:10px;">
+
 				 <?php
 				 if ($talent_comments) {
 				 	foreach($talent_comments as $comment) {
@@ -82,7 +83,10 @@ echo "<pre>";
 									<?php echo getDateTime($comment['created_on'],"dtShort"); ?>
 								</span>
 							</span>
+							
 							<?php echo $comment['comment']; ?>
+							<a class="pull-right btn btn-default btn-xs" href="process_talent_deletes.php?action=delete_note&id=<?php echo $comment['talent_comment_id']; ?>&talent_id=<?php echo $talent_id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > delete </a>
 						</div>						
 						</div>
 						<?php
