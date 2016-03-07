@@ -242,7 +242,7 @@ echo "<pre>";
 	            		<p class="text-right"><strong>Email : </strong></p>
 	            	</div>
 	            	<div class="col-md-6 col-sm-6 "> 
-	            		<p class="text-left"> <?php echo $client_email; ?> </p>
+	            		<p class="text-left"><a href="mailto:<?php echo $client_email; ?>"> <?php echo $client_email; ?></a></p>
 	            	</div>		            						  
               	
               </div>
