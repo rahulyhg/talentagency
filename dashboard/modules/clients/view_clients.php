@@ -35,7 +35,7 @@ $tbl->addCell($client['client_name']);
 $tbl->addCell($client['client_title']);
 $tbl->addCell($client['client_country']);
 $tbl->addCell($client['client_phone_1']);
-$tbl->addCell($client['client_email']);
+$tbl->addCell("<a href='mailto:".$client['client_email']."' >".$client['client_email']."</a>");
 
 
 
