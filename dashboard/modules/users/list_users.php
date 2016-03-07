@@ -27,7 +27,7 @@ $tbl->addRow();
 $tbl->addCell($user['user_name']." (".$user['user_id'].") ");
 $tbl->addCell('<img src="'.$user['user_avatar_url'].'" alt="avatar" />');
 $tbl->addCell($user['user_title']." ".$user['first_name']." ".$user['last_name']);
-$tbl->addCell($user['user_email']);
+$tbl->addCell("<a href='mailto:".$user['user_email']."' >".$user['user_email']."</a>");
 $tbl->addCell(get_user_role_name($user['role_id']));
  $tbl->addCell($user['user_status']);
 $tbl->addCell("<a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/users/edit_user&user_id=".$user['user_id']."'>Edit User&nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a>
