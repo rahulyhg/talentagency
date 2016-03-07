@@ -53,10 +53,10 @@
       
       <li class="dropdown">
  
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Data Entry <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Talents<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             
-			<li><a href="index.php?route=modules/talent/view_talents">View Talent List</a></li>
+			<li><a href="index.php?route=modules/talent/view_talents">List All Talents</a></li>
 			       
             <li class="divider"></li>
 
