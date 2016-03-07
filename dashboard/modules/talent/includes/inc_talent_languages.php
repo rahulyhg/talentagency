@@ -25,7 +25,7 @@ $talent_languages = DB::query($language_sql);
 <style>
 .two{
    border:0px;
-	margin: -3px -9px 6px 10px;
+	margin: 3px -9px 6px 10px;
    font-size:12px;
 
 	width:20px;
@@ -64,8 +64,8 @@ font-size:19px;
 		foreach($talent_languages as $language){
 		?>				
 		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
-	<a class="two" href="delete.php?id=<?php echo $id; ?>" 
-    onclick="return confirm('Are you sure you wish to delete this Record?');" > x </a><i class="fa fa-times"></i>
+	<a class="two" href="process_talent_deletes.php?action=delete_language&id=<?php echo $language['talent_language_id']; ?>&talent_id=<?php echo $talent_id; ?>" 
+    onclick="return confirm('Are you sure you wish to delete this Record?');" > X </a>
 			<?php echo get_language_name($language['language_id']); ?>
 		</span>	
 			
