@@ -22,23 +22,7 @@ $talent_languages = DB::query($language_sql);
 
 
 ?>
-<style>
-.two{
-   border:0px;
-	margin: 3px -9px 6px 10px;
-   font-size:12px;
-
-	width:20px;
-	height:20px;
-	color:black;
-	background-color: #00C0EF;
-}
-.one {
-margin-left:20px;
-font-size:19px;
-
-}  
-</style>
+ 
 <form id="edit_talent_languages_info" name="edit_talent_languages_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
 <!-- Spoken Languages Information box -->       			
        		<div class="box box-info">

@@ -29,10 +29,8 @@ $talent_experiences = DB::query($experience_sql);
 <style>
 .two{
 	border:0px;
- 
 	margin: 3px -9px 6px 10px;
- 
-   font-size:14px;
+    font-size:14px;
     float:right;
 	width:15px;
 	height:20px;
