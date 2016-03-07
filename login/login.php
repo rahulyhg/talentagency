@@ -1,7 +1,7 @@
 <?php
  session_start();
-    session_unset();
-    session_destroy();
+ session_unset();
+ session_destroy();
  session_start();
 include_once('functions.php');
 
@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
                 
             $_SESSION['role_id'] = $res['role_id'];
             $_SESSION['user_id'] = $res['user_id'];
-             $_SESSION['user_email'] = $res['user_email'];
+            $_SESSION['user_email'] = $res['user_email'];
             $_SESSION['user_name'] = $user;
             $_SESSION['first_name'] = $res['first_name'];
             $_SESSION['last_name'] = $res['last_name'];
