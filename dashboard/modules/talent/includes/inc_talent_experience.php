@@ -22,6 +22,8 @@ WHERE talent_id = $talent_id";
 
 $talent_experiences = DB::query($experience_sql);
 
+//$talent_experience_item_id = $talent_experiences['$talent_experience_item_id'];
+
 
 ?>
 <style>
@@ -77,7 +79,7 @@ font-size:19px;
 		foreach($talent_experiences as $experience){
 		?>				
 		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
-       <a class="two" href="delete.php?id=<?php echo $id; ?>" 
+       <a class="two" href="process_talent_deletes.php?talent_experience_item_id=<?php echo $experience['talent_experience_item_id']; ?>" action="delete" id="delete_experience_item" name="delete_experience_item" 
     onclick="return confirm('Are you sure you wish to delete this Record?');" > x </a>
 			<?php echo get_experience_item_name($experience['experience_item_id']); ?>
 		</span>	
