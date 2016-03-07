@@ -42,10 +42,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent Lists <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
  	 
-			<li><a href="index.php?route=modules/talent/saved_talent_list">Search for Talents</a></li>   			
+			<li><a href="index.php?route=modules/talent_lists/search_talents">Search for Talents</a></li>   			
 			<li class="divider"></li>				     
 
-			<li><a href="index.php?route=modules/talent/saved_talent_list"> Manage Talent Lists </a></li>   			
+			<li><a href="index.php?route=modules/talent_lists/saved_talent_lists"> Manage Talent Lists </a></li>   			
 			<li class="divider"></li>				     
  
           </ul>
