@@ -30,7 +30,7 @@ $talent_experiences = DB::query($experience_sql);
 .two{
 	border:0px;
 	margin: 3px -9px 6px 10px;
-   font-size:14px;
+    font-size:14px;
     float:right;
 	width:15px;
 	height:20px;
@@ -45,7 +45,7 @@ font-size:19px;
 </style>
 
 <form
-	id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id="<?php echo $talent_id; ?>" >
+	id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 	<!-- Experience Information box -->
 	<div class="box box-info">
 		<div class="box-header with-border">
