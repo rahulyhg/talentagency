@@ -280,6 +280,7 @@ DROP TABLE IF EXISTS `tams_talent_list_items`;
 CREATE TABLE `tams_talent_list_items` (
   `talent_list_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `talent_list_id` int(11) NOT NULL,
+  `talent_id` int(11) NOT NULL,
   `comments` varchar(255) DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
   `created_on` datetime DEFAULT NULL,
