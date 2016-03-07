@@ -76,12 +76,12 @@ function get_user_name($user_id){
 // Get User Avatar URL
 function get_user_avatar_url($user_id, $imageWidth = '150'){
 
-$user_avatar_url = DB::queryFirstField("SELECT user_avatar_url FROM tams_users");
+$user_avatar_url = DB::queryFirstField("SELECT user_avatar_url FROM tams_users WHERE user_id=".$user_id);
 
 if($user_avatar_url == "") {
 	
 	
-$user_email = DB::queryFirstField("SELECT user_email FROM tams_users");
+$user_email = DB::queryFirstField("SELECT user_email FROM tams_users WHERE user_id=".$user_id);
 	
 $userMail = $user_email;
 
@@ -98,7 +98,7 @@ return $user_avatar_url;
 // Get User Full Name
 function get_user_full_name($user_id) {
 	
-	return DB::queryFirstField('SELECT CONCAT(`user_title`, " ",`first_name`," " ,`last_name`) AS fullname FROM tams_users');
+	return DB::queryFirstField('SELECT CONCAT(`user_title`, " ",`first_name`," " ,`last_name`) AS fullname FROM tams_users WHERE user_id='.$user_id);
 	
 	
 }
@@ -295,7 +295,7 @@ function list_talent_photos($talent_id) {
 // Get Talent Full Name	
 function get_talent_full_name($talent_id) {
 	
-	return DB::queryFirstField('SELECT CONCAT(`first_name`," " ,`last_name`) AS fullname FROM tams_talent');
+	return DB::queryFirstField('SELECT CONCAT(`first_name`," " ,`last_name`) AS fullname FROM tams_talent WHERE talent_id='.$talent_id);
 	
 	
 }
