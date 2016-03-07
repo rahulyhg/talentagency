@@ -27,7 +27,7 @@ $tbl->addCell($talent['first_name']." ".$talent['last_name']);
 $tbl->addCell($talent['sex']);
 $tbl->addCell(getAge($talent['dob']));
 $tbl->addCell($talent['mobile_no']);
-$tbl->addCell($talent['email_id']);
+$tbl->addCell("<a href='mailto:".$talent['email_id']."' >".$talent['email_id']."</a>");
 $tbl->addCell($talent['nationality']);
 $tbl->addCell($talent['brief']);
  
