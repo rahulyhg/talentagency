@@ -163,3 +163,10 @@ h3.normal {
         min-width: 500px;
     }
 }
+.btn {
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+  margin-bottom:3px !important;
+}

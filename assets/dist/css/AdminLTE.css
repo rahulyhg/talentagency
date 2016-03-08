@@ -2168,7 +2168,6 @@ a:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid transparent;
-  margin-bottom:3px;
 }
 .btn.uppercase {
   text-transform: uppercase;
