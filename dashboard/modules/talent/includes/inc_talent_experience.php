@@ -44,8 +44,7 @@ font-size:19px;
 }     
 </style>
 
-<form
-	id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
+<form id="edit_talent_experience_info" name="edit_talent_experience_info" class="form-horizontal" method="post" action="process_talent_forms.php?talent_id=<?php echo $talent_id; ?>" >
 	<!-- Experience Information box -->
 	<div class="box box-info">
 		<div class="box-header with-border">
