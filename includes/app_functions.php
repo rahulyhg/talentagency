@@ -212,8 +212,8 @@ function list_talent_experience($talent_id) {
 	 	
 		foreach($talent_experience as $experience){
 			
-			$list .= '<span class="label1-info">';			
-			$list .= get_experience_item_name($experience['experience_item_id'])."</span> , &nbsp;";
+			$list .= '';			
+			$list .= get_experience_item_name($experience['experience_item_id']).", &nbsp;";
 	
 		}
  	}
@@ -282,8 +282,8 @@ function list_talent_language($talent_id) {
 	 	
 		foreach($talent_language as $language){
 			
-			$list .= '<span class="label1-info" >';			
-			$list .= get_language_name($language['language_id'])." </span> , &nbsp;";
+			$list .= '';			
+			$list .= get_language_name($language['language_id']).", &nbsp;";
 	
 		}
  	}
