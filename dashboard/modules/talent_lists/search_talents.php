@@ -109,7 +109,7 @@ footer{
 foreach($get_talents as $talent) {  
 			  
 ?>	
-        <div class="col-md-4 col-sm-6" style="height:450px;">
+        <div class="col-md-4 col-sm-6" style="height:550px;">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -125,9 +125,11 @@ foreach($get_talents as $talent) {
             
                   
               <ul class=" nav nav_stacked">
-                <li><a href="#"><h4 style="color:black;">Experiences</h4></a></li>
+			   <li><a href="#"><h4 style="color:black;">Nationality</h4></a></li>
+			   <li><a href="#"><?php echo $talent['nationality'];?></a></li>
+                <li><a href="#"><h4 style="color:black;">Professional Skills</h4></a></li>
                 <li><a href="#"><?php echo list_talent_experience($talent['talent_id']);?></a></li>
-                <li><a href="#" ><h4 style="color:black;">Languages</h4></a></li>
+                <li><a href="#" ><h4 style="color:black;">spoken Languages</h4></a></li>
                 <li><a href="#"><?php echo list_talent_language($talent['talent_id']);?></a></li>
               </ul>
             </div>
