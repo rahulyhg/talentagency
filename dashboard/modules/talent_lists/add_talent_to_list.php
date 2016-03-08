@@ -1,5 +1,5 @@
 <?php
-
+$talent_id = -1;
 // List of Talent Lists
 $sql    = "SELECT `talent_list_id`,`talent_list_title`, `talent_list_details` FROM `tams_talent_lists` WHERE ( tams_talent_lists.`talent_list_id` NOT IN (SELECT talent_list_id FROM tams_talent_list_items )) ORDER BY talent_list_title";
 $talent_lists = DB::query($sql);
@@ -70,14 +70,7 @@ $talent_items = DB::query($talent_list_sql);
 		<p class="one">
 		<?php 
 		foreach($talent_items as $item){
-		?>				
-		<span class="label label-info" style="display:inline-block;padding: 5px 12px 0px 10px;">
-       <a class="two" href="process_talent_deletes.php?action=delete_experience_item&id=<?php echo $item['talent_list_item_id']; ?>&talent_id=<?php echo $talent_id; ?>"
-    onclick="return confirm('Are you sure you wish to delete this Record?');" > X </a>
-			<?php echo get_talent_list_name($item['talent_list_id']); ?>
-		</span>	
-			
-
+		?>			
 		<?php
 		} // for each $talent_items									
 		?>
