@@ -59,24 +59,23 @@ $get_talents = DB::query($sql);
 						<Option VALUE="nationality">Nationality</option>
 						<Option VALUE="sex">Gender</option>
 						<Option VALUE="dob">Age</option>
-						<Option VALUE="eye_color">eye color</option>
-						<Option VALUE="height_cm">height</option>
-						<Option VALUE="weight">weight</option>
-						<Option VALUE="language">language</option>
-						<Option VALUE="experience">skill</option>
+						<Option VALUE="eye_color">Eye color</option>
+						<Option VALUE="height_cm">Height</option>
+						<Option VALUE="weight">Weight</option>
+						<Option VALUE="language">Language</option>
+						<Option VALUE="experience">Skill</option>
 						</select>
 					 <span class="dropdown">
-                <button class="butn dropdown-toggle" type="button" data-toggle="dropdown">Filter by
-						<span class="caret"></span></button>
-						<ul class="dropdown-menu">
-						  <li><a href="#">Contains</a></li>
-						  <li><a href="#">It's equal</a></li>
-						  <li><a href="#">Greather than ></a></li>
-						   <li><a href="#less_than">Less than < </a></li>
-						   <li><a href="#between">Between</a></li>
-						    <li><a class="#like">Like %</a></li>
-						</ul>
-					  </span>
+                
+				 <Select NAME="field" class="butn"><option selected>Operator by</option>
+						  <option><a href="#">Contains</a></option>
+						  <option><a href="#">It's equal</a></option>
+						  <option><a href="#">Greather than ></a></option>
+						   <option><a href="#less_than">Less than < </a></option>
+						   <option><a href="#between">Between</a></option>
+						    <option><a class="#like">Like %</a></option>
+						</select>
+					  
 
 					 
 				 <input  type="submit" class="searchbutn" name="submit" value="Search">
