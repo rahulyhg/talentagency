@@ -22,9 +22,6 @@ WHERE talent_id = $talent_id";
 
 $talent_experiences = DB::query($experience_sql);
 
-//$talent_experience_item_id = $talent_experiences['$talent_experience_item_id'];
-
-
 ?>
 <style>
 .two{
