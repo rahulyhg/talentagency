@@ -196,6 +196,32 @@ function list_talent_experiences($talent_id) {
  
 	return $list;
 }
+
+// List of Talent Experiences veiw card
+function list_talent_experience($talent_id) {
+	$list = "";
+	 
+		$experience_sql    = "SELECT
+		*
+		FROM
+		tams_talent_experience
+		WHERE talent_id = $talent_id";
+
+		$talent_experience = DB::query($experience_sql);
+	if($talent_experience ) {	
+	 	
+		foreach($talent_experience as $experience){
+			
+			$list .= '<span class="label1-info">';			
+			$list .= get_experience_item_name($experience['experience_item_id'])."</span> , &nbsp;";
+	
+		}
+ 	}
+		 
+ 
+	return $list;
+}
+
 // List of Talent Portfolio Items
 function list_talent_portfolios($talent_id) {
 	$list = "";
@@ -240,6 +266,30 @@ function list_talent_languages($talent_id) {
  	}
 	return $list;
 }
+
+// List of Talent Spoken Languages profile viewcard
+function list_talent_language($talent_id) {
+	$list = "";
+	 
+	 $language_sql    = "SELECT
+		*
+		FROM
+		tams_talent_language
+		WHERE talent_id = $talent_id";
+
+		$talent_language = DB::query($language_sql);
+	if($talent_language ) {	
+	 	
+		foreach($talent_language as $language){
+			
+			$list .= '<span class="label1-info" >';			
+			$list .= get_language_name($language['language_id'])." </span> , &nbsp;";
+	
+		}
+ 	}
+	return $list;
+}
+
 
 // List of Talent Notes
 function list_talent_comments($talent_id) {

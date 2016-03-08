@@ -8,6 +8,41 @@ $sql .= 'LIMIT 20';
 $get_talents = DB::query($sql);
 
 ?>
+
+<style>
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 40px;
+  height: 40px;
+  padding: 8px 8px;
+  font-size: 20px;
+  line-height: 1.33;
+  border-radius: 26px;
+}
+
+footer{
+  text-decoration: none;
+}
+
+
+</style>
 <!--   Content Header (Page header) -->
 
 
@@ -74,7 +109,7 @@ $get_talents = DB::query($sql);
 foreach($get_talents as $talent) {  
 			  
 ?>	
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6" style="height:450px;">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -89,34 +124,33 @@ foreach($get_talents as $talent) {
             <div class="row">
             
                   
-              <ul class="nav nav-stacked">
-                <li><a href="#">Experiences <span class="pull-right"><?php echo list_talent_experiences($talent['talent_id']);?></span></a></li>
-                <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
+              <ul class=" nav nav_stacked">
+                <li><a href="#"><h4 style="color:black;">Experiences</h4></a></li>
+                <li><a href="#"><?php echo list_talent_experience($talent['talent_id']);?></a></li>
+                <li><a href="#" ><h4 style="color:black;">Languages</h4></a></li>
+                <li><a href="#"><?php echo list_talent_language($talent['talent_id']);?></a></li>
               </ul>
             </div>
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">3,200</h5>
-                    <span class="description-text">SALES</span>
+       
+                    <span class="description-text"><button type="button" class="btn btn-warning btn-circle btn-lg"><i href="delete.html" class="glyphicon glyphicon-trash"></i></button></span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">13,000</h5>
-                    <span class="description-text">FOLLOWERS</span>
+                    <span class="description-text"><button type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-user"></i></button></span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4">
                   <div class="description-block">
-                    <h5 class="description-header">35</h5>
-                    <span class="description-text">PRODUCTS</span>
+                 
+                    <span class="description-text"><button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-heart"></i></button></span>
                   </div>
                   <!-- /.description-block -->
                 </div>
