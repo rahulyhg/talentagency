@@ -22,7 +22,7 @@ $tbl->addCell("Number of list items");
 $tbl->addCell("Names of talents with links to talent profiles");
  
 $tbl->addCell("<a class=' btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/viev_a_talent_list&talent_list_id=".$list['talent_list_id']."'>View List &nbsp;&nbsp;<span class='glyphicon glyphicon-list'></span></a> &nbsp;&nbsp;
-			   <a class='btn btn-danger btn-xs' href ='#'>Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>");
+			   <a class='btn btn-danger btn-xs' href ='#'>Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>");
 }
  
 ?>
