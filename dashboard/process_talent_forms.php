@@ -21,7 +21,7 @@ if(isset($_POST['form_name'])) {
 				$talent_id = - 1;
 				$first_name = $_POST['first_name'];
 				$last_name  = $_POST['last_name'];
-				$dob        = $_POST['dob'];
+				$dob        = getDateTime($_POST['dob'] ,"DmySQL");
 				$sex        = $_POST['sex'];
 				$address    = $_POST['address'];
 				$mobile_no   = $_POST['mobile_no'];
@@ -502,7 +502,7 @@ if(isset($_POST['form_name'])) {
 		$photo2_caption=$_POST['photo2_caption'];
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
-		$dob = $_POST['dob'];
+		$dob        = getDateTime($_POST['dob'] ,"DmySQL");
 		$sex = $_POST['sex'];
 		$nationality = $_POST['nationality'];
 		$passport_no = $_POST['passport_no'];

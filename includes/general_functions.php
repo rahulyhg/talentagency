@@ -32,6 +32,12 @@ function getDateTime($time = 0, $form = "dtLong") {
 		case "mySQL":
 		$strform = "Y-m-d H:i:s";
 		break;
+		case "DmySQL":
+		$strform = "Y-m-d";
+		break;
+		case "dTAMS":
+		$strform = "d-m-Y";
+		break;
 		default:
 		$strform = "j-M-Y g:ia";	
 	}

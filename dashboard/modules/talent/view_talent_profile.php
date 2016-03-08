@@ -13,7 +13,7 @@ $talent= DB::queryFirstRow($sql);
 $talent_id = $talent['talent_id'];
 $first_name = $talent['first_name'];
 $last_name = $talent['last_name'];
-$dob = $talent['dob'];
+$dob        = getDateTime($talent['dob'] ,"dTAMS");
 $sex = $talent['sex'];
 $brief = $talent['brief'];
 $address = $talent['Address'];
@@ -141,8 +141,9 @@ $sex = get_talent_gender($talent_id);
 if (is_null($sex) OR $sex == "" ) {
 	$sex = " - not set - ";
 } 
-$dob = $talent['dob'];
-if (is_null($dob) OR $dob == "" ) {
+  
+if (is_null($talent['dob']) OR $talent['dob'] == "0000-00-00" ) {
+	$age = " - not set - ";
 	$dob = " - not set - ";
 } else {
 	$age = getAge($talent['dob']);
