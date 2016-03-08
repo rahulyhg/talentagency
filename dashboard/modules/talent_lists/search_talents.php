@@ -9,40 +9,7 @@ $get_talents = DB::query($sql);
 
 ?>
 
-<style>
-body{padding-top:30px;}
 
-.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
-
-small {
-display: block;
-line-height: 1.428571429;
-color: #999;
-}
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-lg {
-  width: 40px;
-  height: 40px;
-  padding: 8px 8px;
-  font-size: 20px;
-  line-height: 1.33;
-  border-radius: 26px;
-}
-
-footer{
-  text-decoration: none;
-}
-
-
-</style>
 <!--   Content Header (Page header) -->
 
 
@@ -83,20 +50,37 @@ footer{
                   </div>
 				 <p>
 				<form  method="post" action=""  id="searchform"> 
-				  <input  type="text" name="find">
-                  	
-				 <Select NAME="field"><option selected>Filter by</option>
+				
+				   <input type="text" class="serchform" name="x" placeholder="Search term...">
+				  	
+				 <Select NAME="field" class="field"><option selected>Filter by</option>
 						<Option VALUE="first_name">First Name</option>
 						<Option VALUE="last_name">Last Name</option>
-					
 						<Option VALUE="nationality">Nationality</option>
-						<Option VALUE="dob">Age</option>
 						<Option VALUE="sex">Gender</option>
+						<Option VALUE="dob">Age</option>
 						<Option VALUE="eye_color">eye color</option>
 						<Option VALUE="height_cm">height</option>
+						<Option VALUE="weight">weight</option>
+						<Option VALUE="language">language</option>
+						<Option VALUE="experience">skill</option>
 						</select>
+					 <span class="dropdown">
+                <button class="butn dropdown-toggle" type="button" data-toggle="dropdown">Filter by
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+						  <li><a href="#">Contains</a></li>
+						  <li><a href="#">It's equal</a></li>
+						  <li><a href="#">Greather than ></a></li>
+						   <li><a href="#less_than">Less than < </a></li>
+						   <li><a href="#between">Between</a></li>
+						    <li><a class="#like">Like %</a></li>
+						</ul>
+					  </span>
+
 					 
-				  <input  type="submit" name="submit" value="Search"> 
+				 <input  type="submit" class="searchbutn" name="submit" value="Search">
+				 
 			</form>
   	</p>
                       </div><!-- /.box-header -->      

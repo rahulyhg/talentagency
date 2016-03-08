@@ -170,3 +170,51 @@ h3.normal {
   border: 1px solid transparent;
   margin-bottom:3px !important;
 }
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 40px;
+  height: 40px;
+  padding: 8px 8px;
+  font-size: 20px;
+  line-height: 1.33;
+  border-radius: 26px;
+}
+
+footer{
+  text-decoration: none;
+}
+.serchform{
+	width:235px;
+	height:36px;
+}
+.field{
+	width:120px;
+	height:36px;
+}
+.butn{
+	width:120px;
+	height:35px;
+	background-color:#fff;
+	border:0.8px solid gray;
+}
+.searchbutn{
+	width:120px;
+	height:36px;
+}
