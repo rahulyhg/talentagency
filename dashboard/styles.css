@@ -171,13 +171,8 @@ h3.normal {
   margin-bottom:3px !important;
 }
 
-.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+.glyphicon { left:-2.2px; top:2px; margin-bottom: 10px;margin-right: 10px;}
 
-small {
-display: block;
-line-height: 1.428571429;
-color: #999;
-}
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -186,14 +181,16 @@ color: #999;
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+   left:-2px;
 }
 .btn-circle.btn-lg {
   width: 40px;
   height: 40px;
-  padding: 8px 8px;
+  padding:-1px -1px;
   font-size: 20px;
   line-height: 1.33;
   border-radius: 26px;
+ 
 }
 
 footer{
