@@ -215,7 +215,10 @@ footer{
 	height:36px;
 }
 ul.nav.nav_stacked li{
-	color:#00A7D0;;
+	color:#00A7D0;
+}
+ul.nav.nav_stacked li h4{
+	color:black;
 }
 .nav{
 	padding-left:15px;
