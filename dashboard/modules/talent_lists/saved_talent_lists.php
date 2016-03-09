@@ -1,6 +1,3 @@
-<style>
-   td{text-align: center;} 
-</style>
 <?php
 
 $tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'Saved Talent Lists'));
@@ -26,7 +23,7 @@ $get_saved_lists = DB::query($sql);
 foreach($get_saved_lists as $list) { 
 $tbl->addRow();
 $tbl->addCell($list['talent_list_title']);
-$tbl->addCell($row['COUNT(*)']);
+$tbl->addCell("<span class='center-block'>".$row['COUNT(*)']."</span>");
 $tbl->addCell(list_talents_name($list['talent_list_id']));
 $tbl->addCell("<a class=' btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/view_a_talent_list&talent_list_id=".$list['talent_list_id']."'>View List &nbsp;&nbsp;<span class='glyphicon glyphicon-list'></span></a> &nbsp;&nbsp;
 			   <a class='btn btn-danger btn-xs' href ='#'>Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>");
