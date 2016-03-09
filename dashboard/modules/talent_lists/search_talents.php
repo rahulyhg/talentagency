@@ -119,15 +119,19 @@ foreach($get_talents as $talent) {
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-       
-                    <span class="description-text"><button type="button" class="btn btn-warning btn-circle btn-lg"><i href="delete.html" class="glyphicon glyphicon-trash"></i></button></span>
+
+                    <span class="description-text">
+					<a class='btn btn-warning btn-circle btn-lg' href ="process_delete_talent.php?action=delete_talent&id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to delete this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
+					</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <span class="description-text"><button type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-user"></i></button></span>
+                    <span class="description-text">
+					<a class='btn btn-info btn-circle btn-lg' href ="index.php?route=modules/talent/view_talent_profile&talent_id=<?php echo $talent['talent_id']; ?>">&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
+					</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
@@ -135,7 +139,9 @@ foreach($get_talents as $talent) {
                 <div class="col-sm-4">
                   <div class="description-block">
                  
-                    <span class="description-text"><button type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-heart"></i></button></span>
+                    <span class="description-text">
+					<a class='btn btn-danger btn-circle btn-lg' href ="index.php?route=modules/talent_lists/add_talent_to_list&talent_id=<?php echo $talent['talent_id']; ?>">&nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a>
+					</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
