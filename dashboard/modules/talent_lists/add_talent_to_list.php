@@ -1,10 +1,12 @@
 <?php
-$talent_id = -1;
+if(isset($_GET['talent_id']))
+{
+	$talent_id = $_GET['talent_id'];
 // List of Talent Lists
-$sql    = "SELECT `talent_list_id`,`talent_list_title`, `talent_list_details` FROM `tams_talent_lists` WHERE ( tams_talent_lists.`talent_list_id` NOT IN (SELECT talent_list_id FROM tams_talent_list_items WHERE talent_id=".$talent_id." )) ORDER BY talent_list_title";
+$sql    = "SELECT * FROM tams_talent_lists WHERE talent_list_id NOT IN (SELECT talent_list_id FROM tams_talent_list_items WHERE talent_id=".$talent_id." ) ORDER BY talent_list_title";
 $talent_lists = DB::query($sql);
 
-
+}
 
 
 if(isset($_GET['talent_id']))
@@ -16,7 +18,7 @@ $talent_list_sql    = "SELECT
 *
 FROM
 tams_talent_list_items
-WHERE talent_id = $talent_id";
+WHERE talent_id = $talent_id;";
 
 $talent_items = DB::query($talent_list_sql);
 }
