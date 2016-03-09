@@ -1,3 +1,6 @@
+<style>
+   td{text-align: center;} 
+</style>
 <?php
 
 $tbl = new HTML_Table('', 'data-table table table-striped table-bordered', array('data-title'=>'Saved Talent Lists'));
@@ -11,6 +14,11 @@ $tbl->addCell('Talents Included', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
+$dbh='SELECT talent_list_id,COUNT(*)  
+FROM tams_talent_list_items 
+GROUP BY talent_list_id';
+$get_count = DB::query($dbh);
+foreach($get_count as $row);
 
  
 $sql = 'SELECT * FROM tams_talent_lists';
@@ -18,9 +26,8 @@ $get_saved_lists = DB::query($sql);
 foreach($get_saved_lists as $list) { 
 $tbl->addRow();
 $tbl->addCell($list['talent_list_title']);
-$tbl->addCell("Number of list items");
-$tbl->addCell("Names of talents with links to talent profiles");
- 
+$tbl->addCell($row['COUNT(*)']);
+$tbl->addCell(list_talents_name($list[talent_list_id]));
 $tbl->addCell("<a class=' btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/view_a_talent_list&talent_list_id=".$list['talent_list_id']."'>View List &nbsp;&nbsp;<span class='glyphicon glyphicon-list'></span></a> &nbsp;&nbsp;
 			   <a class='btn btn-danger btn-xs' href ='#'>Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>");
 }
