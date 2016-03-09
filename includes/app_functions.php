@@ -333,7 +333,6 @@ function list_talent_photos($talent_id) {
 			
 			if (file_exists(ROOT_PATH.'uploads/talent_photos/'.$talent_id.'_photo')){
 		$list = '<img src="'.SITE_ROOT.'uploads/talent_photos/'.$talent_id.'_photo" class="img-responsive" alt="Talent Photo" /><br>';	
-		//$list = '<img src="'.$img['photo_path'].'" class="img-responsive" alt="Talent Photo" /><br>';	
 	}
 	return $list;
 		 
@@ -348,6 +347,31 @@ function get_talent_full_name($talent_id) {
 	return DB::queryFirstField('SELECT CONCAT(`first_name`," " ,`last_name`) AS fullname FROM tams_talent WHERE talent_id='.$talent_id);
 	
 	
+}
+
+// List of Talent Names in Specific Talent List
+function list_talents_name($talent_list_id) {
+	$list = "";
+	 
+		$talent_name_sql    = "SELECT
+		*
+		FROM
+		tams_talent_list_items
+		WHERE talent_list_id = $talent_list_id";
+
+		$talent_names = DB::query($talent_name_sql);
+	if($talent_names ) {	
+	 	
+		foreach($talent_names as $name){
+			
+			$list .= '<a href='.$_SERVER['PHP_SELF'].'?route=modules/talent/view_talent_profile&talent_id='.$name['talent_id'].'>';			
+			$list .= get_talent_full_name($name['talent_id'])." </a><br/>";
+	
+		}
+ 	}
+		 
+ 
+	return $list;
 }
 
  ?>
