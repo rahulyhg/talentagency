@@ -81,6 +81,11 @@ if (isset($_POST['save'])){
 							 <textarea class="form-control" required placeholder="Add Talent List Details Here" 
 							 value="" name="talent_list_details" id="talent_list_details">	
 							</textarea>
+			<script>
+                // Replace the <textarea id="talent_list_details"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'talent_list_details' );
+            </script>
 						  </div>
 					</div>
 				</div><!-- /.box-body -->

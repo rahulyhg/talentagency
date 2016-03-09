@@ -7,22 +7,22 @@
     <link href="<?php echo SITE_ROOT;  ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />	
     <!-- Ionicons -->
     <link href="<?php echo SITE_ROOT;  ?>assets/ionic-master/release/css/ionic.css" rel="stylesheet" type="text/css" />
-        <!-- Bootstrap File Input -->
+    <!-- Bootstrap File Input -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-fileinput-master/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-		<!-- DATA TABLES -->
+	<!-- DATA TABLES -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" /> 
-     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/bootstrap3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />  
+    <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/bootstrap3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />  
 	<link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" />    	
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/DataTables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" />
-<!-- Bootstrap-Switches -->
+	<!-- Bootstrap-Switches -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-switch-master/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" type="text/css" /> 
-   <!-- iCheck for checkboxes and radio inputs -->
+	<!-- iCheck for checkboxes and radio inputs -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/iCheck/all.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap Color Picker -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet"/>
     <!-- Bootstrap time Picker -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
-     <!-- X-Editable CSS -->
+	<!-- X-Editable CSS -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>    
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/address/address.css" rel="stylesheet"/>
     <!-- SELECT2 CSS -->
@@ -44,14 +44,14 @@
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
- <!-- Date Picker -->
+	<!-- Date Picker -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-        <!-- Daterange picker -->
+    <!-- Daterange picker -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
- <!-- bootstrap wysihtml5 - text editor -->
+	<!-- bootstrap wysihtml5 - text editor -->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     
-      <!-- Pace Plugin CSS-->
+    <!-- Pace Plugin CSS-->
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/pace/pace.css" rel="stylesheet" type="text/css" />  
     <link href="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-vertical-tabs/bootstrap.vertical-tabs.min.css" rel="stylesheet" type="text/css" />  
 
@@ -79,7 +79,10 @@
     <script src="<?php echo SITE_ROOT;  ?>assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<!-- Pace Plugin -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/pace/pace.js" type="text/javascript"></script>  
-    
+    <!-- CK-Editor Plugin -->
+    <script src="<?php echo SITE_ROOT;  ?>assets/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>  
+    <script src="<?php echo SITE_ROOT;  ?>assets/plugins/address/address.js" type="text/javascript"></script> 
+	
    <!-- X-Editable Plugin -->
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/bootstrap-editable/js/bootstrap-editable.js" type="text/javascript"></script>  
     <script src="<?php echo SITE_ROOT;  ?>assets/plugins/address/address.js" type="text/javascript"></script> 
