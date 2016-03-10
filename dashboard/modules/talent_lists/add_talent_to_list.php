@@ -113,12 +113,6 @@ $talent_items = DB::query($talent_list_sql);
 							?>
 
 						</select>
-						<div class="input-group-addon"> <button type="submit" class='btn btn-xs pull-right' name="save" value="save">
-							Add &nbsp;
-							<i class="fa fa-plus">
-							</i>
-						</button>
-						</div>
 						</div>
 					</div>
 <script type="text/javascript">
@@ -132,7 +126,7 @@ $talent_items = DB::query($talent_list_sql);
                     <div class="form-group"  >
 						<label class="col-md-3 col-sm-3 control-label"> Comments:</label>
 						  <div class="col-md-9 col-sm-9">
-							 <input class="form-control" type="text" required placeholder="Add Comments Here " 
+							 <input class="form-control" type="text" placeholder="Add Comments Here " 
 							 value="" name="comments" id="comments">							
 						  </div>
 					</div>
@@ -152,6 +146,11 @@ $talent_items = DB::query($talent_list_sql);
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
+						<button style="margin-right:10px;" type="submit" class='btn btn-success btn-lg pull-right' name="save" value="save">
+						Save &nbsp; 
+						<i class="fa fa-chevron-circle-right">
+						</i>
+						</button>
 					</div>	<!-- /.col -->
 				</div>		<!-- /form-group -->
 				<small>
