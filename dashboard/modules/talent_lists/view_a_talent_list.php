@@ -10,6 +10,23 @@ WHERE talent_list_id= $talent_list_id)";
 $sql .= 'LIMIT 20';
 $get_talents = DB::query($sql);
 }
+if(isset($_GET['talent_list_id'])){
+	$talent_list_id = $_GET['talent_list_id'];
+
+		$sql = "SELECT
+				*
+				FROM
+				tams_talent_lists
+				WHERE talent_list_id = $talent_list_id ;";
+$talent= DB::queryFirstRow($sql);
+$talent_list_id = $talent['talent_list_id'];
+$talent_list_title = $talent['talent_list_title'];
+$talent_list_details = $talent['talent_list_details'];
+$created_on = $talent['created_on'];
+$created_by = $talent['created_by'];
+$last_modified_by = $talent['last_modified_by'];
+$last_modified_on = $talent['last_modified_on'];
+}
 ?>
  <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -30,6 +47,7 @@ $get_talents = DB::query($sql);
 <form id="view_talent_list" name="view_talent_list" class="form-horizontal" method="post" action="process_talent_lists.php?talent_list_id=<?php echo $talent_list_id; ?>" >
 <!-- Default box -->
            <div class="box">
+		   <div class="box col-md-6 col-sm-6 col-sx-12">
             <div class="box-header with-border">
              <h3 class="box-title">View Talent List</h3>
             <div class="box-tools pull-right">
@@ -40,7 +58,20 @@ $get_talents = DB::query($sql);
 	
 		<div class="box-body bg-info">
 		<div class="row">
+		
+                  <div class="box-body" >
+				  <label class="col-md-3 col-sm-3 control-label"> Talent List Title:</label>
+                   <div class="col-md-9 col-sm-9">
+				   <?php echo $talent_list_title; ?>
+				   </div>
 
+                    <div class="form-group"  >
+						<label class="col-md-3 col-sm-3 control-label"> Talent List Detail:</label>
+						  <div class="col-md-9 col-sm-9">
+							 <?php echo $talent_list_details;?>	
+						</div>
+		</div> <!--.row-->
+		<div class="row">
 		<?php 
 		foreach($get_talents as $talent) {  
 					  
@@ -129,6 +160,7 @@ $get_talents = DB::query($sql);
 			</div> <!--.row-->
 			</div> <!--.box-body-->
 			</div><!-- /close box --> 
+			</div><!-- /.box -->
 			</form>
 			
 			</section><!-- /close section --> 
