@@ -55,23 +55,15 @@ $last_modified_on = $talent['last_modified_on'];
               </div>
             </div><!-- /box hearder close --> 
 			
-	
-		<div class="box-body bg-info">
-		<div class="row">
-		
+					<div class="box-body bg-info">
+					<div class="row">
                   <div class="box-body" >
-				  <label class="col-md-3 col-sm-3 control-label"> Talent List Title:</label>
+				  <label class="col-md-3 col-sm-3 control-label"><h2>Talent List Title:</h2></label></br>
+				  <h2><span><?php echo $talent_list_title; ?></span></h2></br>
                    <div class="col-md-9 col-sm-9">
-				   <?php echo $talent_list_title; ?>
-				   </div>
-
-                    <div class="form-group"  >
-						<label class="col-md-3 col-sm-3 control-label"> Talent List Detail
-						
-						</label>
-						  <div class="col-md-9 col-sm-9">
-							 <?php echo $talent_list_details;?>	
-						</div>
+					<label><h3><?php echo $talent_list_details;?><span> Talent List Detail</span></h3>
+					</label>
+						  
 		</div> <!--.row-->
 		<div class="row">
 		<?php 
@@ -107,14 +99,10 @@ $last_modified_on = $talent['last_modified_on'];
 			?>
                   
               <ul class=" nav nav_stacked">
-			   <li><h4>Nationality</h4></li>
-			   <li ><?php echo $talent['nationality'];?></li>
-                <li><h4>Professional Skills</h4></li>
-                <li><?php echo list_talent_experience($talent['talent_id']);?></li>
-                <li><h4>spoken Languages</h4></li>
-                <li><?php echo list_talent_language($talent['talent_id']);?></li>
-				<li><h4>Available for Events?</h4></li>
-				<li><?php echo $events;?></li>
+			 <li ><strong>From</strong></br><?php echo $talent['nationality'];?></li></br>
+                <li><strong>Having Skill</strong>&nbsp;<?php echo list_talent_experience($talent['talent_id']);?></li></br>
+                <li><strong>Languages known</strong>&nbsp;<?php echo list_talent_language($talent['talent_id']);?></li></br>
+				<li><strong>Available</strong>&nbsp;<?php echo $events;?></li>
               </ul>
             </div>
               <div class="row">
