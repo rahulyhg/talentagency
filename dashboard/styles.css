@@ -215,7 +215,7 @@ footer{
 	height:36px;
 }
 ul.nav.nav_stacked li{
-	color:#00A7D0;
+	color:gray;
 }
 ul.nav.nav_stacked li h4{
 	color:black;
@@ -225,3 +225,11 @@ ul.nav.nav_stacked li h4{
 }
 span.glyphicon.glyphicon-plus{
 	left:10px;
+	
+}
+
+
+img.img-circle{
+	border-radius:10px;
+	margin-left:70px;
+}

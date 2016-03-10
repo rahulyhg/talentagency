@@ -121,14 +121,10 @@ foreach($get_talents as $talent) {
 			?>
                   
               <ul class=" nav nav_stacked">
-			   <li><h4>Nationality</h4></li>
-			   <li ><?php echo $talent['nationality'];?></li>
-                <li><h4>Professional Skills</h4></li>
-                <li><?php echo list_talent_experience($talent['talent_id']);?></li>
-                <li><h4>spoken Languages</h4></li>
-                <li><?php echo list_talent_language($talent['talent_id']);?></li>
-				<li><h4>Available for Events?</h4></li>
-				<li><?php echo $events;?></li>
+			   <li ><strong>From</strong></br> <?php echo $talent['nationality'];?></li></br>
+                <li><strong>Having skill</strong>&nbsp;<?php echo list_talent_experience($talent['talent_id']);?></li></br>
+                <li><strong>language known</strong>&nbsp;<?php echo list_talent_language($talent['talent_id']);?></li></br>
+				<li><strong>Availble</strong>&nbsp;<?php echo $events;?></li>
               </ul>
             </div>
               <div class="row">
