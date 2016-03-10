@@ -1,12 +1,14 @@
 <?php
-
-
-$sql = 'SELECT * FROM tams_talent WHERE talent_id IN (
+if(isset($_GET['talent_list_id']))
+{
+	$talent_list_id = $_GET['talent_list_id'];
+$sql = "SELECT * FROM tams_talent WHERE talent_id IN (
 SELECT talent_id 
 FROM tams_talent_list_items
-GROUP BY talent_list_id)';
+WHERE talent_list_id= $talent_list_id)";
 $sql .= 'LIMIT 20';
 $get_talents = DB::query($sql);
+}
 ?>
  <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -84,13 +86,14 @@ $get_talents = DB::query($sql);
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-
                     <span class="description-text">
-					<a class='btn btn-warning btn-circle btn-lg' title="Remove" href ="process_delete_talent.php?action=delete_talent&id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to delete this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
+					<a class='btn btn-warning btn-circle btn-lg' title="Remove From List" href ="process_talent_deletes.php?action=delete_talent_from_list&id=<?php echo get_talent_list_item_id($talent['talent_id']); ?>&talent_id=<?php echo $talent_id; ?>" onclick="return confirm('Are you sure you wish to remove this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
 					</span>
                   </div>
                   <!-- /.description-block -->
-                </div>
+            
+				</div>
+				
                 <!-- /.col -->
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
@@ -116,8 +119,7 @@ $get_talents = DB::query($sql);
             </div>
           </div>
           <!-- /.widget-user -->
-        </div>
-					
+        </div>				
 			
 <?php 
 }		  
@@ -132,6 +134,6 @@ $get_talents = DB::query($sql);
 			
 <!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="view_talent_list" />
-					 
+<input type="hidden" name="talent_list_id" id="talent_list_id" value="<?php echo $talent['talent_list_id']; ?>" />					 
 <!-- /Hidden Fields --> 
 			
