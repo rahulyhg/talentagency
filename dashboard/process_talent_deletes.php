@@ -87,6 +87,21 @@ if(isset($_GET['action'])) {
 		
 		header('Location: index.php?route=modules/talent/edit_talent_profile&talent_id='.$talent_id.'#documents');		
 		break;
+		
+/*********************************************************
+* 
+*************** REMOVE TALENT FROM LIST   ************** 
+* 
+***********************************************************/	
+
+	case "delete_talent_from_list":
+		$talent_id = $_GET['talent_id'];
+		$talent_list_id = $_POST['talent_list_id'];
+		$id = $_GET['id'];	
+		DB::delete('tams_talent_list_items', "talent_list_item_id=%s AND talent_id=%s", $id, $talent_id);
+		
+		header('Location: index.php?route=modules/talent_lists/saved_talent_lists');		
+		break;
 	}
 	
 } else {

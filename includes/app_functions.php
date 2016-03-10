@@ -374,4 +374,10 @@ function list_talents_name($talent_list_id) {
 	return $list;
 }
 
+function get_talent_list_item_id ($talent_id){
+	$talent_list_item_id = DB::queryFirstField("SELECT talent_list_item_id from tams_talent_list_items WHERE talent_id = $talent_id");
+	return $talent_list_item_id;
+	
+}
+
  ?>

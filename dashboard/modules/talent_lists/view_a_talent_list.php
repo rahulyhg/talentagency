@@ -1,7 +1,8 @@
 <?php
 if(isset($_GET['talent_list_id']))
 {
-	$talent_list_id = $_GET['talent_list_id'];
+$talent_list_id = $_GET['talent_list_id'];
+
 $sql = "SELECT * FROM tams_talent WHERE talent_id IN (
 SELECT talent_id 
 FROM tams_talent_list_items
@@ -87,7 +88,7 @@ $get_talents = DB::query($sql);
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
                     <span class="description-text">
-					<a class='btn btn-warning btn-circle btn-lg' title="Remove From List" href ="process_talent_deletes.php?action=delete_talent_from_list&id=<?php echo get_talent_list_item_id($talent['talent_id']); ?>&talent_id=<?php echo $talent_id; ?>" onclick="return confirm('Are you sure you wish to remove this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
+					<a class='btn btn-warning btn-circle btn-lg' title="Remove From List" href ="process_talent_deletes.php?action=delete_talent_from_list&id=<?php echo get_talent_list_item_id($talent['talent_id']); ?>&talent_id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to remove this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
 					</span>
                   </div>
                   <!-- /.description-block -->
@@ -134,6 +135,6 @@ $get_talents = DB::query($sql);
 			
 <!-- Hidden Fields -->
 <input type="hidden" name="form_name" id="form_name" value="view_talent_list" />
-<input type="hidden" name="talent_list_id" id="talent_list_id" value="<?php echo $talent['talent_list_id']; ?>" />					 
+<input type="hidden" name="talent_list_id" id="talent_list_id" value="<?php echo $_GET['talent_list_id']; ?>" />					 
 <!-- /Hidden Fields --> 
 			
