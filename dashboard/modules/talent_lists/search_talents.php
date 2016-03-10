@@ -136,7 +136,7 @@ foreach($get_talents as $talent) {
                   <div class="description-block">
 
                     <span class="description-text">
-					<a class='btn btn-warning btn-circle btn-lg' title="Remove" href ="process_delete_talent.php?action=delete_talent&id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to delete this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
+					<a class='btn btn-warning btn-circle btn-lg' title="Delete" href ="process_delete_talent.php?action=delete_talent&id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to delete this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
 					</span>
                   </div>
                   <!-- /.description-block -->

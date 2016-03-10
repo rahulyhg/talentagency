@@ -25,8 +25,11 @@ $tbl->addRow();
 $tbl->addCell($list['talent_list_title']);
 $tbl->addCell("<span class='center-block'>".$row['COUNT(*)']."</span>");
 $tbl->addCell(list_talents_name($list['talent_list_id']));
+$btnStr = ' onclick="'; 
+$btnStr .= " return confirm('Are you sure you wish to delete this Record?'); ";
+$btnStr .= ' " ';
 $tbl->addCell("<a class=' btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/view_a_talent_list&talent_list_id=".$list['talent_list_id']."'>View List &nbsp;&nbsp;<span class='glyphicon glyphicon-list'></span></a> &nbsp;&nbsp;
-			   <a class='btn btn-danger btn-xs' href ='#'>Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>");
+			   <a class='btn btn-danger btn-xs' href ='process_delete_talent_list.php?action=delete_talent_list&id=".$list['talent_list_id']."' ".$btnStr."  >Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a><br/>");
 }
  
 ?>
