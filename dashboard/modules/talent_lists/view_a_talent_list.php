@@ -66,7 +66,9 @@ $last_modified_on = $talent['last_modified_on'];
 				   </div>
 
                     <div class="form-group"  >
-						<label class="col-md-3 col-sm-3 control-label"> Talent List Detail:</label>
+						<label class="col-md-3 col-sm-3 control-label"> Talent List Detail
+						
+						</label>
 						  <div class="col-md-9 col-sm-9">
 							 <?php echo $talent_list_details;?>	
 						</div>
