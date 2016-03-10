@@ -1,14 +1,10 @@
 <?php
 
-		$talents_name_sql    = 'SELECT
-		*
-		FROM
-		tams_talent_list_items
-		WHERE talent_list_id = "$talent_list_id"';
 
-		$talents_name = DB::query($talents_name_sql);
-
-$sql = 'SELECT * FROM tams_talent WHERE talent_status = "draft" ';
+$sql = 'SELECT * FROM tams_talent WHERE talent_id IN (
+SELECT talent_id 
+FROM tams_talent_list_items
+GROUP BY talent_list_id)';
 $sql .= 'LIMIT 20';
 $get_talents = DB::query($sql);
 ?>
@@ -38,9 +34,9 @@ $get_talents = DB::query($sql);
               </div>
             </div><!-- /box hearder close --> 
 			
-			<div class="box-body bg-info">
-		
-		<div class="row" >
+	
+		<div class="box-body bg-info">
+		<div class="row">
 
 		<?php 
 		foreach($get_talents as $talent) {  
@@ -121,13 +117,14 @@ $get_talents = DB::query($sql);
           </div>
           <!-- /.widget-user -->
         </div>
+					
 			
-			</div>
-			</div>
 <?php 
 }		  
 
 ?>	
+			</div> <!--.row-->
+			</div> <!--.box-body-->
 			</div><!-- /close box --> 
 			</form>
 			
