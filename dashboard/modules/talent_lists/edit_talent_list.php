@@ -86,7 +86,7 @@ $last_modified_on = $talent['last_modified_on'];
 						<label class="col-md-3 col-sm-3 control-label"> Talent List Title:</label>
 						  <div class="col-md-9 col-sm-9">
 							 <input class="form-control" type="text" required placeholder="Add Talent List Title Here" 
-							 value="<?php echo $talent_list_title?>" name="talent_list_title" id="talent_list_title">							
+							 value="<?php echo $talent_list_title;?>" name="talent_list_title" id="talent_list_title">							
 						  </div>
 					</div>
 
@@ -94,7 +94,7 @@ $last_modified_on = $talent['last_modified_on'];
 						<label class="col-md-3 col-sm-3 control-label"> Talent List Details:</label>
 						  <div class="col-md-9 col-sm-9">
 							 <textarea class="form-control" required placeholder="Add Talent List Details Here" 
-							 value="<?php echo $talent_list_details?>" name="talent_list_details" id="talent_list_details">	
+							 value="<?php echo $talent_list_details;?>" name="talent_list_details" id="talent_list_details">	
 							</textarea>
 			<script>
                 // Replace the <textarea id="talent_list_details"> with a CKEditor
@@ -104,10 +104,7 @@ $last_modified_on = $talent['last_modified_on'];
 						  </div>
 					</div>
 				</div><!-- /.box-body -->
-			<!-- Hidden Fields -->
-			<input type="hidden" name="form_name" id="form_name" value="edit_talent_list" />
-					 
-			<!-- /Hidden Fields --> 
+		 
 			<div class="box-footer">
 			 <div class="form-group"  >
 					<div class="col-sm-12">
@@ -117,5 +114,9 @@ $last_modified_on = $talent['last_modified_on'];
 				 </div>		<!-- /form-group -->
             </div><!-- /.box-footer-->
 		 </div> <!--/.box-->
+<!-- Hidden Fields -->
+<input type="hidden" name="form_name" id="form_name" value="edit_talent_list" />
+<input type="hidden" name="talent_list_id" id="talent_list_id" value="<?php echo $talent_list_id; ?>" />					 
+<!-- /Hidden Fields -->
 </form>
 </section>
