@@ -11,19 +11,20 @@ $tbl->addCell('Talents Included', '', 'header');
 $tbl->addCell('Actions', '', 'header');
 $tbl->addTSection('tbody');
 
-$dbh='SELECT talent_list_id,COUNT(*)  
-FROM tams_talent_list_items 
-GROUP BY talent_list_id';
-$get_count = DB::query($dbh);
-foreach($get_count as $row);
+
 
  
 $sql = 'SELECT * FROM tams_talent_lists';
 $get_saved_lists = DB::query($sql);
 foreach($get_saved_lists as $list) { 
+
 $tbl->addRow();
 $tbl->addCell($list['talent_list_title']);
-$tbl->addCell("<span class='center-block'>".$row['COUNT(*)']."</span>");
+$dbh='SELECT COUNT(*)  
+FROM tams_talent_list_items
+WHERE talent_list_id ='.$list['talent_list_id'];
+$get_count = DB::queryFirstField($dbh);
+$tbl->addCell("<span class='center-block'>".$get_count."</span>");
 $tbl->addCell(list_talents_name($list['talent_list_id']));
 $btnStr = ' onclick="'; 
 $btnStr .= " return confirm('Are you sure you wish to delete this Record?'); ";
