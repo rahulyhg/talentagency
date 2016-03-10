@@ -233,4 +233,6 @@ img.img-circle{
 	border-radius:10px;
 	margin-left:70px;
 }
-
+ul.nav.nav_stacked{
+	height:212px;
+}
