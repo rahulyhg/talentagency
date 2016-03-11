@@ -58,12 +58,24 @@ $last_modified_on = $talent['last_modified_on'];
 					<div class="box-body bg-info">
 					<div class="row">
                   <div class="box-body" >
-				  <label class="col-md-3 col-sm-3 control-label"><h2>Talent List Title:</h2></label></br>
-				  <h2><span><?php echo $talent_list_title; ?></span></h2></br>
-                   <div class="col-md-9 col-sm-9">
-					<label><h3><?php echo $talent_list_details;?><span> Talent List Detail</span></h3>
-					</label>
-						  
+				  <div class="col-md-3 col-sm-3  ">
+	            		<p class="text-right"><strong>Talent List Title :</strong> &nbsp;</p>
+	            	</div>
+	            	<div class="col-md-3 col-sm-3 "> 
+	            		<p class="text-left"><?php echo $talent_list_title; ?> &nbsp;</p>
+	            	</div>
+					
+		</div>	  
+		</div> <!--.row-->
+		<div class="row">
+        <div class="box-body" >
+		<div class="col-md-3 col-sm-3  ">
+	            		<p class="text-right"><strong>Talent List Detail:</strong> &nbsp;</p>
+	            	</div>
+	            	<div class="col-md-3 col-sm-3 "> 
+	            		<p class="text-left"><?php echo $talent_list_details; ?> &nbsp;</p>
+	            	</div>
+				</div>	  
 		</div> <!--.row-->
 		<div class="row">
 		<?php 
