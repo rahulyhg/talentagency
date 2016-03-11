@@ -104,9 +104,9 @@ $last_modified_on = $talent['last_modified_on'];
                   
               <ul class=" nav nav_stacked">
 			 <li ><strong>From</strong></br><?php echo $talent['nationality'];?></li></br>
-                <li><strong>Having Skill</strong>&nbsp;<?php echo list_talent_experience($talent['talent_id']);?></li></br>
-                <li><strong>Languages known</strong>&nbsp;<?php echo list_talent_language($talent['talent_id']);?></li></br>
-				<li><strong>Available</strong>&nbsp;<?php echo $events;?></li>
+                <li><strong>Having Skill :</strong>&nbsp;<?php echo list_talent_experience($talent['talent_id']);?></li></br>
+                <li><strong>Languages known :</strong>&nbsp;<?php echo list_talent_language($talent['talent_id']);?></li></br>
+				<li><strong>Available for Event ?</strong>&nbsp;<?php echo $events;?></li>
               </ul>
             </div>
               <div class="row">
