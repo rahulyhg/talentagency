@@ -31,7 +31,7 @@ $last_modified_on = $talent['last_modified_on'];
  <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1> 
-          View Talent List
+          <?php echo $talent_list_title; ?>
             <small>View All Talents in List</small>
           </h1>
           <ol class="breadcrumb">
@@ -49,7 +49,7 @@ $last_modified_on = $talent['last_modified_on'];
            <div class="box">
 		   <div class="box col-md-6 col-sm-6 col-sx-12">
             <div class="box-header with-border">
-             <h3 class="box-title">View Talent List</h3>
+             <h3 class="box-title">Talent List Detail</h3>
             <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
@@ -70,7 +70,7 @@ $last_modified_on = $talent['last_modified_on'];
 		<div class="row">
         <div class="box-body" >
 		<div class="col-md-3 col-sm-3  ">
-	            		<p class="text-right"><strong>Talent List Detail:</strong> &nbsp;</p>
+	            		<p class="text-right"><strong>Talent List Description:</strong> &nbsp;</p>
 	            	</div>
 	            	<div class="col-md-3 col-sm-3 "> 
 	            		<p class="text-left"><?php echo $talent_list_details; ?> &nbsp;</p>
