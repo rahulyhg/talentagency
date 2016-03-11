@@ -58,20 +58,12 @@ $last_modified_on = $talent['last_modified_on'];
 					<div class="box-body bg-info">
 					<div class="row">
                   <div class="box-body" >
-				  <div class="col-md-3 col-sm-3  ">
-	            		<p class="text-right"><strong>Talent List Title :</strong> &nbsp;</p>
-	            	</div>
 	            	<div class="col-md-3 col-sm-3 "> 
-	            		<p class="text-left"><?php echo $talent_list_title; ?> &nbsp;</p>
+	            		<h1 class="text-left"><?php echo $talent_list_title; ?> &nbsp;</h1>
 	            	</div>
 					
 		</div>	  
-		</div> <!--.row-->
-		<div class="row">
         <div class="box-body" >
-		<div class="col-md-3 col-sm-3  ">
-	            		<p class="text-right"><strong>Talent List Description:</strong> &nbsp;</p>
-	            	</div>
 	            	<div class="col-md-3 col-sm-3 "> 
 	            		<p class="text-left"><?php echo $talent_list_details; ?> &nbsp;</p>
 	            	</div>
@@ -163,6 +155,15 @@ $last_modified_on = $talent['last_modified_on'];
 			</div> <!--.box-body-->
 			</div><!-- /close box --> 
 			</div><!-- /.box -->
+			<div class="form-group">
+					<div class="col-sm-12">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/phpMailer"?>">
+							Send Email &nbsp;
+							<i class="fa fa-chevron-circle-right">
+							</i>
+						</a>
+					</div>	<!-- /.col -->
+				</div>		<!-- /form-group -->
 			</form>
 			
 			</section><!-- /close section --> 

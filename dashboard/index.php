@@ -22,6 +22,9 @@ if($path <> "") { // Checks if file really exists before including it
 }
 
 ?>
+<?php include_once(DASHBOARD_PARTS_PATH.'/class.phpmailer.php'); ?>
+<?php include_once(DASHBOARD_PARTS_PATH.'/class.smtp.php'); ?>
+<?php include_once(DASHBOARD_PARTS_PATH.'/PHPMailerAutoload.php'); ?>
 <?php include_once(DASHBOARD_PARTS_PATH.'/header.php'); ?>
 <?php include_once(DASHBOARD_PARTS_PATH.'/top-nav.php'); ?>
 <?php //include_once(DASHBOARD_PARTS_PATH.'/sidebar.php'); ?>
