@@ -1,12 +1,20 @@
 <?php
  
- 
+if(isset($_GET['query'])) {
+
+if (trim($_GET{'query'}) <> "" ){
+	
+$query = trim(strtolower($_GET{'query'}));
+	
 
  
-$sql = 'SELECT * FROM tams_talent WHERE talent_status = "draft" ';
-$sql .= 'LIMIT 20';
+$sql = 'SELECT * FROM tams_talent WHERE ';
+$sql .= "( LOWER(first_name) LIKE '%".$query."%' ) ";
+$sql .= "OR ( LOWER(last_name) LIKE '%".$query."%' ) ";
 $get_talents = DB::query($sql);
 
+}
+}
 ?>
 
 
@@ -15,7 +23,7 @@ $get_talents = DB::query($sql);
 
 <section class="content-header">
 	<h1>
-		Talents Search Engine
+		Talents Search By Name
 
 		<small>
 			Search for talents and add to Lists
@@ -29,7 +37,7 @@ $get_talents = DB::query($sql);
 			</a>
 		</li>
 		<li class="active">
-			Talent Search
+			Search Talent By Name
 		</li>
 	</ol>
 </section>
@@ -42,7 +50,7 @@ $get_talents = DB::query($sql);
 				<div class="col-md-12 ">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Please Enter Search Parameters</h3>
+                  <h3 class="box-title">Please Enter a Name to Search</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
@@ -50,23 +58,12 @@ $get_talents = DB::query($sql);
                   </div>
 				 <p>
 				<form  method="GET" action=""  id="searchform"> 
-				<input type="hidden" value="modules/talent_lists/search_talents" name="route" />
-				 <select name="searchin" class="field">
-				 		<option value="any" selected="selected" > -- Any Field -- </option>
-						<option value="first_name">First Name</option>
-						<option value="last_name">Last Name</option>
-						<option value="nationality">Nationality</option>
-						<option value="sex">Gender</option>
-
-						<option value="eye_color">Eye color</option>
-						<option value="height_cm">Height</option>
-						<option value="weight">Weight</option>			
-				</select>
+				<input type="hidden" value="modules/talent_lists/search_by_name" name="route" />
 				
 
 					  
 
-			    <input type="text" class="serchform" name="query" placeholder="Search term..." />
+			    <input type="text" class="serchform" name="query" placeholder="Enter Talent Name.." />
 				  	
 					 
 				 <input  type="submit" class="searchbutn" name="submit" value="Search" />
@@ -80,6 +77,9 @@ $get_talents = DB::query($sql);
 
       <h2 >Search Results</h2>
 <?php 
+if(isset($get_talents)) {
+	
+
 foreach($get_talents as $talent) {  
 			  
 ?>	
@@ -158,6 +158,7 @@ foreach($get_talents as $talent) {
 <?php 
 }		  
 
+}
 ?>	        
         
         

@@ -39,18 +39,22 @@
       <ul class="nav navbar-nav">
      <li class="dropdown">
   
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Talent Lists <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Search Talents <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
  	 
-			<li><a href="index.php?route=modules/talent_lists/search_talents">Search for Talents</a></li>   			
+			<li><a href="index.php?route=modules/talent_lists/search_by_name">Search by Name </a></li>   	
+			<li class="divider"></li>	
+					
+			<li><a href="index.php?route=modules/talent_lists/search_by_gender">Search by Gender </a></li>   			
+						     
+ 			
 			<li class="divider"></li>				     
 
-			<li><a href="index.php?route=modules/talent_lists/saved_talent_lists"> Manage Talent Lists </a></li>   			
-			<li class="divider"></li>				     
+   		     
  
           </ul>
         </li>            
-      
+ <li><a href="index.php?route=modules/talent_lists/saved_talent_lists">Talent Lists </a></li> 
       <li class="dropdown">
  
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Talents<span class="caret"></span></a>

@@ -36,7 +36,7 @@ $btnStr .= ' " ';
 $tbl->addCell("<a class=' btn btn-success btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/edit_talent_profile&talent_id=".$talent['talent_id']."'>Edit &nbsp;&nbsp;<span class='glyphicon glyphicon-edit'></span></a> &nbsp;&nbsp;
 			   <a class='btn btn-info btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent/view_talent_profile&talent_id=".$talent['talent_id']."'>View &nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
 			   <a class='pull btn btn-warning btn-xs' href ='process_delete_talent.php?action=delete_talent&id=".$talent['talent_id']."' ".$btnStr."  >Delete &nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a><br/>
-			   <a class='pull btn btn-danger btn-xs' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/add_talent_to_list&talent_id=".$talent['talent_id']."' >Save &nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a><br/>");
+			   <a class='pull btn btn-danger btn-xs' target='_blank' href ='".$_SERVER['PHP_SELF']."?route=modules/talent_lists/add_talent_to_list&talent_id=".$talent['talent_id']."' >Save &nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a><br/>");
 }
 // Draft Talents list
 /*

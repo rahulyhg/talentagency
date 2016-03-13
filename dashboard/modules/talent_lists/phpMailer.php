@@ -13,7 +13,7 @@ $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, 
 $mail->Port = 587;                                    // TCP port to connect to
 
 $mail->setFrom('kafia@sutlej.net', 'Kafia');
-$mail->addAddress('naina@sutlej.net', 'Naina');     // Add a recipient
+$mail->addAddress('rmak@sutlej.net', 'Mansoor');     // Add a recipient
 //$mail->addAddress('naina@sutlej.net');               // Name is optional
 $mail->addReplyTo('kafia@sutlej.net', 'Information');
 //$mail->addCC('cc@example.com');

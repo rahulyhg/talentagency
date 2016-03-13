@@ -200,18 +200,19 @@ footer{
 	width:235px;
 	height:36px;
 }
+
 .field{
-	width:120px;
+	min-width:120px;
 	height:36px;
 }
 .butn{
-	width:120px;
+	min-width:120px;
 	height:35px;
 	background-color:#fff;
 	border:0.8px solid gray;
 }
 .searchbutn{
-	width:120px;
+	min-width:120px;
 	height:36px;
 }
 ul.nav.nav_stacked li{
