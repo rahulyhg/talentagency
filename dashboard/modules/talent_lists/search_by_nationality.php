@@ -1,4 +1,23 @@
 
+<?php
+ 
+if(isset($_GET['query'])) {
+
+if (trim($_GET{'query'}) <> "" ){
+	
+$query = trim(strtolower($_GET{'query'}));
+	
+
+ 
+ 
+$sql = 'SELECT * FROM tams_talent WHERE ';
+$sql .= "( LOWER(nationality) LIKE '%".$query."%' ) ";
+$sql .= "OR(LOWER (nationality) LIKE '%".$query."%' ) ";
+$get_talents = DB::query($sql);
+}
+}
+?>
+
 <!--   Content Header (Page header) -->
 
 
@@ -43,8 +62,6 @@
 
 										<select id="nationality" name="query" class="field"   >
 										<option value="" selected="selected" > -- Select Nationality -- </option>
-											<option value="">
-											</option>
 											<option value="Qatar">
 												Qatar
 											</option>
