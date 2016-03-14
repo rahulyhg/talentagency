@@ -229,7 +229,9 @@ span.glyphicon.glyphicon-plus{
 	
 }
 
-
+input.form-control.size{
+	width:20%;
+}
 img.img-circle{
 	border-radius:10px;
 	margin-left:70px;
