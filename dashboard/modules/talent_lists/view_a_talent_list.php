@@ -217,10 +217,7 @@ $clients_list = DB::query($sql);
 						</select>
 						</div>
 					</div>
-<script type="text/javascript">
-	$(".select2").select2();
-	
-</script>
+
 	
 			</div> <!--/.form-group-->      
 		 <?php
