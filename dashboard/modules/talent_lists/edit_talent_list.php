@@ -44,7 +44,7 @@ if(isset($_GET['talent_list_id'])){
 				*
 				FROM
 				tams_talent_lists
-				WHERE talent_list_id = $talent_list_id ;";
+				WHERE talent_list_id = $talent_list_id";
 $talent= DB::queryFirstRow($sql);
 $talent_list_id = $talent['talent_list_id'];
 $talent_list_title = $talent['talent_list_title'];
@@ -61,7 +61,7 @@ $talent_list_id = $_GET['talent_list_id'];
 $sql = "SELECT * FROM tams_talent WHERE talent_id IN (
 SELECT talent_id 
 FROM tams_talent_list_items
-WHERE talent_list_id= $talent_list_id)";
+WHERE talent_list_id= $talent_list_id);";
 $get_talents = DB::query($sql);
 }
 
@@ -108,7 +108,8 @@ $get_talents = DB::query($sql);
 						<label class="col-md-3 col-sm-3 control-label"> Talent List Details:</label>
 						  <div class="col-md-9 col-sm-9">
 							 <textarea class="form-control" placeholder="Add Talent List Details Here" 
-							 value="<?php echo $talent_list_details;?>" name="talent_list_details" id="talent_list_details">	
+							  name="talent_list_details" id="talent_list_details">	
+							<?php echo $talent_list_details;?>
 							</textarea>
 			<script>
                 // Replace the <textarea id="talent_list_details"> with a CKEditor

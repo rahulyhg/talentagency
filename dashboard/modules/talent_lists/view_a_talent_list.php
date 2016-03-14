@@ -54,8 +54,8 @@ $last_modified_on = $talent['last_modified_on'];
               </div>
             </div><!-- /box hearder close --> 
 			
-					<div class="box-body bg-info">
-					<div class="row">
+					<div class="box-body">
+				<div class="row">
                   <div class="box-body" >
 	            	<label class="col-md-3 col-sm-3 text-left"> Details:</label>
 					
@@ -65,6 +65,14 @@ $last_modified_on = $talent['last_modified_on'];
 	            	</div>
 				</div>	  
 		</div> <!--.row-->
+				
+			<div class="box-footer">
+			 <div class="form-group"  >
+					<div class="col-sm-12">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/edit_talent_list&talent_list_id=$talent_list_id"?>">Edit List &nbsp; <i class="fa fa-edit"></i></a>			
+					</div>	<!-- /.col -->
+				 </div>		<!-- /form-group -->
+            </div><!-- /.box-footer-->
 		</div> <!--.box-->
 			<div class="box">
 			<div class="box-header with-border">
@@ -123,6 +131,34 @@ $last_modified_on = $talent['last_modified_on'];
 }		  
 
 ?>			
+			</div> <!--.row-->
+			</div> <!--.box-body-->
+			</div> <!--.box-->
+			<div class="box">
+			<div class="box-header with-border">
+              <h3 class="box-title">View Talent List</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+		<div class="box-body" >
+		<div class="row">
+			<div class="form-group">
+					<div class="col-sm-6">
+						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="#">
+							HTML Preview&nbsp;
+							<i class="fa fa-search">
+							</i>
+						</a>
+					</div>	<!-- /.col -->
+					<div class="col-sm-6">
+						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="#">
+							Download PDF&nbsp;
+							<i class="fa fa-download">
+							</i>
+						</a>
+					</div>	<!-- /.col -->
+					</div>		<!-- /form-group -->
 			</div> <!--.row-->
 			</div> <!--.box-body-->
 			</div> <!--.box-->
