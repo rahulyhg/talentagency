@@ -1,4 +1,27 @@
 
+<?php
+ 
+if(isset($_GET['query'])) {
+
+if (trim($_GET{'query'}) <> "" ){
+	
+$query = trim(strtolower($_GET{'query'}));
+	
+
+if ($age == "its_equal") {
+$sql = mysql_query("SELECT * FROM tams_talent  WHERE    (YEAR(CURDATE())-YEAR(`age`) >= 18)") or die(mysql_error());}
+
+if ($age == "contains") {
+$sql = mysql_query("SELECT * FROM tams_talent  WHERE (YEAR(CURDATE())-YEAR(`age`) < 18)") or die(mysql_error());}
+ 
+$get_talents = DB::query($sql);
+
+}
+}
+ 
+ ?>
+
+
 
 <!--   Content Header (Page header) -->
 
