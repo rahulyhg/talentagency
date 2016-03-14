@@ -46,10 +46,18 @@
 			<li class="divider"></li>	
 					
 			<li><a href="index.php?route=modules/talent_lists/search_by_gender">Search by Gender </a></li>   			
+			<li class="divider"></li>
+
+           <li><a href="index.php?route=modules/talent_lists/search_by_nationality">Search by Nationality</a></li>   			
+						     <li class="divider"></li>			
+
+			<li><a href="index.php?route=modules/talent_lists/search_by_age">Search by Age </a></li>   			
+			<li class="divider"></li>
+			
+			<li><a href="index.php?route=modules/talent_lists/search_by_height">Search by Height </a></li>   			
 						     
  			
-			<li class="divider"></li>				     
-
+			<li class="divider"></li>
    		     
  
           </ul>
