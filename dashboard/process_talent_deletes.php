@@ -98,9 +98,9 @@ if(isset($_GET['action'])) {
 		$talent_id = $_GET['talent_id'];
 		$talent_list_id = $_POST['talent_list_id'];
 		$id = $_GET['id'];	
-		DB::delete('tams_talent_list_items', "talent_list_item_id=%s AND talent_id=%s", $id, $talent_id);
+		DB::delete('tams_talent_list_items', "talent_list_item_id=%s AND talent_id=%s AND talent_list_id=%s", $id, $talent_id, $talent_list_id);
 		
-		header('Location: index.php?route=modules/talent_lists/saved_talent_lists');		
+		header('Location: index.php?route=modules/talent_lists/edit_talent_list&talent_list_id='.$talent_list_id);		
 		break;
 	}
 	

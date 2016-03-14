@@ -47,9 +47,8 @@ $last_modified_on = $talent['last_modified_on'];
 <form id="view_talent_list" name="view_talent_list" class="form-horizontal" method="post" action="process_talent_lists.php?talent_list_id=<?php echo $talent_list_id; ?>" >
 <!-- Default box -->
            <div class="box">
-		   <div class="box col-md-6 col-sm-6 col-sx-12">
             <div class="box-header with-border">
-             <h3 class="box-title">Talent List Detail</h3>
+             <h3 class="box-title"><?php echo $talent_list_title; ?></h3>
             <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
@@ -58,17 +57,23 @@ $last_modified_on = $talent['last_modified_on'];
 					<div class="box-body bg-info">
 					<div class="row">
                   <div class="box-body" >
-	            	<div class="col-md-3 col-sm-3 "> 
-	            		<h1 class="text-left"><?php echo $talent_list_title; ?> &nbsp;</h1>
-	            	</div>
+	            	<label class="col-md-3 col-sm-3 text-left"> Details:</label>
 					
-		</div>	  
-        <div class="box-body" >
+				</div>	  
 	            	<div class="col-md-3 col-sm-3 "> 
 	            		<p class="text-left"><?php echo $talent_list_details; ?> &nbsp;</p>
 	            	</div>
 				</div>	  
 		</div> <!--.row-->
+		</div> <!--.box-->
+			<div class="box">
+			<div class="box-header with-border">
+              <h3 class="box-title">Talents In This List</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+		<div class="box-body" >
 		<div class="row">
 		<?php 
 		foreach($get_talents as $talent) {  
@@ -109,61 +114,39 @@ $last_modified_on = $talent['last_modified_on'];
 				<li><strong>Available for Event ?</strong>&nbsp;<?php echo $events;?></li>
               </ul>
             </div>
-              <div class="row">
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <span class="description-text">
-					<a class='btn btn-warning btn-circle btn-lg' title="Remove From List" href ="process_talent_deletes.php?action=delete_talent_from_list&id=<?php echo get_talent_list_item_id($talent['talent_id']); ?>&talent_id=<?php echo $talent['talent_id']; ?>" onclick="return confirm('Are you sure you wish to remove this Record?');"  >&nbsp;&nbsp;<span class='glyphicon glyphicon-trash'></span></a>
-					</span>
-                  </div>
-                  <!-- /.description-block -->
-            
-				</div>
-				
-                <!-- /.col -->
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <span class="description-text">
-					<a class='btn btn-info btn-circle btn-lg' title="View Profile" href ="index.php?route=modules/talent/view_talent_profile&talent_id=<?php echo $talent['talent_id']; ?>">&nbsp;&nbsp;<span class='glyphicon glyphicon-user'></span></a>
-					</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4">
-                  <div class="description-block">
-                 
-                    <span class="description-text">
-					<a class='btn btn-danger btn-circle btn-lg' title="Add to favourite" href ="index.php?route=modules/talent_lists/add_talent_to_list&talent_id=<?php echo $talent['talent_id']; ?>">&nbsp;&nbsp;<span class='glyphicon glyphicon-heart'></span></a>
-					</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
             </div>
           </div>
           <!-- /.widget-user -->
-        </div>				
+        </div>	<!--.col-->			
 			
 <?php 
 }		  
 
-?>	
+?>			
 			</div> <!--.row-->
 			</div> <!--.box-body-->
-			</div><!-- /close box --> 
-			</div><!-- /.box -->
+			</div> <!--.box-->
+		<div class="box">
+			<div class="box-header with-border">
+              <h3 class="box-title">Send List to Client</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+		<div class="box-body" >
+		<div class="row">
 			<div class="form-group">
 					<div class="col-sm-12">
-						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/phpMailer"?>">
-							Send Email &nbsp;
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/contact_client&talent_list_id='.$talent_list_id"?>">
+							Contact Client &nbsp;
 							<i class="fa fa-chevron-circle-right">
 							</i>
 						</a>
 					</div>	<!-- /.col -->
-				</div>		<!-- /form-group -->
+			</div>		<!-- /form-group -->
+			</div> <!--.row-->
+			</div> <!--.box-body-->
+			</div> <!--.box-->
 			</form>
 			
 			</section><!-- /close section --> 

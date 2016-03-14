@@ -100,7 +100,7 @@ if(isset($_POST['form_name'])) {
 			"talent_list_id=%s", $talent_list_id
 			);
 		}
-			header('Location: index.php?route=modules/talent_lists/saved_talent_lists');
+			header('Location: index.php?route=modules/talent_lists/edit_talent_list&talent_list_id='.$talent_list_id);
 			break;
 			
 			}
