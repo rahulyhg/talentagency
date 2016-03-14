@@ -198,7 +198,7 @@ $clients_list = DB::query($sql);
 						</label>
 					<div class="col-md-9 col-sm-9">
 						<div class="input-group">
-						<select name="client_id" id="client_id" class=" input-group form-control  select2"  style="padding:5px;"  >
+						<select name="client_id" id="client_id" class=" input-group form-control  select"  style="padding:5px;"  >
 					
 							<option value="">
 								Select a Client
