@@ -2,10 +2,7 @@
 //reset all the form fields
 $talent_list_title        = "";
 $talent_list_details      = "";
-if(isset($_GET['talent_list_id']))
-{
-$talent_list_id = $_GET['talent_list_id'];
-}
+
 // getting values from $_post variable & saving into normal variables
 
 if(isset($_POST['save'])) {

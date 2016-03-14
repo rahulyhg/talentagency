@@ -27,6 +27,7 @@ $created_by = $talent['created_by'];
 $last_modified_by = $talent['last_modified_by'];
 $last_modified_on = $talent['last_modified_on'];
 }
+
 ?>
  <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -44,7 +45,7 @@ $last_modified_on = $talent['last_modified_on'];
         <!-- Main content -->
   <!-- Main content -->
         <section class="content">
-<form id="view_talent_list" name="view_talent_list" class="form-horizontal" method="post" action="process_talent_lists.php?talent_list_id=<?php echo $talent_list_id; ?>" >
+<form enctype="multipart/form-data" id="view_talent_list" name="view_talent_list" class="form-horizontal" method="post" action="process_talent_lists.php?talent_list_id=<?php echo $talent_list_id; ?>" >
 <!-- Default box -->
            <div class="box">
             <div class="box-header with-border">
@@ -169,6 +170,68 @@ $last_modified_on = $talent['last_modified_on'];
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
+
+		<div class="box-body">
+		
+		<div class="row" >
+<?php
+			// List of Clients
+
+$sql    = "SELECT
+*
+FROM
+tams_clients
+WHERE client_status = 'active'
+ORDER BY company_name";
+
+$clients_list = DB::query($sql);
+
+?>
+		<?php
+		if($clients_list )
+		{
+			?>
+
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 control-label">
+							Clients List :
+						</label>
+					<div class="col-md-9 col-sm-9">
+						<div class="input-group">
+						<select name="client_id" id="client_id" class=" input-group form-control  select2"  style="padding:5px;"  >
+					
+							<option value="">
+								Select a Client
+							</option>
+	
+							<?php 
+							foreach($clients_list as $list){
+								?>	
+							<option value="<?php echo $list['client_id'];?>">
+								<?php echo $list['company_name'];?>
+							</option>
+							<?php
+							} // for each $clients_list									
+							?>
+
+						</select>
+						</div>
+					</div>
+<script type="text/javascript">
+	$(".select2").select2();
+	
+</script>
+	
+			</div> <!--/.form-group-->      
+		 <?php
+
+		}  // End if $clients_list
+
+		?>
+
+		</div>
+			</div>
+			
 		<div class="box-body" >
 		<div class="row">
 			<div class="form-group">
