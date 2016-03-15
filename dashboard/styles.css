@@ -234,8 +234,16 @@ input.form-control.size{
 }
 img.img-circle{
 	border-radius:10px;
-	margin-left:70px;
+	margin-top:5px;
+	max-width:100%;
+}
+.card{
+	border-radius:10px;
+	margin-left:70px; 
 }
 ul.nav.nav_stacked{
 	height:212px;
+}
+.widget-user .widget-user-header {
+    padding: 35px;
 }

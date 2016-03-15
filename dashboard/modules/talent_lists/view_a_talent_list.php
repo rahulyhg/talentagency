@@ -88,40 +88,19 @@ $last_modified_on = $talent['last_modified_on'];
 		foreach($get_talents as $talent) {  
 					  
 		?>			
-	        <div class="col-md-4 col-sm-6" >
+	        <div class="col-md-12 col-sm-12" >
           <!-- Widget: user widget style 1 -->
-          <div class="box box-widget widget-user">
+          <div class="box box-widget widget-user text-center">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-aqua-active">
               <h3 class="widget-user-username"><?php echo $talent['first_name']." ".$talent['last_name']; ?></h3>
               <h5 class="widget-user-desc"><?php echo $talent['sex'].",&nbsp;". getAge($talent['dob']);  ?> Years</h5>
             </div>
-            <div class="widget-user-image">
-            <img class="img-circle" src="<?php echo $talent['photo1_url']; ?>"  alt="talent_photo"  />
-            </div>
+            
             <div class="box-footer">
             <div class="row">
-            <?php
-			$events = $talent['events'];
-				if (is_null($events) OR $events == "" ) {
-					$events = " - not set - ";
-				} 
-				elseif($events == 1 ){
-					$events = "Yes";
-				}
-				else {
-					$events ="No"; 
-				} 
-
-			
-			?>
-                  
-              <ul class=" nav nav_stacked">
-			 <li ><strong>From</strong></br><?php echo $talent['nationality'];?></li></br>
-                <li><strong>Having Skill :</strong>&nbsp;<?php echo list_talent_experience($talent['talent_id']);?></li></br>
-                <li><strong>Languages known :</strong>&nbsp;<?php echo list_talent_language($talent['talent_id']);?></li></br>
-				<li><strong>Available for Event ?</strong>&nbsp;<?php echo $events;?></li>
-              </ul>
+			<img class="img-circle" src="<?php echo $talent['photo1_url']; ?>"  alt="talent_photo"  />&nbsp;
+			<img class="img-circle" src="<?php echo $talent['photo2_url']; ?>"  alt="talent_photo"  />
             </div>
             </div>
           </div>
