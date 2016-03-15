@@ -1,3 +1,20 @@
+
+<?php
+$language               = ""; 
+if(isset($_GET['query'])) {
+
+if (trim($_GET{'query'}) <> "" ){
+$query = trim(strtolower($_GET{'query'}));
+$sql = 'SELECT * FROM tams_talent_language WHERE ';
+$sql .= "( LOWER(language) LIKE '%".$query."%' ) ";
+$get_talents = DB::query($sql);
+
+
+}
+}
+
+?>
+
 <!--   Content Header (Page header) -->
 
 
@@ -38,7 +55,7 @@
                   </div>
 				 <p>
 				<form  method="GET" action=""  id="searchform"> 
-				<input type="hidden" value="modules/talent_lists/search_by_name" name="route" />
+				<input type="hidden" value="modules/talent_lists/search_by_language" name="route" />
 				
 
 					  

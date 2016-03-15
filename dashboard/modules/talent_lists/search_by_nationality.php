@@ -2,19 +2,17 @@
 <?php
 $nationality               = ""; 
 if(isset($_GET['query'])) {
-
+	
 if (trim($_GET{'query'}) <> "" ){
-	
 $query = trim(strtolower($_GET{'query'}));
-	
-
- 
- 
 $sql = 'SELECT * FROM tams_talent WHERE ';
-$sql .= "( LOWER(nationality) LIKE '%".$query."%' ) ";
+$sql .= "( LOWER(nationality) LIKE '%".$query."%' ) ";	
 $get_talents = DB::query($sql);
+
+	
 }
 }
+
 ?>
 
 <!--   Content Header (Page header) -->

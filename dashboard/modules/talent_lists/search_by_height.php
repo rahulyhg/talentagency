@@ -1,5 +1,24 @@
 
 
+<?php
+$height_cm               = ""; 
+if(isset($_GET['query'])) {
+	
+if (trim($_GET{'query'}) <> "" ){
+	
+$query = trim(strtolower($_GET{'query'}));
+
+
+$sql = 'SELECT * FROM tams_talent WHERE  ';
+$sql .= "( LOWER(height_cm) LIKE '%".$query."%' ) ";	
+$get_talents = DB::query($sql);
+
+	
+}
+}
+
+?>
+
 <!--   Content Header (Page header) -->
 
 
@@ -40,7 +59,7 @@
                   </div>
 				 <p>
 				<form  method="GET" action=""  id="searchform"> 
-				<input type="hidden" value="modules/talent_lists/search_by_name" name="route" />
+				<input type="hidden" value="modules/talent_lists/search_by_height" name="route" />
 				 
 			    <div class="input-group">
                 <div class="input-group-btn search-panel">
@@ -59,8 +78,7 @@
                      
                     </ul>
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control size" name="x" placeholder="Search term...">
+                <input type="text" class="serchform" name="query" placeholder="Enter Talent height.." />
                 <input  type="submit" class="searchbutn" name="submit" value="Search" />
             </div>
 				
@@ -182,3 +200,14 @@ foreach($get_talents as $talent) {
 	</div><!-- /.row -->
 
 </section><!--  /.content -->
+<script>
+$(document).ready(function(e){
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
+	});
+});
+</script>

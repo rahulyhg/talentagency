@@ -1,26 +1,22 @@
 
 <?php
- 
-if(isset($_GET['query'])) {
 
+if(isset($_GET['query'])) {
+	
 if (trim($_GET{'query'}) <> "" ){
 	
 $query = trim(strtolower($_GET{'query'}));
-	
 
-if ($age == "its_equal") {
-$sql = mysql_query("SELECT * FROM tams_talent  WHERE    (YEAR(CURDATE())-YEAR(`age`) >= 18)") or die(mysql_error());}
 
-if ($age == "contains") {
-$sql = mysql_query("SELECT * FROM tams_talent  WHERE (YEAR(CURDATE())-YEAR(`age`) < 18)") or die(mysql_error());}
- 
+$sql = 'SELECT * FROM tams_talent WHERE';
+$sql .= "( LOWER(dob) LIKE '%".$query."%' ) ";	
 $get_talents = DB::query($sql);
 
+	
 }
 }
- 
- ?>
 
+?>
 
 
 <!--   Content Header (Page header) -->
@@ -63,7 +59,7 @@ $get_talents = DB::query($sql);
                   </div>
 				 <p>
 				<form  method="GET" action=""  id="searchform"> 
-				<input type="hidden" value="modules/talent_lists/search_by_name" name="route" />
+				<input type="hidden" value="modules/talent_lists/search_by_age" name="route" />
 				 
 			    <div class="input-group">
                 <div class="input-group-btn search-panel">
@@ -82,8 +78,10 @@ $get_talents = DB::query($sql);
                      
                     </ul>
                 </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control size" name="x" placeholder="Search term...">
+                    
+            
+				
+			    <input type="text" class="serchform" name="query" placeholder="Enter Talent age.." />
                 <input  type="submit" class="searchbutn" name="submit" value="Search" />
             </div>
 				
