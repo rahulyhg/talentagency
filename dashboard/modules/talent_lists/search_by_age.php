@@ -8,8 +8,8 @@ if (trim($_GET{'query'}) <> "" ){
 $query = trim(strtolower($_GET{'query'}));
 
 
-$sql = 'SELECT * FROM tams_talent WHERE';
-$sql .= "( LOWER(dob) LIKE '%".$query."%' ) ";	
+$sql = 'select * from (select *, TIMESTAMPDIFF(YEAR, dob, NOW()) as age from tams_talent) as sub_query WHERE';
+$sql .= "( LOWER(age) LIKE '%".$query."%' ) ";	
 $get_talents = DB::query($sql);
 
 	
