@@ -59,7 +59,9 @@
 
 			<li><a href="index.php?route=modules/talent_lists/search_by_language">Search by Language </a></li>   			
 			<li class="divider"></li>
- 
+			
+			<li><a href="index.php?route=modules/talent_lists/search_by_skill">Search by Skill </a></li>   			
+			<li class="divider"></li>
           </ul>
         </li>            
  <li><a href="index.php?route=modules/talent_lists/saved_talent_lists">Talent Lists </a></li> 
