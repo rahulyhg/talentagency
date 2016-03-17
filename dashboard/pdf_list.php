@@ -27,7 +27,7 @@ $talent_list = DB::queryFirstRow($sql);
 <html>
   <head>
     <meta charset="UTF-8">
-    <title> Talent Agency |</title>
+    <title> The Talent Factory | Dare To Be Remarkable</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="<?php echo SITE_ROOT;  ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -57,16 +57,16 @@ td, th {
           <h3 class="text-center"> <?php echo $talent_list['talent_list_title']; ?></h3>
           <h4 class="text-center"> <?php echo $talent_list['talent_list_details']; ?></h4>
 		  <div class="row invoice-info">
-            
+         <?php  
+$my_sql = "SELECT * FROM tams_clients WHERE client_id = '1';";
+$clients = DB::query($my_sql);
+foreach($clients as $client) { 
+?>   
             <div style="width:400px;" class="col-sm-9 col-md-9 col-xs-9 invoice-col">
               <address>
-<?php  
-$my_sql = "SELECT * FROM tams_clients WHERE client_id = $client_id;";
-$client = DB::query($my_sql);
-?>
                 <strong><?php echo $client['company_name'];?></strong><br>
                 <?php echo $client['client_address']; ?><br>
-                <?php echo $client['client_city'].''.$client['client_country']; ?><br>
+                <?php echo $client['client_city'].','.$client['client_country']; ?><br>
                <i> Phone:</i> <?php echo $client['client_phone_1']; ?><br/>
 			   <i> Phone:</i> <?php echo $client['client_phone_2']; ?><br/>
                <i> FAX:</i> <?php echo $client['client_fax']; ?><br/>
@@ -133,11 +133,15 @@ $get_talents = DB::query($sql_2);
 			  
                 <thead>
                   <tr>
-                    <td align="center"> <strong><?php echo $client['company_name'];?></strong>  <?php echo $client['client_address'].' '.$client['client_city'].' '.$client['client_country'];  ?></td>
+                    <td align="center"> <strong><?php echo $client['company_name'];?></strong>  <?php echo $client['client_address'].' ,'.$client['client_city'].' ,'.$client['client_country'];  ?></td>
                   </tr>
                 </thead>
               </table>
-</div>    
+</div>   
+<?php 
+}		  
+
+?>	 
    <!-- Entering footer scripts file -->
  
   <!-- Exited footer scripts file -->
