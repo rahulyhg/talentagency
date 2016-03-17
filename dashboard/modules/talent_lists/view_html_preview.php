@@ -37,8 +37,8 @@ $last_modified_on = $talent['last_modified_on'];
 			<div class="box-footer">
 	
 			<div class="box">
-			<div class="box-header with-border">
-              <h2 class="box-title"><strong><?php echo $talent_list_title; ?></strong></h2>
+			<div class="box-header with-border text-center">
+              <h2 class="box-title "><strong><?php echo $talent_list_title; ?></strong></h2>
               <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Open/Close This Box"><i class="fa fa-minus"></i></button><button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
               </div>
