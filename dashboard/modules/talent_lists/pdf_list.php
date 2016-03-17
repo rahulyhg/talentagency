@@ -72,14 +72,53 @@ $client = DB::query($my_sql);
                <i> FAX:</i> <?php echo $client['client_fax']; ?><br/>
                <i> Email:</i> <?php echo $client['client_email']; ?>
               </address>
+			  
             </div><!-- /.col-sm-9 col-md-9 -->
-            <div class=" col-sm-2 col-md-2 col-xs-2 invoice-col">
-              <img style="align:right;" class="text-right image-responsive" src="<?php echo SITE_ROOT.'uploads/clients/_logo';?>" height="100px"/>
+			<div class=" col-sm-2 col-md-2 col-xs-2 invoice-col">
+              <img style="align:right;" class="text-right image-responsive" src="<?php echo SITE_ROOT.'assets/images/logo_blue.png';?>" height="100px"/>
             </div><!-- /.col-sm-3 col-md-3-->
           </div><!-- /.row -->
-		  
+<?php
+if(isset($_GET['talent_list_id']))
+{
+$talent_list_id = $_GET['talent_list_id'];
+
+$sql_2 = "SELECT * FROM tams_talent WHERE talent_id IN (
+SELECT talent_id 
+FROM tams_talent_list_items
+WHERE talent_list_id= $talent_list_id)";
+$sql_2 .= 'LIMIT 20';
+$get_talents = DB::query($sql_2);
+}
+?>
 		  <div class="row ">
+            		<?php 
+		foreach($get_talents as $talent) {  
+					  
+		?>			
+	        <div class="col-md-12 col-sm-12" >
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user text-center">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+              <h3 class="widget-user-username"><?php echo $talent['first_name']." ".$talent['last_name']; ?></h3>
+              <h5 class="widget-user-desc"><?php echo $talent['sex'].",&nbsp;". getAge($talent['dob']);  ?> Years</h5>
+            </div>
             
+            <div class="box-footer">
+            <div class="row">
+			<img class="img-circle" src="<?php echo $talent['photo1_url']; ?>"  alt="talent_photo"  />&nbsp;
+			<img class="img-circle" src="<?php echo $talent['photo2_url']; ?>"  alt="talent_photo"  />
+            </div>
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>	<!--.col-->			
+			
+<?php 
+}		  
+
+?>		
             <div class="col-xs-5 col-sm-5 col-md-5 table-responsive">
        
             </div><!-- /.col-xs-6 col-sm-6 col-md-6 -->
