@@ -125,7 +125,7 @@ $last_modified_on = $talent['last_modified_on'];
 		<div class="row">
 			<div class="form-group">
 					<div class="col-sm-6">
-						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="#">
+						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/view_html_preview&talent_list_id=$talent_list_id"?>">
 							HTML Preview&nbsp;
 							<i class="fa fa-search">
 							</i>
