@@ -132,7 +132,7 @@ $last_modified_on = $talent['last_modified_on'];
 						</a>
 					</div>	<!-- /.col -->
 					<div class="col-sm-6">
-						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="#">
+						<a style="margin-right:10px;" class='btn btn-success btn-lg' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/download_list&talent_list_id=$talent_list_id"?>">
 							Download PDF&nbsp;
 							<i class="fa fa-download">
 							</i>

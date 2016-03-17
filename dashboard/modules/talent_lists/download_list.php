@@ -15,7 +15,7 @@ $sql_list_title = DB::queryFirstRow($sql);
  
 ob_start();
  
-require 'view_html_preview.php';
+require 'pdf_list.php';
 
 $contents = ob_get_contents();
 

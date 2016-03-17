@@ -55,7 +55,8 @@ td, th {
           <section class="invoice">
           <!-- info row -->
           <h3 class="text-center"> <?php echo $talent_list['talent_list_title']; ?></h3>
-          <div class="row invoice-info">
+          <h4 class="text-center"> <?php echo $talent_list['talent_list_details']; ?></h4>
+		  <div class="row invoice-info">
             
             <div style="width:400px;" class="col-sm-9 col-md-9 col-xs-9 invoice-col">
               <address>
