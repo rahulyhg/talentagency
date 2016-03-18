@@ -57,13 +57,19 @@ td, th {
           <h3 class="text-center"> <?php echo $talent_list['talent_list_title']; ?></h3>
           <h4 class="text-center"> <?php echo $talent_list['talent_list_details']; ?></h4>
 		  <div class="row invoice-info">
-         <?php  
-$my_sql = "SELECT * FROM tams_clients WHERE client_id = $client_id;";
-$clients = DB::query($my_sql);
-foreach($clients as $client) { 
+         <?php 
+if (isset($_POST['client_id']))
+{	
+$client_id = $_POST['client_id'];	
+$my_sql = "SELECT * FROM tams_clients WHERE client_id = $client_id";
+$get_clients = DB::query($my_sql);
+}
 ?>   
-            <div style="width:400px;" class="col-sm-9 col-md-9 col-xs-9 invoice-col">
-              <address>
+       <div style="width:400px;" class="col-sm-9 col-md-9 col-xs-9 invoice-col">
+            <?php
+			foreach($get_clients as $client) { 
+			?>
+			  <address>
                 <strong><?php echo $client['company_name'];?></strong><br>
                 <?php echo $client['client_address']; ?><br>
                 <?php echo $client['client_city'].','.$client['client_country']; ?><br>
@@ -72,12 +78,16 @@ foreach($clients as $client) {
                <i> FAX:</i> <?php echo $client['client_fax']; ?><br/>
                <i> Email:</i> <?php echo $client['client_email']; ?>
               </address>
-			  
+			<?php 
+			}		  
+
+			?>
             </div><!-- /.col-sm-9 col-md-9 -->
 			<div class=" col-sm-2 col-md-2 col-xs-2 invoice-col">
               <img style="align:right;" class="text-right image-responsive" src="<?php echo SITE_ROOT.'assets/images/logo_blue.png';?>" height="100px"/>
             </div><!-- /.col-sm-3 col-md-3-->
-          </div><!-- /.row -->
+       	
+		  </div><!-- /.row -->
 <?php
 if(isset($_GET['talent_list_id']))
 {
@@ -132,10 +142,7 @@ $get_talents = DB::query($sql_2);
                 </thead>
               </table>
 </div>   
-<?php 
-}		  
-
-?>	 
+ 
    <!-- Entering footer scripts file -->
  
   <!-- Exited footer scripts file -->

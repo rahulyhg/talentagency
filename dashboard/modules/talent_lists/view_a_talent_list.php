@@ -212,7 +212,7 @@ $clients_list = DB::query($sql);
 		<div class="row">
 			<div class="form-group">
 					<div class="col-sm-12">
-						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/contact_client&talent_list_id='.$talent_list_id"?>">
+						<a style="margin-right:10px;" class='btn btn-danger btn-lg pull-right' href="<?php echo $_SERVER['PHP_SELF']."?route=modules/talent_lists/contact_client&talent_list_id=$talent_list_id"?>">
 							Contact Client &nbsp;
 							<i class="fa fa-chevron-circle-right">
 							</i>

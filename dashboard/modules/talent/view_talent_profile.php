@@ -615,7 +615,7 @@ elseif($events == 1 ){
 	            		<p class="text-left"><?php echo $shoe_size; ?> &nbsp;</p>
 	            </div>
 				<div class="col-md-6 col-sm-6  ">
-	            		<p class="text-right"><strong>Waist <small>cm</small> :</strong> &nbsp;</p>
+	            		<p class="text-right"><strong>Waist <small>inch</small> :</strong> &nbsp;</p>
 	            </div>
 	            <div class="col-md-6 col-sm-6 "> 
 	            		<p class="text-left"><?php echo $waist_cm; ?> &nbsp;</p>
