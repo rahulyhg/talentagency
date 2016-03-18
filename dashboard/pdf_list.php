@@ -58,7 +58,7 @@ td, th {
           <h4 class="text-center"> <?php echo $talent_list['talent_list_details']; ?></h4>
 		  <div class="row invoice-info">
          <?php  
-$my_sql = "SELECT * FROM tams_clients WHERE client_id = '1';";
+$my_sql = "SELECT * FROM tams_clients WHERE client_id = $client_id;";
 $clients = DB::query($my_sql);
 foreach($clients as $client) { 
 ?>   
@@ -119,12 +119,6 @@ $get_talents = DB::query($sql_2);
 }		  
 
 ?>		
-            <div class="col-xs-5 col-sm-5 col-md-5 table-responsive">
-       
-            </div><!-- /.col-xs-6 col-sm-6 col-md-6 -->
-         <div class="col-xs-5 col-sm-5 col-md-5 table-responsive">
-              
-            </div><!-- /.col-xs-6 col-sm-6 col-md-6 -->
           </div>
 		  </section>   
     </div><!-- ./wrapper -->
@@ -133,7 +127,7 @@ $get_talents = DB::query($sql_2);
 			  
                 <thead>
                   <tr>
-                    <td align="center"> <strong><?php echo $client['company_name'];?></strong>  <?php echo $client['client_address'].' ,'.$client['client_city'].' ,'.$client['client_country'];  ?></td>
+                    <td align="center"> <strong>The Talent Factory | Dare To Be Remarkable. </strong> <br/>Opposite American Hospital, Doha, Qatar</td>
                   </tr>
                 </thead>
               </table>
